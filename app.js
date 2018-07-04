@@ -7,12 +7,12 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
 var auth = require('./routes/wx/auth');
-var wxConfig = require('./routes/wx/config');
+/*var wxConfig = require('./routes/wx/config');*/
 var wxPay = require('./routes/wx/pay');
 
 var app = express();
 
-mongoose.connect('mongodb://danius:Pengcl19821025@101.200.72.54:27017/danius', {});
+mongoose.connect('mongodb://ywy:Pengcl19821025@101.200.72.54:27017/ywy', {useNewUrlParser: true});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -33,7 +33,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 //微信签名认证
 /*app.use(utils.sign(config));*/
 
-app.use('/wx/config', wxConfig);
+/*app.use('/wx/config', wxConfig);*/
 app.use('/wx/pay', wxPay);
 app.use('/wx/auth', auth);
 

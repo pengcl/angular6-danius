@@ -3,7 +3,6 @@ import {Injectable, ComponentFactoryResolver, ApplicationRef, Injector} from '@a
 import {Observable} from 'rxjs';
 import {catchError} from 'rxjs/operators';
 import {WxComponent} from './wx.component';
-import {ActivatedRoute} from '@angular/router';
 import {CONFIG} from '../../app.config';
 import {HttpClient} from '@angular/common/http';
 
@@ -25,7 +24,11 @@ export class WxService extends BaseService {
   private share: any;
   private jsApiList: string[] = ['onMenuShareTimeline', 'onMenuShareAppMessage', 'onMenuShareQQ', 'onMenuShareWeibo', 'onMenuShareQZone'];
 
-  constructor(resolver: ComponentFactoryResolver, applicationRef: ApplicationRef, injector: Injector, private wxService: JWeiXinService, private http: HttpClient, private activatedRoute: ActivatedRoute) {
+  constructor(resolver: ComponentFactoryResolver,
+              applicationRef: ApplicationRef,
+              injector: Injector,
+              private wxService: JWeiXinService,
+              private http: HttpClient) {
     super(resolver, applicationRef, injector);
   }
 

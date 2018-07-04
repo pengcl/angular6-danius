@@ -1,6 +1,4 @@
-import {environment} from '../environments/environment';
-
-console.log(environment);
+import {environment} from '../../environments/environment';
 
 export const CONFIG = {
   'webHost': environment.webHost,

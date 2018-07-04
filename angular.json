@@ -31,8 +31,8 @@
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "front/environments/environment.ts",
-                  "with": "front/environments/environment.prod.ts"
+                  "replace": "environments/environment.ts",
+                  "with": "environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -123,8 +123,8 @@
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "member/environments/environment.ts",
-                  "with": "member/environments/environment.prod.ts"
+                  "replace": "environments/environment.ts",
+                  "with": "environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -207,7 +207,7 @@
               "backend/assets"
             ],
             "styles": [
-              "backend/styles.css"
+              "backend/styles.scss"
             ],
             "scripts": []
           },
@@ -215,8 +215,8 @@
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "backend/environments/environment.ts",
-                  "with": "backend/environments/environment.prod.ts"
+                  "replace": "environments/environment.ts",
+                  "with": "environments/environment.prod.ts"
                 }
               ],
               "optimization": true,

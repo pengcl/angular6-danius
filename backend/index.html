@@ -5,10 +5,15 @@
   <title>Angular6Danius</title>
   <base href="/">
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale = 1.0, maximum-scale = 1.0, user-scalable = 0, viewport-fit = cover">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
-  <app-root></app-root>
+<app-root></app-root>
+<script>
+  const $html = document.getElementsByTagName('html');
+  const $body = document.getElementsByTagName('body');
+  $html[0].style.fontSize = $body[0].clientWidth / 375 * 100 + 'px';
+</script>
 </body>
 </html>

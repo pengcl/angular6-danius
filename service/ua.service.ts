@@ -1,10 +1,6 @@
-import {Injectable} from '@angular/core';
-
-
 const av = navigator.appVersion; // window.navigator 对象包含有关访问者浏览器的信息。
 const ua = navigator.userAgent;
 
-@Injectable({providedIn: 'root'})
 export class UaService {
 
   constructor() {
@@ -25,7 +21,7 @@ export class UaService {
     return ua;
   }
 
-  isWx(): boolean {// 检查是否微信
+  get isWx(): boolean {// 检查是否微信
     return String(ua.toLowerCase().match(/MicroMessenger/i)) === 'micromessenger';
   }
 }

@@ -1,7 +1,7 @@
 import {Injectable, Inject} from '@angular/core';
 import {DOCUMENT} from '@angular/common';
 
-@Injectable({providedIn: 'root'})
+@Injectable()
 export class LoaderService {
 
   private list: any = {};

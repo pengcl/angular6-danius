@@ -1,3 +1,7 @@
-<!--The content below is only a placeholder and can be replaced.-->
-backend
-
+<div id="container" [ngClass]="{'menu-open':menuShow}">
+  <app-menu></app-menu>
+  <div (click)="menu()" class="content-overlay"></div>
+  <div id="content-container">
+    <router-outlet></router-outlet>
+  </div>
+</div>

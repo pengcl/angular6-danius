@@ -2,9 +2,11 @@ import {ComponentRef, ComponentFactoryResolver, ApplicationRef, Injector, Embedd
 
 declare const document: any;
 
-@Injectable({providedIn: 'root'})
+@Injectable()
 export abstract class BaseService {
-  constructor(private resolver: ComponentFactoryResolver, private applicationRef: ApplicationRef, private injector: Injector) {
+  constructor(private resolver: ComponentFactoryResolver,
+              private applicationRef: ApplicationRef,
+              private injector: Injector) {
   }
 
   protected list: ComponentRef<any>[] = [];
@@ -36,7 +38,7 @@ export abstract class BaseService {
   }
 
   /** 动态构建组件 */
-  protected build<T>(component: { new (...args: any[]): T; }): ComponentRef<T> {
+  protected build<T>(component: { new(...args: any[]): T; }): ComponentRef<T> {
     const componentFactory = this.resolver.resolveComponentFactory(component);
     const componentRef = componentFactory.create(this.injector);
     this.list.push(componentRef);
