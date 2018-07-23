@@ -5,8 +5,8 @@ import {HttpClientModule} from '@angular/common/http';
 import {AppRoutingModule} from './app-routing.module';
 
 import {WeUiModule} from 'ngx-weui';
-import {WxModule} from './modules/wx';
-import {MenuModule} from './modules/menu/menu.module';
+import {WxModule} from '../../modules/wx';
+import {MenuModule} from '../../modules/menu/menu.module';
 
 import {SERVICES_DECLARATIONS} from './services';
 import {BASE_SERVICES_DECLARATIONS} from '../../service';

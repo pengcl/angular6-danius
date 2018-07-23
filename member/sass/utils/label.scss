@@ -1,0 +1,12 @@
+.ui-label {
+  display: inline-block;
+  vertical-align: middle;
+  &.label-default {
+    font-size: 0.1rem;
+    margin: 0.05rem 0.1rem 0 0;
+    background: #F9EAE9;
+    color: #CC3629;
+    padding: 0.2em 0.5em;
+    border-radius: 1em;
+  }
+}

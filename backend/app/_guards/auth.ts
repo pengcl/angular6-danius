@@ -12,7 +12,7 @@ import {
   CanLoad,
   Route, ActivatedRoute
 } from '@angular/router';
-import {CONFIG} from '../app.config';
+import {CONFIG} from '../../../config/app.config';
 import {UaService} from '../../../service/ua.service';
 import {AuthService} from '../services/auth.service';
 

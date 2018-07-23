@@ -1,3 +1,9 @@
-<!--The content below is only a placeholder and can be replaced.-->
-member
-
+<div id="container" [ngClass]="{'menu-open':menuShow}">
+  <app-menu [config]="menuConfig"></app-menu>
+  <div (click)="menu()" class="content-overlay"></div>
+  <div id="content-container">
+    <app-navbar [config]="navConfig"></app-navbar>
+    <router-outlet></router-outlet>
+    <app-tabbar [config]="tabConfig"></app-tabbar>
+  </div>
+</div>

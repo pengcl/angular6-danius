@@ -2,8 +2,8 @@
 // `ng build ---prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 const protocol = 'http';
-const host = 'pinor';
-const domain = 'heyazl.net';
+const host = 'wx';
+const domain = 'dutyhb.com';
 export const environment = {
   production: false,
   protocol: protocol,

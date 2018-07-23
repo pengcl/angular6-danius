@@ -1,0 +1,37 @@
+.profile {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  .weui-cells {
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+}
+
+.avatar {
+  width: 0.44rem;
+}
+
+.weui-cells {
+  font-size: 0.13rem;
+  color: #666;
+}
+
+.action-add {
+  text-align: center;
+  font-size: 0;
+  i,span {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 0.13rem;
+  }
+  i {
+    font-size: 0.15rem;
+    margin-right: 0.05rem;
+  }
+}
+
+.weui-uploader__file-content {
+  font-size: 0.13rem;
+  text-align: center;
+}

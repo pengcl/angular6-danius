@@ -1,0 +1,24 @@
+<div class="content-scrollable">
+
+  <div class="profile weui-cells">
+    <a (click)="showData('workstatus')" class="weui-cell weui-cell_access">
+      <div class="weui-cell__bd">
+        <p>管理求职意向</p>
+      </div>
+      <div class="weui-cell__ft">{{profileForm.get('workstatus').value || profileForm.get('workstatus').value === 0 ?
+        pickerData.workstatus[profileForm.get('workstatus').value].label : '您的求职意向'}}
+      </div>
+    </a>
+    <div *ngFor="let intent of intents" [routerLink]="['/profile/intention/edit',intent.id]" class="weui-cell">
+      <div class="weui-cell__bd">
+        <p>[{{intent.intentcity}}]{{intent.intentname}}</p>
+        <p class="weui-media-box__desc">{{intent.salarybegin}}k-{{intent.salaryend}}k {{intent.tradename ? intent.tradename : '不限'}}</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="btns-group">
+  <a routerLink="/profile/intention/add" class="btn-twitter">添加期望职位</a>
+</div>

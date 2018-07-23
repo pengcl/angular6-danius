@@ -1,0 +1,41 @@
+.user-info {
+  .weui-media-box__hd {
+    width: 0.65rem;
+    height: 0.65rem;
+    .avatar {
+      border-radius: 50%;
+    }
+  }
+  .weui-media-box__ft {
+    align-self: start;
+    color: #999;
+  }
+}
+
+.statistics {
+  padding: 0.15rem 0;
+  .weui-flex__item {
+    em, span {
+      text-align: center;
+      display: block;
+    }
+
+    em {
+      font-size: 0.17rem;
+      font-style: normal;
+    }
+    span {
+      font-size: 0.12rem;
+      color: #999;
+    }
+  }
+}
+
+.menu {
+  padding: 0 0 2rem;
+  background: #fff;
+  margin-top: 0.1rem;
+  .weui-cells {
+    margin-top: 0;
+  }
+}

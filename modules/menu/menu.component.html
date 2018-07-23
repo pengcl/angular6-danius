@@ -1,0 +1,8 @@
+<section id="menu" class="overthrow">
+  <a *ngFor="let item of menu.items" [routerLink]="item.pagePath">
+        <span class="wrapper-menu-item">
+          <span class="{{item.iconPath}}"></span>
+          <span class="title-menu" [innerHTML]="item.text"></span>
+        </span>
+  </a>
+</section>

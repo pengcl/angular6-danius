@@ -1,6 +1,6 @@
 {
   "/api": {
-    "target": "http://127.0.0.1:3000",
+    "target": "http://127.0.0.1:4000",
     "secure": false,
     "pathRewrite": {
       "^/api/": ""
@@ -9,7 +9,7 @@
     "logLevel": "debug"
   },
   "/wApi": {
-    "target": "http://192.168.1.193:8888",
+    "target": "http://192.168.1.193:8899",
     "secure": false,
     "pathRewrite": {
       "^/wApi/": ""

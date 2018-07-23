@@ -1,0 +1,77 @@
+<div class="content-scrollable">
+  <div class="profile weui-cells">
+    <a (click)="showOverlay('shortname')" class="weui-cell weui-cell_access">
+      <div class="weui-cell__bd">
+        <p>公司名称</p>
+      </div>
+      <div class="weui-cell__ft">{{profileForm.get('shortname').value ? profileForm.get('shortname').value : '未填写'}}</div>
+    </a>
+    <a (click)="showOverlay('rolename')" class="weui-cell weui-cell_access">
+      <div class="weui-cell__bd">
+        <p>职位名称</p>
+      </div>
+      <div class="weui-cell__ft">{{profileForm.get('rolename').value ? profileForm.get('rolename').value : '未填写'}}</div>
+    </a>
+    <a class="weui-cell">
+      <div class="weui-cell__bd">
+        <p>时间段</p>
+      </div>
+      <div class="weui-cell__ft"><span (click)="showDate('begindate')">{{profileForm.get('begindate').value ? profileForm.get('begindate').value : '未选择'}}</span> 至 <span (click)="showDate('enddate')">{{profileForm.get('enddate').value ? profileForm.get('enddate').value : '未选择'}}</span></div>
+    </a>
+    <a (click)="showOverlay('jobcontent')" class="weui-cell weui-cell_access">
+      <div class="weui-cell__bd">
+        <p>工作内容</p>
+      </div>
+      <div class="weui-cell__ft">{{profileForm.get('jobcontent').value ?
+        profileForm.get('jobcontent').value.slice(0,15) + '...' : '未填写'}}
+      </div>
+    </a>
+  </div>
+</div>
+
+<div class="btns-group">
+  <a (click)="onSubmit()" class="btn-twitter">完成</a>
+</div>
+
+<app-overlay>
+  <div *ngIf="formControl === 'shortname'" [formGroup]="profileForm" class="weui-cells weui-cells_form">
+    <div class="weui-cell"
+         [ngClass]="{'weui-cell_warn':profileForm.get('shortname').invalid}">
+      <div class="weui-cell__hd"><label class="weui-label">公司名称</label></div>
+      <div class="weui-cell__bd">
+        <input class="weui-input" formControlName="shortname" placeholder="请输入您的公司名称">
+      </div>
+      <div class="weui-cell__ft">
+        <i class="weui-icon-warn"></i>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="formControl === 'rolename'" [formGroup]="profileForm" class="weui-cells weui-cells_form">
+    <div class="weui-cell"
+         [ngClass]="{'weui-cell_warn':profileForm.get('rolename').invalid}">
+      <div class="weui-cell__hd"><label class="weui-label">职位名称</label></div>
+      <div class="weui-cell__bd">
+        <input class="weui-input" formControlName="rolename" placeholder="请输入您的职位名称">
+      </div>
+      <div class="weui-cell__ft">
+        <i class="weui-icon-warn"></i>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="formControl === 'jobcontent'" [formGroup]="profileForm" class="weui-cells weui-cells_form">
+    <div class="weui-cell">
+      <div class="weui-cell__bd">
+        <textarea class="weui-textarea" formControlName="jobcontent" placeholder="工作负责的内容、达到的项目效果或个人突出表现等内容"
+                  rows="3"></textarea>
+        <div class="weui-textarea-counter"><span>{{profileForm.get('jobcontent').value.length}}</span>/200</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="btns-group">
+    <a (click)="overlaySubmit()" class="btn-twitter">确定</a>
+  </div>
+</app-overlay>

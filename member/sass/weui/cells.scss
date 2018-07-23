@@ -1,0 +1,74 @@
+.weui-cells {
+  font-size: 0.15rem;
+}
+
+.weui-cells__title {
+  font-size: 0.13rem;
+  padding-left: 0.15rem;
+  padding-right: 0.15rem;
+}
+
+.weui-cells__tips {
+  font-size: 0.12rem;
+  color: #4CA6FF;
+  margin-top: 0.05rem;
+}
+
+.weui-cell {
+  padding: 0.15rem;
+}
+
+.weui-cell_access .weui-cell__ft {
+  font-size: 0.13rem;
+  padding-right: 0.13rem;
+}
+
+.weui-cell__ft {
+  font-size: 0.13rem;
+  label {
+    font-size: 0;
+    display: inline-block;
+    margin-left: 0.1rem;
+    span, i {
+      display: inline-block;
+      vertical-align: middle;
+    }
+    span {
+      font-size: 0.13rem;
+    }
+    i {
+      font-size: 0.18rem;
+    }
+  }
+
+  .weui-icon-checked:before {
+    content: '\EA01';
+    color: #C9C9C9;
+    font-size: 0.18rem;
+    display: block;
+  }
+
+  .checked {
+    .weui-icon-checked:before {
+      content: '\EA06';
+      color: #CC3629;
+    }
+  }
+  .weui-input {
+    text-align: right;
+  }
+}
+
+.weui-icon-warn {
+  font-size: 0.18rem;
+}
+
+.weui-cell_switch {
+  padding-top: 0.1rem;
+  padding-bottom: 0.1rem;
+}
+.weui-switch, .weui-switch-cp__box {
+  width: 0.52rem;
+  height: 0.32rem;
+  border-radius: 0.16rem;
+}

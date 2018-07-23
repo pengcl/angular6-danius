@@ -1,0 +1,131 @@
+<div class="content-scrollable">
+  <div class="profile weui-cells">
+    <a routerLink="/uploader/avatar" class="weui-cell weui-cell_access">
+      <div class="weui-cell__bd">
+        <p>头像</p>
+      </div>
+      <div class="weui-cell__ft">
+        <img class="avatar" src="/assets/images/avatar.jpg">
+      </div>
+    </a>
+    <a (click)="showOverlay('username')" class="weui-cell weui-cell_access">
+      <div class="weui-cell__bd">
+        <p>姓名</p>
+      </div>
+      <div class="weui-cell__ft">{{profileForm.get('username').value ? profileForm.get('username').value : '未填写'}}</div>
+    </a>
+    <div class="weui-cell">
+      <div class="weui-cell__bd">
+        <p>性别</p>
+      </div>
+      <div class="weui-cell__ft" style="font-size: 0">
+        <label (click)="setSex(1);" [ngClass]="{'checked':profileForm.get('sex').value === 1}">
+          <span>男</span>
+          <i class="weui-icon-checked"></i>
+        </label>
+        <label (click)="setSex(2);" [ngClass]="{'checked':profileForm.get('sex').value === 2}">
+          <span>女</span>
+          <i class="weui-icon-checked"></i>
+        </label>
+      </div>
+    </div>
+    <a (click)="showDate('date-ym','birthday')" class="weui-cell weui-cell_access">
+      <div class="weui-cell__bd">
+        <p>出生年月</p>
+      </div>
+      <div class="weui-cell__ft">{{profileForm.get('birthday').value ? profileForm.get('birthday').value : '未选择'}}
+      </div>
+    </a>
+    <a (click)="showData('weight')" class="weui-cell weui-cell_access">
+      <div class="weui-cell__bd">
+        <p>体重</p>
+      </div>
+      <div class="weui-cell__ft">{{profileForm.get('weight').value ? profileForm.get('weight').value + 'KG' :
+        '未填写'}}
+      </div>
+    </a>
+    <a (click)="showData('height')" class="weui-cell weui-cell_access">
+      <div class="weui-cell__bd">
+        <p>身高</p>
+      </div>
+      <div class="weui-cell__ft">{{profileForm.get('height').value ? profileForm.get('height').value + 'CM' :
+        '未填写'}}
+      </div>
+    </a>
+    <a (click)="showOverlay('nation')" class="weui-cell weui-cell_access">
+      <div class="weui-cell__bd">
+        <p>民族</p>
+      </div>
+      <div class="weui-cell__ft">{{profileForm.get('nation').value ? profileForm.get('nation').value : '未填写'}}</div>
+    </a>
+    <a (click)="showCity()" class="weui-cell weui-cell_access">
+      <div class="weui-cell__bd">
+        <p>所在地</p>
+      </div>
+      <div class="weui-cell__ft">{{profileForm.get('addressarea').value ? profileForm.get('addressprovince').value + profileForm.get('addresscity').value + profileForm.get('addressarea').value : '所在城市'}}</div>
+    </a>
+    <a (click)="showOrigin()" class="weui-cell weui-cell_access" href="javascript:;">
+      <div class="weui-cell__bd">
+        <p>籍贯</p>
+      </div>
+      <div class="weui-cell__ft">{{profileForm.get('origincity').value ? profileForm.get('originprovince').value + profileForm.get('origincity').value : '户口所在地'}}</div>
+    </a>
+    <div class="weui-cell">
+      <div class="weui-cell__bd">
+        <p>婚姻状况</p>
+      </div>
+      <div class="weui-cell__ft">
+        <div class="weui-cell__ft" style="font-size: 0">
+          <label (click)="setMarital(1);" [ngClass]="{'checked':profileForm.get('ismarried').value === 1}">
+            <span>已婚</span>
+            <i class="weui-icon-checked"></i>
+          </label>
+          <label (click)="setMarital(2);" [ngClass]="{'checked':profileForm.get('ismarried').value === 2}">
+            <span>未婚</span>
+            <i class="weui-icon-checked"></i>
+          </label>
+          <label (click)="setMarital(4);" [ngClass]="{'checked':profileForm.get('ismarried').value === 4}">
+            <span>其它</span>
+            <i class="weui-icon-checked"></i>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="btns-group">
+  <a (click)="onSubmit()" class="btn-twitter">完成</a>
+</div>
+
+<app-overlay>
+  <div [formGroup]="profileForm" class="weui-cells weui-cells_form">
+    <div *ngIf="formControl === 'username'" class="weui-cell"
+         [ngClass]="{'weui-cell_warn':profileForm.get('nation').invalid && profileForm.get('username').dirty}">
+      <div class="weui-cell__hd"><label class="weui-label">民族</label></div>
+      <div class="weui-cell__bd">
+        <input class="weui-input" formControlName="username" placeholder="请输入您的姓名">
+      </div>
+      <div class="weui-cell__ft">
+        <i class="weui-icon-warn"></i>
+      </div>
+    </div>
+    <div *ngIf="formControl === 'nation'" class="weui-cell"
+         [ngClass]="{'weui-cell_warn':profileForm.get('nation').invalid && profileForm.get('nation').dirty}">
+      <div class="weui-cell__hd"><label class="weui-label">民族</label></div>
+      <div class="weui-cell__bd">
+        <input class="weui-input" formControlName="nation" placeholder="请输入您的民族">
+      </div>
+      <div class="weui-cell__ft">
+        <i class="weui-icon-warn"></i>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="weui-cells">
+    <a (click)="overlaySubmit()" class="weui-cell">
+      <div class="weui-cell__bd" style="text-align: center">确定</div>
+    </a>
+  </div>
+</app-overlay>

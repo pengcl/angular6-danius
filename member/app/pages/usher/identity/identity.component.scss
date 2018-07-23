@@ -1,0 +1,17 @@
+.title {
+  margin: 0.4rem 0.15rem 0.2rem;
+  font-size: 0.24rem;
+  line-height: 1;
+}
+
+.user-types {
+  overflow: hidden;
+  .type-item {
+    margin: 0.3rem 0.15rem;
+    img {
+      display: block;
+      width: 100%;
+    }
+  }
+}
+

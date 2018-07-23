@@ -1,0 +1,66 @@
+<div class="content-scrollable">
+
+  <div [formGroup]="intentionsForm" class="profile weui-cells weui-cells_form">
+    <div (click)="showPositions()" class="weui-cell weui-cell_access"
+         [ngClass]="{'weui-cell_warn':intentionsForm.get('positionid').invalid && isSubmit}">
+      <div class="weui-cell__bd">意向职位</div>
+      <div class="weui-cell__ft">{{intentionsForm.get('positionname').value}}</div>
+    </div>
+    <div (click)="showOverlay('industries')" class="weui-cell weui-cell_access"
+         [ngClass]="{'weui-cell_warn':intentionsForm.get('tradename').invalid && isSubmit}">
+      <div class="weui-cell__bd">意向行业</div>
+      <div class="weui-cell__ft">{{intentionsForm.get('tradename').value ? intentionsForm.get('tradename').value : '不限'}}</div>
+    </div>
+    <div (click)="showCities()" class="weui-cell weui-cell_access"
+         [ngClass]="{'weui-cell_warn':intentionsForm.get('intentcity').invalid && isSubmit}">
+      <div class="weui-cell__bd">意向地点</div>
+      <div class="weui-cell__ft">{{intentionsForm.get('intentprovince').value}}{{intentionsForm.get('intentcity').value}}</div>
+    </div>
+    <div (click)="showSalaries()" class="weui-cell weui-cell_access"
+         [ngClass]="{'weui-cell_warn':intentionsForm.get('salaryend').invalid && isSubmit}">
+      <div class="weui-cell__bd">意向薪资</div>
+      <div class="weui-cell__ft">
+        <span *ngIf="intentionsForm.get('salaryend').value === '0'">面议</span>
+        <span *ngIf="intentionsForm.get('salaryend').value && intentionsForm.get('salaryend').value !== '0'">{{intentionsForm.get('salarybegin').value}}k - {{intentionsForm.get('salaryend').value}}k</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="btns-group">
+  <a (click)="submit()" class="btn-twitter">确定</a>
+</div>
+
+<app-overlay>
+
+  <div class="industries" #container>
+    <div class="industries-hd" #hd>
+      <div class="weui-form-preview__item">
+        <label class="weui-form-preview__label">已选行业 ({{selectedIndustries.length}}/3)</label>
+        <em (click)="save()" class="weui-form-preview__value">保存</em>
+      </div>
+      <div *ngIf="selectedIndustries.length === 0" class="label-container">
+        <p>请选择行业，最多3个</p>
+      </div>
+      <div *ngIf="selectedIndustries.length > 0" class="label-container">
+        <span *ngFor="let industry of selectedIndustries" class="ui-label"><em>{{industry.name}}</em> <i (click)="setIndustry(industry)" class="icon-cross"></i></span>
+      </div>
+    </div>
+    <div class="industries-bd" #bd>
+      <div class="content-scrollable">
+        <div *ngFor="let main of industries" class="weui-panel">
+          <div class="weui-panel__hd">{{main.name}}</div>
+          <div class="weui-panel__bd">
+            <div class="weui-media-box">
+              <div class="label-container">
+                <span (click)="setIndustry(sub)" [ngClass]="{'curr':isHave(sub)}" *ngFor="let sub of main.sub" class="ui-label">{{sub.name}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--<div class="industries-ft"></div>-->
+  </div>
+</app-overlay>

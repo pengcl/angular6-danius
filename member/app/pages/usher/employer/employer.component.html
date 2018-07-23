@@ -1,0 +1,122 @@
+<div class="content-scrollable">
+  <div class="profile">
+    <div class="weui-cells__title">基本资料</div>
+    <div class="weui-cells">
+      <a (click)="showOverlay('name')" class="weui-cell weui-cell_access" href="javascript:;">
+        <div class="weui-cell__bd">
+          <p>姓名</p>
+        </div>
+        <div class="weui-cell__ft">{{profileForm.get('name').value ? profileForm.get('name').value : '请输入您的姓名'}}</div>
+      </a>
+      <div class="weui-cell">
+        <div class="weui-cell__bd">
+          <p>性别</p>
+        </div>
+        <div class="weui-cell__ft" style="font-size: 0">
+          <label (click)="setSex('男');" [ngClass]="{'checked':profileForm.get('sex').value === '男'}">
+            <span>男</span>
+            <i class="weui-icon-checked"></i>
+          </label>
+          <label (click)="setSex('女');" [ngClass]="{'checked':profileForm.get('sex').value === '女'}">
+            <span>女</span>
+            <i class="weui-icon-checked"></i>
+          </label>
+        </div>
+      </div>
+      <a (click)="showDate('date-ym','birthday')" class="weui-cell weui-cell_access">
+        <div class="weui-cell__bd">
+          <p>出生年月</p>
+        </div>
+        <div class="weui-cell__ft">{{profileForm.get('birthday').value ? profileForm.get('birthday').value : '未选择'}}
+        </div>
+      </a>
+    </div>
+
+    <div class="weui-cells__title">公司信息</div>
+    <div class="weui-cells">
+      <a (click)="showDate('date-ym','enlist')" class="weui-cell weui-cell_access">
+        <div class="weui-cell__bd">
+          <p>公司名称</p>
+        </div>
+        <div class="weui-cell__ft">{{profileForm.get('enlist').value ? profileForm.get('enlist').value :
+          '未填写'}}
+        </div>
+      </a>
+      <a (click)="showDate('date-ym','demobilized')" class="weui-cell weui-cell_access">
+        <div class="weui-cell__bd">
+          <p>公司行业</p>
+        </div>
+        <div class="weui-cell__ft">{{profileForm.get('demobilized').value ? profileForm.get('demobilized').value :
+          '未填写'}}</div>
+      </a>
+      <a (click)="showServices()" class="weui-cell weui-cell_access">
+        <div class="weui-cell__bd">
+          <p>公司地址</p>
+        </div>
+        <div class="weui-cell__ft">
+          {{profileForm.get('services').value ? profileForm.get('services').value : '请选择兵种'}}
+        </div>
+      </a>
+      <a (click)="showDate('date-ym','birthday')" class="weui-cell weui-cell_access">
+        <div class="weui-cell__bd">
+          <p>我的职位</p>
+        </div>
+        <div class="weui-cell__ft">1993-01</div>
+      </a>
+      <a (click)="showDate('date-ym','birthday')" class="weui-cell weui-cell_access">
+        <div class="weui-cell__bd">
+          <p>联系手机</p>
+        </div>
+        <div class="weui-cell__ft">1993-01</div>
+      </a>
+      <a (click)="showDate('date-ym','birthday')" class="weui-cell weui-cell_access">
+        <div class="weui-cell__bd">
+          <p>联系邮箱</p>
+        </div>
+        <div class="weui-cell__ft">1993-01</div>
+      </a>
+    </div>
+
+  </div>
+</div>
+
+<div class="btns-group">
+  <a (click)="onSubmit()" class="btn-twitter">下一步</a>
+</div>
+
+<app-overlay>
+  <div [formGroup]="profileForm" class="weui-cells weui-cells_form">
+    <div *ngIf="formControl === 'name'" class="weui-cell"
+         [ngClass]="{'weui-cell_warn':profileForm.get('name').invalid}">
+      <div class="weui-cell__hd"><label class="weui-label">姓名</label></div>
+      <div class="weui-cell__bd">
+        <input class="weui-input" formControlName="name" placeholder="请输入您的姓名">
+      </div>
+      <div class="weui-cell__ft">
+        <i class="weui-icon-warn"></i>
+      </div>
+    </div>
+
+    <div *ngIf="formControl === 'mobile'" class="weui-cell"
+         [ngClass]="{'weui-cell_warn':profileForm.get('mobile').invalid}">
+      <div class="weui-cell__hd"><label class="weui-label">联系手机</label></div>
+      <div class="weui-cell__bd">
+        <input class="weui-input" formControlName="mobile" placeholder="请输入联系电话">
+      </div>
+      <div class="weui-cell__ft">
+        <i class="weui-icon-warn"></i>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="weui-cells">
+    <a (click)="onSubmit()" class="weui-cell">
+      <div class="weui-cell__bd" style="text-align: center">确定</div>
+    </a>
+  </div>
+</app-overlay>
+
+<weui-picker>
+
+</weui-picker>

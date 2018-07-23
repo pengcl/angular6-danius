@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable, Subject} from 'rxjs/index';
 import {Md5} from 'md5-typescript';
-import {CONFIG} from '../app.config';
+import {CONFIG} from '../../../config/app.config';
 
 import {StorageService} from '../../../service/storage.service';
 

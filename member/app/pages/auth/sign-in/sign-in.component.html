@@ -1,0 +1,32 @@
+<div class="content-scrollable">
+  <div class="userinfo">
+    <img class="userinfo-avatar" src="/assets/images/logo.png" background-size="cover"/>
+    <div class="userinfo-nickname">大牛管家</div>
+  </div>
+  <form novalidate [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div class="weui-cells">
+      <div class="weui-cell">
+        <div class="weui-cell__hd">
+          <span class="weui-label">手机号码</span>
+        </div>
+        <div class="weui-cell__bd">
+          <input class="weui-input" (focus)="isKeyboardShow = true" (blur)="isKeyboardShow = false" type="tel" formControlName="mobile" placeholder="请输入手机号">
+        </div>
+        <div class="weui-cell__ft" *ngIf="loginForm.get('mobile').valid"
+             (click)="getCode(loginForm.get('mobile').value)">
+          {{activeText}}
+        </div>
+      </div>
+      <div class="weui-cell">
+        <div class="weui-cell__hd">
+          <span class="weui-label">验证码</span>
+        </div>
+        <div class="weui-cell__bd">
+          <input class="weui-input" (focus)="isKeyboardShow = true" (blur)="isKeyboardShow = false" type="tel" formControlName="code" placeholder="请输入验证码">
+        </div>
+      </div>
+    </div>
+
+    <a weui-button [weui-loading]="loading" [disabled]="loginForm.invalid" class="weui-btn weui-btn_primary" (click)="onSubmit()">登录</a>
+  </form>
+</div>

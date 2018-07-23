@@ -2,7 +2,10 @@ import {Component, OnInit} from '@angular/core';
 import {Router, NavigationStart} from '@angular/router';
 import {filter} from 'rxjs/internal/operators';
 
-import {MenuService} from './modules/menu/menu.service';
+import {TAB_CONFIG} from './config/tabbar.config';
+import {MENU_CONFIG} from './config/menu.config';
+
+import {MenuService} from '../../modules/menu/menu.service';
 
 @Component({
   selector: 'app-root',
@@ -10,17 +13,19 @@ import {MenuService} from './modules/menu/menu.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  menuShow;
+  tabConfig = TAB_CONFIG;
+  menuConfig = MENU_CONFIG;
+  menuShow = false;
 
   constructor(private router: Router,
               private menuSvc: MenuService) {
     menuSvc.get().subscribe(res => {
-      this.menuShow = res;
+      this.menuShow = res.show;
     });
 
     router.events.pipe(filter((event) => event instanceof NavigationStart))
       .subscribe((event: NavigationStart) => {
-        this.menuShow = false;
+        this.menuSvc.set({show: false});
       });
   }
 
@@ -28,6 +33,6 @@ export class AppComponent implements OnInit {
   }
 
   menu() {
-    this.menuSvc.hide();
+    this.menuSvc.set({show: false});
   }
 }
