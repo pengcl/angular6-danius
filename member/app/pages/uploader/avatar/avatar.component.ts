@@ -23,7 +23,6 @@ export class UploaderAvatarComponent implements OnInit {
     auto: true,
     onFinished: function () {
       console.log('onFinished', arguments);
-      this.location.back();
     },
     onError: function () {
       console.log('onError', arguments);

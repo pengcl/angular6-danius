@@ -1,0 +1,108 @@
+<div class="finder weui-cells">
+  <div class="posts weui-cell">
+    <div class="weui-cell__bd">
+      <span *ngIf="posts?.length === 0">您现在还没有发布职位</span>
+      <span (click)="setPost(item)" *ngFor="let item of posts" class="name" [ngClass]="{'curr':item.id === params.postid}">
+        {{item.positionname}}
+      </span>
+    </div>
+    <div class="weui-cell__ft">
+      <i [routerLink]="['/employer/job/add']" [queryParams]="{from:'finder'}" class="icons icons-adds"></i>
+    </div>
+  </div>
+  <div class="filters weui-cell">
+    <div (click)="showFilter(1)" class="weui-cell__bd" [ngClass]="{'curr' : type === 1}"><span>推荐</span><i
+      class="icons icons-arrows-down"></i></div>
+    <div (click)="showFilter(2)" class="weui-cell__bd" [ngClass]="{'curr' : type === 4}"><span>要求</span><i
+      class="icons icons-arrows-down"></i></div>
+  </div>
+</div>
+<div class="filters-container animated" [ngClass]="{'fadeInDown':typeShow === true,'fadeOutUp':typeShow === false}">
+  <div class="content-scrollable">
+    <div *ngIf="type === 1" class="listType-container">
+      <div class="weui-panel">
+        <div class="weui-panel__bd">
+          <div class="weui-media-box">
+            <div class="weui-grids">
+              <div class="weui-grid">
+                <span (click)="setListType('recommend')" class="ui-label" [ngClass]="{'curr':params.isrecommend === 1}">推荐</span>
+              </div>
+              <div class="weui-grid">
+                <span (click)="setListType('new')" class="ui-label" [ngClass]="{'curr':params.isnew === 1}">最新</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="type === 2" class="requirement-container">
+      <div class="weui-panel">
+        <div class="weui-panel__hd">学历</div>
+        <div class="weui-panel__bd">
+          <div class="weui-media-box">
+            <div class="weui-grids">
+              <div *ngFor="let education of educations" class="weui-grid">
+                <span (click)="setRequirements('education',education)"
+                      class="ui-label" [ngClass]="{'curr':params.edutype === education.value}">{{education.label}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="weui-panel">
+        <div class="weui-panel__hd">兵龄</div>
+        <div class="weui-panel__bd">
+          <div class="weui-media-box">
+            <div class="weui-grids">
+              <div *ngFor="let military of lengthOfMilitary" class="weui-grid">
+                <span (click)="setRequirements('military',military)"
+                      class="ui-label" [ngClass]="{'curr':params.military === military.value}">{{military.label}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="weui-panel">
+        <div class="weui-panel__hd">薪资</div>
+        <div class="weui-panel__bd">
+          <div class="weui-media-box">
+            <div class="weui-grids">
+              <div *ngFor="let salary of salaries" class="weui-grid">
+                <span (click)="setRequirements('salary',salary)"
+                      class="ui-label" [ngClass]="{'curr':params.salarybegin === salary.value.split('-')[0]}">{{salary.label}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="weui-panel">
+        <div class="weui-panel__hd">求职状态</div>
+        <div class="weui-panel__bd">
+          <div class="weui-media-box">
+            <div class="weui-grids">
+              <div *ngFor="let workStatus of workStatuses" class="long weui-grid">
+                <span (click)="setRequirements('workStatus',workStatus)"
+                      class="ui-label" [ngClass]="{'curr':params.workstatus === workStatus.value}">{{workStatus.label}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="btns-group">
+    <a (click)="reset()" class="btn-secondary">重置</a>
+    <a (click)="sure()" class="btn-twitter">确定</a>
+  </div>
+</div>
+<weui-infiniteloader (loadmore)="onLoadMore($event)" #comp>
+  <div *ngFor="let employee of employees" [routerLink]="['/employer/find/item',employee.userId]" [queryParams]="{postId : params.postid}" class="weui-panel weui-panel_access">
+    <div class="weui-panel__bd">
+      <app-person-item [employee]="employee" class="weui-media-box weui-media-box_appmsg weui-media-box_access"></app-person-item>
+    </div>
+  </div>
+  <app-no-record *ngIf="jobs?.length === 0"></app-no-record>
+</weui-infiniteloader>

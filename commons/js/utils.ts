@@ -1,9 +1,33 @@
-export function getIndex(jsonArray, keyName, value) {
-  for (let i = 0; i < jsonArray.length; i++) {
-    if (jsonArray[i][keyName] === value) {
+export function getIndex(arr, k, v) {
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i][k] === v) {
       return i;
     }
   }
+}
+
+export function getNameFormCode(arr, code) {
+  if (code === '100000') {
+    return '不限';
+  }
+
+  const mainCode = code.slice(0, 3);
+  const subCode = code.slice(3, 6);
+  let armyType = '';
+  let service = '';
+  arr.forEach(item => {
+    const _mainCode = item.code.slice(0, 3);
+    if (mainCode === _mainCode) {
+      armyType = item.name;
+      item.sub.forEach(sub => {
+        const _subCode = sub.code.slice(3, 6);
+        if (subCode === _subCode) {
+          service = sub.name;
+        }
+      });
+    }
+  });
+  return armyType + service;
 }
 
 export function formData(body: object): FormData {

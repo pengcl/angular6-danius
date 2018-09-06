@@ -36,7 +36,6 @@ export class SignInComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-
     this.authSvc.logout();
 
     this.loginForm = new FormGroup({
@@ -91,16 +90,26 @@ export class SignInComponent implements OnInit, OnDestroy {
       if (res.code !== '0000') {
         return false;
       }
-      console.log(res);
       this.authSvc.updateLoginStatus({
         key: res.result.key,
+        type: res.result.user.usertype || 0,
         expires_time: Date.parse(String(new Date())) + 144000000
       });
-      let callbackUrl = this.authSvc.loginRedirectUrl || '/index';
+      let callbackUrl = this.authSvc.loginRedirectUrl;
       if (!res.result.user.usertype) {
         callbackUrl = '/usher/identity';
       }
-      this.router.navigate([callbackUrl]);
+
+      if (callbackUrl) {
+        this.router.navigate([callbackUrl]);
+        return false;
+      }
+
+      if (res.result.user.usertype === 1) {
+        this.router.navigate(['/employee/home']);
+      } else {
+        this.router.navigate(['/employer/home']);
+      }
     });
   }
 

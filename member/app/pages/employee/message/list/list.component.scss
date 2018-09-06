@@ -1,0 +1,20 @@
+.content-scrollable {
+  background: #fff;
+}
+.weui-media-box__hd {
+  width: 0.4rem;
+  height: 0.4rem;
+  .icons {
+    font-size: 0.4rem;
+  }
+}
+.weui-media-box__title {
+  .company,.post {
+    font-size: 0.12rem;
+    margin-left: 0.1rem;
+    color: #999;
+  }
+}
+.weui-media-box__desc {
+  -webkit-line-clamp: 1;
+}

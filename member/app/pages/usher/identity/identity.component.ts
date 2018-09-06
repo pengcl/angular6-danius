@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
+import {Router, ActivatedRoute} from '@angular/router';
 import {FormGroup, FormControl, Validators} from '@angular/forms';
 
 import {ToastService} from 'ngx-weui';
@@ -19,6 +19,7 @@ export class UsherIdentityComponent implements OnInit {
   userForm: FormGroup;
 
   constructor(private router: Router,
+              private route: ActivatedRoute,
               private navSvc: NavbarService,
               private tabSvc: TabbarService,
               private toastSvc: ToastService,
@@ -48,10 +49,14 @@ export class UsherIdentityComponent implements OnInit {
     this.userForm.get('usertype').setValue(type);
     this.userSvc.set(this.userForm.value).then(res => {
       if (res.code === '0000') {
-        if (res.result.user.usertype === 1) {
-          this.router.navigate(['/usher/employee']);
+        if (this.route.snapshot.queryParams['redirect']) {
+          this.router.navigate([this.route.snapshot.queryParams['redirect']]);
         } else {
-          this.router.navigate(['/usher/employer']);
+          if (res.result.user.usertype === 1) {
+            this.router.navigate(['/usher/employee']);
+          } else {
+            this.router.navigate(['/usher/employer']);
+          }
         }
       }
     });

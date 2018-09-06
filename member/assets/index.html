@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Test Charts</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="/assets/css/charts.css">
+</head>
+<body>
+<div id="chartsContainer" class="charts-container"></div>
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.js"></script>
+<script src="/assets/js/charts.js"></script>
+<script>
+
+  var charts = {
+    need: 69,
+    percent: 40,
+    list: [
+      {
+        x: 2097,
+        y: 49,
+        c: [37, 50]
+      },
+      {
+        x: 2096,
+        y: 19,
+        c: [10, 29]
+      },
+      {
+        x: 2095,
+        y: 34,
+        c: [30, 41]
+      },
+      {
+        x: 2094,
+        y: 20,
+        c: [10, 29]
+      },
+      {
+        x: 2093,
+        y: 59,
+        c: [20, 60]
+      },
+      {
+        x: 2092,
+        y: 18,
+        c: [0, 32]
+      },
+      {
+        x: 2091,
+        y: 9,
+        c: [1, 18]
+      },
+      {
+        x: 2090,
+        y: 14,
+        c: [10, 60]
+      },
+      {
+        x: 2089,
+        y: 13,
+        c: [11, 30]
+      },
+      {
+        x: 2088,
+        y: 7,
+        c: [0, 47]
+      }
+    ]
+  };
+
+  // 执行
+  draw(charts, 'chartsContainer'); // charts:数据,chartsContainer:容器id
+  charts.list = charts.list.concat(charts.list);
+  draw(charts, 'chartsContainer'); // charts:数据,chartsContainer:容器id
+</script>
+</body>
+</html>

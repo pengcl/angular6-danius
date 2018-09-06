@@ -1,0 +1,127 @@
+<div *ngIf="company" class="content-scrollable">
+  <div class="weui-panel weui-panel_access">
+    <div class="weui-panel__bd">
+      <div class="weui-media-box weui-media-box_appmsg weui-media-box_access">
+        <div class="weui-media-box__hd">
+          <img src="{{config.prefix.wApi + company.busCompany.headerimage}}">
+        </div>
+        <div class="weui-media-box__bd">
+          <h4 class="weui-media-box__title">{{company.busCompany.companyname}} <span class="actions"><i
+            (click)="follow()" class="icons icons-star_fill"></i><i class="icons icons-share"></i></span></h4>
+          <p class="weui-media-box__desc">B轮 · 100-499人 · 新闻</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <weui-navbar>
+    <weui-tab heading="公司信息">
+      <div class="weui-panel weui-panel_access">
+        <div class="weui-panel__bd">
+          <div *ngIf="company.imgList.length > 0" class="weui-media-box">
+            <div class="weui-media-box__bd">
+              <div class="banner">
+                <swiper [config]="albumConfig" [index]="1" fxFlex="auto">
+                  <span class="img-box swiper-slide" *ngFor="let slide of company.imgList">
+                    <img src="{{config.prefix.wApi + slide.imagepath}}">
+                  </span>
+                </swiper>
+              </div>
+            </div>
+          </div>
+          <div style="padding-bottom: 0" class="weui-media-box weui-media-box_appmsg">
+            <div class="weui-media-box__bd">
+              <h4 class="weui-media-box__title">公司介绍</h4>
+              <p class="weui-media-box__desc">{{company.busCompany.introduction}}</p>
+            </div>
+          </div>
+          <a href="javascript:void(0);" class="weui-cell weui-cell_access weui-cell_link">
+            <div class="weui-cell__bd">查看更多</div>
+            <span class="weui-cell__ft"></span>
+          </a>
+
+          <div *ngIf="company.productList.length > 0" class="weui-media-box">
+            <div class="weui-media-box__bd">
+              <h4 class="weui-media-box__title">产品介绍</h4>
+              <div class="products">
+                <swiper [config]="prodConfig" [index]="1" fxFlex="auto">
+                  <div *ngFor="let slide of company.productList" class="swiper-slide">
+
+                    <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+                      <div class="weui-media-box__hd">
+                        <img class="weui-media-box__thumb" src="{{config.prefix.wApi + slide.imagepath}}" alt="">
+                      </div>
+                      <div class="weui-media-box__bd">
+                        <h4 class="weui-media-box__title">{{slide.productname}}</h4>
+                        <p class="weui-media-box__desc">{{slide.introduction}}</p>
+                      </div>
+                    </a>
+                  </div>
+                  <!--<span class="swiper-slide" *ngFor="let slide of company.productList">
+                    <img src="{{config.prefix.wApi + slide.imagepath}}">
+                  </span>-->
+                </swiper>
+              </div>
+            </div>
+          </div>
+
+          <div *ngIf="company.managerList.length > 0" class="weui-media-box">
+            <div class="weui-media-box__bd">
+              <h4 class="weui-media-box__title">高管介绍</h4>
+              <div class="managers">
+                <swiper [config]="manConfig" [index]="1" fxFlex="auto">
+                  <div *ngFor="let slide of company.managerList" class="swiper-slide">
+
+                    <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+                      <div class="weui-media-box__hd">
+                        <img class="weui-media-box__thumb" src="{{config.prefix.wApi + slide.headimage}}" alt="">
+                      </div>
+                      <div class="weui-media-box__bd">
+                        <h4 class="weui-media-box__title">{{slide.managername}} · <span>{{slide.postname}}</span></h4>
+                        <p class="weui-media-box__desc">{{slide.introduction}}</p>
+                      </div>
+                    </a>
+                  </div>
+                </swiper>
+              </div>
+            </div>
+          </div>
+
+          <div class="weui-media-box">
+            <div class="weui-media-box__bd">
+              <h4 class="weui-media-box__title">公司地址</h4>
+              <ul>
+                <li>{{company.busCompany.address}}</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="weui-media-box">
+            <div class="weui-media-box__bd">
+              <h4 class="weui-media-box__title">公司官网</h4>
+              <p class="weui-media-box__desc"><a
+                href="{{company.busCompany.website}}">{{company.busCompany.website}}</a></p>
+            </div>
+          </div>
+
+          <div class="weui-media-box">
+            <div class="weui-media-box__bd">
+              <h4 class="weui-media-box__title">工商信息</h4>
+              <p class="weui-media-box__desc">成立时间 <b>2010-05-10</b></p>
+              <p class="weui-media-box__desc">注册资本 <b>￥3,000,000</b></p>
+              <p class="weui-media-box__desc">法人代表 <b>刘江</b></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </weui-tab>
+    <weui-tab heading="热招职位">
+      <div class="weui-panel weui-panel_access">
+        <div class="weui-panel__bd">
+          <app-job-item *ngFor="let job of jobs" [routerLink]="['/employee/find/job/item',job.id]" [job]="job"
+                        class="weui-media-box weui-media-box_appmsg"></app-job-item>
+        </div>
+      </div>
+    </weui-tab>
+  </weui-navbar>
+</div>

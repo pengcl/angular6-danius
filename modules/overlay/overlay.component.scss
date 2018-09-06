@@ -12,6 +12,13 @@
   font-size: 0.14rem;
   display: none;
   &.animated {
+    display: none;
+  }
+  &.fadeInUpBig, &.fadeOutDownBig {
     display: block;
+  }
+
+  &.auto {
+    top: auto;
   }
 }

@@ -10,7 +10,7 @@ import {AuthService} from '../../../services/auth.service';
 import {UserService} from '../../../services/user.service';
 import {OverlayService} from '../../../../../modules/overlay';
 
-import {SERVICES_DATA} from '../../../../../config/services';
+import {SERVICES_DATA} from '../../../../../config/data';
 import {getIndex} from '../../../../../commons/js/utils';
 
 @Component({
@@ -250,7 +250,7 @@ export class UsherEmployeeComponent implements OnInit {
     console.log(this.profileForm.value);
     this.dialogSvc.show({content: '登记成功', cancel: '找工作', confirm: '完善资料'}).subscribe(data => {
       if (data.value) {
-        this.router.navigate(['/resume/edit']);
+        this.router.navigate(['/employee/resume/edit']);
       }
     });
   }

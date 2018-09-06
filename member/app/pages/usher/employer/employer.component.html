@@ -2,22 +2,22 @@
   <div class="profile">
     <div class="weui-cells__title">基本资料</div>
     <div class="weui-cells">
-      <a (click)="showOverlay('name')" class="weui-cell weui-cell_access" href="javascript:;">
+      <a (click)="showOverlay('username')" class="weui-cell weui-cell_access" href="javascript:;">
         <div class="weui-cell__bd">
           <p>姓名</p>
         </div>
-        <div class="weui-cell__ft">{{profileForm.get('name').value ? profileForm.get('name').value : '请输入您的姓名'}}</div>
+        <div class="weui-cell__ft">{{profileForm.get('username').value ? profileForm.get('username').value : '请输入您的姓名'}}</div>
       </a>
       <div class="weui-cell">
         <div class="weui-cell__bd">
           <p>性别</p>
         </div>
         <div class="weui-cell__ft" style="font-size: 0">
-          <label (click)="setSex('男');" [ngClass]="{'checked':profileForm.get('sex').value === '男'}">
+          <label (click)="setSex(1);" [ngClass]="{'checked':profileForm.get('sex').value === 1}">
             <span>男</span>
             <i class="weui-icon-checked"></i>
           </label>
-          <label (click)="setSex('女');" [ngClass]="{'checked':profileForm.get('sex').value === '女'}">
+          <label (click)="setSex(2);" [ngClass]="{'checked':profileForm.get('sex').value === 2}">
             <span>女</span>
             <i class="weui-icon-checked"></i>
           </label>
@@ -34,46 +34,46 @@
 
     <div class="weui-cells__title">公司信息</div>
     <div class="weui-cells">
-      <a (click)="showDate('date-ym','enlist')" class="weui-cell weui-cell_access">
+      <a (click)="showOverlay('companyname')" class="weui-cell weui-cell_access">
         <div class="weui-cell__bd">
           <p>公司名称</p>
         </div>
-        <div class="weui-cell__ft">{{profileForm.get('enlist').value ? profileForm.get('enlist').value :
+        <div class="weui-cell__ft">{{profileForm.get('companyname').value ? profileForm.get('companyname').value :
           '未填写'}}
         </div>
       </a>
-      <a (click)="showDate('date-ym','demobilized')" class="weui-cell weui-cell_access">
+      <a (click)="showOverlay('tradename')" class="weui-cell weui-cell_access">
         <div class="weui-cell__bd">
           <p>公司行业</p>
         </div>
-        <div class="weui-cell__ft">{{profileForm.get('demobilized').value ? profileForm.get('demobilized').value :
+        <div class="weui-cell__ft">{{profileForm.get('tradename').value ? profileForm.get('tradename').value :
           '未填写'}}</div>
       </a>
-      <a (click)="showServices()" class="weui-cell weui-cell_access">
+      <a (click)="showOverlay('address')" class="weui-cell weui-cell_access">
         <div class="weui-cell__bd">
           <p>公司地址</p>
         </div>
         <div class="weui-cell__ft">
-          {{profileForm.get('services').value ? profileForm.get('services').value : '请选择兵种'}}
+          {{profileForm.get('address').value || '请输入公司地址'}}
         </div>
       </a>
-      <a (click)="showDate('date-ym','birthday')" class="weui-cell weui-cell_access">
+      <a (click)="showOverlay('post')" class="weui-cell weui-cell_access">
         <div class="weui-cell__bd">
           <p>我的职位</p>
         </div>
-        <div class="weui-cell__ft">1993-01</div>
+        <div class="weui-cell__ft">{{profileForm.get('post').value || '请输入您的职位'}}</div>
       </a>
-      <a (click)="showDate('date-ym','birthday')" class="weui-cell weui-cell_access">
+      <a (click)="showOverlay('mobile')"class="weui-cell weui-cell_access">
         <div class="weui-cell__bd">
           <p>联系手机</p>
         </div>
-        <div class="weui-cell__ft">1993-01</div>
+        <div class="weui-cell__ft">{{profileForm.get('mobile').value || '请输入联系手机'}}</div>
       </a>
-      <a (click)="showDate('date-ym','birthday')" class="weui-cell weui-cell_access">
+      <a (click)="showOverlay('email')" class="weui-cell weui-cell_access">
         <div class="weui-cell__bd">
           <p>联系邮箱</p>
         </div>
-        <div class="weui-cell__ft">1993-01</div>
+        <div class="weui-cell__ft">{{profileForm.get('email').value || '请输入联系邮箱'}}</div>
       </a>
     </div>
 
@@ -86,11 +86,44 @@
 
 <app-overlay>
   <div [formGroup]="profileForm" class="weui-cells weui-cells_form">
-    <div *ngIf="formControl === 'name'" class="weui-cell"
-         [ngClass]="{'weui-cell_warn':profileForm.get('name').invalid}">
+    <div *ngIf="formControl === 'username'" class="weui-cell"
+         [ngClass]="{'weui-cell_warn':profileForm.get('username').invalid}">
       <div class="weui-cell__hd"><label class="weui-label">姓名</label></div>
       <div class="weui-cell__bd">
-        <input class="weui-input" formControlName="name" placeholder="请输入您的姓名">
+        <input class="weui-input" formControlName="username" placeholder="请输入您的姓名">
+      </div>
+      <div class="weui-cell__ft">
+        <i class="weui-icon-warn"></i>
+      </div>
+    </div>
+
+    <div *ngIf="formControl === 'companyname'" class="weui-cell"
+         [ngClass]="{'weui-cell_warn':profileForm.get('companyname').invalid}">
+      <div class="weui-cell__hd"><label class="weui-label">公司名称</label></div>
+      <div class="weui-cell__bd">
+        <input class="weui-input" formControlName="companyname" placeholder="请输入您的公司名称">
+      </div>
+      <div class="weui-cell__ft">
+        <i class="weui-icon-warn"></i>
+      </div>
+    </div>
+
+    <div *ngIf="formControl === 'address'" class="weui-cell"
+         [ngClass]="{'weui-cell_warn':profileForm.get('address').invalid}">
+      <div class="weui-cell__hd"><label class="weui-label">公司地址</label></div>
+      <div class="weui-cell__bd">
+        <input class="weui-input" formControlName="address" placeholder="请输入您的公司地址">
+      </div>
+      <div class="weui-cell__ft">
+        <i class="weui-icon-warn"></i>
+      </div>
+    </div>
+
+    <div *ngIf="formControl === 'post'" class="weui-cell"
+         [ngClass]="{'weui-cell_warn':profileForm.get('post').invalid}">
+      <div class="weui-cell__hd"><label class="weui-label">我的职位</label></div>
+      <div class="weui-cell__bd">
+        <input class="weui-input" formControlName="post" placeholder="请输入您的您的职位">
       </div>
       <div class="weui-cell__ft">
         <i class="weui-icon-warn"></i>
@@ -101,7 +134,18 @@
          [ngClass]="{'weui-cell_warn':profileForm.get('mobile').invalid}">
       <div class="weui-cell__hd"><label class="weui-label">联系手机</label></div>
       <div class="weui-cell__bd">
-        <input class="weui-input" formControlName="mobile" placeholder="请输入联系电话">
+        <input class="weui-input" formControlName="mobile" placeholder="请输入您的联系手机">
+      </div>
+      <div class="weui-cell__ft">
+        <i class="weui-icon-warn"></i>
+      </div>
+    </div>
+
+    <div *ngIf="formControl === 'email'" class="weui-cell"
+         [ngClass]="{'weui-cell_warn':profileForm.get('email').invalid}">
+      <div class="weui-cell__hd"><label class="weui-label">联系邮箱</label></div>
+      <div class="weui-cell__bd">
+        <input class="weui-input" formControlName="email" placeholder="请输入您的联系邮箱">
       </div>
       <div class="weui-cell__ft">
         <i class="weui-icon-warn"></i>
@@ -109,9 +153,26 @@
     </div>
   </div>
 
+  <div *ngIf="formControl === 'tradename'" class="industries">
+    <div *ngFor="let main of industries" class="weui-panel">
+      <div class="weui-panel__hd">{{main.name}}</div>
+      <div class="weui-panel__bd">
+        <div class="weui-media-box">
+          <div class="label-container">
+            <span (click)="setIndustry(sub)" [ngClass]="{'curr':sub.code === profileForm.get('tradeid').value}" *ngFor="let sub of main.sub" class="ui-label">{{sub.name}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="btns-group">
+      <a (click)="save()" class="btn-twitter">保存</a>
+    </div>
+  </div>
+
 
   <div class="weui-cells">
-    <a (click)="onSubmit()" class="weui-cell">
+    <a (click)="overlaySubmit()" class="weui-cell">
       <div class="weui-cell__bd" style="text-align: center">确定</div>
     </a>
   </div>

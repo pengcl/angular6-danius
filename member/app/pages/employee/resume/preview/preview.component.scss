@@ -1,0 +1,187 @@
+.content-scrollable {
+  background: #f7f7f7;
+  padding-bottom: 0.58rem;
+  .userinfo {
+    background-image: linear-gradient(-145deg, #80D4FF 0%, #4CA6FF 100%);
+    padding: 0.3rem 0 0.3rem;
+    .userinfo-avatar {
+      width: 0.44rem;
+      height: 0.44rem;
+    }
+    .userinfo-nickname {
+      color: #fff;
+      margin-top: 0.15rem;
+      font-weight: 300;
+      font-size: 0.17rem;
+    }
+    .userinfo-service {
+      color: #fff;
+      line-height: 1;
+      margin-top: 0.1rem;
+      font-weight: 300;
+    }
+
+    & + .weui-panel {
+      margin-top: 0;
+      &:before {
+        display: none;
+      }
+    }
+    .flag {
+      font-size: 0.12rem;
+      position: absolute;
+      right: 0;
+      top: 0.4rem;
+      background: #fff;
+      line-height: 1;
+      padding: 0.06rem 0.1rem;
+      color: #4CA6FF;
+      border-top-left-radius: 0.12rem;
+      border-bottom-left-radius: 0.12rem;
+    }
+  }
+
+  .weui-panel {
+    margin-top: 0.1rem;
+    .weui-panel__hd {
+      font-size: 0.15rem;
+      font-weight: bold;
+      line-height: 1;
+      color: #000;
+      padding: 0.2rem 0.15rem 0.02rem;
+      &:after {
+        display: none;
+      }
+    }
+    .weui-panel__bd {
+      .weui-media-box {
+        &:before {
+          z-index: 2;
+        }
+      }
+      .weui-media-box_text {
+        /*&:before {
+          display: none;
+        }*/
+        .weui-media-box__title {
+          font-size: 0.13rem;
+          line-height: 0.23rem;
+          margin-bottom: 0.07rem;
+        }
+        .weui-media-box__desc {
+          font-size: 0.13rem;
+          display: block;
+          overflow: visible;
+          line-height: 0.2rem;
+        }
+      }
+      .weui-media-box_small-appmsg {
+        .weui-cells {
+          margin-top: 0.05rem;
+          font-size: 0.13rem;
+          &:after {
+            display: none;
+          }
+          .weui-cell {
+            padding: 0.1rem 0.15rem;
+          }
+        }
+      }
+      .weui-media-box_label {
+        font-size: 0;
+        .label-container {
+          .ui-label {
+            margin: 0 0.1rem 0.05rem 0;
+            background: #ededed;
+            color: #000;
+            font-size: 0.12rem;
+            line-height: 1;
+            padding: 0.05rem 0.1rem;
+            border-radius: 0.04rem;
+            &:after {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+
+    &.work, &.edu {
+      .weui-media-box {
+        padding: 0.15rem 0.15rem 0.15rem 0.3rem;
+        &:before {
+          left: 0.3rem;
+        }
+        .weui-media-box__desc {
+          margin-top: 0.07rem;
+        }
+        .dot {
+          position: absolute;
+          display: block;
+          width: 0.05rem;
+          height: 0.05rem;
+          border-radius: 0.05rem;
+          background: #4CA6FF;
+          left: 0.15rem;
+          top: 0.24rem;
+        }
+        .line {
+          width: 1px;
+          left: 0.17rem;
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          &:before {
+            content: ' ';
+            position: absolute;
+            left: 0;
+            width: 1px;
+            top: 0;
+            height: 100%;
+            border-left: 1px solid #ccc;
+            transform: scaleX(0.5);
+          }
+        }
+
+        &:first-child {
+          .line {
+            top: 0.24rem;
+          }
+        }
+
+        &:last-child {
+          .line {
+            bottom: auto;
+            height: 0.24rem;
+          }
+        }
+      }
+    }
+    &:last-child {
+      &:after {
+        display: none;
+      }
+    }
+  }
+
+  & > .weui-cells {
+    &:last-child {
+      &:after {
+        display: none;
+      }
+    }
+  }
+
+  .weui-uploader__hd {
+    margin-bottom: 0.15rem;
+    line-height: 1;
+    padding-top: 0.05rem;
+    padding-bottom: 0.05rem;
+    font-weight: bold;
+  }
+
+  .weui-uploader__file-content {
+    font-size: 0.12rem;
+    text-align: center;
+  }
+}

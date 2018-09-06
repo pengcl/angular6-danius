@@ -1,48 +1,6 @@
 .content-scrollable {
   background: #fff;
 }
-.userinfo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background: #fff;
-  padding: 0.3rem 0 0.4rem;
-}
-
-.userinfo-avatar {
-  width: 0.7rem;
-  height: 0.7rem;
-  margin: 0;
-  position: relative;
-  img {
-    width: 100%;
-    display: block;
-    border-radius: 50%;
-  }
-}
-
-.userinfo-nickname {
-  color: #000;
-  font-size: 0.15rem;
-  line-height: 1;
-  margin-top: 0.1rem;
-  font-weight: bold;
-  span {
-    color: #999;
-    font-size: 0.12rem;
-  }
-}
-
-.userinfo-service {
-  color: #999;
-  width: 100%;
-  margin-top: 0.05rem;
-  text-align: center;
-  .dot {
-    margin-left: 0.1rem;
-    margin-right: 0.1rem;
-  }
-}
 
 .weui-cells {
   font-size: 0.15rem;

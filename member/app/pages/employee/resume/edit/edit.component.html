@@ -1,0 +1,131 @@
+<div class="content-scrollable">
+  <div class="profile">
+    <div class="weui-cells">
+      <a routerLink="/employee/profile" class="weui-cell weui-cell_access">
+        <div class="weui-cell__hd" style="margin-right: 0.1rem"><img class="avatar" src="{{userInfo?.user.headimage ? config.prefix.wApi + userInfo?.user.headimage : '/assets/images/avatar.jpg'}}">
+        </div>
+        <div class="weui-cell__bd">
+          <p>{{userInfo?.user.username}} | {{userInfo?.user.sex === 1 ? '男':'女'}}</p>
+        </div>
+        <div class="weui-cell__ft">
+          编辑个人信息
+        </div>
+      </a>
+      <a routerLink="/employee/intention/list" class="weui-cell weui-cell_access">
+        <div class="weui-cell__bd">
+          <p>管理求职意向</p>
+        </div>
+        <div class="weui-cell__ft">在职-考虑机会</div>
+      </a>
+    </div>
+
+    <div class="weui-cells">
+      <a routerLink="/employee/troops" class="weui-cell weui-cell_access">
+        <div class="weui-cell__bd">
+          <p>部队资料</p>
+        </div>
+        <div class="weui-cell__ft">{{userInfo?.personal?.armyserveplace}} {{userInfo?.personal?.armyserveplace && userInfo?.personal?.isspecialarms ? '-' : ''}} {{userInfo?.personal?.isspecialarms === 2 ? '特种兵' : ''}} {{!userInfo?.personal?.armyserveplace && !userInfo?.personal?.isspecialarms ? '未填写' : ''}}</div>
+      </a>
+    </div>
+
+    <div class="weui-cells__title">简历详情</div>
+    <div class="weui-cells">
+      <a (click)="showOverlay('introduce')" class="weui-cell weui-cell_access">
+        <div class="weui-cell__bd">
+          <p style="min-width: 5em">我的优势</p>
+        </div>
+        <div class="weui-cell__ft">{{profileForm.get('introduce').value ?
+          profileForm.get('introduce').value.slice(0,15) + '...' : '未填写'}}
+        </div>
+      </a>
+    </div>
+
+    <div class="weui-cells">
+      <a *ngFor="let work of works" [routerLink]="['/employee/works/edit',work.id]" class="weui-cell weui-cell_access">
+        <div class="weui-cell__bd">
+          <p>{{work.shortname}}</p>
+        </div>
+        <div class="weui-cell__ft">{{work.worktimebegin.replace('-','.')}} - {{work.worktimeend.replace('-','.')}}</div>
+      </a>
+      <a routerLink="/employee/works/add" class="weui-cell weui-cell_access">
+        <div class="weui-cell__bd">
+          <p class="action-add"><i class="icon-add"></i><span>工作经历</span></p>
+        </div>
+      </a>
+    </div>
+
+    <div class="weui-cells">
+      <a *ngFor="let education of educations" [routerLink]="['/employee/edu/edit',education.id]" class="weui-cell weui-cell_access">
+        <div class="weui-cell__bd">
+          <p>{{education.schoolname}}</p>
+        </div>
+        <div class="weui-cell__ft">{{education.begindate.replace('-','.')}} - {{education.enddate.replace('-','.')}}</div>
+      </a>
+      <a routerLink="/employee/edu/add" class="weui-cell weui-cell_access">
+        <div class="weui-cell__bd">
+          <p class="action-add"><i class="icon-add"></i><span>教育经历</span></p>
+        </div>
+      </a>
+    </div>
+
+    <div class="weui-cells">
+      <div class="weui-cell">
+        <div class="weui-cell__bd">
+          <div class="weui-uploader">
+            <div class="weui-uploader__hd">
+              <p class="weui-uploader__title">上传相册</p>
+              <div class="weui-uploader__info">{{uploader?.uploadedCount + images?.length}}/{{uploader?.queue?.length + images?.length}}</div>
+            </div>
+            <div class="weui-uploader__bd">
+              <ul class="weui-uploader__files">
+                <li *ngFor="let item of images;let i = index;" class="weui-uploader__file"
+                    [ngClass]="{'weui-uploader__file_status': item.isapproval === 0 || item.isapproval === 2}"
+                    [ngStyle]="{'background-image':'url(' + config.prefix.wApi + item.imagepath + ')'}">
+                  <div class="weui-uploader__file-content" *ngIf="item.isapproval === 0">审核中</div>
+                  <div class="weui-uploader__file-content" *ngIf="item.isapproval === 2">审核不通过</div>
+                </li>
+                <li (click)="onGallery(item)" class="weui-uploader__file" *ngFor="let item of uploader.queue"
+                    [weui-thumb]="item._file"
+                    [ngClass]="{'weui-uploader__file_status': item.isError || item.isUploading}">
+                  <div class="weui-uploader__file-content" *ngIf="item.isUploading">{{item.progress}}%</div>
+                  <div class="weui-uploader__file-content" *ngIf="item.isError">
+                    <i class="weui-icon-warn"></i>
+                  </div>
+                </li>
+              </ul>
+              <div class="weui-uploader__input-box">
+                <input class="weui-uploader__input" type="file" accept="image/*" multiple
+                       [weui-uploader-file]="uploader">
+              </div>
+            </div>
+          </div>
+          <!--<app-gallery [imgs]="img" [(show)]="imgShow" (delete)="onDel($event)"></app-gallery>-->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="btns-group">
+  <a routerLink="/employee/home" class="btn-secondary">保存</a>
+  <a routerLink="/employee/resume/preview" class="btn-twitter">预览简历</a>
+</div>
+
+<app-overlay>
+  <div [formGroup]="profileForm" class="weui-cells weui-cells_form">
+    <div *ngIf="formControl === 'introduce'" class="weui-cell">
+      <div class="weui-cell__bd">
+        <textarea class="weui-textarea" formControlName="introduce" placeholder="请对自己作一个简短的介绍，并突出您的优势"
+                  rows="3"></textarea>
+        <div class="weui-textarea-counter"><span>0</span>/200</div>
+      </div>
+    </div>
+
+  </div>
+  <div class="weui-cells__tips">看看别人怎么写？</div>
+
+
+  <div class="btns-group">
+    <a (click)="overlaySubmit()" class="btn-twitter">确定</a>
+  </div>
+</app-overlay>

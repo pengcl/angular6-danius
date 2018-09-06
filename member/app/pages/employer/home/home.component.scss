@@ -1,0 +1,30 @@
+.weui-cells {
+  font-size: 0.13rem;
+  color: #666;
+  .weui-cell__hd {
+    margin-right: 0.05rem;
+    i {
+      display: block;
+      font-size: 0.18rem;
+    }
+  }
+}
+
+.user-info {
+  .weui-media-box__hd {
+    width: 0.65rem;
+    height: 0.65rem;
+    .avatar {
+      border-radius: 50%;
+    }
+  }
+}
+
+.menu {
+  padding: 0 0 2rem;
+  background: #fff;
+  margin-top: 0.1rem;
+  .weui-cells {
+    margin-top: 0;
+  }
+}

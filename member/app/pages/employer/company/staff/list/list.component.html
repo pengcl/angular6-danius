@@ -1,0 +1,23 @@
+<div class="content-scrollable">
+  <div *ngFor="let staff of staffs" class="weui-panel">
+    <div class="weui-panel__bd">
+      <div class="weui-media-box weui-media-box_appmsg">
+        <div class="weui-media-box__hd">
+          <span class="avatar weui-media-box__thumb" [ngStyle]="{'background-image':'url(' + config.prefix.wApi + staff.headimage + ')'}" alt=""></span>
+        </div>
+        <div class="weui-media-box__bd">
+          <h4 class="weui-media-box__title">{{staff.managername}}</h4>
+          <p class="weui-media-box__desc">{{staff.introduction}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="weui-form-preview__ft">
+      <a class="weui-form-preview__btn weui-form-preview__btn_default">删除</a>
+      <a [routerLink]="['/employer/company/staff/edit',staff.id]"
+         class="weui-form-preview__btn weui-form-preview__btn_primary">编辑</a>
+    </div>
+  </div>
+</div>
+<div class="btns-group">
+  <a routerLink="/employer/company/staff/add" class="btn-twitter">添加新高管</a>
+</div>

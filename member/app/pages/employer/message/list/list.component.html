@@ -1,0 +1,35 @@
+<div class="content-scrollable">
+  <div class="weui-panel">
+    <div class="weui-panel__bd">
+      <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+        <div class="weui-media-box__hd">
+          <i class="colors red icons icons-round_voice_fill"></i>
+        </div>
+        <div class="weui-media-box__bd">
+          <h4 class="weui-media-box__title">系统通知<span class="right date">今天 17:23</span></h4>
+          <p class="weui-media-box__desc">22位名企BOSS，手握高薪...</p>
+        </div>
+      </a>
+      <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+        <div class="weui-media-box__hd">
+          <i class="colors blue icons icons-round_watch_fill"></i>
+        </div>
+        <div class="weui-media-box__bd">
+          <h4 class="weui-media-box__title">特朗普查看了您的职位<span class="right date">今天 17:23</span></h4>
+          <p class="weui-media-box__desc">2位求职者查看</p>
+        </div>
+      </a>
+      <a *ngFor="let message of messages" [routerLink]="['/employer/message/item',message.positionid]"
+         [queryParams]="{candidateid:message.candidateid}" class="weui-media-box weui-media-box_appmsg">
+        <div class="weui-media-box__hd">
+          <img class="avatar" src="{{config.prefix.wApi + message.candidateimg}}">
+        </div>
+        <div class="weui-media-box__bd">
+          <h4 class="weui-media-box__title">{{message.candidatename}}<span class="right date">{{message.recordtime | formatDate}}</span>
+          </h4>
+          <p class="weui-media-box__desc">{{message.chatrecord}}</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>

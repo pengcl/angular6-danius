@@ -469,3 +469,31 @@
         transform: rotate(359deg)
     }
 }
+
+.icons {
+  line-height: 1;
+}
+
+.icons-group {
+  padding: 0.15rem 0;
+  .weui-flex__item {
+    .weui-grid__icon {
+      width: 0.32rem;
+      height: 0.32rem;
+      .icons {
+        font-size: 0.32rem;
+        color: #666;
+      }
+    }
+    .weui-grid__label {
+      font-size: 0.12rem;
+      color: #999;
+    }
+    span {
+      text-align: center;
+      display: block;
+      font-size: 0.12rem;
+      color: #999;
+    }
+  }
+}

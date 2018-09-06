@@ -1,0 +1,53 @@
+.avatars {
+  font-size: 0;
+  .avatar {
+    margin: 0 0.1rem 0 0;
+    display: inline-block;
+    img {
+      min-height: 100%;
+      min-width: 100%;
+    }
+    .icons {
+      font-size: 0.22rem;
+      padding: 0.11rem;
+      display: block;
+    }
+  }
+}
+.avatar {
+  width: 0.44rem;
+  height: 0.44rem;
+  margin: 0 0 0 0.1rem;
+  box-sizing: border-box;
+  overflow: hidden;
+  border: 1px solid #d9d9d9;
+  img {
+    display: block;
+    width: 100%;
+  }
+}
+
+.weui-cells {
+  font-size: 0.13rem;
+  color: #666;
+  .weui-cell__hd {
+    margin-right: 0.05rem;
+    i {
+      display: block;
+      font-size: 0.18rem;
+    }
+  }
+  .weui-cell__bd {
+    min-width: 6em;
+  }
+}
+
+app-overlay {
+  .label-container {
+    padding: 0.1rem 0.15rem 0.3rem;
+  }
+
+  .weui-grid {
+    width: 25%;
+  }
+}

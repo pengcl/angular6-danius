@@ -23,7 +23,7 @@
               "front/assets"
             ],
             "styles": [
-              "front/styles.css"
+              "front/styles.scss"
             ],
             "scripts": []
           },
@@ -31,8 +31,8 @@
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "environments/environment.ts",
-                  "with": "environments/environment.prod.ts"
+                  "replace": "front/environments/environment.ts",
+                  "with": "front/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -302,5 +302,5 @@
       }
     }
   },
-  "defaultProject": "member"
+  "defaultProject": "front"
 }

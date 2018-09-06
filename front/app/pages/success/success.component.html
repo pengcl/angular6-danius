@@ -1,0 +1,30 @@
+<div *ngIf="order" class="weui-msg">
+  <div class="weui-msg__icon-area">
+    <i class="weui-icon_msg">
+      <img src="/assets/images/banana/success.jpg">
+    </i>
+  </div>
+  <div class="weui-msg__text-area">
+    <!--<h2 class="weui-msg__title">操作成功</h2>-->
+    <p class="weui-msg__desc">订购成功！商家正在备货中，72小时内发货，请耐心等待。收到商品请先验货，满意再付款。</p>
+    <p class="tips">订单号：{{order.orderno}}</p>
+    <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+      <div class="weui-media-box__hd">
+        <img class="weui-media-box__thumb" src="http://cy.yfq.cn/views/success/img/order-pic-ada742a313.jpg" alt="">
+      </div>
+      <div class="weui-media-box__bd">
+        <h4 class="weui-media-box__title">banana sir（香蕉先生）穿衣搞怪摆件分装瓶</h4>
+        <p class="weui-media-box__desc">应付总金额：<em>¥{{order.totalamount}}</em><span class="right">数量：<em>{{order.totalquantity}}</em></span></p>
+      </div>
+    </a>
+    <p class="weui-msg__desc">联系电话：{{order.recievermobile}}</p>
+    <p class="weui-msg__desc">收货人：{{order.recievername}}</p>
+    <p class="weui-msg__desc">地址：{{order.recieveraddress}}</p>
+    <p class="tips">如有任何问题，请致电客服18925115769</p>
+  </div>
+  <div class="weui-msg__opr-area">
+    <p class="weui-btn-area">
+      <a (click)="back()" class="weui-btn weui-btn_primary">返回</a>
+    </p>
+  </div>
+</div>

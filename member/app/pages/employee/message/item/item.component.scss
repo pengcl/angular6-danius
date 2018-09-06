@@ -1,0 +1,247 @@
+.content-scrollable {
+  background: #fff;
+  padding-top: 0.71rem;
+  &:after {
+    content: ' ';
+    display: block;
+    height: 0.8rem;
+  }
+}
+
+.icons-group {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #fff;
+  z-index: 9999;
+  box-shadow: 0 0 0.15rem rgba(0, 0, 0, 0.1);
+  .weui-grid__icon {
+    width: 0.24rem;
+    height: 0.24rem;
+    .icons {
+      font-size: 0.24rem;
+    }
+
+  }
+  .weui-grid__label {
+    line-height: 1;
+  }
+}
+
+.attr {
+  font-size: 0.12rem;
+  color: #666;
+  margin-left: 0.08rem;
+  i {
+    font-size: 0.13rem;
+  }
+}
+
+.item-details {
+  margin: 0.15rem;
+  box-shadow: 0 0 0.15rem rgba(0, 0, 0, 0.1);
+  border-radius: 0.1rem;
+  &:before, &:after {
+    display: none;
+  }
+  div.weui-media-box {
+    padding-top: 0;
+    &:before {
+      display: none;
+    }
+    .weui-media-box__title {
+      font-size: 0;
+      margin-bottom: 0.08rem;
+      color: #666;
+      span {
+        display: inline-block;
+        vertical-align: middle;
+        line-height: 0.16rem;
+        font-size: 0.13rem;
+        margin-left: 0.05rem;
+        margin-right: 0.1rem;
+      }
+      i {
+        vertical-align: middle;
+      }
+    }
+
+    .weui-media-box__desc {
+      margin-top: 0.15rem;
+      line-height: 1.6;
+      -webkit-line-clamp: 3;
+      &.arr {
+        font-size: 0;
+        margin-top: 0.05rem;
+        i, span {
+          display: inline-block;
+          vertical-align: middle;
+        }
+        i {
+          font-size: 0.14rem;
+          margin-right: 0.05rem;
+        }
+        span {
+          font-size: 0.12rem;
+          line-height: 0.14rem;
+          &.dot {
+            margin: 0 0.05rem;
+          }
+        }
+      }
+    }
+  }
+  .weui-panel__ft {
+    .weui-cell_link {
+      padding: 0.1rem 0.15rem;
+      font-size: 0.13rem;
+    }
+  }
+  .weui-media-box__hd {
+    width: 0.4rem;
+    height: 0.4rem;
+  }
+}
+
+.messages {
+  &:before, &:after {
+    display: none;
+  }
+  .message {
+    font-size: 0.13rem;
+    &:before {
+      display: none;
+    }
+    .weui-media-box__hd {
+      width: 0.4rem;
+      height: 0.4rem;
+      margin-right: 1em;
+      align-self: start;
+    }
+    .message-box {
+      margin-right: 0.5rem;
+      box-shadow: 0 0 0.1rem rgba(0, 0, 0, 0.5);
+      padding: 0.1rem 0.15rem;
+      display: inline-block;
+      border-radius: 0.05rem;
+      position: relative;
+      &:before {
+        position: absolute;
+        content: ' ';
+        left: -0.08rem;
+        top: 0.2rem;
+        margin-top: -0.04rem;
+        border-right: 0.08rem solid #fff;
+        border-top: 0.04rem solid transparent;
+        border-bottom: 0.04rem solid transparent;
+      }
+    }
+
+    .message-dialog {
+      position: relative;
+      transform: translate3d(0, 0, 0);
+      left: auto;
+      top: auto;
+      z-index: 0;
+      overflow: visible;
+      background: #db2828;
+      box-shadow: 0 0 0.1rem rgba(0, 0, 0, 0.5);
+      display: inline-block;
+      &:before {
+        position: absolute;
+        content: ' ';
+        left: -0.08rem;
+        top: 0.2rem;
+        margin-top: -0.04rem;
+        border-right: 0.08rem solid #db2828;
+        border-top: 0.04rem solid transparent;
+        border-bottom: 0.04rem solid transparent;
+      }
+      .weui-dialog__bd:first-child {
+        padding: 0.1rem 0.15rem;
+        text-align: left;
+        color: #fff;
+        font-size: 0.13rem;
+        min-height: auto;
+      }
+      .weui-dialog__ft {
+        font-size: 0.13rem;
+        line-height: 2.4;
+        .weui-dialog__btn_default {
+          color: #fff;
+        }
+        .weui-dialog__btn_primary {
+          color: #fff;
+        }
+      }
+    }
+    &.message-right {
+      .weui-media-box__hd {
+        margin-right: 0;
+        margin-left: 1em;
+      }
+      .weui-media-box__bd {
+        text-align: right;
+      }
+      .message-box {
+        margin-right: 0rem;
+        margin-left: 0.5rem;
+        text-align: left;
+        box-shadow: 0 0 0.1rem rgba(0, 0, 0, 0.2);
+        &:before {
+          left: auto;
+          right: -0.08rem;
+          border-right: 0;
+          border-left: 0.08rem solid #fff;
+        }
+      }
+
+      .message-dialog {
+        &:before {
+          left: auto;
+          right: -0.08rem;
+          border-right: 0;
+          border-left: 0.08rem solid #db2828;
+        }
+      }
+    }
+  }
+}
+
+.post-comment {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  box-shadow: 0 0 0.15rem rgba(0, 0, 0, 0.1);
+  .weui-grid {
+    padding: 0.15rem;
+  }
+  .comment {
+    width: 75%;
+    padding-right: 0;
+    input {
+      width: 100%;
+      padding: 0.1rem;
+      margin: 0;
+      box-sizing: border-box;
+      border-radius: 0.04rem;
+      line-height: 0.18rem;
+      font-size: 0.15rem;
+      background: #eee;
+      border: 0;
+      border-radius: 0.19rem;
+    }
+  }
+  .post {
+    width: 25%;
+    .weui-btn {
+      font-size: 0.15rem;
+      line-height: 0.18rem;
+      padding: 0.1rem;
+      border-radius: 0.36rem;
+    }
+  }
+}

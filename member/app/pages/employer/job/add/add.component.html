@@ -1,0 +1,151 @@
+<div class="content-scrollable">
+  <div class="post-form">
+    <div class="weui-cells">
+      <a (click)="showPositions()" class="weui-cell weui-cell_access">
+        <div class="weui-cell__bd">
+          <p>职位类型</p>
+        </div>
+        <div class="weui-cell__ft">
+          {{comForm.get('positionname').value || '请选择'}}
+        </div>
+      </a>
+      <a (click)="showOverlay('postname')" class="weui-cell weui-cell_access">
+        <div class="weui-cell__bd">
+          <p>职位名称</p>
+        </div>
+        <div class="weui-cell__ft">{{comForm.get('postname').value || '请填写'}}</div>
+      </a>
+      <a
+        [routerLink]="['/employer/address/add']" class="weui-cell weui-cell_access">
+        <div class="weui-cell__bd">
+          <p>工作地点</p>
+        </div>
+        <div class="weui-cell__ft">{{comForm.get('street').value ? comForm.get('addresscity').value +
+          comForm.get('addressarea').value + comForm.get('street').value : '请填写'}}
+        </div>
+      </a>
+    </div>
+    <div class="weui-cells__tips">以上信息发布后不可修改</div>
+
+    <div class="weui-cells">
+      <a (click)="showOverlay('skills')" class="weui-cell weui-cell_access">
+        <div class="weui-cell__bd">
+          <p>技能要求</p>
+        </div>
+        <div class="weui-cell__ft">{{comForm.get('skillnames').value ? comForm.get('skillnames').value : '未选择'}}</div>
+      </a>
+      <a (click)="showSalaries()" class="weui-cell weui-cell_access">
+        <div class="weui-cell__bd">
+          <p>薪资范围</p>
+        </div>
+        <div class="weui-cell__ft">
+          <span *ngIf="comForm.get('salaryend').value === '0'">面议</span>
+          <span *ngIf="comForm.get('salaryend').value && comForm.get('salaryend').value !== '0'">{{comForm.get('salarybegin').value}}k - {{comForm.get('salaryend').value}}k</span>
+        </div>
+      </a>
+    </div>
+
+    <div class="weui-cells">
+      <a (click)="showLengths()" class="weui-cell weui-cell_access">
+        <div class="weui-cell__bd">
+          <p>军龄要求</p>
+        </div>
+        <div class="weui-cell__ft">
+          {{lengthOfMilitaryData[getIndex(lengthOfMilitaryData,'value',comForm.get('serviceage').value)].label}}
+        </div>
+      </a>
+      <a (click)="showServices()" class="weui-cell weui-cell_access">
+        <div class="weui-cell__bd">
+          <p>军种要求</p>
+        </div>
+        <div class="weui-cell__ft">{{comForm.get('services').value === '100100' ? '不限' :
+          getNameFormCode(services,comForm.get('services').value)}}
+        </div>
+      </a>
+    </div>
+
+    <div class="weui-cells">
+      <a (click)="showExperiences()" class="weui-cell weui-cell_access">
+        <div class="weui-cell__bd">
+          <p>经验要求</p>
+        </div>
+        <div class="weui-cell__ft">{{experiences[comForm.get('experiencetype').value || 0].label}}</div>
+      </a>
+      <a (click)="showEducations()" class="weui-cell weui-cell_access">
+        <div class="weui-cell__bd">
+          <p>最低学历</p>
+        </div>
+        <div class="weui-cell__ft">{{educations[comForm.get('limiteducationtype').value || 0].label}}</div>
+      </a>
+    </div>
+
+    <div class="weui-cells">
+      <a (click)="showOverlay('positiondesc')" class="weui-cell weui-cell_access">
+        <div class="weui-cell__bd">
+          <p>职位描述</p>
+        </div>
+        <div class="weui-cell__ft">{{comForm.get('positiondesc').value ?
+          comForm.get('positiondesc').value.slice(0,15) + '...' : '未填写'}}
+        </div>
+      </a>
+    </div>
+
+  </div>
+</div>
+
+<div class="btns-group">
+  <a (click)="save()" class="btn-secondary">保存</a>
+  <a (click)="release()" class="btn-twitter">发布</a>
+</div>
+
+<app-overlay>
+  <div *ngIf="formControl === 'postname'" [formGroup]="comForm" class="overlay-inputs">
+    <div class="weui-cells weui-cells_form">
+      <div class="weui-cell" [ngClass]="{'weui-cell_warn':comForm.get('postname').invalid}">
+        <div class="weui-cell__hd"><label class="weui-label">职位名称</label></div>
+        <div class="weui-cell__bd">
+          <input class="weui-input" formControlName="postname" placeholder="请输入职位名称">
+        </div>
+        <div class="weui-cell__ft">
+          <i class="weui-icon-warn"></i>
+        </div>
+      </div>
+    </div>
+    <div class="weui-cells__tips">提示：不可填写QQ、微信、电话等联系方式</div>
+  </div>
+
+  <div *ngIf="formControl === 'positiondesc'" [formGroup]="comForm" class="overlay-inputs">
+    <div class="weui-cells weui-cells_form">
+      <div class="weui-cell">
+        <div class="weui-cell__bd">
+        <textarea class="weui-textarea" formControlName="positiondesc"
+                  placeholder="请填写详细及清晰的职位描述，有助您更准确地招聘到合适人选哦！（不可填写QQ、微信、电话等其他联系方式，请注意！）"
+                  rows="3"></textarea>
+          <div class="weui-textarea-counter"><span>{{comForm.get('positiondesc').value.length}}</span>/200</div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="comForm.get('positiondesc').invalid && isOverlaySubmit" class="weui-cells__tips"></div>
+  </div>
+
+  <div *ngIf="formControl === 'skills'">
+    <div class="weui-cells__title">输入或选择技能标签,最多3个</div>
+    <div class="label-container">
+      <div class="labels weui-grids">
+        <div *ngFor="let skill of skills" class="weui-grid">
+          <div (click)="setSkills(skill)" class="label-box"
+               [ngClass]="{'curr':comForm.get('skillnames').value.indexOf(skill.skillname) !== -1}">{{skill.skillname}}
+          </div>
+        </div>
+        <div class="weui-grid">
+          <div (click)="moreSkill()" class="more label-box">+ 添加</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="btns-group">
+    <a (click)="overlaySubmit()" class="btn-twitter">确定</a>
+  </div>
+</app-overlay>

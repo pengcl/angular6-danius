@@ -1,0 +1,62 @@
+<div class="content-scrollable">
+  <div class="profile weui-cells">
+    <a (click)="showOverlay('armyserveplace')" class="weui-cell weui-cell_access">
+      <div class="weui-cell__bd">
+        <p>退役部队</p>
+      </div>
+      <div class="weui-cell__ft">{{profileForm.get('armyserveplace').value ? profileForm.get('armyserveplace').value : '未填写'}}</div>
+    </a>
+    <div class="weui-cell weui-cell_switch" href="javascript:;">
+      <div class="weui-cell__bd">
+        <p>是否特种兵</p>
+      </div>
+      <div class="weui-cell__ft" style="font-size: 0">
+        <input class="weui-switch" [checked]="profileForm.get('isspecialarms').value === 2 ? true : false" (change)="inputChange('isspecialarms')" type="checkbox">
+      </div>
+    </div>
+    <a (click)="showOverlay('skills')" class="weui-cell weui-cell_access">
+      <div class="weui-cell__bd">
+        <p>技能</p>
+      </div>
+      <div class="weui-cell__ft">{{profileForm.get('skillnames').value ? profileForm.get('skillnames').value : '未选择'}}</div>
+    </a>
+  </div>
+</div>
+
+<div class="btns-group">
+  <a (click)="onSubmit()" class="btn-twitter">完成</a>
+</div>
+
+<app-overlay>
+  <div *ngIf="formControl === 'armyserveplace'" [formGroup]="profileForm" class="weui-cells weui-cells_form">
+    <div class="weui-cell"
+         [ngClass]="{'weui-cell_warn':profileForm.get('armyserveplace').invalid}">
+      <div class="weui-cell__hd"><label class="weui-label">退役部队</label></div>
+      <div class="weui-cell__bd">
+        <input class="weui-input" formControlName="armyserveplace" placeholder="请输入您的部队名称">
+      </div>
+      <div class="weui-cell__ft">
+        <i class="weui-icon-warn"></i>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="formControl === 'skills'">
+    <div class="weui-cells__title">输入或选择技能标签,最多3个</div>
+    <div class="skills-content">
+      <div class="skills weui-grids">
+        <div *ngFor="let skill of skills" class="weui-grid">
+          <div (click)="setSkills(skill)" class="skill-box" [ngClass]="{'curr':profileForm.get('skillnames').value && profileForm.get('skillnames').value.indexOf(skill.skillname) !== -1}">{{skill.skillname}}</div>
+        </div>
+        <div class="weui-grid">
+          <div (click)="moreSkill()" class="more skill-box">+ 添加</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="btns-group">
+    <a (click)="overlaySubmit()" class="btn-twitter">确定</a>
+  </div>
+</app-overlay>

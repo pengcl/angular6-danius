@@ -1,0 +1,97 @@
+.profile {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.weui-cells {
+  font-size: 0.13rem;
+  color: #666;
+}
+
+.industries {
+  z-index: 2;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: #f8f8f8;
+  .label-container {
+    text-align: left;
+    font-size: 0;
+    p {
+      font-size: 0.14rem;
+    }
+    .ui-label {
+      font-size: 0.12rem;
+      line-height: 0.2rem;
+      margin: 0.025rem 0.08rem 0.025rem 0;
+      padding: 0 0.08rem;
+      background: #21ba45;
+      color: #fff;
+      border-radius: 0.04rem;
+    }
+  }
+
+  .industries-hd {
+    position: fixed;
+    padding: 0.1rem 0.15rem;
+    text-align: right;
+    line-height: 0.25rem;
+    left: 0;
+    right: 0;
+    background: #fff;
+    box-shadow: 0 0.01rem 0.5rem 0.01rem rgba(0, 0, 0, 0.5);
+    box-sizing: border-box;
+    .ui-label {
+      font-size: 0;
+      em {
+        display: inline-block;
+        vertical-align: middle;
+        font-size: 0.12rem;
+        line-height: 0.2rem;
+      }
+      i {
+        display: inline-block;
+        vertical-align: middle;
+        font-size: 0.1rem;
+        line-height: 0.2rem;
+        margin-left: 0.1rem;
+      }
+    }
+    .weui-form-preview__item {
+      overflow: hidden;
+      .weui-form-preview__label {
+        float: left;
+        margin-right: 1em;
+        min-width: 4em;
+        color: #999;
+        text-align: justify;
+        text-align-last: justify;
+      }
+      .weui-form-preview__value {
+        font-style: normal;
+        font-size: 1.2em;
+        display: block;
+        overflow: hidden;
+        word-break: normal;
+        word-wrap: break-word;
+      }
+    }
+  }
+  .industries-bd {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    .content-scrollable {
+      background: #fff;
+    }
+
+    .weui-panel {
+      &:before, &:after {
+        display: none;
+      }
+    }
+  }
+}

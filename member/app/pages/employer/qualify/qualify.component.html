@@ -1,0 +1,115 @@
+<div *ngIf="userInfo?.company" class="content-scrollable">
+  <div class="weui-cells">
+    <div class="weui-cell">
+      <div class="weui-cell__hd"><i class="icons icons-company_circle"></i></div>
+      <div class="weui-cell__bd">
+        <p>{{userInfo.company.companyname}}</p>
+      </div>
+      <div class="weui-cell__ft">
+        <span *ngIf="userInfo.company.iscompauth === 0" class="text-info">未认证</span>
+        <span *ngIf="userInfo.company.iscompauth === 1" class="text-success">已认证</span>
+        <span *ngIf="userInfo.company.iscompauth === 2" class="text-warn">不通过</span>
+      </div>
+    </div>
+    <div class="weui-cell">
+      <div class="weui-cell__hd"><i class="icons icons-industry_circle"></i></div>
+      <div class="weui-cell__bd">
+        <p>行业</p>
+      </div>
+      <div class="weui-cell__ft">{{userInfo.company.tradename}}</div>
+    </div>
+    <div class="weui-cell">
+      <div class="weui-cell__bd">
+        <div class="weui-uploader">
+          <div class="weui-uploader__hd">
+            <p class="weui-uploader__title">请上传公司营业执照 （公司认证）</p>
+          </div>
+          <div class="weui-uploader__bd">
+            <ul class="weui-uploader__files">
+              <!--[ngClass]="{'weui-uploader__file_status': item.isapproval === 0 || item.isapproval === 2}"-->
+              <li *ngIf="userInfo.company.buslicencepath" class="weui-uploader__file"
+                  [ngStyle]="{'background-image':'url(' + config.prefix.wApi + userInfo.company.buslicencepath + ')'}">
+                <!--<div class="weui-uploader__file-content" *ngIf="item.isapproval === 0">审核中</div>
+                <div class="weui-uploader__file-content" *ngIf="item.isapproval === 2">审核不通过</div>-->
+              </li>
+              <li class="weui-uploader__file" *ngFor="let item of comUploader.queue"
+                  [weui-thumb]="item._file"
+                  [ngClass]="{'weui-uploader__file_status': item.isError || item.isUploading}">
+                <div class="weui-uploader__file-content" *ngIf="item.isUploading">{{item.progress}}%</div>
+                <div class="weui-uploader__file-content" *ngIf="item.isError">
+                  <i class="weui-icon-warn"></i>
+                </div>
+              </li>
+            </ul>
+            <div class="weui-uploader__input-box">
+              <input class="weui-uploader__input" type="file" accept="image/*" [weui-uploader-file]="comUploader">
+            </div>
+          </div>
+          <!--<div class="weui-uploader__bd">
+            <ul class="weui-uploader__files">
+              <li class="weui-uploader__file" style="background-image:url(./images/pic_160.png)"></li>
+              <li class="weui-uploader__file weui-uploader__file_status" style="background-image:url(./images/pic_160.png)">
+                <div class="weui-uploader__file-content">
+                  <i class="weui-icon-warn"></i>
+                </div>
+              </li>
+              <li class="weui-uploader__file weui-uploader__file_status" style="background-image:url(./images/pic_160.png)">
+                <div class="weui-uploader__file-content">50%</div>
+              </li>
+            </ul>
+            <div class="weui-uploader__input-box">
+              <input id="uploaderInput" class="weui-uploader__input" type="file" accept="image/*" multiple="">
+            </div>
+          </div>-->
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="weui-cells">
+    <div class="weui-cell">
+      <div class="weui-cell__hd"><i class="icons icons-job_circle"></i></div>
+      <div class="weui-cell__bd">
+        <p>{{userInfo.userCompany.post}}</p>
+      </div>
+      <div class="weui-cell__ft">
+        <span *ngIf="userInfo.userCompany.isauth === 0" class="text-info">未认证</span>
+        <span *ngIf="userInfo.userCompany.isauth === 1" class="text-success">已认证</span>
+        <span *ngIf="userInfo.userCompany.isauth === 2" class="text-warn">不通过</span>
+      </div>
+    </div>
+    <div class="weui-cell">
+      <div class="weui-cell__bd">
+        <div class="weui-uploader">
+          <div class="weui-uploader__hd">
+            <p class="weui-uploader__title">请上传您的在职证明 （招聘人员认证）</p>
+          </div>
+          <div class="weui-uploader__bd">
+            <ul class="weui-uploader__files">
+              <li class="weui-uploader__file"
+                  [ngStyle]="{'background-image':'url(' + config.prefix.wApi + userInfo.userCompany.jobcertpath + ')'}">
+                <!--<div class="weui-uploader__file-content" *ngIf="item.isapproval === 0">审核中</div>
+                <div class="weui-uploader__file-content" *ngIf="item.isapproval === 2">审核不通过</div>-->
+              </li>
+              <li class="weui-uploader__file" *ngFor="let item of jobUploader.queue"
+                  [weui-thumb]="item._file"
+                  [ngClass]="{'weui-uploader__file_status': item.isError || item.isUploading}">
+                <div class="weui-uploader__file-content" *ngIf="item.isUploading">{{item.progress}}%</div>
+                <div class="weui-uploader__file-content" *ngIf="item.isError">
+                  <i class="weui-icon-warn"></i>
+                </div>
+              </li>
+            </ul>
+            <div class="weui-uploader__input-box">
+              <input class="weui-uploader__input" type="file" accept="image/*" [weui-uploader-file]="jobUploader">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="userInfo" class="btns-group">
+  <a (click)="cancel()" class="btn-secondary">暂不认证</a>
+  <a (click)="confirm()" class="btn-twitter">提交认证</a>
+</div>

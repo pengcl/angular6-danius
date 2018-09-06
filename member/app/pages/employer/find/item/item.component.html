@@ -1,0 +1,141 @@
+<div *ngIf="userInfo" class="content-scrollable">
+  <div class="userinfo">
+    <span class="actions"><i (click)="follow()" class="icons icons-star_fill"></i><i class="icons icons-share"></i></span>
+    <span *ngIf="userInfo.busUserPersonal?.workstatus === 0" class="flag">离职，随时到岗</span>
+    <span *ngIf="userInfo.busUserPersonal?.workstatus === 1" class="flag">在职，考虑机会</span>
+    <span *ngIf="userInfo.busUserPersonal?.workstatus === 2" class="flag">在职，月内到岗</span>
+    <span *ngIf="userInfo.busUserPersonal?.workstatus === 3" class="flag">在职，暂不考虑</span>
+    <img class="userinfo-avatar avatar" src="{{config.prefix.wApi + userInfo.busUser.headimage}}" background-size="cover"/>
+    <div class="userinfo-nickname">{{userInfo.busUserPersonal.username}}</div>
+    <div class="userinfo-service">{{userInfo.busUserPersonal.sex === 1 ? '男' : '女'}}<span class="dot">·</span>{{userInfo.busUserPersonal.birthday
+      | age}}岁<span class="dot">·</span>{{userInfo.busUserPersonal?.height}}CM<span class="dot">·</span>{{userInfo.busUserPersonal?.weight}}KG
+    </div>
+  </div>
+  <!--{{userInfo?.personal.workstatus}}-->
+  <div class="weui-panel">
+    <div class="weui-panel__hd">自我介绍</div>
+    <div class="weui-panel__bd">
+      <div class="weui-media-box weui-media-box_text">
+        <p class="weui-media-box__desc">
+          {{userInfo.busUserPersonal?.introduce}}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="weui-panel">
+    <div class="weui-panel__hd">求职意向</div>
+    <div class="weui-panel__bd">
+      <div class="weui-media-box weui-media-box_small-appmsg">
+        <div class="weui-cells">
+          <div *ngFor="let intent of userInfo.intentList" class="weui-cell">
+            <div class="weui-cell__bd weui-cell_primary">
+              <p>{{intent.intentname}} · {{intent.intentcity}}</p>
+            </div>
+            <span class="weui-cell__ft">{{intent.salarybegin}}K - {{intent.salaryend}}K</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="weui-panel">
+    <div class="weui-panel__hd">服役信息</div>
+    <div class="weui-panel__bd">
+      <div class="weui-media-box weui-media-box_text">
+        <h4 class="weui-media-box__title">服役于：{{userInfo.busUserPersonal?.armyserveplace}} · {{userInfo.busUserPersonal?.armytype}} -
+          {{userInfo.busUserPersonal?.services}}</h4>
+        <p class="weui-media-box__desc">{{userInfo.busUserPersonal?.enlistmenttime}}～{{userInfo.busUserPersonal?.retirementtime}}</p>
+      </div>
+      <div class="weui-media-box weui-media-box_small-appmsg">
+        <div class="weui-cells">
+          <div class="weui-cell">
+            <div class="weui-cell__bd weui-cell_primary">
+              <p>驾驶信息</p>
+            </div>
+            <span class="weui-cell__ft">{{userInfo.busUserPersonal?.drivinglicence}}驾照</span>
+          </div>
+          <div class="weui-cell">
+            <div class="weui-cell__bd weui-cell_primary">
+              <p>驾龄</p>
+            </div>
+            <span class="weui-cell__ft">{{userInfo.busUserPersonal?.driversage}}年</span>
+          </div>
+          <div class="weui-cell">
+            <div class="weui-cell__bd weui-cell_primary">
+              <p>驾驶里程</p>
+            </div>
+            <span class="weui-cell__ft">{{userInfo.busUserPersonal?.drivingmileage}}公里</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="userInfo.busUserPersonal?.skillnames" class="weui-panel">
+    <div class="weui-panel__hd">我的技能</div>
+    <div class="weui-panel__bd">
+      <div class="weui-media-box weui-media-box_label">
+        <div class="label-container">
+          <span *ngFor="let skill of userInfo.busUserPersonal?.skillnames.split(',')" class="ui-label">{{skill}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="userInfo.workList?.length > 0" class="work weui-panel">
+    <div class="weui-panel__hd">工作经历</div>
+    <div class="weui-panel__bd">
+      <div *ngFor="let work of userInfo.workList" class="weui-media-box weui-media-box_text">
+        <span *ngIf="userInfo.workList?.length > 1" class="line"></span>
+        <span class="dot"></span>
+        <h4 class="weui-media-box__title">{{work.shortname}} · {{work.rolename}}</h4>
+        <p class="weui-media-box__desc">{{work.worktimebegin}}～{{work.worktimeend}}</p>
+        <p class="weui-media-box__desc">
+          {{work.jobcontent}}</p>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="userInfo.eduList?.length > 0" class="edu weui-panel">
+    <div class="weui-panel__hd">教育经历</div>
+    <div class="weui-panel__bd">
+      <div *ngFor="let edu of userInfo.eduList" class="weui-media-box weui-media-box_text">
+        <span *ngIf="userInfo.eduList?.length > 1" class="line"></span>
+        <span class="dot"></span>
+        <h4 class="weui-media-box__title">{{edu.schoolname}} · {{edu.education ? educationsData[edu.education - 1].label : '未填写'}} · {{edu.major}}</h4>
+        <p class="weui-media-box__desc">{{edu.begindate}}～{{edu.enddate}}</p>
+        <p class="weui-media-box__desc">
+          {{edu.experience}}</p>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="userInfo.imgList?.length > 0" class="weui-cells">
+    <div class="weui-cell">
+      <div class="weui-cell__bd">
+        <div class="weui-uploader">
+          <div class="weui-uploader__hd">
+            <p class="weui-uploader__title">个人相册</p>
+            <div class="weui-uploader__info"></div>
+          </div>
+          <div class="weui-uploader__bd">
+            <ul class="weui-uploader__files">
+              <li *ngFor="let item of userInfo.imgList;let i = index;" class="weui-uploader__file"
+                  [ngClass]="{'weui-uploader__file_status': item.isapproval === 0 || item.isapproval === 2}"
+                  [ngStyle]="{'background-image':'url(' + config.prefix.wApi + item.imagepath + ')'}">
+                <div class="weui-uploader__file-content" *ngIf="item.isapproval === 0">审核中</div>
+                <div class="weui-uploader__file-content" *ngIf="item.isapproval === 2">审核不通过</div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!--<app-gallery [imgs]="img" [(show)]="imgShow" (delete)="onDel($event)"></app-gallery>-->
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="btns-group">
+  <a [routerLink]="['/employer/message/item',postId]"
+     [queryParams]="{candidateid:id}" class="btn-twitter">立即沟通</a>
+</div>

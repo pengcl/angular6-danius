@@ -1,0 +1,98 @@
+<weui-navbar>
+  <weui-tab heading="即将开始">
+    <weui-infiniteloader (loadmore)="onLoadMore($event)" #comp>
+      <div class="weui-panel">
+        <div class="weui-panel__bd">
+          <div [routerLink]="['/employee/seeker/evaluate','123456789']" class="weui-media-box weui-media-box_appmsg weui-media-box_access">
+            <div class="weui-media-box__hd">
+              <img class="avatar" src="/assets/images/avatars/1.jpg">
+            </div>
+            <div class="weui-media-box__bd">
+              <h4 class="weui-media-box__title">黑寡妇 <span class="right colors red">8k - 10k</span></h4>
+              <p class="weui-media-box__desc">安保培训教官<span class="right date">2018-07-23 10:00</span></p>
+            </div>
+            <div class="weui-media-box__ft"></div>
+          </div>
+          <div class="weui-media-box weui-media-box_appmsg weui-media-box_access">
+            <div class="weui-media-box__hd">
+              <img class="avatar" src="/assets/images/avatars/2.jpg">
+            </div>
+            <div class="weui-media-box__bd">
+              <h4 class="weui-media-box__title">钢铁侠 <span class="right colors red">8k - 10k</span></h4>
+              <p class="weui-media-box__desc">安保培训教官<span class="right date">2018-07-23 10:00</span></p>
+            </div>
+            <div class="weui-media-box__ft"></div>
+          </div>
+          <div class="weui-media-box weui-media-box_appmsg weui-media-box_access">
+            <div class="weui-media-box__hd">
+              <img class="avatar" src="/assets/images/avatars/3.jpg">
+            </div>
+            <div class="weui-media-box__bd">
+              <h4 class="weui-media-box__title">美国队长 <span class="right colors red">8k - 10k</span></h4>
+              <p class="weui-media-box__desc">安保培训教官<span class="right date">2018-07-23 10:00</span></p>
+            </div>
+            <div class="weui-media-box__ft"></div>
+          </div>
+          <div class="weui-media-box weui-media-box_appmsg weui-media-box_access">
+            <div class="weui-media-box__hd">
+              <img class="avatar" src="/assets/images/avatars/art3mis.jpg">
+            </div>
+            <div class="weui-media-box__bd">
+              <h4 class="weui-media-box__title">art3mis <span class="right colors red">8k - 10k</span></h4>
+              <p class="weui-media-box__desc">安保培训教官<span class="right date">2018-07-23 10:00</span></p>
+            </div>
+            <div class="weui-media-box__ft"></div>
+          </div>
+        </div>
+      </div>
+    </weui-infiniteloader>
+  </weui-tab>
+  <weui-tab heading="已经结束">
+    <weui-infiniteloader (loadmore)="onLoadMore($event)" #comp>
+      <div class="weui-panel">
+        <div class="weui-panel__bd">
+          <div class="weui-media-box weui-media-box_appmsg weui-media-box_access">
+            <div class="weui-media-box__hd">
+              <img class="avatar" src="/assets/images/avatars/1.jpg">
+            </div>
+            <div class="weui-media-box__bd">
+              <h4 class="weui-media-box__title">黑寡妇 <span class="colors blue right">待评价</span></h4>
+              <p class="weui-media-box__desc">安保培训教官 · 8k - 10k <span class="right date">2018-07-23 10:00</span></p>
+            </div>
+            <div class="weui-media-box__ft"></div>
+          </div>
+          <div class="weui-media-box weui-media-box_appmsg weui-media-box_access">
+            <div class="weui-media-box__hd">
+              <img class="avatar" src="/assets/images/avatars/2.jpg">
+            </div>
+            <div class="weui-media-box__bd">
+              <h4 class="weui-media-box__title">钢铁侠 <span class="right">没来面试</span></h4>
+              <p class="weui-media-box__desc">安保培训教官 · 8k - 10k <span class="right date">2018-07-23 10:00</span></p>
+            </div>
+            <div class="weui-media-box__ft"></div>
+          </div>
+          <div class="weui-media-box weui-media-box_appmsg weui-media-box_access">
+            <div class="weui-media-box__hd">
+              <img class="avatar" src="/assets/images/avatars/3.jpg">
+            </div>
+            <div class="weui-media-box__bd">
+              <h4 class="weui-media-box__title">美国队长 <span class="right">没来面试</span></h4>
+              <p class="weui-media-box__desc">安保培训教官 · 8k - 10k <span class="right date">2018-07-23 10:00</span></p>
+            </div>
+            <div class="weui-media-box__ft"></div>
+          </div>
+          <div class="weui-media-box weui-media-box_appmsg weui-media-box_access">
+            <div class="weui-media-box__hd">
+              <img class="avatar" src="/assets/images/avatars/art3mis.jpg">
+            </div>
+            <div class="weui-media-box__bd">
+              <h4 class="weui-media-box__title">art3mis <span class="colors blue right">待评价</span></h4>
+              <p class="weui-media-box__desc">安保培训教官 · 8k - 10k <span class="right date">2018-07-23 10:00</span></p>
+            </div>
+            <div class="weui-media-box__ft"></div>
+          </div>
+        </div>
+      </div>
+    </weui-infiniteloader>
+  </weui-tab>
+</weui-navbar>

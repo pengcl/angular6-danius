@@ -1,0 +1,141 @@
+<!--0:文本;1:职位;2:换电话;3:换微信4:索要简历;5:系统消息;6:邀请面试;7:发送简历;8:同意交换电话;9:求职者接受面试-->
+
+<div class="icons-group weui-flex">
+  <div (click)="submit(2)" class="weui-flex__item">
+    <div class="weui-grid__icon">
+      <i class="colors green icons icons-mobile"></i>
+    </div>
+    <p class="weui-grid__label">换电话</p>
+  </div>
+  <div (click)="submit(7)" class="weui-flex__item">
+    <div class="weui-grid__icon">
+      <i class="colors blue icons icons-send"></i>
+    </div>
+    <p class="weui-grid__label">发简历</p>
+  </div>
+  <div (click)="back()" class="weui-flex__item">
+    <div class="weui-grid__icon">
+      <i class="colors orange icons icons-logout"></i>
+    </div>
+    <p class="weui-grid__label">不合适</p>
+  </div>
+</div>
+<div class="content-scrollable" #container>
+  <div *ngIf="job && chart" class="item-details weui-panel weui-panel_access">
+    <div class="weui-panel__bd">
+      <a class="weui-media-box weui-media-box_appmsg">
+        <!--<div class="weui-media-box__hd">
+          <img class="avatar" src="/assets/images/avatars/3.jpg">
+        </div>-->
+        <div class="weui-media-box__bd">
+          <h4 class="weui-media-box__title">{{job.postname}}<em class="right">10k - 15k</em></h4>
+          <p class="weui-media-box__desc">{{job.companyname}}<span
+            class="right">{{job.addresscity}}{{job.addressarea}}</span></p>
+        </div>
+      </a>
+      <div class="weui-media-box weui-media-box_appmsg">
+        <div class="weui-media-box__bd">
+          <p class="arr weui-media-box__desc"><i class="icons icons-position"></i><span>{{job.experiencetype | label : experiences}}</span><span
+            class="dot">·</span><i
+            class="icons icons-edu"></i><span>{{job.limiteducationtype | label : educations}}</span><span
+            class="dot">·</span><i
+            class="icons icons-soldier"></i><span>{{job.serviceage | label : lengthOfMilitary}}</span></p>
+          <p class="weui-media-box__desc">1.拥有扎实的JavaSE基础，良好的编码习惯；<br>2.熟悉各种开源框架SpringMVC，Spring，Mybatis...</p>
+        </div>
+      </div>
+    </div>
+    <div class="weui-panel__ft">
+      <a href="javascript:void(0);" class="weui-cell weui-cell_access weui-cell_link">
+        <div class="weui-cell__bd">
+          <p class="weui-media-box__desc">{{chart.recordtime | repairDate | date : 'MM:dd HH:mm'}} 由您发起沟通</p>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <div class="messages weui-panel">
+    <div class="weui-panel__bd">
+      <weui-ptr (refresh)="onRefresh($event)" [disabled]="disabled">
+        <div *ngFor="let record of records" [ngClass]="{'message-right':record.rolename === '1'}"
+             class="message weui-media-box weui-media-box_appmsg">
+          <div *ngIf="record.rolename !== '1'" class="weui-media-box__hd">
+            <img class="avatar" src="{{config.prefix.wApi + record.headimg}}">
+          </div>
+          <div class="weui-media-box__bd">
+            <span *ngIf="record.datatype === '0'" class="message-box">{{record.content}}</span>
+
+            <span *ngIf="record.datatype === '2' && record.rolename === '1'" class="message-box">您向对方发起了换电话请求</span>
+            <div *ngIf="record.datatype === '2' && record.rolename !== '1'" class="message-dialog weui-dialog">
+              <div class="weui-dialog__bd">对方向您发起了换电话请求，是否同意？</div>
+              <div class="weui-dialog__ft">
+                <a (click)="submit(8,1)" class="weui-dialog__btn weui-dialog__btn_default">拒绝</a>
+                <a (click)="submit(8,1)" class="weui-dialog__btn weui-dialog__btn_primary">同意</a>
+              </div>
+            </div>
+
+            <div *ngIf="record.datatype === '4' && record.rolename !== '1'" class="message-dialog weui-dialog">
+              <div class="weui-dialog__bd">对方向您索要简历，是否同意？</div>
+              <div class="weui-dialog__ft">
+                <a (click)="submit(10,2)" class="weui-dialog__btn weui-dialog__btn_default">拒绝</a>
+                <a (click)="submit(10,1)" class="weui-dialog__btn weui-dialog__btn_primary">同意</a>
+              </div>
+            </div>
+
+            <div *ngIf="record.datatype === '6' && record.rolename !== '1'" class="message-dialog weui-dialog">
+              <div class="weui-dialog__bd">对方向您发出了邀请面试，是否同意？</div>
+              <div class="weui-dialog__ft">
+                <a (click)="submit(9,2)" class="weui-dialog__btn weui-dialog__btn_default">拒绝</a>
+                <a (click)="submit(9,1)" class="weui-dialog__btn weui-dialog__btn_primary">同意</a>
+              </div>
+            </div>
+
+            <span *ngIf="record.datatype === '7'" class="message-box"><a
+              routerLink="/employee/resume/preview">您向对方发送了简历</a></span>
+
+            <div *ngIf="record.datatype === '8' && record.rolename === '1'" class="message-dialog weui-dialog">
+              <div class="weui-dialog__bd">您同意了交电话的请求，对方的号码是：{{record.content}}</div>
+              <div class="weui-dialog__ft">
+                <a href="sms:{{record.content}}" class="weui-dialog__btn weui-dialog__btn_default">短信</a>
+                <a href="tel:{{record.content}}" class="weui-dialog__btn weui-dialog__btn_primary">拨打</a>
+              </div>
+            </div>
+            <div *ngIf="record.datatype === '8' && record.rolename !== '1'" class="message-dialog weui-dialog">
+              <div class="weui-dialog__bd">对方同意了交电话的请求，对方的号码是：{{record.content}}</div>
+              <div class="weui-dialog__ft">
+                <a href="sms:{{record.content}}" class="weui-dialog__btn weui-dialog__btn_default">短信</a>
+                <a href="tel:{{record.content}}" class="weui-dialog__btn weui-dialog__btn_primary">拨打</a>
+              </div>
+            </div>
+
+            <span *ngIf="record.datatype === '9'" class="message-box">
+              <span *ngIf="record.datastate === '1'">您接受了对方的面试邀请</span>
+              <span *ngIf="record.datastate === '2'">您接受了对方的面试邀请</span>
+            </span>
+
+            <span *ngIf="record.datatype === '10'" class="message-box">
+              <a *ngIf="record.datastate === '1'" routerLink="/employee/resume/preview">您同意了对方索要简历的请求，并向对方发送了简历</a>
+              <span *ngIf="record.datastate === '2'">您同意了对方索要简历的请求</span>
+            </span>
+          </div>
+          <div *ngIf="record.rolename === '1'" class="weui-media-box__hd">
+            <img class="avatar" src="{{config.prefix.wApi + record.headimg}}">
+          </div>
+        </div>
+      </weui-ptr>
+    </div>
+  </div>
+</div>
+<div class="post-comment">
+  <form [formGroup]="messageForm" (submit)="submit(0)">
+    <div class="weui-grids">
+      <div class="comment weui-grid">
+        <input formControlName="content" placeholder="说点什么吧！">
+      </div>
+      <div class="post weui-grid">
+        <button type="submit" weui-button [disabled]="messageForm.get('content').invalid" [weui-type]="'primary'">
+          <span>发布</span>
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

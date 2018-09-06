@@ -1,0 +1,11 @@
+<div class="weui-media-box__hd">
+  <img class="avatar" src="{{config.prefix.wApi + (employee.headImage || employee.headimage)}}">
+</div>
+<div class="weui-media-box__bd">
+  <h4 class="weui-media-box__title"><span class="name">{{employee.userName || employee.username}}</span> [<span class="intent colors blue">期望：{{employee.intentName || employee.intentname}}</span>] <em class="right">{{employee.salaryBegin || employee.salarybegin}}k - {{employee.salaryEnd || employee.salaryend}}k</em></h4>
+  <p class="arr weui-media-box__desc"><i
+    class="icons icons-{{employee.sex === 1 ? 'nv' : 'nan'}}"></i><span>{{employee.sex === 1 ? '女' : '男'}}</span><span
+    class="dot">·</span><i class="icons icons-edu"></i><span>{{employee.education | label : educations}}</span><span class="dot">·</span><i
+    class="icons icons-soldier"></i><span>{{(employee.soldierage || employee.soldierAge) | label : lengthOfMilitary}}</span></p>
+  <p class="weui-media-box__desc">{{employee.introduce}}</p>
+</div>

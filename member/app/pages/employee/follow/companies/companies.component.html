@@ -1,0 +1,13 @@
+<weui-infiniteloader (loadmore)="onLoadMore($event)" #comp>
+  <div *ngFor="let company of companies" class="weui-panel weui-panel_access">
+    <div class="weui-panel__bd">
+      <app-com-item [company]="company" [routerLink]="['/employee/find/company/item',company.id]" class="weui-media-box weui-media-box_appmsg"></app-com-item>
+    </div>
+    <div class="weui-panel__ft">
+      <a href="javascript:void(0);" class="weui-cell weui-cell_access weui-cell_link">
+        <div class="weui-cell__bd"><span class="colors blue ">货车司机</span> 等10个职位</div>
+        <span class="weui-cell__ft"></span>
+      </a>
+    </div>
+  </div>
+</weui-infiniteloader>

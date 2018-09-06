@@ -1,0 +1,142 @@
+.weui-panel {
+  &:before, &:after {
+    display: none;
+  }
+}
+
+.weui-media-box__hd {
+  margin: 0.05rem 0 0 0.8em;
+  align-self: start;
+  width: 0.55rem;
+  height: 0.55rem;
+  img {
+    border-radius: 0.05rem;
+  }
+}
+
+.weui-media-box__bd {
+  .weui-media-box__title {
+    line-height: 1;
+    margin-top: 0.05rem;
+  }
+  .weui-media-box__address {
+    font-size: 0.12rem;
+    margin: 0.1rem 0 0.05rem;
+  }
+  .weui-media-box__desc {
+    margin-top: 0.15rem;
+    line-height: 1.6;
+    -webkit-line-clamp: 3;
+    &.arr {
+      font-size: 0;
+      margin-top: 0.05rem;
+      i, span {
+        display: inline-block;
+        vertical-align: middle;
+      }
+      i {
+        font-size: 0.14rem;
+        margin-right: 0.05rem;
+      }
+      span {
+        font-size: 0.12rem;
+        line-height: 0.14rem;
+        &.dot {
+          margin: 0 0.05rem;
+        }
+      }
+    }
+  }
+
+  .ui-labels {
+    margin: 0.15rem 0.2rem 0 -0.075rem;
+    .weui-grid {
+      width: 33.33%;
+      .ui-label {
+        margin: 0.05rem 0.075rem;
+        font-size: 0.12rem;
+        display: block;
+        text-align: center;
+        line-height: 1;
+        padding: 0.05rem 0;
+        border-radius: 0.04rem;
+        background: #F7F7F7;
+        color: #999;
+      }
+    }
+  }
+  .text-area {
+    margin-top: 0.15rem;
+    font-size: 0.12rem;
+    line-height: 1.6;
+  }
+}
+
+.weui-panel {
+  &.job {
+    .weui-media-box__bd {
+      .weui-media-box__title {
+        line-height: 0.2rem;
+        margin-top: 0.05rem;
+        font-size: 0.17rem;
+        .actions {
+          font-size: 0;
+          display: block;
+          line-height: 1;
+          .icons {
+            font-size: 0.2rem;
+            display: inline-block;
+            margin-left: 0.1rem;
+            &.icons-star_fill {
+              color: #999;
+              &.curr {
+                color: #CC3629;
+              }
+            }
+          }
+        }
+      }
+      .weui-grids {
+        margin-top: 0.1rem;
+        .weui-grid {
+          width: 50%;
+          font-size: 0;
+          margin-top: 0.1rem;
+          i, span {
+            display: inline-block;
+            vertical-align: middle;
+          }
+          i {
+            color: #4CA6FF;
+            margin-right: 0.1rem;
+          }
+          span {
+            font-size: 0.12rem;
+            line-height: 0.16rem;
+          }
+        }
+      }
+    }
+  }
+  &.company {
+    .weui-media-box__bd {
+      .weui-media-box__desc {
+        margin-top: 0.1rem;
+        line-height: 1;
+      }
+    }
+  }
+
+  &:last-child {
+    margin-bottom: 0.58rem;
+  }
+}
+
+.weui-cell_link {
+  padding: 0.1rem 0.15rem;
+  font-size: 0.13rem;
+  color: #000;
+  &:before {
+    display: none;
+  }
+}

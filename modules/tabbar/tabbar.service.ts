@@ -9,7 +9,13 @@ export class TabbarService {
   constructor() {
   }
 
-  set(config) {
+  set(config, activeIndex?) {
+    if (typeof activeIndex === 'number') {
+      this.config['items'].forEach((item, i) => {
+        this.config['items'][i]['selected'] = false;
+      });
+      this.config['items'][activeIndex]['selected'] = true;
+    }
     this.config.next(Object.assign(this.config, config));
   }
 

@@ -1,0 +1,101 @@
+<div class="content-scrollable">
+  <div class="weui-cells">
+    <label for="avatar" class="weui-cell weui-cell_access">
+      <div class="weui-cell__bd">
+        <p>公司Logo</p>
+      </div>
+      <div class="weui-cell__ft">
+        <div *ngIf="profileForm.get('headerimage').value && uploader.queue.length === 0"
+             class="avatar weui-uploader__file">
+          <img src="{{config.prefix.wApi + profileForm.get('headerimage').value}}">
+        </div>
+        <div class="avatar weui-uploader__file" *ngFor="let item of uploader.queue.slice(uploader.queue.length - 1)"
+             [weui-thumb]="item._file"
+             [ngClass]="{'weui-uploader__file_status': item.isError}">
+          <div class="weui-uploader__file-content" *ngIf="item.isUploading">{{item.progress}}%</div>
+          <div class="weui-uploader__file-content" *ngIf="item.isError">
+            <i class="weui-icon-warn"></i>
+          </div>
+        </div>
+        <div style="display: none" class="avatar weui-uploader__input-box">
+          <input id="avatar" name="avatar" class="weui-uploader__input" type="file" accept="image/*"
+                 [weui-uploader-file]="uploader">
+        </div>
+      </div>
+    </label>
+    <a (click)="showOverlay('companyname')" class="weui-cell weui-cell_access">
+      <!--<div class="weui-cell__hd">
+        <i class="icons icons-iconfontdaguimo"></i>
+      </div>-->
+      <div class="weui-cell__bd">
+        <p>公司名称</p>
+      </div>
+      <div class="weui-cell__ft">
+        {{profileForm.get('companyname').value || '未填写'}}
+      </div>
+    </a>
+    <a (click)="showOverlay('shortname')" class="weui-cell weui-cell_access">
+      <!--<div class="weui-cell__hd">
+        <i class="icons icons-liangdian"></i>
+      </div>-->
+      <div class="weui-cell__bd">
+        <p>公司简称</p>
+      </div>
+      <div class="weui-cell__ft">{{profileForm.get('shortname').value || '未填写'}}</div>
+    </a>
+    <a (click)="showOverlay('address')" class="weui-cell weui-cell_access">
+      <!--<div class="weui-cell__hd">
+        <i class="icons icons-fmomey"></i>
+      </div>-->
+      <div class="weui-cell__bd">
+        <p>公司地址</p>
+      </div>
+      <div class="weui-cell__ft">
+        {{profileForm.get('address').value.slice(0,15) + '...' || '未填写'}}
+      </div>
+    </a>
+  </div>
+  <div class="weui-cells__tips">*注：公司名称修改后，需要重新进行企业认证</div>
+</div>
+
+<app-overlay>
+  <div [formGroup]="profileForm" class="weui-cells weui-cells_form">
+    <div *ngIf="formControl === 'companyname'" class="weui-cell"
+         [ngClass]="{'weui-cell_warn':profileForm.get('companyname').invalid && profileForm.get('companyname').dirty}">
+      <div class="weui-cell__hd"><label class="weui-label">公司名称</label></div>
+      <div class="weui-cell__bd">
+        <input class="weui-input" formControlName="companyname" placeholder="请输入您的公司名称">
+      </div>
+      <div class="weui-cell__ft">
+        <i class="weui-icon-warn"></i>
+      </div>
+    </div>
+    <div *ngIf="formControl === 'shortname'" class="weui-cell"
+         [ngClass]="{'weui-cell_warn':profileForm.get('shortname').invalid && profileForm.get('shortname').dirty}">
+      <div class="weui-cell__hd"><label class="weui-label">公司简称</label></div>
+      <div class="weui-cell__bd">
+        <input class="weui-input" formControlName="shortname" placeholder="请输入您的公司简称">
+      </div>
+      <div class="weui-cell__ft">
+        <i class="weui-icon-warn"></i>
+      </div>
+    </div>
+    <div *ngIf="formControl === 'address'" class="weui-cell"
+         [ngClass]="{'weui-cell_warn':profileForm.get('address').invalid && profileForm.get('address').dirty}">
+      <div class="weui-cell__hd"><label class="weui-label">公司地址</label></div>
+      <div class="weui-cell__bd">
+        <input class="weui-input" formControlName="address" placeholder="请输入您的公司地址">
+      </div>
+      <div class="weui-cell__ft">
+        <i class="weui-icon-warn"></i>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="weui-cells">
+    <a (click)="submit()" class="weui-cell">
+      <div class="weui-cell__bd" style="text-align: center">确定</div>
+    </a>
+  </div>
+</app-overlay>

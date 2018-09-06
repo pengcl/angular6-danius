@@ -1,0 +1,43 @@
+<weui-navbar>
+  <weui-tab heading="即将开始">
+    <weui-infiniteloader (loadmore)="onInterviewsLoadMore($event)">
+      <div class="weui-panel">
+        <div class="weui-panel__bd">
+          <div *ngFor="let interview of interviews" [routerLink]="['/employer/seeker/evaluate','123456789']" class="weui-media-box weui-media-box_appmsg weui-media-box_access">
+            <div class="weui-media-box__hd">
+              <img class="avatar" src="/assets/images/avatars/1.jpg">
+            </div>
+            <div class="weui-media-box__bd">
+              <h4 class="weui-media-box__title">{{interview.userName}} <span class="right colors red">{{interview.salaryrange.split('-')[0]}}k - {{interview.salaryrange.split('-')[1]}}k</span></h4>
+              <p class="weui-media-box__desc">面试：{{interview.positionname}}<span class="right date">{{interview.interviewtime}}</span></p>
+            </div>
+            <div class="weui-media-box__ft"></div>
+          </div>
+        </div>
+      </div>
+    </weui-infiniteloader>
+  </weui-tab>
+  <weui-tab heading="已结束">
+    <weui-infiniteloader (loadmore)="onInterviewedLoadMore($event)">
+      <div class="weui-panel">
+        <div class="weui-panel__bd">
+          <div *ngFor="let interview of interviewed" [routerLink]="['/employer/seeker/evaluate','123456789']" class="weui-media-box weui-media-box_appmsg weui-media-box_access">
+            <div class="weui-media-box__hd">
+              <img class="avatar" src="/assets/images/avatars/1.jpg">
+            </div>
+            <div class="weui-media-box__bd">
+              <h4 class="weui-media-box__title">{{interview.userName}}
+                <span *ngIf="interview.companyevaluatestate !== 1" class="colors blue right">待评价</span>
+                <span *ngIf="interview.companyevaluatestate === 1" class="colors blue right">
+                  <span>{{interview.companyevaluate}}</span>
+                </span>
+              </h4>
+              <p class="weui-media-box__desc">面试：{{interview.positionname}}<span class="right date">{{interview.interviewtime}}</span></p>
+            </div>
+            <div class="weui-media-box__ft"></div>
+          </div>
+        </div>
+      </div>
+    </weui-infiniteloader>
+  </weui-tab>
+</weui-navbar>

@@ -2,9 +2,30 @@ body {
   font-size: 0.12rem;
 }
 
+.right {
+  float: right;
+}
+
 .avatar {
   border-radius: 100%;
   display: block;
+}
+
+.text-warn {
+  color: #f43530;
+}
+
+.text-success {
+  color: #09BB07;
+}
+
+.text-info {
+  color: #10AEFF;
+}
+
+em {
+  font-style: normal;
+  color: #CC3629;
 }
 
 .content-scrollable {

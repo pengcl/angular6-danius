@@ -1,0 +1,81 @@
+<div class="user-info weui-panel weui-panel_access">
+  <div class="weui-panel__bd">
+    <a routerLink="/employer/profile/" class="weui-media-box weui-media-box_appmsg weui-media-box_access">
+      <div class="weui-media-box__hd">
+        <img class="avatar weui-media-box__thumb" src="/assets/images/avatar.jpg" alt="">
+      </div>
+      <div class="weui-media-box__bd">
+        <h4 class="weui-media-box__title">刘江</h4>
+        <p class="weui-media-box__desc">环环时事周刊 · 董事长</p>
+      </div>
+      <div class="weui-media-box__ft"></div>
+    </a>
+  </div>
+  <div class="weui-panel__ft">
+    <div class="statistics icons-group weui-flex">
+      <div routerLink="/employer/seeker/invited" class="weui-flex__item">
+        <span class="weui-grid__icon">
+          <i class="icons icons-interview"></i><em class="">3</em>
+        </span>
+        <span class="weui-grid__label">沟通过</span>
+      </div>
+      <div routerLink="/employer/seeker/interviewed" class="weui-flex__item">
+        <span class="weui-grid__icon">
+          <i class="icons icons-handshake"></i><em>19</em>
+        </span>
+        <span class="weui-grid__label">面试</span>
+      </div>
+      <div routerLink="/employer/seeker/wanted" class="weui-flex__item">
+        <span class="weui-grid__icon">
+          <i class="icons icons-soldier"></i><em>7</em>
+        </span>
+        <span class="weui-grid__label">收藏</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="menu">
+  <div class="weui-cells">
+
+    <a routerLink="/employer/job/list" class="weui-cell weui-cell_access">
+      <div class="weui-cell__hd"><i class="icons icons-managers"></i></div>
+      <div class="weui-cell__bd">
+        <p>职位管理</p>
+      </div>
+      <div class="weui-cell__ft" style="font-size: 0">
+        <span style="vertical-align:middle; font-size: 0.13rem">未创建</span>
+        <span class="weui-badge weui-badge_dot" style="margin-left: 0.05rem;margin-right: 0.05rem;"></span>
+      </div>
+    </a>
+    <a routerLink="/employer/qualify" class="weui-cell weui-cell_access">
+      <div class="weui-cell__hd"><i class="icons icons-renzheng"></i></div>
+      <div class="weui-cell__bd">
+        <p>认证</p>
+      </div>
+      <div class="weui-cell__ft">在职-考虑机会</div>
+    </a>
+    <a routerLink="/employer/company/index" class="weui-cell weui-cell_access">
+      <div class="weui-cell__hd"><i class="icons icons-company"></i></div>
+      <div class="weui-cell__bd">
+        <p>关于我们</p>
+      </div>
+      <div class="weui-cell__ft">{{company?.introduction.slice(0,15)}}...</div>
+    </a>
+    <a [routerLink]="['/usher/identity']" [queryParams]="{'redirect':'/auth/signIn'}"
+       class="weui-cell weui-cell_access">
+      <div class="weui-cell__hd"><i class="icons icons-exchange"></i></div>
+      <div class="weui-cell__bd">
+        <p>切换身份</p>
+      </div>
+      <div class="weui-cell__ft">当前身份：{{user.type === 2 ? '老板' : '求职者'}}</div>
+    </a>
+    <a (click)="logout()" class="weui-cell weui-cell_access">
+      <div class="weui-cell__hd"><i class="icons icons-logout"></i></div>
+      <div class="weui-cell__bd">
+        <p>退出登录</p>
+      </div>
+      <div class="weui-cell__ft">当前登录5分钟</div>
+    </a>
+  </div>
+</div>

@@ -1,0 +1,53 @@
+<weui-navbar>
+  <weui-tab heading="全部">
+    <weui-infiniteloader (loadmore)="onLoadMore($event)" #comp>
+      <div class="weui-panel">
+        <div class="weui-panel__bd">
+          <div *ngFor="let job of jobs" [routerLink]="['/employer/job/item',job.id]" class="weui-media-box weui-media-box_appmsg weui-media-box_access">
+            <div class="weui-media-box__bd">
+              <h4 class="weui-media-box__title">{{job.postname}} <span class="right" *ngIf="!job.salaryend">面议</span><span *ngIf="job.salaryend" class="right">{{job.salarybegin}}k - {{job.salaryend}}k</span></h4>
+              <ul class="weui-media-box__info">
+                <li class="weui-media-box__info__meta"><i class="icon-face-happy"></i> 浏览({{job.viewcount}})</li>
+                <li class="weui-media-box__info__meta"><i class="icon-comment"></i> 评论({{job.communicationcount}})</li>
+                <li class="weui-media-box__info__meta"><i class="icon-share"></i> 分享({{job.sharecount}})</li>
+                <li class="weui-media-box__info__meta weui-media-box__info__meta_extra">
+                  <!--0-待审核，1-审核失败，2-待开放，3-招聘中-->
+                  <span *ngIf="job.status === 0">待审核</span>
+                  <span *ngIf="job.status === 1">审核失败</span>
+                  <span *ngIf="job.status === 2">待开放</span>
+                  <span *ngIf="job.status === 3">招聘中</span>
+                </li>
+              </ul>
+            </div>
+            <div class="weui-media-box__ft"></div>
+          </div>
+        </div>
+      </div>
+    </weui-infiniteloader>
+  </weui-tab>
+  <weui-tab heading="招聘中" (select)="onSelect()">
+    <article class="weui-article">
+      <h1>Panel 2 Title</h1>
+      <p>Select Time: {{time}}</p>
+    </article>
+  </weui-tab>
+  <weui-tab heading="待开放">
+    <article class="weui-article">
+      <h1>Panel 3 Title</h1>
+    </article>
+  </weui-tab>
+  <weui-tab heading="已关闭">
+    <article class="weui-article">
+      <h1>Panel 3 Title</h1>
+    </article>
+  </weui-tab>
+  <weui-tab heading="审核失败">
+    <article class="weui-article">
+      <h1>Panel 3 Title</h1>
+    </article>
+  </weui-tab>
+</weui-navbar>
+
+<div class="btns-group">
+  <a (click)="addNew()" class="btn-twitter">发布新职位</a>
+</div>

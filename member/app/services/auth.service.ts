@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import {Router} from '@angular/router';
 import {Observable, Subject} from 'rxjs/index';
 import {CONFIG} from '../../../config/app.config';
 
@@ -14,7 +15,20 @@ export class AuthService {
   private loginStatus = new Subject<boolean>();
 
   constructor(private http: HttpClient,
+              private router: Router,
               private storageSvc: StorageService) {
+  }
+
+  requestAuth() {
+    if (this.router.url.indexOf('signIn') !== -1) {
+      return false;
+    }
+    if (this.loginRedirectUrl) {
+      return false;
+    }
+
+    this.loginRedirectUrl = this.router.url;
+    this.router.navigate(['/auth/signIn']);
   }
 
   signIn(body): Promise<any> {
@@ -47,7 +61,7 @@ export class AuthService {
   }
 
   logout(): void {
-    this.storageSvc.remove('user');
+    this.storageSvc.clear();
     this.loginStatus.next(this.isLogged);
   }
 

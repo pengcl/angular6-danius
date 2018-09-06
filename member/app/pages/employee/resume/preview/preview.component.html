@@ -1,0 +1,139 @@
+<div *ngIf="userInfo" class="content-scrollable">
+  <div class="userinfo">
+    <span *ngIf="userInfo.personal?.workstatus === 0" class="flag">离职，随时到岗</span>
+    <span *ngIf="userInfo.personal?.workstatus === 1" class="flag">在职，考虑机会</span>
+    <span *ngIf="userInfo.personal?.workstatus === 2" class="flag">在职，月内到岗</span>
+    <span *ngIf="userInfo.personal?.workstatus === 3" class="flag">在职，暂不考虑</span>
+    <img class="userinfo-avatar" src="/assets/images/logo.png" background-size="cover"/>
+    <div class="userinfo-nickname">{{userInfo.user.username}}</div>
+    <div class="userinfo-service">{{userInfo.user.sex === 1 ? '男' : '女'}}<span class="dot">·</span>{{userInfo.user.birthday
+      | age}}岁<span class="dot">·</span>{{userInfo.personal?.height}}CM<span class="dot">·</span>{{userInfo.personal?.weight}}KG
+    </div>
+  </div>
+  <!--{{userInfo?.personal.workstatus}}-->
+  <div class="weui-panel">
+    <div class="weui-panel__hd">自我介绍</div>
+    <div class="weui-panel__bd">
+      <div class="weui-media-box weui-media-box_text">
+        <p class="weui-media-box__desc">
+          {{userInfo.personal?.introduce}}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="weui-panel">
+    <div class="weui-panel__hd">求职意向</div>
+    <div class="weui-panel__bd">
+      <div class="weui-media-box weui-media-box_small-appmsg">
+        <div class="weui-cells">
+          <div *ngFor="let intent of intents" class="weui-cell">
+            <div class="weui-cell__bd weui-cell_primary">
+              <p>{{intent.intentname}} · {{intent.intentcity}}</p>
+            </div>
+            <span class="weui-cell__ft">{{intent.salarybegin}}K - {{intent.salaryend}}K</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="weui-panel">
+    <div class="weui-panel__hd">服役信息</div>
+    <div class="weui-panel__bd">
+      <div class="weui-media-box weui-media-box_text">
+        <h4 class="weui-media-box__title">服役于：{{userInfo.personal?.armyserveplace}} · {{userInfo.personal?.armytype}} -
+          {{userInfo.personal?.services}}</h4>
+        <p class="weui-media-box__desc">{{userInfo.personal?.enlistmenttime}}～{{userInfo.personal?.retirementtime}}</p>
+      </div>
+      <div class="weui-media-box weui-media-box_small-appmsg">
+        <div class="weui-cells">
+          <div class="weui-cell">
+            <div class="weui-cell__bd weui-cell_primary">
+              <p>驾驶信息</p>
+            </div>
+            <span class="weui-cell__ft">{{userInfo.personal?.drivinglicence}}驾照</span>
+          </div>
+          <div class="weui-cell">
+            <div class="weui-cell__bd weui-cell_primary">
+              <p>驾龄</p>
+            </div>
+            <span class="weui-cell__ft">{{userInfo.personal?.driversage}}年</span>
+          </div>
+          <div class="weui-cell">
+            <div class="weui-cell__bd weui-cell_primary">
+              <p>驾驶里程</p>
+            </div>
+            <span class="weui-cell__ft">{{userInfo.personal?.drivingmileage}}公里</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="userInfo.personal?.skillnames" class="weui-panel">
+    <div class="weui-panel__hd">我的技能</div>
+    <div class="weui-panel__bd">
+      <div class="weui-media-box weui-media-box_label">
+        <div class="label-container">
+          <span *ngFor="let skill of userInfo.personal?.skillnames.split(',')" class="ui-label">{{skill}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="works?.length > 0" class="work weui-panel">
+    <div class="weui-panel__hd">工作经历</div>
+    <div class="weui-panel__bd">
+      <div *ngFor="let work of works" class="weui-media-box weui-media-box_text">
+        <span *ngIf="works.length > 1" class="line"></span>
+        <span class="dot"></span>
+        <h4 class="weui-media-box__title">{{work.shortname}} · {{work.rolename}}</h4>
+        <p class="weui-media-box__desc">{{work.worktimebegin}}～{{work.worktimeend}}</p>
+        <p class="weui-media-box__desc">
+          {{work.jobcontent}}</p>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="educations?.length > 0" class="edu weui-panel">
+    <div class="weui-panel__hd">教育经历</div>
+    <div class="weui-panel__bd">
+      <div *ngFor="let edu of educations" class="weui-media-box weui-media-box_text">
+        <span class="line"></span>
+        <span class="dot"></span>
+        <h4 class="weui-media-box__title">{{edu.schoolname}} · {{edu.education ? educationsData[edu.education - 1].label : '未填写'}} · {{edu.major}}</h4>
+        <p class="weui-media-box__desc">{{edu.begindate}}～{{edu.enddate}}</p>
+        <p class="weui-media-box__desc">
+          {{edu.experience}}</p>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="images?.length > 0" class="weui-cells">
+    <div class="weui-cell">
+      <div class="weui-cell__bd">
+        <div class="weui-uploader">
+          <div class="weui-uploader__hd">
+            <p class="weui-uploader__title">个人相册</p>
+            <div class="weui-uploader__info"></div>
+          </div>
+          <div class="weui-uploader__bd">
+            <ul class="weui-uploader__files">
+              <li *ngFor="let item of images;let i = index;" class="weui-uploader__file"
+                  [ngClass]="{'weui-uploader__file_status': item.isapproval === 0 || item.isapproval === 2}"
+                  [ngStyle]="{'background-image':'url(' + config.prefix.wApi + item.imagepath + ')'}">
+                <div class="weui-uploader__file-content" *ngIf="item.isapproval === 0">审核中</div>
+                <div class="weui-uploader__file-content" *ngIf="item.isapproval === 2">审核不通过</div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!--<app-gallery [imgs]="img" [(show)]="imgShow" (delete)="onDel($event)"></app-gallery>-->
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="btns-group">
+  <a (click)="back()" class="btn-twitter">退出预览</a>
+</div>

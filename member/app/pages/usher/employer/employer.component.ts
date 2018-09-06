@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {Router} from '@angular/router';
 import {LocationStrategy} from '@angular/common';
 import {FormGroup, FormControl, Validators} from '@angular/forms';
@@ -9,9 +9,43 @@ import {TabbarService} from '../../../../../modules/tabbar';
 import {AuthService} from '../../../services/auth.service';
 import {UserService} from '../../../services/user.service';
 import {OverlayService} from '../../../../../modules/overlay';
+import {JobService} from '../../../services/job.service';
 
-import {SERVICES_DATA} from '../../../../../config/services';
+import {SERVICES_DATA} from '../../../../../config/data';
 import {getIndex} from '../../../../../commons/js/utils';
+
+function resetData(arr) {
+  const mainArr = [];
+  arr.forEach((item) => {
+    const mainItem = {};
+    let names = item.name;
+    const subs = [];
+    if (item.sub[0].sub) {
+      item.sub.forEach(subItem => {
+        names = names + '/' + subItem.name;
+        subItem.sub.forEach(v => {
+          const sub = {
+            name: v.name,
+            code: v.code
+          };
+          subs.push(sub);
+        });
+      });
+    } else {
+      item.sub.forEach(subItem => {
+        const sub = {
+          name: subItem.name,
+          code: subItem.code
+        };
+        subs.push(sub);
+      });
+    }
+    mainItem['name'] = names;
+    mainItem['sub'] = subs;
+    mainArr.push(mainItem);
+  });
+  return mainArr;
+}
 
 @Component({
   selector: 'app-usher-employer',
@@ -21,91 +55,9 @@ import {getIndex} from '../../../../../commons/js/utils';
 export class UsherEmployerComponent implements OnInit {
 
   user;
-  userInfo;
   formControl = '';
 
-  pickerData = {
-    weight: Array(70)
-      .fill('')
-      .map((v: string, idx: number) => {
-        return {label: `${idx + 40}` + 'KG', value: `${idx + 40}`};
-      }),
-    height: Array(70)
-      .fill(0)
-      .map((v: string, idx: number) => {
-        return {label: `${idx + 150}` + 'CM', value: `${idx + 150}`};
-      }),
-    drivingAge: Array(20)
-      .fill(0)
-      .map((v: string, idx: number) => {
-        return {label: `${idx}`, value: `${idx}`};
-      }),
-    drivingMileage: Array(20)
-      .fill(0)
-      .map((v: string, idx: number) => {
-        return {label: `${idx * 10000}`, value: `${idx * 10000}`};
-      }),
-    drivingLicense: [
-      {
-        label: 'A1',
-        value: 'A1'
-      },
-      {
-        label: 'A2',
-        value: 'A2'
-      },
-      {
-        label: 'A3',
-        value: 'A3'
-      },
-      {
-        label: 'B1',
-        value: 'B1'
-      },
-      {
-        label: 'B2',
-        value: 'B2'
-      },
-      {
-        label: 'C1',
-        value: 'C1'
-      },
-      {
-        label: 'C2',
-        value: 'C2'
-      },
-      {
-        label: '无',
-        value: '0'
-      }
-    ],
-    commendations: [
-      {
-        label: '无',
-        value: '无'
-      },
-      {
-        label: '嘉奖',
-        value: '嘉奖'
-      },
-      {
-        label: '三等功',
-        value: '三等功'
-      },
-      {
-        label: '二等功',
-        value: '二等功'
-      },
-      {
-        label: '一等功',
-        value: '一等功'
-      },
-      {
-        label: '荣誉称号',
-        value: '荣誉称号'
-      }
-    ]
-  };
+  industries;
 
   profileForm: FormGroup;
 
@@ -118,7 +70,8 @@ export class UsherEmployerComponent implements OnInit {
               private tabSvc: TabbarService,
               private authSvc: AuthService,
               private userSvc: UserService,
-              private overlaySvc: OverlayService) {
+              private overlaySvc: OverlayService,
+              private jobSvc: JobService) {
     navSvc.set({title: '登记基本信息'});
     tabSvc.set({show: false});
   }
@@ -129,41 +82,58 @@ export class UsherEmployerComponent implements OnInit {
     this.profileForm = new FormGroup({
 
       // 基本资料
-      uid: new FormControl('', [Validators.required]),
-      name: new FormControl('', [Validators.required]),
+      key: new FormControl('', [Validators.required]),
+      username: new FormControl('', [Validators.required]),
       sex: new FormControl('', [Validators.required]),
       birthday: new FormControl('', [Validators.required]),
-      weight: new FormControl('', [Validators.required]),
-      height: new FormControl('', [Validators.required]),
 
-      // 服役信息
-      enlist: new FormControl('', [Validators.required]),
-      demobilized: new FormControl('', [Validators.required]),
-      services: new FormControl('', [Validators.required]),
-      commendations: new FormControl('', [Validators.required]),
-
-      // 驾驶技能
-      drivingLicense: new FormControl('', [Validators.required]),
-      drivingAge: new FormControl('', [Validators.required]),
-      drivingMileage: new FormControl('', [Validators.required]),
+      // 企业信息
+      companyname: new FormControl('', [Validators.required]),
+      tradeid: new FormControl('', [Validators.required]),
+      tradename: new FormControl('', [Validators.required]),
+      address: new FormControl('', [Validators.required]),
+      post: new FormControl('', [Validators.required]),
+      mobile: new FormControl('', [Validators.required, Validators.max(19999999999), Validators.min(10000000000)]),
+      email: new FormControl('', [Validators.required, Validators.email])
     });
 
     this.location.onPopState(state => {
       this.overlaySvc.hide();
     });
 
-    this.profileForm.get('uid').setValue(this.user);
+    this.profileForm.get('key').setValue(this.user.key);
+
+    this.jobSvc.getIndustry().then(res => {
+      if (res.code === '0000') {
+        this.industries = resetData(res.result);
+      }
+    });
 
     this.userSvc.get(this.user.key).then(res => {
       if (res.code === '0000') {
-        this.userInfo = res.result;
-        console.log(res);
+        console.log(res.result);
+        this.profileForm.get('username').setValue(res.result.user.username);
+        this.profileForm.get('sex').setValue(res.result.user.sex);
+        this.profileForm.get('birthday').setValue(res.result.user.birthday);
+        this.profileForm.get('mobile').setValue(res.result.user.mobile);
+        this.profileForm.get('email').setValue(res.result.user.email);
+        if (res.result.company) {
+          this.profileForm.get('companyname').setValue(res.result.company.companyname);
+          this.profileForm.get('tradeid').setValue(res.result.company.tradeid);
+          this.profileForm.get('tradename').setValue(res.result.company.tradename);
+          this.profileForm.get('address').setValue(res.result.company.address);
+        }
+        if (res.result.userCompany) {
+          this.profileForm.get('post').setValue(res.result.userCompany.post);
+        }
       }
     });
   }
 
   setSex(sex) {
     this.profileForm.get('sex').setValue(sex);
+    this.formControl = 'sex';
+    this.singleSubmit();
   }
 
   showOverlay(target) {
@@ -172,20 +142,12 @@ export class UsherEmployerComponent implements OnInit {
     this.overlaySvc.show();
   }
 
-  showData(target) {
-    const defaultSelect = getIndex(this.pickerData[target], 'value', this.profileForm.get(target).value) || 0;
-    this.pickerSvc.show([this.pickerData[target]], '', [defaultSelect], {
-      cancel: '取消',
-      confirm: '确认'
-    }).subscribe(res => {
-      this.profileForm.get(target).setValue(res.value);
-    });
-  }
-
   showDate(type, target) {
+    this.formControl = target;
     const defaultDate = this.profileForm.get(target).value || '1998-01';
     this.pickerSvc.showDateTime(type, '', new Date(defaultDate)).subscribe(res => {
       this.profileForm.get(target).setValue(res.formatValue);
+      this.singleSubmit();
     });
   }
 
@@ -196,23 +158,50 @@ export class UsherEmployerComponent implements OnInit {
     });
   }
 
+  setIndustry(industry) {
+    this.profileForm.get('tradeid').setValue(industry.code);
+    this.profileForm.get('tradename').setValue(industry.name);
+  }
+
+  save() {
+    this.overlaySvc.hide();
+    this.location.back();
+
+    const body = {};
+    body['key'] = this.profileForm.get('key').value;
+    body['tradeid'] = this.profileForm.get('tradeid').value;
+    body['tradename'] = this.profileForm.get('tradename').value;
+    this.toastSvc.loading('', 99999);
+    this.userSvc.set(body).then(res => {
+      this.toastSvc.hide();
+    });
+  }
+
   overlaySubmit() {
     if (this.profileForm.get(this.formControl).invalid) {
       return false;
     }
-    this.toastSvc.show();
-    this.toastSvc.hide();
     this.overlaySvc.hide();
     this.location.back();
+    this.singleSubmit();
+  }
+
+  singleSubmit() {
+    const body = {};
+    body['key'] = this.profileForm.get('key').value;
+    body[this.formControl] = this.profileForm.get(this.formControl).value;
+    this.toastSvc.loading('', 99999);
+    this.userSvc.set(body).then(res => {
+      this.toastSvc.hide();
+      console.log(res);
+    });
   }
 
   onSubmit() {
-    console.log(this.profileForm.value);
-    this.dialogSvc.show({content: '登记成功', cancel: '找工作', confirm: '完善资料'}).subscribe(data => {
-      if (data.value) {
-        this.router.navigate(['/resume/edit']);
-      }
-    });
+    if (this.profileForm.invalid) {
+      return false;
+    }
+    this.router.navigate(['/employer/qualify']);
   }
 
 }

@@ -1,0 +1,65 @@
+<div class="content-scrollable">
+  <div class="post-form">
+    <div class="weui-cells">
+      <a (click)="showPicker()" class="weui-cell weui-cell_access">
+        <div class="weui-cell__bd">
+          <p>城市</p>
+        </div>
+        <div class="weui-cell__ft">
+          {{addressForm.get('addressarea').value ? addressForm.get('addressprovince').value + addressForm.get('addresscity').value + addressForm.get('addressarea').value : '请选择'}}
+        </div>
+      </a>
+    </div>
+
+    <div class="weui-cells">
+      <a (click)="showOverlay('street')" class="weui-cell weui-cell_access">
+        <div class="weui-cell__bd">
+          <p>街道/写字楼</p>
+        </div>
+        <div class="weui-cell__ft">{{addressForm.get('street').value ? addressForm.get('street').value : '请填写'}}</div>
+      </a>
+      <a (click)="showOverlay('doornumber')" class="weui-cell weui-cell_access">
+        <div class="weui-cell__bd">
+          <p>门牌（选填）</p>
+        </div>
+        <div class="weui-cell__ft">{{addressForm.get('doornumber').value ? addressForm.get('doornumber').value : '请填写'}}</div>
+      </a>
+    </div>
+
+  </div>
+</div>
+
+<div class="btns-group">
+  <a (click)="submit()" class="btn-twitter">确认</a>
+</div>
+
+<app-overlay>
+  <div [formGroup]="addressForm" class="weui-cells weui-cells_form">
+    <div *ngIf="formControl === 'street'" class="weui-cell"
+         [ngClass]="{'weui-cell_warn':addressForm.get('street').invalid}">
+      <div class="weui-cell__hd"><label class="weui-label">街道/写字楼</label></div>
+      <div class="weui-cell__bd">
+        <input class="weui-input" formControlName="street" placeholder="请输入职位名称">
+      </div>
+      <div class="weui-cell__ft">
+        <i class="weui-icon-warn"></i>
+      </div>
+    </div>
+
+    <div *ngIf="formControl === 'doornumber'" class="weui-cell"
+         [ngClass]="{'weui-cell_warn':addressForm.get('doornumber').invalid}">
+      <div class="weui-cell__hd"><label class="weui-label">门牌（选填）</label></div>
+      <div class="weui-cell__bd">
+        <input class="weui-input" formControlName="doornumber" placeholder="请输入楼号/门牌号等，如4楼 406室">
+      </div>
+      <div class="weui-cell__ft">
+        <i class="weui-icon-warn"></i>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="btns-group">
+    <a (click)="overlaySubmit()" class="btn-twitter">确定</a>
+  </div>
+</app-overlay>

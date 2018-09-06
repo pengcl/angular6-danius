@@ -1,0 +1,94 @@
+<div class="user-info weui-panel weui-panel_access">
+  <div class="weui-panel__bd">
+    <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+      <div class="weui-media-box__hd">
+        <img class="avatar weui-media-box__thumb" src="/assets/images/avatar.jpg" alt="">
+      </div>
+      <div class="weui-media-box__bd">
+        <h4 class="weui-media-box__title">杨洋</h4>
+        <p class="weui-media-box__desc">23岁 · 174CM · 75KG</p>
+        <p class="weui-media-box__desc"><span class="ui-label label-default">C1驾照</span><span class="ui-label label-default">5年军龄</span></p>
+      </div>
+      <div class="weui-media-box__ft">上次更新：3天前</div>
+    </a>
+  </div>
+  <div class="weui-panel__ft">
+    <div class="statistics icons-group weui-flex">
+      <div routerLink="/employee/seeker/invited" class="weui-flex__item">
+        <span class="weui-grid__icon">
+          <i class="colors green icons icons-interview"></i><em class="">3</em>
+        </span>
+        <span class="weui-grid__label">沟通过</span>
+      </div>
+      <div routerLink="/employee/seeker/interviewed" class="weui-flex__item">
+        <span class="weui-grid__icon">
+          <i class="colors blue icons icons-handshake"></i><em>19</em>
+        </span>
+        <span class="weui-grid__label">已面试</span>
+      </div>
+      <div routerLink="/employee/seeker/delivered" class="weui-flex__item">
+        <span class="weui-grid__icon">
+          <i class="colors orange icons icons-resume"></i><em>7</em>
+        </span>
+        <span class="weui-grid__label">已投递</span>
+      </div>
+      <div routerLink="/employee/seeker/wanted" class="weui-flex__item">
+        <span class="weui-grid__icon">
+          <i class="colors red icons icons-collect"></i><em>7</em>
+        </span>
+        <span class="weui-grid__label">感兴趣</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="menu">
+  <div class="weui-cells">
+
+    <a routerLink="/employee/resume/edit" class="weui-cell weui-cell_access">
+      <div class="weui-cell__hd"><i class="icons icons-attention_fill"></i></div>
+      <div class="weui-cell__bd">
+        <p>查看简历</p>
+      </div>
+      <div class="weui-cell__ft" style="font-size: 0">
+        <span style="vertical-align:middle; font-size: 0.13rem">未创建</span>
+        <span class="weui-badge weui-badge_dot" style="margin-left: 0.05rem;margin-right: 0.05rem;"></span>
+      </div>
+    </a>
+    <a routerLink="/employee/intention/list" class="weui-cell weui-cell_access">
+      <div class="weui-cell__hd"><i class="icons icons-position"></i></div>
+      <div class="weui-cell__bd">
+        <p>求职意向</p>
+      </div>
+      <div class="weui-cell__ft">在职-考虑机会</div>
+    </a>
+    <a routerLink="/employee/follow/companies" class="weui-cell weui-cell_access">
+      <div class="weui-cell__hd"><i class="icons icons-company"></i></div>
+      <div class="weui-cell__bd">
+        <p>关注公司</p>
+      </div>
+      <div class="weui-cell__ft">您关注了 <em>5</em> 家公司</div>
+    </a>
+    <a routerLink="/usher/identity" [queryParams]="{'redirect':'/auth/signIn'}" class="weui-cell weui-cell_access">
+      <div class="weui-cell__hd"><i class="icons icons-exchange"></i></div>
+      <div class="weui-cell__bd">
+        <p>切换身份</p>
+      </div>
+      <div class="weui-cell__ft">当前身份：{{user.type === 2 ? '老板' : '求职者'}}</div>
+    </a>
+    <a class="weui-cell weui-cell_access" href="javascript:;">
+      <div class="weui-cell__hd"><i class="icons icons-manager"></i></div>
+      <div class="weui-cell__bd">
+        <p>关于我们</p>
+      </div>
+      <div class="weui-cell__ft">兵哥在线是一家集求职招聘为一体的...</div>
+    </a>
+    <a (click)="logout()" class="weui-cell weui-cell_access">
+      <div class="weui-cell__hd"><i class="icons icons-logout"></i></div>
+      <div class="weui-cell__bd">
+        <p>退出登录</p>
+      </div>
+      <div class="weui-cell__ft">当前登录 <em>5</em> 分钟</div>
+    </a>
+  </div>
+</div>

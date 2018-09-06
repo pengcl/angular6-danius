@@ -1,0 +1,98 @@
+<div class="content-scrollable">
+  <div class="weui-cells__title">个人信息</div>
+  <div class="weui-cells">
+    <label for="avatar" class="weui-cell weui-cell_access">
+      <div class="weui-cell__bd">
+        <p>头像</p>
+      </div>
+      <div class="weui-cell__ft">
+          <div *ngIf="profileForm.get('headimage').value && uploader.queue.length === 0"
+               class="avatar weui-uploader__file">
+            <img src="{{config.prefix.wApi + profileForm.get('headimage').value}}">
+          </div>
+          <div class="avatar weui-uploader__file" *ngFor="let item of uploader.queue.slice(uploader.queue.length - 1)"
+               [weui-thumb]="item._file"
+               [ngClass]="{'weui-uploader__file_status': item.isError}">
+            <div class="weui-uploader__file-content" *ngIf="item.isUploading">{{item.progress}}%</div>
+            <div class="weui-uploader__file-content" *ngIf="item.isError">
+              <i class="weui-icon-warn"></i>
+            </div>
+          </div>
+          <div style="display: none" class="avatar weui-uploader__input-box">
+            <input id="avatar" name="avatar" class="weui-uploader__input" type="file" accept="image/*"
+                   [weui-uploader-file]="uploader">
+          </div>
+      </div>
+    </label>
+    <a (click)="showOverlay('username')" class="weui-cell weui-cell_access">
+      <div class="weui-cell__bd">
+        <p>姓名</p>
+      </div>
+      <div class="weui-cell__ft">{{profileForm.get('username').value ? profileForm.get('username').value : '未填写'}}</div>
+    </a>
+    <a (click)="showOverlay('post')" class="weui-cell weui-cell_access">
+      <div class="weui-cell__bd">
+        <p>职务</p>
+      </div>
+      <div class="weui-cell__ft">{{profileForm.get('post').value ? profileForm.get('post').value : '未填写'}}</div>
+    </a>
+    <a (click)="showOverlay('email')" class="weui-cell weui-cell_access">
+      <div class="weui-cell__bd">
+        <p>邮箱</p>
+      </div>
+      <div class="weui-cell__ft">{{profileForm.get('email').value ? profileForm.get('email').value : '未填写'}}</div>
+    </a>
+  </div>
+
+  <div class="weui-cells__title">企业信息</div>
+  <div class="weui-cells">
+    <a routerLink="/employer/company/index" class="weui-cell weui-cell_access">
+      <div class="weui-cell__bd">
+        <p>我的公司</p>
+      </div>
+      <div class="weui-cell__ft">资料未完善</div>
+    </a>
+  </div>
+</div>
+
+<app-overlay>
+  <div [formGroup]="profileForm" class="weui-cells weui-cells_form">
+    <div *ngIf="formControl === 'username'" class="weui-cell"
+         [ngClass]="{'weui-cell_warn':profileForm.get('username').invalid && profileForm.get('username').dirty}">
+      <div class="weui-cell__hd"><label class="weui-label">姓名</label></div>
+      <div class="weui-cell__bd">
+        <input class="weui-input" formControlName="username" placeholder="请输入您的姓名">
+      </div>
+      <div class="weui-cell__ft">
+        <i class="weui-icon-warn"></i>
+      </div>
+    </div>
+    <div *ngIf="formControl === 'post'" class="weui-cell"
+         [ngClass]="{'weui-cell_warn':profileForm.get('post').invalid && profileForm.get('post').dirty}">
+      <div class="weui-cell__hd"><label class="weui-label">职务</label></div>
+      <div class="weui-cell__bd">
+        <input class="weui-input" formControlName="post" placeholder="请输入您的职务">
+      </div>
+      <div class="weui-cell__ft">
+        <i class="weui-icon-warn"></i>
+      </div>
+    </div>
+    <div *ngIf="formControl === 'email'" class="weui-cell"
+         [ngClass]="{'weui-cell_warn':profileForm.get('email').invalid && profileForm.get('email').dirty}">
+      <div class="weui-cell__hd"><label class="weui-label">邮箱</label></div>
+      <div class="weui-cell__bd">
+        <input class="weui-input" formControlName="email" placeholder="请输入您的邮箱">
+      </div>
+      <div class="weui-cell__ft">
+        <i class="weui-icon-warn"></i>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="weui-cells">
+    <a (click)="overlaySubmit()" class="weui-cell">
+      <div class="weui-cell__bd" style="text-align: center">确定</div>
+    </a>
+  </div>
+</app-overlay>

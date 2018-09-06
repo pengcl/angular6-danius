@@ -1,0 +1,42 @@
+.weui-panel {
+  margin-top: 0.1rem;
+  &:before, &:after {
+    display: none;
+  }
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+.weui-media-box__hd {
+  margin: 0 0 0 0.8em;
+  align-self: start;
+  width: 0.55rem;
+  height: 0.55rem;
+  img {
+    border-radius: 0.05rem;
+  }
+}
+
+.weui-media-box__bd {
+  .weui-media-box__title {
+    line-height: 1;
+    margin-top: 0.05rem;
+  }
+  .weui-media-box__address {
+    font-size: 0.12rem;
+    margin: 0.1rem 0;
+  }
+  .weui-media-box__desc {
+
+  }
+}
+
+.weui-cell_link {
+  padding: 0.1rem 0.15rem;
+  font-size: 0.13rem;
+  color: #000;
+  &:before {
+    display: none;
+  }
+}

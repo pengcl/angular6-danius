@@ -1,0 +1,171 @@
+<div class="content-scrollable">
+  <div class="weui-panel">
+    <div class="weui-panel__bd">
+      <a routerLink="/employer/company/base" class="weui-media-box weui-media-box_appmsg weui-media-box_access">
+        <div class="weui-media-box__hd">
+          <img *ngIf="comForm.get('headerimage').value" class="weui-media-box__thumb"
+               [src]="config.prefix.wApi + comForm.get('headerimage').value" alt="">
+        </div>
+        <div class="weui-media-box__bd">
+          <h4 class="weui-media-box__title">
+            {{comForm.get('shortname').value}} | {{comForm.get('tradename').value}}</h4>
+          <p class="weui-media-box__desc">{{comForm.get('companyname').value}}</p>
+        </div>
+        <div class="weui-media-box__ft"></div>
+      </a>
+    </div>
+  </div>
+  <div class="weui-cells__title">企业信息</div>
+  <div class="weui-cells">
+    <a class="weui-cell weui-cell_access">
+      <div class="avatars weui-cell__bd">
+        <span class="avatar">
+          <img src="/assets/images/avatars/boss.png">
+        </span>
+        <span class="avatar">
+          <img src="/assets/images/avatars/soldier.png">
+        </span>
+      </div>
+      <div class="weui-cell__ft">
+        3位招聘者
+      </div>
+    </a>
+    <a (click)="showPicker('staffsize')" class="weui-cell weui-cell_access">
+      <div class="weui-cell__hd">
+        <i class="icons icons-managers"></i>
+      </div>
+      <div class="weui-cell__bd">
+        <p>公司规模</p>
+      </div>
+      <div class="weui-cell__ft">
+        {{comForm.get('staffsize').value ? getValue('staffsize') : '未填写'}}
+      </div>
+    </a>
+    <a (click)="showPicker('financingprogress')" class="weui-cell weui-cell_access">
+      <div class="weui-cell__hd">
+        <i class="icons icons-fmomey"></i>
+      </div>
+      <div class="weui-cell__bd">
+        <p>融资阶段</p>
+      </div>
+      <div class="weui-cell__ft">
+        {{comForm.get('financingprogress').value ? getValue('financingprogress') : '未填写'}}
+      </div>
+    </a>
+    <a (click)="showOverlay('strengths')" class="weui-cell weui-cell_access">
+      <div class="weui-cell__hd">
+        <i class="icons icons-advantage"></i>
+      </div>
+      <div class="weui-cell__bd">
+        <p>公司亮点</p>
+      </div>
+      <div class="weui-cell__ft">{{comForm.get('excellencenames').value ? comForm.get('excellencenames').value :
+        '未填写'}}
+      </div>
+    </a>
+    <a (click)="showOverlay('website')" class="weui-cell weui-cell_access">
+      <div class="weui-cell__hd">
+        <i class="icons icons-site"></i>
+      </div>
+      <div class="weui-cell__bd">
+        <p>公司官网</p>
+      </div>
+      <div class="weui-cell__ft">{{comForm.get('website').value ? comForm.get('website').value : '未填写'}}</div>
+    </a>
+    <a routerLink="/employer/company/albums" class="weui-cell weui-cell_access">
+      <div class="weui-cell__hd">
+        <i class="icons icons-album"></i>
+      </div>
+      <div class="weui-cell__bd">
+        <p>公司图片</p>
+      </div>
+      <div class="weui-cell__ft">共<em>{{images.length}}</em>张</div>
+    </a>
+    <a (click)="showOverlay('introduction')" class="weui-cell weui-cell_access">
+      <div class="weui-cell__hd">
+        <i class="icons icons-company"></i>
+      </div>
+      <div class="weui-cell__bd">
+        <p>公司简介</p>
+      </div>
+      <div class="weui-cell__ft">{{comForm.get('introduction').value ? comForm.get('introduction').value :
+        '未填写'}}
+      </div>
+    </a>
+    <a routerLink="/employer/company/product/list" class="weui-cell weui-cell_access">
+      <div class="weui-cell__hd">
+        <i class="icons icons-product"></i>
+      </div>
+      <div class="weui-cell__bd">
+        <p>产品介绍</p>
+      </div>
+      <div class="avatars weui-cell__ft"><span *ngFor="let prod of prods.slice(0,2)" class="avatar"><img
+        src="{{config.prefix.wApi + prod.imagepath}}"></span><span *ngIf="prods.length > 2" class="avatar"><i class="icons icons-more"></i></span><span *ngIf="prods.length === 0">还没有添加高管</span></div>
+    </a>
+    <a routerLink="/employer/company/staff/list" class="weui-cell weui-cell_access">
+      <div class="weui-cell__hd">
+        <i class="icons icons-manager"></i>
+      </div>
+      <div class="weui-cell__bd">
+        <p>高管介绍</p>
+      </div>
+      <div class="avatars weui-cell__ft"><span *ngFor="let man of mans.slice(0,2)" class="avatar"><img
+        src="{{config.prefix.wApi + man.headimage}}"></span><span *ngIf="mans.length > 2" class="avatar"><i class="icons icons-more"></i></span><span *ngIf="mans.length === 0">还没有添加高管</span></div>
+    </a>
+  </div>
+</div>
+
+<app-overlay>
+  <div [formGroup]="comForm" class="weui-cells weui-cells_form">
+    <div *ngIf="formControl === 'username'" class="weui-cell"
+         [ngClass]="{'weui-cell_warn':comForm.get('username').invalid && comForm.get('username').dirty}">
+      <div class="weui-cell__hd"><label class="weui-label">民族</label></div>
+      <div class="weui-cell__bd">
+        <input class="weui-input" formControlName="username" placeholder="请输入您的姓名">
+      </div>
+      <div class="weui-cell__ft">
+        <i class="weui-icon-warn"></i>
+      </div>
+    </div>
+    <div *ngIf="formControl === 'website'" class="weui-cell"
+         [ngClass]="{'weui-cell_warn':comForm.get('website').invalid && comForm.get('website').dirty}">
+      <div class="weui-cell__hd"><label class="weui-label">网站</label></div>
+      <div class="weui-cell__bd">
+        <input class="weui-input" formControlName="website" placeholder="请输入您公司的网址">
+      </div>
+      <div class="weui-cell__ft">
+        <i class="weui-icon-warn"></i>
+      </div>
+    </div>
+    <div *ngIf="formControl === 'introduction'" class="weui-cell"
+         [ngClass]="{'weui-cell_warn':comForm.get('introduction').invalid && comForm.get('introduction').dirty}">
+      <div class="weui-cell__bd">
+        <textarea class="weui-textarea" formControlName="introduction" placeholder="请输入您的公司简介" rows="3"></textarea>
+        <div class="weui-textarea-counter"><span>0</span>/200</div>
+      </div>
+    </div>
+    <div *ngIf="formControl === 'strengths'">
+      <div class="weui-cells__title">输入或选择技能标签,最多3个</div>
+      <div class="label-container">
+        <div class="labels weui-grids">
+          <div *ngFor="let strength of strengths" class="weui-grid">
+            <div (click)="setStrengths(strength)" class="label-box"
+                 [ngClass]="{'curr':comForm.get('excellencenames').value.indexOf(strength.excellencename) !== -1}">
+              {{strength.excellencename}}
+            </div>
+          </div>
+          <div class="weui-grid">
+            <div (click)="moreStrength()" class="more label-box">+ 添加</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="weui-cells">
+    <a (click)="submit()" class="weui-cell">
+      <div class="weui-cell__bd" style="text-align: center">确定</div>
+    </a>
+  </div>
+</app-overlay>

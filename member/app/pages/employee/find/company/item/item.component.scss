@@ -1,0 +1,143 @@
+.weui-panel {
+  &:before, &:after {
+    display: none;
+  }
+}
+
+.weui-media-box__hd {
+  margin: 0.05rem 0.8em 0 0;
+  align-self: start;
+  width: 0.55rem;
+  height: 0.55rem;
+  img {
+    border-radius: 0.05rem;
+  }
+}
+
+.weui-media-box__bd {
+  align-self: start;
+  .weui-media-box__title {
+    line-height: 1;
+    margin-top: 0.05rem;
+    padding-right: 0.52rem;
+    position: relative;
+    .actions {
+      position: absolute;
+      white-space: nowrap;
+      right: 0;
+      top: 0;
+      i {
+        margin-left: 0.1rem;
+        &.icons-star_fill {
+          color: #999;
+        }
+      }
+    }
+  }
+  .weui-media-box__desc {
+    line-height: 1;
+    margin-top: 0.1rem;
+  }
+
+  ul {
+    margin-top: 0.15rem;
+    margin-left: 0.15rem;
+    li {
+      font-size: 0.12rem;
+      color: #999;
+    }
+  }
+}
+
+weui-navbar {
+  margin-top: 0.1rem;
+  background: #fff;
+  height: auto !important;
+  .weui-media-box__bd {
+    .weui-media-box__desc {
+      margin-top: 0.15rem;
+      line-height: 1.6;
+      -webkit-line-clamp: 3;
+      b {
+        color: #000;
+        margin-left: 0.15rem;
+        font-weight: normal;
+      }
+      & + .weui-media-box__desc {
+        margin-top: 0.05rem;
+      }
+    }
+  }
+}
+
+.banner {
+  margin: 0 -0.15rem;
+  .img-box {
+    display: block;
+    width: 88% !important;
+    margin: 0.1rem 0.05rem;
+    border-radius: 0.04rem;
+    height: 1.5rem !important;
+    overflow: hidden !important;
+    img {
+      display: block;
+      width: 100%;
+      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
+      transform: translate3d(0, -50%, 0);
+      margin-top: 0.75rem;
+    }
+  }
+}
+
+.products, .managers {
+  margin: 0.15rem -0.15rem 0;
+  .swiper-slide {
+    width: 60% !important;
+    box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 0.04rem;
+    margin: 0.1rem 0.075rem;
+    &:first-child {
+      margin-left: 0.15rem;
+    }
+    &:last-child {
+      margin-right: 0.15rem;
+    }
+    .weui-media-box {
+      .weui-media-box__hd {
+        width: 0.44rem;
+        height: 0.44rem;
+        margin: 0 0.08rem 0 0;
+        img {
+          box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+      }
+      .weui-media-box__bd {
+        align-self: center;
+        .weui-media-box__title {
+          margin-top: 0;
+        }
+        .weui-media-box__desc {
+          margin-top: 0.06rem;
+          line-height: 1.2;
+          min-height: 0.432rem;
+        }
+      }
+    }
+  }
+}
+
+.managers {
+  .swiper-slide {
+    width: 88% !important;
+  }
+}
+
+.weui-cell_link {
+  padding: 0.1rem 0.15rem;
+  font-size: 0.13rem;
+  color: #000;
+  &:before {
+    display: none;
+  }
+}
+

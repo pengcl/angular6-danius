@@ -27,14 +27,14 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
 
-    const uid = route.queryParams['uid'];
+    // const uid = route.queryParams['uid'];
     const openid = route.queryParams['openid'];
     const queryParams = {
       openid: openid ? openid : ''
     };
-    if (uid) {
+    /*if (uid) {
       this.authSvc.updateLoginStatus(uid);
-    }
+    }*/
 
     const url: string = state.url;
     return this.checkLogin(url, queryParams);

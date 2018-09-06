@@ -10,3 +10,51 @@
     border-radius: 1em;
   }
 }
+
+.label-container {
+  .ui-label {
+    background: #fff;
+    color: #000;
+    position: relative;
+    &:after {
+      width: 200%;
+      height: 200%;
+      left: 0;
+      top: 0;
+      transform: scale(0.5);
+      content: ' ';
+      position: absolute;
+      border: 1px solid #ccc;
+      transform-origin: 0 0;
+      border-radius: 0.08rem;
+    }
+    &.curr {
+      background: #eee;
+      color: #666;
+    }
+  }
+
+  .labels {
+    margin: 0 -0.075rem;
+  }
+  .label-box {
+    margin: 0.075rem;
+    padding: 0.09rem 0;
+    font-size: 0.12rem;
+    border-radius: 0.15rem;
+    background: #F5F5F5;
+    line-height: 1;
+    text-align: center;
+    box-sizing: border-box;
+    &.curr {
+      background: #CC3629;
+      color: #fff;
+    }
+    &.more {
+      border: 0.01rem solid #4CA6FF;
+      color: #4CA6FF;
+      padding: 0.08rem 0;
+    }
+  }
+
+}

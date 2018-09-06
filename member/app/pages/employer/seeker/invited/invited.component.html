@@ -1,0 +1,15 @@
+<div class="weui-panel">
+  <div class="weui-panel__bd">
+    <a *ngFor="let message of messages" [routerLink]="['/employer/message/item',message.positionid]"
+       [queryParams]="{candidateid:message.candidateid}" class="weui-media-box weui-media-box_appmsg">
+      <div class="weui-media-box__hd">
+        <img class="avatar" src="{{config.prefix.wApi + message.candidateimg}}">
+      </div>
+      <div class="weui-media-box__bd">
+        <h4 class="weui-media-box__title">{{message.candidatename}}<span class="right date">{{message.recordtime | formatDate}}</span>
+        </h4>
+        <p class="weui-media-box__desc">{{message.chatrecord}}</p>
+      </div>
+    </a>
+  </div>
+</div>

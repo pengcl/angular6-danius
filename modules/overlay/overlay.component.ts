@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit, OnChanges} from '@angular/core';
 import {OverlayService} from './overlay.service';
 
 @Component({
@@ -6,16 +6,24 @@ import {OverlayService} from './overlay.service';
   templateUrl: './overlay.component.html',
   styleUrls: ['./overlay.component.scss']
 })
-export class OverlayComponent implements OnInit {
+export class OverlayComponent implements OnInit, OnChanges {
 
-  aniClass;
+  state;
+  @Input() autoHeight?;
 
   constructor(private overlaySvc: OverlayService) {
     overlaySvc.get().subscribe(res => {
-      this.aniClass = (!!res ? 'fadeInUpBig animated' : 'fadeOutDownBig animated');
+      this.state = res;
     });
   }
 
   ngOnInit() {
+  }
+
+  hide() {
+    this.overlaySvc.hide();
+  }
+
+  ngOnChanges() {
   }
 }

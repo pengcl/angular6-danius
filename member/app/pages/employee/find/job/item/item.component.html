@@ -1,0 +1,143 @@
+<div *ngIf="job" class="content-scrollable">
+  <div class="job weui-panel weui-panel_access">
+    <div class="weui-panel__bd">
+      <div class="weui-media-box weui-media-box_appmsg weui-media-box_access">
+        <div class="weui-media-box__bd">
+          <h4 class="weui-media-box__title">{{job.postname}} <em class="salary">{{job.salarybegin}}k - {{job.salaryend}}k</em>
+            <span class="right actions">
+              <i (click)="follow()" class="icons icons-star_fill"></i>
+              <i class="icons icons-share"></i>
+            </span>
+          </h4>
+          <div class="weui-grids">
+            <div class="weui-grid">
+              <i class="icons icons-address"></i><span>{{job.addresscity}}{{job.addressarea}}</span>
+            </div>
+            <div class="weui-grid">
+              <i class="icons icons-position"></i><span>{{job.experiencetype | label : experiences}}</span>
+            </div>
+            <div class="weui-grid">
+              <i class="icons icons-edu"></i><span>{{job.limiteducationtype | label : educations}}</span>
+            </div>
+            <div class="weui-grid">
+              <i class="icons icons-soldier"></i><span>{{job.serviceage | label : lengthOfMilitary}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="company weui-panel weui-panel_access">
+    <div class="weui-panel__bd">
+      <div class="weui-media-box weui-media-box_appmsg weui-media-box_access">
+        <div class="weui-media-box__bd">
+          <h4 class="weui-media-box__title">快点科技有限公司</h4>
+          <p class="weui-media-box__desc">B轮 · 100-499人 · 新闻</p>
+          <div class="ui-labels weui-grids">
+            <div class="weui-grid">
+              <span class="ui-label">带薪年假</span>
+            </div>
+            <div class="weui-grid">
+              <span class="ui-label">年度旅游</span>
+            </div>
+            <div class="weui-grid">
+              <span class="ui-label">地铁周边</span>
+            </div>
+            <div class="weui-grid">
+              <span class="ui-label">扁平管理</span>
+            </div>
+            <div class="weui-grid">
+              <span class="ui-label">五险一金</span>
+            </div>
+            <div class="weui-grid">
+              <span class="ui-label">朝九晚六</span>
+            </div>
+          </div>
+        </div>
+        <div class="weui-media-box__hd">
+          <img src="/assets/images/avatars/1.jpg">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="weui-panel weui-panel_access">
+    <div class="weui-panel__bd">
+      <div style="padding-bottom: 0" class="weui-media-box weui-media-box_appmsg weui-media-box_access">
+        <div class="weui-media-box__bd">
+          <h4 class="weui-media-box__title">职位详情</h4>
+          <div class="text-area">
+            <p>司机职位要求</p>
+            <p>1.拥有C1驾照；20岁-40岁</p>
+            <p>2.有良好的心理素质；</p>
+            <p>3.尽心尽职，安全驾龄在2年以上，熟悉当地</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="weui-panel__ft">
+      <a href="javascript:void(0);" class="weui-cell weui-cell_access weui-cell_link">
+        <div class="weui-cell__bd"><span class="colors blue ">查看全部</span></div>
+        <span class="weui-cell__ft"></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="weui-panel weui-panel_access">
+    <div class="weui-panel__bd">
+      <div class="weui-media-box weui-media-box_appmsg weui-media-box_access">
+        <div class="weui-media-box__bd">
+          <h4 class="weui-media-box__title">技能要求</h4>
+          <div class="ui-labels weui-grids">
+            <div *ngFor="let item of job.skillnames.split(',')" class="weui-grid">
+              <span class="ui-label">{{item}}</span>
+            </div>
+          </div>
+        </div>
+        <div class="weui-media-box__hd"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="weui-panel weui-panel_access">
+    <div class="weui-panel__bd">
+      <div style="padding-bottom: 0" class="weui-media-box weui-media-box_appmsg weui-media-box_access">
+        <div class="weui-media-box__bd">
+          <h4 class="weui-media-box__title">公司介绍</h4>
+          <p class="weui-media-box__desc">广州泽仁投资管理有限公司是一家集金融管理、金融理财、房地产开发、工程建设、石油化工、贸易等综合性企业集团，公司注册资金叁仟万元...</p>
+        </div>
+      </div>
+    </div>
+    <div class="weui-panel__ft">
+      <a href="javascript:void(0);" class="weui-cell weui-cell_access weui-cell_link">
+        <div class="weui-cell__bd"><span class="colors blue ">查看全部</span></div>
+        <span class="weui-cell__ft"></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="weui-panel weui-panel_access">
+    <div class="weui-panel__hd">职位推荐</div>
+    <div class="weui-panel__bd">
+      <div *ngFor="let job of jobs" [routerLink]="['/employee/find/job/item',job.id]"
+           class="weui-media-box weui-media-box_appmsg weui-media-box_access">
+        <div class="weui-media-box__bd">
+          <h4 class="weui-media-box__title">{{job.postname}} <em class="right">{{job.salarybegin}}k -
+            {{job.salaryend}}k</em></h4>
+          <p class="weui-media-box__address">{{job.companyname}} · {{job.addresscity}} · {{job.addressarea}}</p>
+          <p class="arr weui-media-box__desc"><i class="icons icons-position"></i><span>{{job.experiencetype | label : experiences}}</span><span
+            class="dot">·</span><i
+            class="icons icons-edu"></i><span>{{job.limiteducationtype | label : educations}}</span><span class="dot">·</span><i
+            class="icons icons-soldier"></i><span>{{job.serviceage | label : lengthOfMilitary}}</span></p>
+          <p class="arr weui-media-box__desc"><i style="font-size: 0.14rem" class="icons icon-tags"></i><span
+            *ngFor="let item of job.skillnames.split(','); let i = index"><span class="dot" *ngIf="i !== 0">·</span>{{item}}</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="btns-group">
+  <a [routerLink]="['/employee/message/item',id]" class="btn-primary">立即沟通</a>
+</div>

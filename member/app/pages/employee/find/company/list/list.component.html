@@ -1,0 +1,83 @@
+<div class="finder weui-cells">
+  <div class="filters weui-cell">
+    <div (click)="showFilter(1)" class="weui-cell__bd" [ngClass]="{'curr' : type === 1}"><span>融资</span><i
+      class="icons icons-arrows-down"></i></div>
+    <div (click)="showFilter(2)" class="weui-cell__bd" [ngClass]="{'curr' : type === 2}"><span>规模</span><i
+      class="icons icons-arrows-down"></i></div>
+    <div (click)="showFilter(3)" class="weui-cell__bd" [ngClass]="{'curr' : type === 3}"><span>行业</span><i
+      class="icons icons-arrows-down"></i></div>
+  </div>
+</div>
+<div class="filters-container animated" [ngClass]="{'fadeInDown':typeShow === true,'fadeOutUp':typeShow === false}">
+  <div class="content-scrollable">
+    <div *ngIf="type === 1" class="listType-container">
+      <div class="weui-panel">
+        <div class="weui-panel__bd">
+          <div class="weui-media-box">
+            <div class="weui-grids">
+              <div *ngFor="let finance of finances" class="weui-grid">
+                <span (click)="setFinance(finance)" class="ui-label" [ngClass]="{'curr':params.isrecommend === 1}">{{finance.label}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="type === 2" class="industries-container">
+      <div class="weui-panel">
+        <div class="weui-panel__bd">
+          <div class="weui-media-box">
+            <div class="weui-grids">
+              <div *ngFor="let scope of scopes" class="weui-grid">
+                <span (click)="setScope(scope)" class="ui-label" [ngClass]="{'curr':params.isrecommend === 1}">{{scope.label}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="type === 3" class="industries-container">
+      <div class="weui-panel">
+        <div class="weui-panel__bd">
+          <div class="weui-media-box">
+            <div class="weui-grids">
+              <div class="weui-grid">
+                <span (click)="setIndustry('')" class="ui-label" [ngClass]="{'curr':params.tradeids === ''}">不限</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngFor="let main of industries" class="weui-panel">
+        <div class="weui-panel__hd">{{main.name}}</div>
+        <div class="weui-panel__bd">
+          <div class="weui-media-box">
+            <div class="weui-grids">
+              <div *ngFor="let sub of main.sub" class="weui-grid">
+                <span (click)="setIndustry(sub)" class="ui-label" [ngClass]="{'curr':params.tradeids === sub.code}">{{sub.name}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="btns-group">
+    <a (click)="reset()" class="btn-secondary">重置</a>
+    <a (click)="sure()" class="btn-twitter">确定</a>
+  </div>
+</div>
+<weui-infiniteloader (loadmore)="onLoadMore($event)" #comp>
+  <div *ngFor="let company of companies" class="weui-panel weui-panel_access">
+    <div class="weui-panel__bd">
+      <app-com-item [company]="company" [routerLink]="['/employee/find/company/item',company.id]" class="weui-media-box weui-media-box_appmsg weui-media-box_access"></app-com-item>
+    </div>
+    <div class="weui-panel__ft">
+      <a href="javascript:void(0);" class="weui-cell weui-cell_access weui-cell_link">
+        <div class="weui-cell__bd"><span class="colors blue ">货车司机</span> 等10个职位</div>
+        <span class="weui-cell__ft"></span>
+      </a>
+    </div>
+  </div>
+  <app-no-record *ngIf="companies?.length === 0"></app-no-record>
+</weui-infiniteloader>

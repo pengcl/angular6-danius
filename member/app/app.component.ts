@@ -3,7 +3,6 @@ import {Router, NavigationStart} from '@angular/router';
 import {filter} from 'rxjs/internal/operators';
 
 import {NAV_CONFIG} from './config/navbar.config';
-import {TAB_CONFIG} from './config/tabbar.config';
 import {MENU_CONFIG} from './config/menu.config';
 
 import {MenuService} from '../../modules/menu/menu.service';
@@ -15,7 +14,6 @@ import {MenuService} from '../../modules/menu/menu.service';
 })
 export class AppComponent implements OnInit {
   navConfig = NAV_CONFIG;
-  tabConfig = TAB_CONFIG;
   menuConfig = MENU_CONFIG;
   menuShow = false;
 

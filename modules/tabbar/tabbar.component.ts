@@ -1,7 +1,5 @@
 import {Component, Input, OnInit, OnDestroy} from '@angular/core';
 
-import {TabbarService} from './tabbar.service';
-
 @Component({
   selector: 'app-tabbar',
   templateUrl: './tabbar.component.html',
@@ -10,15 +8,11 @@ import {TabbarService} from './tabbar.service';
 export class TabbarComponent implements OnInit, OnDestroy {
   @Input() config;
 
-  constructor(private tabBarSvc: TabbarService) {
+  constructor() {
+
   }
 
   ngOnInit() {
-    this.tabBarSvc.get().subscribe(res => {
-      this.config = res;
-    });
-
-    this.tabBarSvc.set(this.config);
   }
 
   ngOnDestroy() {

@@ -6,3 +6,38 @@
   font-size: 0.13rem;
   color: #666;
 }
+
+.industries {
+  z-index: 11;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: #f8f8f8;
+  .label-container {
+    text-align: left;
+    font-size: 0;
+    p {
+      font-size: 0.14rem;
+    }
+    .ui-label {
+      font-size: 0.12rem;
+      line-height: 0.2rem;
+      margin: 0.025rem 0.08rem 0.025rem 0;
+      padding: 0 0.08rem;
+      background: #21ba45;
+      color: #fff;
+      border-radius: 0.04rem;
+    }
+  }
+  .weui-panel {
+    &:before, &:after {
+      display: none;
+    }
+  }
+}
+
+.weui-cell__bd {
+  min-width: 6em;
+}
