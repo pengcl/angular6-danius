@@ -10,6 +10,7 @@ import {NavbarService} from '../../../../../../modules/navbar';
 import {TabbarService} from '../../../../../../modules/tabbar';
 import {AuthService} from '../../../../services/auth.service';
 import {UserService} from '../../../../services/user.service';
+import {EmployerService} from '../../../../services/employer.service';
 import {JobService} from '../../../../services/job.service';
 
 @Component({
@@ -35,6 +36,7 @@ export class EmployerSeekerEvaluateComponent implements OnInit {
               private tabSvc: TabbarService,
               private authSvc: AuthService,
               private userSvc: UserService,
+              private employerSvc: EmployerService,
               private jobSvc: JobService) {
     navSvc.set({title: '面试'});
     tabSvc.set({show: false});
@@ -48,6 +50,8 @@ export class EmployerSeekerEvaluateComponent implements OnInit {
       key: new FormControl('', [Validators.required]),
       tags: new FormControl('', [Validators.required]),
     });
+
+    this.employerSvc.getInterview(this.user.key, this.route.snapshot.params['id']).then(res => {});
   }
 
   setState(state) {

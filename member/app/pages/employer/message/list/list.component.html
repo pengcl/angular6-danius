@@ -19,7 +19,7 @@
           <p class="weui-media-box__desc">2位求职者查看</p>
         </div>
       </a>
-      <a *ngFor="let message of messages" [routerLink]="['/employer/message/item',message.positionid]"
+      <a *ngFor="let message of messages" [routerLink]="['/employer/message/item',message.postId]"
          [queryParams]="{candidateid:message.candidateid}" class="weui-media-box weui-media-box_appmsg">
         <div class="weui-media-box__hd">
           <img class="avatar" src="{{config.prefix.wApi + message.candidateimg}}">

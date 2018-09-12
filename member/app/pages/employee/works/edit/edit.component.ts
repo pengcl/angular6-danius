@@ -52,7 +52,6 @@ export class EmployeeWorksEditComponent implements OnInit {
 
     this.userSvc.getWork(this.user.key, this.route.snapshot.params['id']).then(res => {
       if (res.code === '0000') {
-        console.log(res);
         this.profileForm.get('id').setValue(res.result.id);
         this.profileForm.get('shortname').setValue(res.result.shortname);
         this.profileForm.get('rolename').setValue(res.result.rolename);

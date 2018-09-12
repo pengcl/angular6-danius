@@ -19,9 +19,6 @@ import {UsherEmployeeComponent} from './pages/usher/employee/employee.component'
 
 import {PayPreviewComponent} from './pages/pay/preview/preview.component';
 
-import {UploaderAvatarComponent} from './pages/uploader/avatar/avatar.component';
-import {UploaderGalleryComponent} from './pages/uploader/gallery/gallery.component';
-
 export const routes: Routes = [
   {path: 'index', component: IndexComponent, canActivate: [AuthGuard]},
   {path: 'test', component: TestComponent},
@@ -43,9 +40,6 @@ export const routes: Routes = [
     children: employerRoutes,
     canActivate: [AuthGuard]
   },
-
-  {path: 'uploader/avatar', component: UploaderAvatarComponent, canActivate: [AuthGuard]},
-  {path: 'uploader/gallery', component: UploaderGalleryComponent, canActivate: [AuthGuard]},
 
   {path: 'pay/preview/:id', component: PayPreviewComponent, canActivate: [AuthGuard]},
 ];

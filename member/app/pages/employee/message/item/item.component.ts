@@ -6,7 +6,14 @@ import {LocationStrategy} from '@angular/common';
 import {timer as observableTimer, interval as observableInterval, Observable} from 'rxjs';
 
 import {CONFIG} from '../../../../../../config/app.config';
-import {EDUCATIONS_DATA, EXPERIENCES_DATA, LENGTH_OF_MILITARY_DATA} from '../../../../../../config/data';
+import {
+  EDUCATIONS_DATA,
+  EXPERIENCES_DATA,
+  FINANCE_DATA,
+  LENGTH_OF_MILITARY_DATA,
+  SCOPE_DATA,
+  SERVICES_DATA
+} from '../../../../../../config/data';
 
 import {DialogService, PTRComponent} from 'ngx-weui';
 import {NavbarService} from '../../../../../../modules/navbar';
@@ -15,6 +22,7 @@ import {AuthService} from '../../../../services/auth.service';
 import {UserService} from '../../../../services/user.service';
 import {JobService} from '../../../../services/job.service';
 import {ChatService} from '../../../../services/chat.service';
+import {unshiftObj} from '../../../../../../commons/js/utils';
 
 @Component({
   selector: 'app-employee-message-item',
@@ -25,9 +33,9 @@ export class EmployeeMessageItemComponent implements OnInit {
   config = CONFIG;
   user;
 
-  educations = EDUCATIONS_DATA;
-  experiences = EXPERIENCES_DATA;
-  lengthOfMilitary = LENGTH_OF_MILITARY_DATA;
+  educations = unshiftObj(EDUCATIONS_DATA, {label: '不限', value: ''});
+  experiences = unshiftObj(EXPERIENCES_DATA, {label: '不限', value: ''});
+  lengthOfMilitary = unshiftObj(LENGTH_OF_MILITARY_DATA, {label: '不限', value: ''});
 
   id;
   job;
@@ -65,7 +73,7 @@ export class EmployeeMessageItemComponent implements OnInit {
     this.chartForm = new FormGroup({
       key: new FormControl(this.user.key, [Validators.required]),
       candidateid: new FormControl('', [Validators.required]),
-      positionid: new FormControl(this.id, [Validators.required]),
+      postid: new FormControl(this.id, [Validators.required]),
       managementid: new FormControl('', [Validators.required])
     });
 
@@ -73,8 +81,9 @@ export class EmployeeMessageItemComponent implements OnInit {
       key: new FormControl(this.user.key, [Validators.required]),
       immainid: new FormControl('', [Validators.required]),
       senderid: new FormControl('', [Validators.required]),
-      positionid: new FormControl(this.id, [Validators.required]),
+      postid: new FormControl(this.id, [Validators.required]),
       contenttype: new FormControl('', [Validators.required]),
+      contentid: new FormControl('', []),
       content: new FormControl('', [Validators.required]),
       managementid: new FormControl('', [Validators.required]),
       datastate: new FormControl('', [])
@@ -101,7 +110,6 @@ export class EmployeeMessageItemComponent implements OnInit {
             if (res.code === '0000') {
               this.records = res.result.list.reverse();
               this.totalPages = res.result.totalPages;
-              console.log(this.records);
               this.toScroll();
             }
           });
@@ -130,7 +138,7 @@ export class EmployeeMessageItemComponent implements OnInit {
     });
   }
 
-  submit(type, datastate?) {
+  submit(type, datastate?, content?) {
 
     // 响应交互
     if (!datastate) {
@@ -138,6 +146,16 @@ export class EmployeeMessageItemComponent implements OnInit {
     } else {
       this.messageForm.get('datastate').enable();
       this.messageForm.get('datastate').setValue(datastate);
+    }
+
+    if (!content) {
+      this.messageForm.get('contentid').disable();
+    } else {
+      if (content.datastate !== '0') {
+        return false;
+      }
+      this.messageForm.get('contentid').enable();
+      this.messageForm.get('contentid').setValue(content.id);
     }
 
     // 主动交互
@@ -154,7 +172,6 @@ export class EmployeeMessageItemComponent implements OnInit {
     }
 
     this.chatSvc.send(this.messageForm.value).then(res => {
-      console.log(res);
       this.records.push(res.result);
       this.messageForm.get('content').setValue('');
       this.messageForm.get('content').enable();
@@ -174,7 +191,6 @@ export class EmployeeMessageItemComponent implements OnInit {
             this.totalPages = res.result.totalPages;
             ptr.setFinished();
           }
-          console.log(res);
         });
       }
     });

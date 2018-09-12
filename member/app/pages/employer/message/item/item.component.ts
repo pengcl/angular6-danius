@@ -6,7 +6,15 @@ import {LocationStrategy} from '@angular/common';
 import {interval as observableInterval, timer as observableTimer} from 'rxjs';
 
 import {CONFIG} from '../../../../../../config/app.config';
-import {EDUCATIONS_DATA, EXPERIENCES_DATA, LENGTH_OF_MILITARY_DATA} from '../../../../../../config/data';
+import {
+  EDUCATIONS_DATA,
+  EXPERIENCES_DATA,
+  LENGTH_OF_MILITARY_DATA,
+  SALARIES_DATA,
+  SERVICES_DATA
+} from '../../../../../../config/data';
+
+import {unshiftObj} from '../../../../../../commons/js/utils';
 
 import {ToastService, DialogService, PickerService, PTRComponent} from 'ngx-weui';
 import {OverlayService} from '../../../../../../modules/overlay';
@@ -26,9 +34,11 @@ export class EmployerMessageItemComponent implements OnInit {
   config = CONFIG;
   user;
 
-  educations = EDUCATIONS_DATA;
-  experiences = EXPERIENCES_DATA;
-  lengthOfMilitary = LENGTH_OF_MILITARY_DATA;
+  educations = unshiftObj(EDUCATIONS_DATA, {label: '不限', value: ''});
+  experiences = unshiftObj(EXPERIENCES_DATA, {label: '不限', value: ''});
+  lengthOfMilitary = unshiftObj(LENGTH_OF_MILITARY_DATA, {label: '不限', value: ''});
+  salaries = unshiftObj(SALARIES_DATA, {name: '面议', code: '0'});
+  services = unshiftObj(SERVICES_DATA, {name: '不限', code: '100000', sub: [{name: '不限', code: '100100'}]});
 
   id;
   job;
@@ -77,7 +87,7 @@ export class EmployerMessageItemComponent implements OnInit {
     this.chatForm = new FormGroup({
       key: new FormControl(this.user.key, [Validators.required]),
       candidateid: new FormControl(this.candidateid, [Validators.required]),
-      positionid: new FormControl(this.id, [Validators.required]),
+      postid: new FormControl(this.id, [Validators.required]),
       managementid: new FormControl('', [Validators.required])
     });
 
@@ -85,16 +95,18 @@ export class EmployerMessageItemComponent implements OnInit {
       key: new FormControl(this.user.key, [Validators.required]),
       immainid: new FormControl('', [Validators.required]),
       senderid: new FormControl('', [Validators.required]),
-      positionid: new FormControl(this.id, [Validators.required]),
+      postid: new FormControl(this.id, [Validators.required]),
       contenttype: new FormControl('', [Validators.required]),
+      contentid: new FormControl('', []),
       content: new FormControl('', [Validators.required]),
-      managementid: new FormControl('', [Validators.required])
+      managementid: new FormControl('', [Validators.required]),
+      datastate: new FormControl('', [])
     });
 
     this.inviteForm = new FormGroup({
       key: new FormControl(this.user.key, [Validators.required]),
       candidateid: new FormControl(this.candidateid, [Validators.required]),
-      positionid: new FormControl(this.id, [Validators.required]),
+      postid: new FormControl(this.id, [Validators.required]),
       contenttype: new FormControl(6, [Validators.required]),
       interviewtime: new FormControl('', [Validators.required]),
       address: new FormControl('', [Validators.required]),
@@ -145,7 +157,6 @@ export class EmployerMessageItemComponent implements OnInit {
   showPicker() {
     this.pickerSvc.showDateTime('datetime', '', null, new Date()).subscribe(res => {
       this.inviteForm.get('interviewtime').setValue(res.formatValue);
-      console.log(res);
     });
   }
 
@@ -169,13 +180,34 @@ export class EmployerMessageItemComponent implements OnInit {
     });
   }
 
-  submit(type) {
-    this.messageForm.get('contenttype').setValue(type);
+  submit(type, datastate?, content?) {
+
+    // 响应交互
+    if (!datastate) {
+      this.messageForm.get('datastate').disable();
+    } else {
+      this.messageForm.get('datastate').enable();
+      this.messageForm.get('datastate').setValue(datastate);
+    }
+
+    if (!content) {
+      this.messageForm.get('contentid').disable();
+    } else {
+      if (content.datastate !== '0') {
+        return false;
+      }
+      this.messageForm.get('contentid').enable();
+      this.messageForm.get('contentid').setValue(content.id);
+    }
+
+    // 主动交互
     if (type === 0) {
       this.messageForm.get('content').enable();
     } else {
       this.messageForm.get('content').disable();
     }
+
+    this.messageForm.get('contenttype').setValue(type);
 
     if (this.messageForm.invalid) {
       return false;

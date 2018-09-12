@@ -24,7 +24,6 @@ exports.getAccessToken = function () { //获取基础access_token;
       deferred.resolve(data);
     } else {//如果accessToken.json不存在，或者已过期
       request('https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=' + config.appID + '&secret=' + config.appSecret, function (error, response, body) {
-        console.log(body);
         if (!error && response.statusCode == 200) {//请求成功
           body = JSON.parse(body);
           if (body.access_token) {

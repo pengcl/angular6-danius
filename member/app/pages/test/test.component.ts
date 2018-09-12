@@ -54,8 +54,6 @@ export class TestComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.charts);
     const $container = document.getElementById('#chartsContainer');
-    console.log($container);
   }
 }

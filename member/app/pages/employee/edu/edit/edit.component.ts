@@ -11,6 +11,7 @@ import {AuthService} from '../../../../services/auth.service';
 import {UserService} from '../../../../services/user.service';
 
 import {EDUCATIONS_DATA} from '../../../../../../config/data';
+import {unshiftObj} from '../../../../../../commons/js/utils';
 
 @Component({
   selector: 'app-employee-edu-edit',
@@ -22,7 +23,7 @@ export class EmployeeEduEditComponent implements OnInit {
   user;
   formControl = '';
 
-  educations: any = EDUCATIONS_DATA;
+  educations = unshiftObj(EDUCATIONS_DATA, {label: '不限', value: ''});
 
   profileForm: FormGroup;
 

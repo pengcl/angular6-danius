@@ -66,7 +66,6 @@ export class EmployerCompanyStaffAddComponent implements OnInit {
     this.staffForm.get('key').setValue(this.user.key);
     this.userSvc.get(this.user.key).then(res => {
       if (res.code === '0000') {
-        console.log(res.result.company);
         this.staffForm.get('companyid').setValue(res.result.company.id);
       }
     });

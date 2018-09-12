@@ -16,7 +16,6 @@ export class IndexComponent implements OnInit {
 
   ngOnInit() {
     this.user = this.authSvc.currentUser;
-    console.log(this.user);
   }
 
 }

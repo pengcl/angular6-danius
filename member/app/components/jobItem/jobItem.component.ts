@@ -1,6 +1,7 @@
 import {Component, OnInit, Input} from '@angular/core';
 
-import {EDUCATIONS_DATA, EXPERIENCES_DATA, LENGTH_OF_MILITARY_DATA} from '../../../../config/data';
+import {EDUCATIONS_DATA, EXPERIENCES_DATA, LENGTH_OF_MILITARY_DATA, SALARIES_DATA, SERVICES_DATA} from '../../../../config/data';
+import {unshiftObj} from '../../../../commons/js/utils';
 
 @Component({
   selector: 'app-job-item',
@@ -11,14 +12,15 @@ export class JobItemComponent implements OnInit {
 
   @Input() job;
 
-  educations = EDUCATIONS_DATA;
-  experiences = EXPERIENCES_DATA;
-  lengthOfMilitary = LENGTH_OF_MILITARY_DATA;
+  educations = unshiftObj(EDUCATIONS_DATA, {label: '不限', value: ''});
+  experiences = unshiftObj(EXPERIENCES_DATA, {label: '不限', value: ''});
+  lengthOfMilitary = unshiftObj(LENGTH_OF_MILITARY_DATA, {label: '不限', value: ''});
 
   constructor() {
   }
 
   ngOnInit() {
+    console.log(this.experiences);
   }
 
 }

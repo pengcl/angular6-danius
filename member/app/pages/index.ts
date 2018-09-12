@@ -10,10 +10,6 @@ import {UsherEmployeeComponent} from './usher/employee/employee.component';
 // pay
 import {PayPreviewComponent} from './pay/preview/preview.component';
 
-// uploader
-import {UploaderAvatarComponent} from './uploader/avatar/avatar.component';
-import {UploaderGalleryComponent} from './uploader/gallery/gallery.component';
-
 // employee
 import {EMPLOYEE_PAGES_DECLARATIONS} from './employee';
 
@@ -28,8 +24,6 @@ export const PAGES_DECLARATIONS = [
   UsherEmployerComponent,
   UsherEmployeeComponent,
   PayPreviewComponent,
-  UploaderAvatarComponent,
-  UploaderGalleryComponent,
   ...EMPLOYEE_PAGES_DECLARATIONS,
   ...EMPLOYER_PAGES_DECLARATIONS
 ];

@@ -31,26 +31,11 @@
     <div class="weui-panel__bd">
       <div class="weui-media-box weui-media-box_appmsg weui-media-box_access">
         <div class="weui-media-box__bd">
-          <h4 class="weui-media-box__title">快点科技有限公司</h4>
-          <p class="weui-media-box__desc">B轮 · 100-499人 · 新闻</p>
+          <h4 class="weui-media-box__title">{{job.companyname}}</h4>
+          <p class="weui-media-box__desc">{{company?.financingprogress | label : finances}} · {{company?.staffsize | label : staffs}} · {{company?.tradename}}</p>
           <div class="ui-labels weui-grids">
-            <div class="weui-grid">
-              <span class="ui-label">带薪年假</span>
-            </div>
-            <div class="weui-grid">
-              <span class="ui-label">年度旅游</span>
-            </div>
-            <div class="weui-grid">
-              <span class="ui-label">地铁周边</span>
-            </div>
-            <div class="weui-grid">
-              <span class="ui-label">扁平管理</span>
-            </div>
-            <div class="weui-grid">
-              <span class="ui-label">五险一金</span>
-            </div>
-            <div class="weui-grid">
-              <span class="ui-label">朝九晚六</span>
+            <div *ngFor="let item of company?.excellencename.split(',')" class="weui-grid">
+              <span class="ui-label">{{item}}</span>
             </div>
           </div>
         </div>
@@ -67,10 +52,7 @@
         <div class="weui-media-box__bd">
           <h4 class="weui-media-box__title">职位详情</h4>
           <div class="text-area">
-            <p>司机职位要求</p>
-            <p>1.拥有C1驾照；20岁-40岁</p>
-            <p>2.有良好的心理素质；</p>
-            <p>3.尽心尽职，安全驾龄在2年以上，熟悉当地</p>
+            {{job.positiondesc}}
           </div>
         </div>
       </div>
@@ -104,7 +86,7 @@
       <div style="padding-bottom: 0" class="weui-media-box weui-media-box_appmsg weui-media-box_access">
         <div class="weui-media-box__bd">
           <h4 class="weui-media-box__title">公司介绍</h4>
-          <p class="weui-media-box__desc">广州泽仁投资管理有限公司是一家集金融管理、金融理财、房地产开发、工程建设、石油化工、贸易等综合性企业集团，公司注册资金叁仟万元...</p>
+          <p class="weui-media-box__desc">{{company?.introduction}}</p>
         </div>
       </div>
     </div>
@@ -129,7 +111,7 @@
             class="dot">·</span><i
             class="icons icons-edu"></i><span>{{job.limiteducationtype | label : educations}}</span><span class="dot">·</span><i
             class="icons icons-soldier"></i><span>{{job.serviceage | label : lengthOfMilitary}}</span></p>
-          <p class="arr weui-media-box__desc"><i style="font-size: 0.14rem" class="icons icon-tags"></i><span
+          <p class="arr weui-media-box__desc"><i style="font-size: 0.14rem" class="icons icons-tags"></i><span
             *ngFor="let item of job.skillnames.split(','); let i = index"><span class="dot" *ngIf="i !== 0">·</span>{{item}}</span>
           </p>
         </div>

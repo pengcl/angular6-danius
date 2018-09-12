@@ -122,7 +122,6 @@ export class EmployeeFindCompanyListComponent implements OnInit {
     this.comp.restart();
     this.comSvc.findCompanies(this.params).then(res => {
       this.companies = res.result.list;
-      console.log(res.result);
     });
   }
 
@@ -167,7 +166,6 @@ export class EmployeeFindCompanyListComponent implements OnInit {
   }
 
   sure() {
-    console.log(this.params);
     this.typeShow = false;
     this.getData();
   }

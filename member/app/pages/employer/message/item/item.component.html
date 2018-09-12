@@ -88,18 +88,21 @@
           <div class="weui-media-box__bd">
             <span *ngIf="record.datatype === '0'" class="message-box">{{record.content}}</span>
             <span *ngIf="record.datatype === '2' && record.rolename !== '1'" class="message-box colors blue">您向对方发起了换电话请求</span>
-            <div *ngIf="record.datatype === '2' && record.rolename === '1'" class="message-dialog weui-dialog">
+            <div *ngIf="record.datatype === '2' && record.rolename === '1'" class="message-dialog weui-dialog" [ngClass]="{'disabled':record.datastate !== '0'}">
               <div class="weui-dialog__bd">对方向您发起了换电话请求，是否同意？</div>
               <div class="weui-dialog__ft">
-                <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_default">拒绝</a>
-                <a (click)="submit(8)" class="weui-dialog__btn weui-dialog__btn_primary">同意</a>
+                <a (click)="submit(8,2,record);record.datastate = '2'" class="weui-dialog__btn weui-dialog__btn_default">拒绝</a>
+                <a (click)="submit(8,1,record);record.datastate = '1'" class="weui-dialog__btn weui-dialog__btn_primary">同意</a>
               </div>
             </div>
 
-            <span *ngIf="record.datatype === '4' && record.rolename !== '1'" class="message-box colors blue">您向对方请求了简历</span>
+            <span *ngIf="record.datatype === '4' && record.rolename !== '1'"
+                  class="message-box colors blue">您向对方请求了简历</span>
 
-            <span *ngIf="record.datatype === '6' && record.rolename === '1'" class="message-box colors blue">对方接受了面试邀请</span>
-            <span *ngIf="record.datatype === '6' && record.rolename !== '1'" class="message-box colors blue">您向对方邀请了面试</span>
+            <span *ngIf="record.datatype === '6' && record.rolename === '1'"
+                  class="message-box colors blue">对方接受了面试邀请</span>
+            <span *ngIf="record.datatype === '6' && record.rolename !== '1'"
+                  class="message-box colors blue">您向对方邀请了面试</span>
 
             <div *ngIf="record.datatype === '7' && record.rolename === '1'" class="message-dialog weui-dialog">
               <div class="weui-dialog__bd">对方向您发送了简历</div>
@@ -115,6 +118,20 @@
                 <a href="tel:{{record.content}}" class="weui-dialog__btn weui-dialog__btn_primary">拨打</a>
               </div>
             </div>
+
+            <div *ngIf="record.datatype === '8' && record.rolename === '1'" class="message-dialog weui-dialog">
+              <div class="weui-dialog__bd">对方同意了交电话的请求，对方的号码是：{{record.content}}</div>
+              <div class="weui-dialog__ft">
+                <a href="sms:{{record.content}}" class="weui-dialog__btn weui-dialog__btn_default">短信</a>
+                <a href="tel:{{record.content}}" class="weui-dialog__btn weui-dialog__btn_primary">拨打</a>
+              </div>
+            </div>
+
+            <span *ngIf="record.datatype === '10'" class="message-box">
+              <a *ngIf="record.datastate === '1'" [routerLink]="['/employer/find/item',record.senderid]"
+                 [queryParams]="{postId:id}">对方同意了您索要简历的请求，并向您发送了简历</a>
+              <span *ngIf="record.datastate === '2'">对方拒绝了您索要简历的请求</span>
+            </span>
           </div>
           <div *ngIf="record.rolename !== '1'" class="weui-media-box__hd">
             <img class="avatar" src="{{config.prefix.wApi + record.headimg}}">
@@ -149,7 +166,7 @@
         </div>
         <div class="weui-media-box__bd">
           <h4 class="weui-media-box__title">{{chat.candidatename}}</h4>
-          <p class="weui-media-box__desc">面试职位：{{chat.positionname}}</p>
+          <p class="weui-media-box__desc">面试职位：{{chat.postname}}</p>
         </div>
       </div>
     </div>

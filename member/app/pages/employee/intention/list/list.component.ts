@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {LocationStrategy} from '@angular/common';
 import {FormGroup, FormControl, Validators} from '@angular/forms';
 
+import {WORK_STATUSES_DATA} from '../../../../../../config/data';
 import {ToastService, PickerService} from 'ngx-weui';
 import {NavbarService} from '../../../../../../modules/navbar';
 import {TabbarService} from '../../../../../../modules/tabbar';
@@ -22,24 +23,7 @@ export class EmployeeIntentionListComponent implements OnInit {
 
   user;
   pickerData = {
-    workstatus: [
-      {
-        label: '离职-随时到岗',
-        value: '0'
-      },
-      {
-        label: '在职-考虑机会',
-        value: '1'
-      },
-      {
-        label: '在职-月内到岗',
-        value: '2'
-      },
-      {
-        label: '在职-暂不考虑',
-        value: '3'
-      }
-    ]
+    workstatus: WORK_STATUSES_DATA
   };
 
   intents = [];

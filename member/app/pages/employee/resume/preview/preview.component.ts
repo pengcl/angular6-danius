@@ -10,6 +10,7 @@ import {UserService} from '../../../../services/user.service';
 
 import {CONFIG} from '../../../../../../config/app.config';
 import {EDUCATIONS_DATA} from '../../../../../../config/data';
+import {unshiftObj} from '../../../../../../commons/js/utils';
 
 @Component({
   selector: 'app-employee-resume-preview',
@@ -28,7 +29,7 @@ export class EmployeeResumePreviewComponent implements OnInit {
   works;
   intents;
 
-  educationsData: any = EDUCATIONS_DATA;
+  educationsData = unshiftObj(EDUCATIONS_DATA, {label: '不限', value: ''});
 
   constructor(private location: LocationStrategy,
               private toastSvc: ToastService,

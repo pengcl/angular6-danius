@@ -104,7 +104,6 @@ export class EmployeeProfileComponent implements OnInit {
     });
 
     this.userSvc.get(this.user.key).then(res => {
-      console.log(res.result);
       this.profileForm.get('username').setValue(res.result.user.username);
       this.profileForm.get('headimage').setValue(res.result.user.headimage);
       this.profileForm.get('sex').setValue(res.result.user.sex);

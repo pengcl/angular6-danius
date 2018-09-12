@@ -4,7 +4,7 @@
     <div (click)="showPositions()" class="weui-cell weui-cell_access"
          [ngClass]="{'weui-cell_warn':intentionsForm.get('positionid').invalid && isSubmit}">
       <div class="weui-cell__bd">意向职位</div>
-      <div class="weui-cell__ft">{{intentionsForm.get('positionname').value}}</div>
+      <div class="weui-cell__ft">{{intentionsForm.get('positionname').value ? intentionsForm.get('positionname').value : '请选择'}}</div>
     </div>
     <div (click)="showOverlay('industries')" class="weui-cell weui-cell_access"
          [ngClass]="{'weui-cell_warn':intentionsForm.get('tradename').invalid && isSubmit}">
@@ -14,13 +14,13 @@
     <div (click)="showCities()" class="weui-cell weui-cell_access"
          [ngClass]="{'weui-cell_warn':intentionsForm.get('intentcity').invalid && isSubmit}">
       <div class="weui-cell__bd">意向地点</div>
-      <div class="weui-cell__ft">{{intentionsForm.get('intentprovince').value}}{{intentionsForm.get('intentcity').value}}</div>
+      <div class="weui-cell__ft">{{intentionsForm.get('intentcity').value ? intentionsForm.get('intentprovince').value + intentionsForm.get('intentcity').value : '请选择'}}</div>
     </div>
     <div (click)="showSalaries()" class="weui-cell weui-cell_access"
          [ngClass]="{'weui-cell_warn':intentionsForm.get('salaryend').invalid && isSubmit}">
       <div class="weui-cell__bd">意向薪资</div>
       <div class="weui-cell__ft">
-        <span *ngIf="intentionsForm.get('salaryend').value === '0'">面议</span>
+        <span *ngIf="!intentionsForm.get('salaryend').value">面议</span>
         <span *ngIf="intentionsForm.get('salaryend').value && intentionsForm.get('salaryend').value !== '0'">{{intentionsForm.get('salarybegin').value}}k - {{intentionsForm.get('salaryend').value}}k</span>
       </div>
     </div>

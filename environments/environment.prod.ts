@@ -1,6 +1,6 @@
 const protocol = 'http';
-const host = 'pinor';
-const domain = 'heyazl.net';
+const host = 's';
+const domain = 'danius.cn';
 export const environment = {
   production: false,
   protocol: protocol,

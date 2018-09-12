@@ -73,11 +73,11 @@
               </div>
             </div>
 
-            <div *ngIf="record.datatype === '4' && record.rolename !== '1'" class="message-dialog weui-dialog">
+            <div *ngIf="record.datatype === '4' && record.rolename !== '1'" class="message-dialog weui-dialog" [ngClass]="{'disabled':record.datastate !== '0'}">
               <div class="weui-dialog__bd">对方向您索要简历，是否同意？</div>
               <div class="weui-dialog__ft">
-                <a (click)="submit(10,2)" class="weui-dialog__btn weui-dialog__btn_default">拒绝</a>
-                <a (click)="submit(10,1)" class="weui-dialog__btn weui-dialog__btn_primary">同意</a>
+                <a (click)="submit(10,2,record)" class="weui-dialog__btn weui-dialog__btn_default">拒绝</a>
+                <a (click)="submit(10,1,record)" class="weui-dialog__btn weui-dialog__btn_primary">同意</a>
               </div>
             </div>
 
@@ -114,7 +114,7 @@
 
             <span *ngIf="record.datatype === '10'" class="message-box">
               <a *ngIf="record.datastate === '1'" routerLink="/employee/resume/preview">您同意了对方索要简历的请求，并向对方发送了简历</a>
-              <span *ngIf="record.datastate === '2'">您同意了对方索要简历的请求</span>
+              <span *ngIf="record.datastate === '2'">您拒绝了对方索要简历的请求</span>
             </span>
           </div>
           <div *ngIf="record.rolename === '1'" class="weui-media-box__hd">

@@ -2,10 +2,14 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {LocationStrategy} from '@angular/common';
 
-import {timer as observableTimer, interval as observableInterval, Observable} from 'rxjs';
+import {timer as observableTimer} from 'rxjs';
 
-import {DATA} from '../../../../../../config/cn';
-import {EDUCATIONS_DATA, WORK_STATUSES_DATA, EXPERIENCES_DATA, LENGTH_OF_MILITARY_DATA} from '../../../../../../config/data';
+import {
+  EDUCATIONS_DATA,
+  WORK_STATUSES_DATA,
+  EXPERIENCES_DATA,
+  LENGTH_OF_MILITARY_DATA
+} from '../../../../../../config/data';
 import {PickerService, InfiniteLoaderComponent} from 'ngx-weui';
 import {StorageService} from '../../../../../../service/storage.service';
 import {NavbarService} from '../../../../../../modules/navbar';
@@ -14,49 +18,7 @@ import {AuthService} from '../../../../services/auth.service';
 import {UserService} from '../../../../services/user.service';
 import {EmployeeService} from '../../../../services/employee.service';
 import {JobService} from '../../../../services/job.service';
-
-const SALARIES_DATA = [
-  {label: '不限', value: ''},
-  {label: '3k以下', value: '0-3'},
-  {label: '3k-5k', value: '3-5'},
-  {label: '5k-10k', value: '5-10'},
-  {label: '10k-20k', value: '10-20'},
-  {label: '20k-50k', value: '20-50'},
-  {label: '50k以上', value: '50-260'},
-];
-
-function resetData(arr) {
-  const mainArr = [];
-  arr.forEach((item) => {
-    const mainItem = {};
-    let names = item.name;
-    const subs = [];
-    if (item.sub[0].sub) {
-      item.sub.forEach(subItem => {
-        names = names + '/' + subItem.name;
-        subItem.sub.forEach(v => {
-          const sub = {
-            name: v.name,
-            code: v.code
-          };
-          subs.push(sub);
-        });
-      });
-    } else {
-      item.sub.forEach(subItem => {
-        const sub = {
-          name: subItem.name,
-          code: subItem.code
-        };
-        subs.push(sub);
-      });
-    }
-    mainItem['name'] = names;
-    mainItem['sub'] = subs;
-    mainArr.push(mainItem);
-  });
-  return mainArr;
-}
+import {unshiftObj} from '../../../../../../commons/js/utils';
 
 declare interface Params {
   key: string;
@@ -90,19 +52,10 @@ export class EmployerFindListComponent implements OnInit {
 
   industries;
 
-  educations = EDUCATIONS_DATA;
-
-  experiences = EXPERIENCES_DATA;
-
-  workStatuses = (() => {
-    const list = JSON.parse(JSON.stringify(WORK_STATUSES_DATA));
-    list.unshift({label: '不限', value: ''});
-    return list;
-  })();
-
-  lengthOfMilitary = LENGTH_OF_MILITARY_DATA;
-
-  salaries = SALARIES_DATA;
+  educations = unshiftObj(EDUCATIONS_DATA, {label: '不限', value: ''});
+  experiences = unshiftObj(EXPERIENCES_DATA, {label: '不限', value: ''});
+  lengthOfMilitary = unshiftObj(LENGTH_OF_MILITARY_DATA, {label: '不限', value: ''});
+  workStatuses = unshiftObj(WORK_STATUSES_DATA, {label: '不限', value: ''});
 
   params: Params = {
     key: '',
@@ -130,7 +83,7 @@ export class EmployerFindListComponent implements OnInit {
               private userSvc: UserService,
               private employeeSvc: EmployeeService,
               private jobSvc: JobService) {
-    navSvc.set({title: '关注的公司'});
+    navSvc.set({title: '找牛人'});
     tabSvc.set({show: true}, 0);
   }
 
@@ -153,7 +106,9 @@ export class EmployerFindListComponent implements OnInit {
         return null;
       }
     }).then(post => {
-      this.params.postid = post.id;
+      if (post) {
+        this.params.postid = post.id;
+      }
       this.getData();
     });
   }
@@ -163,7 +118,6 @@ export class EmployerFindListComponent implements OnInit {
     this.comp.restart();
     this.employeeSvc.findEmployees(this.params).then(res => {
       this.employees = res.result.list;
-      console.log(this.employees);
     });
   }
 

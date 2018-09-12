@@ -73,7 +73,6 @@ export class EmployeeResumeEditComponent implements OnInit {
 
     this.userSvc.get(this.user.key).then(res => {
       this.userInfo = res.result;
-      console.log(this.userInfo);
       if (res.result.personal) {
         this.profileForm.get('introduce').setValue(res.result.personal.introduce);
         const images = [];
@@ -99,7 +98,6 @@ export class EmployeeResumeEditComponent implements OnInit {
     this.userSvc.getIntents(this.user.key).then(res => {
       if (res.code === '0000') {
         this.intents = res.result;
-        console.log(this.intents);
       }
     });
   }

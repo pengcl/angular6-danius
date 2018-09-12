@@ -32,7 +32,6 @@ export class EmployerCompanyProductAddComponent implements OnInit {
     onUploadSuccess: (file, res: any) => {
       res = JSON.parse(res);
       if (res.code === '0000') {
-        console.log(res);
         this.prodForm.get('imagepath').setValue(res.result);
       }
     }
@@ -67,7 +66,6 @@ export class EmployerCompanyProductAddComponent implements OnInit {
     this.prodForm.get('key').setValue(this.user.key);
     this.userSvc.get(this.user.key).then(res => {
       if (res.code === '0000') {
-        console.log(res.result.company);
         this.prodForm.get('companyid').setValue(res.result.company.id);
       }
     });

@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
 
+import {CONFIG} from '../../../../../config/app.config';
 import {NavbarService} from '../../../../../modules/navbar';
 import {TabbarService} from '../../../../../modules/tabbar';
 import {AuthService} from '../../../services/auth.service';
@@ -15,7 +16,9 @@ import {UserService} from '../../../services/user.service';
 export class EmployerHomeComponent implements OnInit {
 
   user;
+  userInfo;
   company;
+  count;
 
   comForm: FormGroup;
 
@@ -36,8 +39,15 @@ export class EmployerHomeComponent implements OnInit {
     });
 
     this.userSvc.get(this.user.key).then(res => {
-      this.company = res.result.company;
-      console.log(res);
+      if (res.code === '0000') {
+        this.userInfo = res.result;
+      }
+    });
+
+    this.userSvc.getCount(this.user.key).then(res => {
+      if (res.code === '0000') {
+        this.count = res.result;
+      }
     });
   }
 

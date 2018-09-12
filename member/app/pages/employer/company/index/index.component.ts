@@ -79,7 +79,6 @@ export class EmployerCompanyIndexComponent implements OnInit {
     });
 
     this.userSvc.get(this.user.key).then(res => {
-      console.log(res.result);
       if (res.code === '0000') {
         this.images = res.result.imageList;
         this.prods = res.result.productList;

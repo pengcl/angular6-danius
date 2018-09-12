@@ -10,6 +10,7 @@ import {AuthService} from '../../../../services/auth.service';
 import {UserService} from '../../../../services/user.service';
 
 import {EDUCATIONS_DATA} from '../../../../../../config/data';
+import {unshiftObj} from '../../../../../../commons/js/utils';
 
 @Component({
   selector: 'app-employee-edu-add',
@@ -23,8 +24,7 @@ export class EmployeeEduAddComponent implements OnInit {
 
   profileForm: FormGroup;
 
-  // 1-初中及以下，2-中专/中技，3-高中，4-大专，5-本科，6-硕士，7-博士
-  educations: any = EDUCATIONS_DATA;
+  educations = unshiftObj(EDUCATIONS_DATA, {label: '不限', value: ''});
 
   constructor(private location: LocationStrategy,
               private dialogSvc: DialogService,
@@ -60,7 +60,6 @@ export class EmployeeEduAddComponent implements OnInit {
 
   showEducations() {
     const defaultSelected = this.profileForm.get('education').value ? parseInt(this.profileForm.get('education').value, 10) - 1 : 0;
-    console.log(defaultSelected);
     this.pickerSvc.show([this.educations], '', [defaultSelected], {cancel: '返回', confirm: '确定'}).subscribe(res => {
       this.profileForm.get('education').setValue(res.value);
     });

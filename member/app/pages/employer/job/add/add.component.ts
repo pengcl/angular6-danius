@@ -12,7 +12,7 @@ import {AuthService} from '../../../../services/auth.service';
 import {UserService} from '../../../../services/user.service';
 import {JobService} from '../../../../services/job.service';
 
-import {getIndex, getNameFormCode} from '../../../../../../commons/js/utils';
+import {getIndex, getNameFormCode, unshiftObj} from '../../../../../../commons/js/utils';
 import {
   SERVICES_DATA,
   EDUCATIONS_DATA,
@@ -31,10 +31,12 @@ export class EmployerJobAddComponent implements OnInit {
   user;
   positions;
   skills;
-  educations = EDUCATIONS_DATA;
-  experiences = EXPERIENCES_DATA;
-  lengthOfMilitaryData = LENGTH_OF_MILITARY_DATA;
-  services = SERVICES_DATA;
+
+  educations = unshiftObj(EDUCATIONS_DATA, {label: '不限', value: ''});
+  experiences = unshiftObj(EXPERIENCES_DATA, {label: '不限', value: ''});
+  lengthOfMilitary = unshiftObj(LENGTH_OF_MILITARY_DATA, {label: '不限', value: ''});
+  salaries = unshiftObj(SALARIES_DATA, {name: '面议', code: '0'});
+  services = unshiftObj(SERVICES_DATA, {name: '不限', code: '100000', sub: [{name: '不限', code: '100100'}]});
 
   comForm: FormGroup;
   formControl;
@@ -87,7 +89,7 @@ export class EmployerJobAddComponent implements OnInit {
       salaryend: new FormControl('', [Validators.required]),
       armytype: new FormControl('', [Validators.required]),
       services: new FormControl('', [Validators.required]),
-      serviceage: new FormControl('', [Validators.required]),
+      serviceage: new FormControl('', []),
       experiencetype: new FormControl('', []),
       limiteducationtype: new FormControl('', []),
       positiondesc: new FormControl('', [Validators.required]),
@@ -96,8 +98,8 @@ export class EmployerJobAddComponent implements OnInit {
     });
 
     this.comForm.get('key').setValue(this.user.key);
-    this.comForm.get('armytype').setValue(SERVICES_DATA[0].code);
-    this.comForm.get('services').setValue(SERVICES_DATA[0].sub[0].code);
+    this.comForm.get('armytype').setValue(this.services[0].code);
+    this.comForm.get('services').setValue(this.services[0].sub[0].code);
 
     this.userSvc.get(this.user.key).then(res => {
 
@@ -154,15 +156,14 @@ export class EmployerJobAddComponent implements OnInit {
   }
 
   showSalaries() {
-    this.pickerSvc.showCity(SALARIES_DATA, this.comForm.get('salaryend').value).subscribe(res => {
-      console.log(res);
+    this.pickerSvc.showCity(this.salaries, this.comForm.get('salaryend').value).subscribe(res => {
       this.comForm.get('salarybegin').setValue(res.items[0].code);
       this.comForm.get('salaryend').setValue(res.items[1].code);
     });
   }
 
   showServices() {
-    this.pickerSvc.showCity(SERVICES_DATA, this.comForm.get('services').value).subscribe(res => {
+    this.pickerSvc.showCity(this.services, this.comForm.get('services').value).subscribe(res => {
       this.comForm.get('armytype').setValue(res.items[0].code);
       this.comForm.get('services').setValue(res.items[1].code);
     });
@@ -185,9 +186,9 @@ export class EmployerJobAddComponent implements OnInit {
   }
 
   showLengths() {
-    const defaultSelected = getIndex(this.lengthOfMilitaryData, 'value', this.comForm.get('serviceage').value);
+    const defaultSelected = getIndex(this.lengthOfMilitary, 'value', this.comForm.get('serviceage').value);
 
-    this.pickerSvc.show([this.lengthOfMilitaryData], '', [defaultSelected], {cancel: '返回', confirm: '确定'}).subscribe(res => {
+    this.pickerSvc.show([this.lengthOfMilitary], '', [defaultSelected], {cancel: '返回', confirm: '确定'}).subscribe(res => {
       this.comForm.get('serviceage').setValue(res.items[0].value);
     });
   }

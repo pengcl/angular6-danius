@@ -29,7 +29,6 @@ export class JobService {
   }
 
   findJobs(body): Promise<any> {
-    console.log(CONFIG.prefix.wApi + '/interface/call.ht?action=findJob' + formDataToUrl(body));
     return this.http.post(CONFIG.prefix.wApi + '/interface/call.ht?action=findJob', formData(body))
       .toPromise()
       .then(response => this.handleExpire(response))

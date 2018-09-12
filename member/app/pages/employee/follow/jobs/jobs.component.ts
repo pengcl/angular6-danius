@@ -36,7 +36,6 @@ export class EmployeeFollowJobsComponent implements OnInit {
     this.user = this.authSvc.currentUser;
     this.followSvc.getFollows(this.user.key, 0).then(res => {
       this.companies = res.result;
-      console.log(this.companies);
     });
   }
 

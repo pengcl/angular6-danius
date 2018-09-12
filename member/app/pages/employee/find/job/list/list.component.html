@@ -1,8 +1,8 @@
 <div class="finder weui-cells">
   <div class="posts weui-cell">
     <div class="weui-cell__bd">
-      <span *ngIf="intents?.length === 0">您现在还没有工作意向</span>
-      <span (click)="setIntent(item)" *ngFor="let item of intents" class="name" [ngClass]="{'curr':item.id === intent?.id}">
+      <span *ngIf="intents?.length === 0"><span class="name">您现在还没有添加工作意向</span></span>
+      <span (click)="setIntent(item)" *ngFor="let item of intents" class="name" [ngClass]="{'curr':item.id === params.positionid}">
         {{item.intentname}}
       </span>
     </div>

@@ -2,10 +2,16 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {LocationStrategy} from '@angular/common';
 
-import {timer as observableTimer, interval as observableInterval, Observable} from 'rxjs';
+import {timer as observableTimer} from 'rxjs';
 
 import {DATA} from '../../../../../../../config/cn';
-import {EDUCATIONS_DATA, EXPERIENCES_DATA, LENGTH_OF_MILITARY_DATA} from '../../../../../../../config/data';
+import {
+  EDUCATIONS_DATA,
+  EXPERIENCES_DATA,
+  FINANCE_DATA,
+  LENGTH_OF_MILITARY_DATA,
+  SCOPE_DATA
+} from '../../../../../../../config/data';
 import {PickerService, InfiniteLoaderComponent} from 'ngx-weui';
 import {StorageService} from '../../../../../../../service/storage.service';
 import {NavbarService} from '../../../../../../../modules/navbar';
@@ -13,6 +19,8 @@ import {TabbarService} from '../../../../../../../modules/tabbar';
 import {AuthService} from '../../../../../services/auth.service';
 import {UserService} from '../../../../../services/user.service';
 import {JobService} from '../../../../../services/job.service';
+
+import {unshiftObj} from '../../../../../../../commons/js/utils';
 
 const SALARIES_DATA = [
   {label: '不限', value: ''},
@@ -90,13 +98,10 @@ export class EmployeeFindJobListComponent implements OnInit {
 
   industries;
 
-  educations = EDUCATIONS_DATA;
-
-  experiences = EXPERIENCES_DATA;
-
-  lengthOfMilitary = LENGTH_OF_MILITARY_DATA;
-
-  salaries = SALARIES_DATA;
+  educations = unshiftObj(EDUCATIONS_DATA, {label: '不限', value: ''});
+  experiences = unshiftObj(EXPERIENCES_DATA, {label: '不限', value: ''});
+  lengthOfMilitary = unshiftObj(LENGTH_OF_MILITARY_DATA, {label: '不限', value: ''});
+  salaries = unshiftObj(SALARIES_DATA, {name: '面议', code: '0'});
 
   params: Params = {
     key: '',
@@ -125,7 +130,7 @@ export class EmployeeFindJobListComponent implements OnInit {
               private authSvc: AuthService,
               private userSvc: UserService,
               private jobSvc: JobService) {
-    navSvc.set({title: '关注的公司'});
+    navSvc.set({title: '找工作'});
     tabSvc.set({show: true}, 0);
   }
 
@@ -148,8 +153,9 @@ export class EmployeeFindJobListComponent implements OnInit {
         return null;
       }
     }).then(intent => {
-      this.intent = intent;
-      this.params.positionid = intent.id;
+      if (intent) {
+        this.params.positionid = intent.id;
+      }
       this.getData();
     });
 

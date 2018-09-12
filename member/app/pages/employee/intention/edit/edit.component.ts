@@ -192,7 +192,6 @@ export class EmployeeIntentionEditComponent implements OnInit {
       this.intentionsForm.get('intentcitycode').setValue(res.result.intentcitycode);
       this.intentionsForm.get('salarybegin').setValue(res.result.salarybegin);
       this.intentionsForm.get('salaryend').setValue(res.result.salaryend);
-      console.log(res);
     });
 
     this.jobSvc.getPositions().then(res => {
@@ -300,7 +299,6 @@ export class EmployeeIntentionEditComponent implements OnInit {
     }
     this.toastSvc.loading('', 9999);
     this.userSvc.addIntent(this.intentionsForm.value).then(res => {
-      console.log(res);
       this.toastSvc.hide();
       if (res.code === '0000') {
         this.location.back();

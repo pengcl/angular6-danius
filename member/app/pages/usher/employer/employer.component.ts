@@ -111,7 +111,6 @@ export class UsherEmployerComponent implements OnInit {
 
     this.userSvc.get(this.user.key).then(res => {
       if (res.code === '0000') {
-        console.log(res.result);
         this.profileForm.get('username').setValue(res.result.user.username);
         this.profileForm.get('sex').setValue(res.result.user.sex);
         this.profileForm.get('birthday').setValue(res.result.user.birthday);
@@ -154,7 +153,6 @@ export class UsherEmployerComponent implements OnInit {
   showServices() {
     this.pickerSvc.showCity(SERVICES_DATA).subscribe(res => {
       this.profileForm.get('services').setValue(res.items[0].label + res.items[1].label);
-      console.log(res);
     });
   }
 
@@ -193,7 +191,6 @@ export class UsherEmployerComponent implements OnInit {
     this.toastSvc.loading('', 99999);
     this.userSvc.set(body).then(res => {
       this.toastSvc.hide();
-      console.log(res);
     });
   }
 

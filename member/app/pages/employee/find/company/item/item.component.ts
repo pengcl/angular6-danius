@@ -77,19 +77,15 @@ export class EmployeeFindCompanyItemComponent implements OnInit {
       if (res.code === '0000') {
         this.company = res.result;
       }
-      console.log(res);
     });
 
     this.jobSvc.findJobs({key: this.user.key}).then(res => {
       this.jobs = res.result.list;
-      console.log(res);
     });
   }
 
   follow() {
-    this.followSvc.follow(this.followForm.value).then(res => {
-      console.log(res);
-    });
+    this.followSvc.follow(this.followForm.value).then(res => {});
   }
 }
 

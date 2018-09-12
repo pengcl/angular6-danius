@@ -48,7 +48,6 @@ export class EmployerCompanyAlbumsComponent implements OnInit {
     this.userSvc.get(this.user.key).then(res => {
       if (res.code === '0000') {
         this.images = res.result.imageList;
-        console.log(res);
       }
     });
 

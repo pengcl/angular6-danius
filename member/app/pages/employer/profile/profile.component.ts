@@ -73,7 +73,6 @@ export class EmployerProfileComponent implements OnInit {
 
     this.userSvc.get(this.user.key).then(res => {
       if (res.code === '0000') {
-        console.log(res.result);
         this.profileForm.get('username').setValue(res.result.user.username);
         this.profileForm.get('headimage').setValue(res.result.user.headimage);
         this.profileForm.get('email').setValue(res.result.user.email);

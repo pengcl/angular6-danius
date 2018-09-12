@@ -21,6 +21,7 @@ export class AgePipe implements PipeTransform {
 @Injectable()
 export class LabelPipe implements PipeTransform {
   transform(value, arr): any {
+
     if (!value) {
       return '不限';
     }
@@ -59,7 +60,6 @@ export class RepairDatePipe implements PipeTransform {
 export class FormatDatePipe implements PipeTransform {
   transform(value): any {
     value = value.split('.')[0].replace(/\-/g, '/');
-    console.log(value);
     return value;
   }
 }

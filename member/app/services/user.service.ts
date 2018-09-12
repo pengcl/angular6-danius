@@ -140,6 +140,14 @@ export class UserService {
       .catch(this.handleError);
   }
 
+  getCount(key): Promise<any> {
+
+    return this.http.get(CONFIG.prefix.wApi + '/interface/call.ht?action=getMainCountInfo&key=' + key)
+      .toPromise()
+      .then(response => this.handleExpire(response))
+      .catch(this.handleError);
+  }
+
   private handleExpire(response: any): Promise<any> {
     if (response.code === '1001') {
       this.authSvc.requestAuth();

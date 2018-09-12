@@ -152,14 +152,14 @@ export class EmployeeIntentionAddComponent implements OnInit {
       id: new FormControl('', []),
       positionid: new FormControl('', [Validators.required]),
       positionname: new FormControl('', [Validators.required]),
-      tradeid: new FormControl('', [Validators.required]),
-      tradename: new FormControl('', [Validators.required]),
+      tradeid: new FormControl('', []),
+      tradename: new FormControl('', []),
       intentprovince: new FormControl('', [Validators.required]),
       intentprovincecode: new FormControl('', [Validators.required]),
       intentcity: new FormControl('', [Validators.required]),
       intentcitycode: new FormControl('', [Validators.required]),
-      salarybegin: new FormControl('', [Validators.required]),
-      salaryend: new FormControl('', [Validators.required])
+      salarybegin: new FormControl('', []),
+      salaryend: new FormControl('', [])
     });
 
     this.intentionsForm.get('key').setValue(this.user.key);
@@ -269,7 +269,6 @@ export class EmployeeIntentionAddComponent implements OnInit {
     }
     this.toastSvc.loading('', 9999);
     this.userSvc.addIntent(this.intentionsForm.value).then(res => {
-      console.log(res);
       this.toastSvc.hide();
       if (res.code === '0000') {
         this.location.back();

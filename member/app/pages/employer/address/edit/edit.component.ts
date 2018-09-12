@@ -105,7 +105,6 @@ export class EmployerAddressEditComponent implements OnInit {
   }
 
   submit() {
-    console.log(this.addressForm.controls);
     this.isSubmit = true;
     if (this.addressForm.invalid) {
       return false;
@@ -114,7 +113,6 @@ export class EmployerAddressEditComponent implements OnInit {
     this.toastSvc.loading('保存中', 9999);
     this.jobSvc.post(this.addressForm.value).then(res => {
       this.toastSvc.hide();
-      console.log(res);
       if (res.code === '0000') {
         this.overlaySvc.hide();
         this.location.back();

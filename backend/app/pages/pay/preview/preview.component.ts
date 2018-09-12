@@ -26,7 +26,6 @@ export class PayPreviewComponent implements OnInit {
   ngOnInit() {
 
     this.user = this.authSvc.currentUser;
-    console.log(this.user);
 
     this.wxPayForm = new FormGroup({
       body: new FormControl('', [Validators.required]),

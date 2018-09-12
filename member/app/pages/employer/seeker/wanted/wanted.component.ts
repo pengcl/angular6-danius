@@ -38,8 +38,25 @@ export class EmployerSeekerWantedComponent implements OnInit {
     this.user = this.authSvc.currentUser;
     this.employeeSvc.getFollows(this.user.key).then(res => {
       if (res.code === '0000') {
-        this.follows = res.result;
-        console.log(this.follows);
+        // this.follows = res.result.list;
+
+        const follows = [];
+        res.result.list.forEach(item => {
+          const follow = {};
+          for (const key in item) {
+            if (key) {
+              follow[key] = item[key];
+              if (key === 'userIntentList' && item[key].length > 0) {
+                follow['intentName'] = item[key][0].intentname;
+                follow['salaryBegin'] = item[key][0].salarybegin;
+                follow['salaryEnd'] = item[key][0].salaryend;
+                follow['positionId'] = item[key][0].positionid;
+              }
+            }
+          }
+          follows.push(follow);
+        });
+        this.follows = follows;
       }
     });
   }

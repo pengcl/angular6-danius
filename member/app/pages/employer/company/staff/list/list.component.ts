@@ -50,7 +50,6 @@ export class EmployerCompanyStaffListComponent implements OnInit {
 
     this.userSvc.get(this.user.key).then(res => {
       this.staffs = res.result.managerList;
-      console.log(this.staffs);
     });
   }
 
@@ -63,7 +62,6 @@ export class EmployerCompanyStaffListComponent implements OnInit {
   }
 
   onLoadMore(comp: InfiniteLoaderComponent) {
-    console.log('e');
     observableTimer(1500).subscribe(() => {
       this.comForm.get('page').setValue(this.comForm.get('page').value + 1);
       this.comSvc.getStaffs(this.user.key).then(res => {

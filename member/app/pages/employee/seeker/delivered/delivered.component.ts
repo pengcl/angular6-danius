@@ -56,7 +56,6 @@ export class EmployeeSeekerDeliveredComponent implements OnInit {
     }).then(() => {
       this.jobSvc.findJobs(this.comForm.value).then(res => {
         if (res.code === '0000') {
-          console.log(res);
           this.jobs = res.result.list;
         }
       });
@@ -72,7 +71,6 @@ export class EmployeeSeekerDeliveredComponent implements OnInit {
   }
 
   onLoadMore(comp: InfiniteLoaderComponent) {
-    console.log('e');
     observableTimer(1500).subscribe(() => {
       this.comForm.get('page').setValue(this.comForm.get('page').value + 1);
       this.jobSvc.findJobs(this.comForm.value).then(res => {

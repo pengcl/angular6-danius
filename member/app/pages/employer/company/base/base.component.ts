@@ -30,7 +30,6 @@ export class EmployerCompanyBaseComponent implements OnInit {
     auto: true,
     onUploadSuccess: (file, res) => {
       const _res = JSON.parse(res);
-      console.log(_res);
       if (_res.code === '0000') {
         this.profileForm.get('headerimage').setValue(_res.result.headerimage);
       }
@@ -74,7 +73,6 @@ export class EmployerCompanyBaseComponent implements OnInit {
 
     this.userSvc.get(this.user.key).then(res => {
       if (res.code === '0000') {
-        console.log(res.result);
         if (res.result.company) {
           this.profileForm.get('headerimage').setValue(res.result.company.headerimage);
           this.profileForm.get('companyname').setValue(res.result.company.companyname);

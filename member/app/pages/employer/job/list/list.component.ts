@@ -57,7 +57,6 @@ export class EmployerJobListComponent implements OnInit {
     }).then(() => {
       this.jobSvc.findJobs(this.comForm.value).then(res => {
         if (res.code === '0000') {
-          console.log(res);
           this.jobs = res.result.list;
         }
       });

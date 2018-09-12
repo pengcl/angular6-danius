@@ -20,6 +20,13 @@ export class EmployerService {
       .catch(this.handleError);
   }
 
+  getInterview(key, id): Promise<any> {
+    return this.http.get(CONFIG.prefix.wApi + '/interface/call.ht?action=getInterviewEvaluateInfo&key=' + key + '&id=' + id)
+      .toPromise()
+      .then(response => this.handleExpire(response))
+      .catch(this.handleError);
+  }
+
   private handleExpire(response: any): Promise<any> {
     if (response.code === '1001') {
       this.authSvc.requestAuth();

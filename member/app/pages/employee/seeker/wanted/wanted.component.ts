@@ -41,38 +41,19 @@ export class EmployeeSeekerWantedComponent implements OnInit {
 
     this.comForm = new FormGroup({
       key: new FormControl('', [Validators.required]),
-      companyid: new FormControl('', [Validators.required]),
       page: new FormControl('', [Validators.required])
     });
 
     this.comForm.get('key').setValue(this.user.key);
     this.comForm.get('page').setValue(1);
-    this.userSvc.get(this.user.key).then(res => {
-      if (res.code !== '0000') {// 如果获取接口失败
-        return false;
+    this.jobSvc.getFollows(this.user.key).then(res => {
+      if (res.code === '0000') {
+        this.jobs = res.result.list;
       }
-
-      this.comForm.get('companyid').setValue(res.result.company.companyid);
-    }).then(() => {
-      this.jobSvc.findJobs(this.comForm.value).then(res => {
-        if (res.code === '0000') {
-          console.log(res);
-          this.jobs = res.result.list;
-        }
-      });
     });
   }
 
-  onSelect() {
-  }
-
-  addNew() {
-    this.storageSvc.remove('comForm');
-    this.router.navigate(['/employer/job/add']);
-  }
-
   onLoadMore(comp: InfiniteLoaderComponent) {
-    console.log('e');
     observableTimer(1500).subscribe(() => {
       this.comForm.get('page').setValue(this.comForm.get('page').value + 1);
       this.jobSvc.findJobs(this.comForm.value).then(res => {

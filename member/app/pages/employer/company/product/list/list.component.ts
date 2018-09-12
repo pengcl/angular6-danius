@@ -52,7 +52,6 @@ export class EmployerCompanyProductListComponent implements OnInit {
 
     this.userSvc.get(this.user.key).then(res => {
       this.prods = res.result.productList;
-      console.log(this.prods);
     });
   }
 

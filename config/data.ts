@@ -1,6 +1,5 @@
 // 不限，1：应届生，2：1年以内，3:1-3年内，4:3-4年，5:5-10年，6:10年以上
 export const EXPERIENCES_DATA = [
-  {label: '不限', value: ''},
   {label: '应届生', value: '1'},
   {label: '1年以内', value: '2'},
   {label: '1-3年内', value: '3'},
@@ -61,24 +60,22 @@ export const SCOPE_DATA = [
 ];
 
 export const FINANCE_DATA = [
-  {label: '不需要融资', value: '0'},
-  {label: '未融资', value: '1'},
-  {label: '天使轮', value: '2'},
-  {label: 'A轮', value: '3'},
-  {label: 'B轮', value: '4'},
-  {label: 'C轮', value: '5'},
-  {label: 'D轮及以上', value: '6'},
-  {label: '已经上市', value: '7'}
+  {label: '不需要融资', value: '1'},
+  {label: '未融资', value: '2'},
+  {label: '天使轮', value: '3'},
+  {label: 'A轮', value: '4'},
+  {label: 'B轮', value: '5'},
+  {label: 'C轮', value: '6'},
+  {label: 'D轮及以上', value: '7'},
+  {label: '已经上市', value: '8'}
 ];
 
 export const LENGTH_OF_MILITARY_DATA = [
-  {label: '不限', value: ''},
   {label: '2年兵', value: '2'},
   {label: '5年兵', value: '5'},
   {label: '8年及以上', value: '8'}
 ];
 export const EDUCATIONS_DATA = [
-  {label: '不限', value: ''},
   {
     label: '初中及以下',
     value: '1'
@@ -110,16 +107,6 @@ export const EDUCATIONS_DATA = [
 ];
 export const SALARIES_DATA = (function () {
   const arr = [];
-  arr.push({
-    name: '面议',
-    code: '0',
-    sub: [
-      {
-        name: '面议',
-        code: '0',
-      }
-    ]
-  });
   for (let i = 1; i <= 50; i++) {
     const obj = {};
     obj['name'] = i.toString();
@@ -153,16 +140,6 @@ export const SALARIES_DATA = (function () {
 })();
 
 export const SERVICES_DATA = [
-  {
-    'name': '不限',
-    'code': '100000',
-    'sub': [
-      {
-        'name': '不限',
-        'code': '100100',
-      }
-    ]
-  },
   {
     'name': '陆军',
     'code': '110000',

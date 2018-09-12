@@ -3,13 +3,14 @@ import {ActivatedRoute} from '@angular/router';
 import {LocationStrategy} from '@angular/common';
 
 import {CONFIG} from '../../../../../../config/app.config';
-import {EDUCATIONS_DATA} from '../../../../../../config/data';
+import {EDUCATIONS_DATA, EXPERIENCES_DATA, FINANCE_DATA, LENGTH_OF_MILITARY_DATA, SCOPE_DATA} from '../../../../../../config/data';
 import {PickerService, ToastService} from 'ngx-weui';
 import {OverlayService} from '../../../../../../modules/overlay';
 import {NavbarService} from '../../../../../../modules/navbar';
 import {TabbarService} from '../../../../../../modules/tabbar';
 import {AuthService} from '../../../../services/auth.service';
 import {EmployeeService} from '../../../../services/employee.service';
+import {unshiftObj} from '../../../../../../commons/js/utils';
 
 @Component({
   selector: 'app-employer-find-item',
@@ -24,7 +25,7 @@ export class EmployerFindItemComponent implements OnInit {
   user;
   userInfo;
 
-  educationsData: any = EDUCATIONS_DATA;
+  educationsData = unshiftObj(EDUCATIONS_DATA, {label: '不限', value: ''});
 
   constructor(private route: ActivatedRoute,
               private location: LocationStrategy,
@@ -54,9 +55,7 @@ export class EmployerFindItemComponent implements OnInit {
   }
 
   follow() {
-    this.employeeSvc.follow(this.user.key, this.id).then(res => {
-      console.log(res);
-    });
+    this.employeeSvc.follow(this.user.key, this.id, this.postId).then(res => {});
   }
 
   back() {

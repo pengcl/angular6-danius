@@ -32,7 +32,6 @@ export class EmployeeMessageListComponent implements OnInit {
     this.chatSvc.getMessages(this.user.key).then(res => {
       if (res.code === '0000') {
         this.messages = res.result.list;
-        console.log(this.messages);
       }
     });
   }

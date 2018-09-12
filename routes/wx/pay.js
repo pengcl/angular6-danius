@@ -16,8 +16,6 @@ router.route('/pay').post(function (req, res, next) {
   body.spbill_create_ip = util.getClientIp(req);
   body.notify_url = config.notify_url;
 
-  console.log(body);
-
   wx.getBrandWCPayRequestParams(body, function (error, params) {
     if (error) {
       res.send(new Error(error));

@@ -43,13 +43,11 @@ export class EmployerSeekerInvitedComponent implements OnInit {
     this.chatSvc.getMessages(this.user.key).then(res => {
       if (res.code === '0000') {
         this.messages = res.result.list;
-        console.log(this.messages);
       }
     });
   }
 
   onLoadMore(comp: InfiniteLoaderComponent) {
-    console.log('e');
     /*observableTimer(1500).subscribe(() => {
       this.comForm.get('page').setValue(this.comForm.get('page').value + 1);
       this.jobSvc.findJobs(this.comForm.value).then(res => {

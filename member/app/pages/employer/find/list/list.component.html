@@ -1,9 +1,9 @@
 <div class="finder weui-cells">
   <div class="posts weui-cell">
     <div class="weui-cell__bd">
-      <span *ngIf="posts?.length === 0">您现在还没有发布职位</span>
+      <span *ngIf="!posts || posts?.length === 0"><span class="name">您现在还没有发布职位</span></span>
       <span (click)="setPost(item)" *ngFor="let item of posts" class="name" [ngClass]="{'curr':item.id === params.postid}">
-        {{item.positionname}}
+        {{item.postname}}
       </span>
     </div>
     <div class="weui-cell__ft">
@@ -104,5 +104,5 @@
       <app-person-item [employee]="employee" class="weui-media-box weui-media-box_appmsg weui-media-box_access"></app-person-item>
     </div>
   </div>
-  <app-no-record *ngIf="jobs?.length === 0"></app-no-record>
+  <app-no-record *ngIf="employees?.length === 0"></app-no-record>
 </weui-infiniteloader>

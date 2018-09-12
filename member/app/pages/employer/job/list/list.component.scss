@@ -1,5 +1,17 @@
 .weui-media-box__info {
   color: #999;
+  margin-top: 0.05rem;
+  .weui-media-box__info__meta {
+    i, span {
+      font-size: 0.13rem;
+      line-height: 1;
+      display: inline-block;
+    }
+    &.right {
+      float: right;
+      padding-right: 0;
+    }
+  }
 }
 
 weui-navbar {

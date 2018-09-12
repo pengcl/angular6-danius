@@ -39,7 +39,7 @@
           <p>薪资范围</p>
         </div>
         <div class="weui-cell__ft">
-          <span *ngIf="comForm.get('salaryend').value === '0'">面议</span>
+          <span *ngIf="!comForm.get('salaryend').value">面议</span>
           <span *ngIf="comForm.get('salaryend').value && comForm.get('salaryend').value !== '0'">{{comForm.get('salarybegin').value}}k - {{comForm.get('salaryend').value}}k</span>
         </div>
       </a>
@@ -51,7 +51,7 @@
           <p>军龄要求</p>
         </div>
         <div class="weui-cell__ft">
-          {{lengthOfMilitaryData[getIndex(lengthOfMilitaryData,'value',comForm.get('serviceage').value)].label}}
+          {{lengthOfMilitary[getIndex(lengthOfMilitary,'value',comForm.get('serviceage').value)].label}}
         </div>
       </a>
       <a (click)="showServices()" class="weui-cell weui-cell_access">

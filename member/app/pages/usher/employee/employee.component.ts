@@ -157,7 +157,6 @@ export class UsherEmployeeComponent implements OnInit {
 
     this.userSvc.get(this.user.key).then(res => {
       if (res.code === '0000') {
-        console.log(res.result);
         this.profileForm.get('username').setValue(res.result.user.username);
         this.profileForm.get('sex').setValue(res.result.user.sex);
         this.profileForm.get('birthday').setValue(res.result.user.birthday);
@@ -221,7 +220,6 @@ export class UsherEmployeeComponent implements OnInit {
       this.toastSvc.loading('', 99999);
       this.userSvc.set(body).then(data => {
         this.toastSvc.hide();
-        console.log(data);
       });
     });
   }
@@ -242,12 +240,10 @@ export class UsherEmployeeComponent implements OnInit {
     this.toastSvc.loading('', 99999);
     this.userSvc.set(body).then(res => {
       this.toastSvc.hide();
-      console.log(res);
     });
   }
 
   onSubmit() {
-    console.log(this.profileForm.value);
     this.dialogSvc.show({content: '登记成功', cancel: '找工作', confirm: '完善资料'}).subscribe(data => {
       if (data.value) {
         this.router.navigate(['/employee/resume/edit']);

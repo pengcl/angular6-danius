@@ -1,4 +1,5 @@
-<weui-infiniteloader (loadmore)="onLoadMore($event)" #comp>
+<app-no-record *ngIf="companies?.length < 1"></app-no-record>
+<weui-infiniteloader *ngIf="companies?.length > 0" (loadmore)="onLoadMore($event)" #comp>
   <div *ngFor="let company of companies" class="weui-panel weui-panel_access">
     <div class="weui-panel__bd">
       <app-com-item [company]="company" [routerLink]="['/employee/find/company/item',company.id]" class="weui-media-box weui-media-box_appmsg"></app-com-item>

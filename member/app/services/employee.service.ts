@@ -34,8 +34,8 @@ export class EmployeeService {
       .catch(this.handleError);
   }
 
-  follow(key, id): Promise<any> {
-    return this.http.get(CONFIG.prefix.wApi + '/interface/call.ht?action=addFollow&key=' + key + '&datatype=2' + '&userid=' + id)
+  follow(key, id, postid): Promise<any> {
+    return this.http.get(CONFIG.prefix.wApi + '/interface/call.ht?action=addFollow&key=' + key + '&datatype=2' + '&userid=' + id + '&postid=' + postid)
       .toPromise()
       .then(response => this.handleExpire(response))
       .catch(this.handleError);

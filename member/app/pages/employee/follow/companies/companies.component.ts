@@ -35,8 +35,7 @@ export class EmployeeFollowCompaniesComponent implements OnInit {
   ngOnInit() {
     this.user = this.authSvc.currentUser;
     this.followSvc.getFollows(this.user.key, 0).then(res => {
-      this.companies = res.result;
-      console.log(this.companies);
+      this.companies = res.result.list;
     });
   }
 

@@ -1,3 +1,5 @@
+import {WORK_STATUSES_DATA} from '../../config/data';
+
 export function getIndex(arr, k, v) {
   for (let i = 0; i < arr.length; i++) {
     if (arr[i][k] === v) {
@@ -50,4 +52,10 @@ export function formDataToUrl(body: object, ifFist?: boolean): string {
     }
   }
   return str;
+}
+
+export function unshiftObj(arr, obj) {
+  const list = JSON.parse(JSON.stringify(arr));
+  list.unshift(obj);
+  return list;
 }
