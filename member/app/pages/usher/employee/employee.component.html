@@ -1,14 +1,14 @@
 <div class="content-scrollable">
   <div class="profile">
     <div class="weui-cells__title">基本资料</div>
-    <div class="weui-cells">
-      <a (click)="showOverlay('username')" class="weui-cell weui-cell_access" href="javascript:;">
+    <div class="weui-cells weui-cells_form">
+      <a (click)="showOverlay('username')" class="weui-cell weui-cell_access" [ngClass]="{'weui-cell_warn':profileForm.get('username').invalid && isSubmit}">
         <div class="weui-cell__bd">
           <p>姓名</p>
         </div>
         <div class="weui-cell__ft">{{profileForm.get('username').value ? profileForm.get('username').value : '请输入您的姓名'}}</div>
       </a>
-      <div class="weui-cell">
+      <div class="weui-cell" [ngClass]="{'weui-cell_warn':profileForm.get('sex').invalid && isSubmit}">
         <div class="weui-cell__bd">
           <p>性别</p>
         </div>
@@ -23,14 +23,14 @@
           </label>
         </div>
       </div>
-      <a (click)="showDate('date-ym','birthday')" class="weui-cell weui-cell_access">
+      <a (click)="showDate('date-ym','birthday')" class="weui-cell weui-cell_access" [ngClass]="{'weui-cell_warn':profileForm.get('birthday').invalid && isSubmit}">
         <div class="weui-cell__bd">
           <p>出生年月</p>
         </div>
         <div class="weui-cell__ft">{{profileForm.get('birthday').value ? profileForm.get('birthday').value : '未选择'}}
         </div>
       </a>
-      <a (click)="showData('weight')" class="weui-cell weui-cell_access">
+      <a (click)="showData('weight')" class="weui-cell weui-cell_access" [ngClass]="{'weui-cell_warn':profileForm.get('weight').invalid && isSubmit}">
         <div class="weui-cell__bd">
           <p>体重</p>
         </div>
@@ -38,7 +38,7 @@
           '未填写'}}
         </div>
       </a>
-      <a (click)="showData('height')" class="weui-cell weui-cell_access">
+      <a (click)="showData('height')" class="weui-cell weui-cell_access" [ngClass]="{'weui-cell_warn':profileForm.get('height').invalid && isSubmit}">
         <div class="weui-cell__bd">
           <p>身高</p>
         </div>
@@ -49,8 +49,8 @@
     </div>
 
     <div class="weui-cells__title">服役信息</div>
-    <div class="weui-cells">
-      <a (click)="showDate('date-ym','enlistmenttime')" class="weui-cell weui-cell_access">
+    <div class="weui-cells weui-cells_form">
+      <a (click)="showDate('date-ym','enlistmenttime')" class="weui-cell weui-cell_access" [ngClass]="{'weui-cell_warn':profileForm.get('enlistmenttime').invalid && isSubmit}">
         <div class="weui-cell__bd">
           <p>入伍时间</p>
         </div>
@@ -58,14 +58,14 @@
           '未填写'}}
         </div>
       </a>
-      <a (click)="showDate('date-ym','retirementtime')" class="weui-cell weui-cell_access">
+      <a (click)="showDate('date-ym','retirementtime')" class="weui-cell weui-cell_access" [ngClass]="{'weui-cell_warn':profileForm.get('retirementtime').invalid && isSubmit}">
         <div class="weui-cell__bd">
           <p>退伍时间</p>
         </div>
         <div class="weui-cell__ft">{{profileForm.get('retirementtime').value ? profileForm.get('retirementtime').value :
           '未填写'}}</div>
       </a>
-      <a (click)="showServices()" class="weui-cell weui-cell_access">
+      <a (click)="showServices()" class="weui-cell weui-cell_access" [ngClass]="{'weui-cell_warn':profileForm.get('services').invalid && isSubmit}">
         <div class="weui-cell__bd">
           <p>兵种</p>
         </div>
@@ -73,7 +73,7 @@
           {{profileForm.get('services').value ? profileForm.get('armytype').value + profileForm.get('services').value : '请选择兵种'}}
         </div>
       </a>
-      <a (click)="showData('reward')" class="weui-cell weui-cell_access">
+      <a (click)="showData('reward')" class="weui-cell weui-cell_access" [ngClass]="{'weui-cell_warn':profileForm.get('reward').invalid && isSubmit}">
         <div class="weui-cell__bd">
           <p>立功受奖</p>
         </div>
@@ -83,8 +83,8 @@
     </div>
 
     <div class="weui-cells__title">驾驶技能</div>
-    <div class="weui-cells">
-      <a (click)="showData('drivinglicence')" class="weui-cell weui-cell_access">
+    <div class="weui-cells weui-cells_form">
+      <a (click)="showData('drivinglicence')" class="weui-cell weui-cell_access" [ngClass]="{'weui-cell_warn':profileForm.get('drivinglicence').invalid && isSubmit}">
         <div class="weui-cell__bd">
           <p>驾照类型</p>
         </div>
@@ -92,18 +92,18 @@
           {{profileForm.get('drivinglicence').value || '请选择驾照类型'}}
         </div>
       </a>
-      <a (click)="showData('driversage')" class="weui-cell weui-cell_access">
+      <a (click)="showData('driversage')" class="weui-cell weui-cell_access" [ngClass]="{'weui-cell_warn':profileForm.get('driversage').invalid && isSubmit}">
         <div class="weui-cell__bd">
           <p>驾龄</p>
         </div>
-        <div class="weui-cell__ft">{{profileForm.get('driversage').value ? profileForm.get('driversage').value + '年' : '请输入您的驾龄'}}</div>
+        <div class="weui-cell__ft">{{profileForm.get('driversage').value || profileForm.get('driversage').value === 0 ? profileForm.get('driversage').value + '年' : '请输入您的驾龄'}}</div>
       </a>
-      <a (click)="showData('drivingmileage')" class="weui-cell weui-cell_access">
+      <a (click)="showData('drivingmileage')" class="weui-cell weui-cell_access" [ngClass]="{'weui-cell_warn':profileForm.get('drivingmileage').invalid && isSubmit}">
         <div class="weui-cell__bd">
           <p>驾驶里程</p>
         </div>
         <div class="weui-cell__ft">
-          {{profileForm.get('drivingmileage').value ? '约' + profileForm.get('drivingmileage').value + '公里' : '请选择驾驶里程'}}
+          {{profileForm.get('drivingmileage').value || profileForm.get('drivingmileage').value === 0 ? '约' + profileForm.get('drivingmileage').value + '公里' : '请选择驾驶里程'}}
         </div>
       </a>
     </div>

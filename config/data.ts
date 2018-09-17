@@ -73,7 +73,7 @@ export const FINANCE_DATA = [
 export const LENGTH_OF_MILITARY_DATA = [
   {label: '2年兵', value: '2'},
   {label: '5年兵', value: '5'},
-  {label: '8年及以上', value: '8'}
+  {label: '8年兵及以上', value: '8'}
 ];
 export const EDUCATIONS_DATA = [
   {

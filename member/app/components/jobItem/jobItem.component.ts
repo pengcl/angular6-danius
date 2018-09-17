@@ -20,7 +20,6 @@ export class JobItemComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.experiences);
   }
 
 }

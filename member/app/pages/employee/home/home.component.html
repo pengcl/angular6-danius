@@ -2,7 +2,7 @@
   <div class="weui-panel__bd">
     <a routerLink="/employee/profile" class="weui-media-box weui-media-box_appmsg">
       <div class="weui-media-box__hd">
-        <img class="avatar weui-media-box__thumb" src="{{'/wApi' + userInfo.user.headimage}}" alt="">
+        <img class="avatar weui-media-box__thumb" src="{{userInfo.user.headimage ? '/wApi' + userInfo.user.headimage : '/assets/images/avatars/soldier.png'}}" alt="">
       </div>
       <div class="weui-media-box__bd">
         <h4 class="weui-media-box__title">{{userInfo.user.username}}</h4>
@@ -13,7 +13,7 @@
           class="ui-label label-default">{{userInfo.personal.retirementtime.split('-')[0] - userInfo.personal.enlistmenttime.split('-')[0]}}年军龄</span>
         </p>
       </div>
-      <div class="weui-media-box__ft">上次更新：3天前</div>
+      <div class="weui-media-box__ft">上次更新：{{userInfo.user.lasttime | repairDate | date : 'MM/dd HH:mm'}}</div>
     </a>
   </div>
   <div *ngIf="count" class="weui-panel__ft">

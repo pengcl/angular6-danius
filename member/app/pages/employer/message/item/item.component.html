@@ -71,7 +71,7 @@
     <div class="weui-panel__ft">
       <a href="javascript:void(0);" class="weui-cell weui-cell_access weui-cell_link">
         <div class="weui-cell__bd">
-          <p class="weui-media-box__desc">{{chat.recordtime | repairDate | date : 'MM:dd HH:mm'}} 由您发起沟通</p>
+          <p class="weui-media-box__desc">{{chat.recordtime | repairDate | date : 'MM-dd HH:mm'}} 由您发起沟通</p>
         </div>
       </a>
     </div>
@@ -166,7 +166,7 @@
         </div>
         <div class="weui-media-box__bd">
           <h4 class="weui-media-box__title">{{chat.candidatename}}</h4>
-          <p class="weui-media-box__desc">面试职位：{{chat.postname}}</p>
+          <p class="weui-media-box__desc">面试职位：{{job.postname}}</p>
         </div>
       </div>
     </div>

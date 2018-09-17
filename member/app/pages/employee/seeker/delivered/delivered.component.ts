@@ -10,6 +10,7 @@ import {NavbarService} from '../../../../../../modules/navbar';
 import {TabbarService} from '../../../../../../modules/tabbar';
 import {AuthService} from '../../../../services/auth.service';
 import {UserService} from '../../../../services/user.service';
+import {EmployeeService} from '../../../../services/employee.service';
 import {JobService} from '../../../../services/job.service';
 
 @Component({
@@ -24,6 +25,8 @@ export class EmployeeSeekerDeliveredComponent implements OnInit {
 
   comForm: FormGroup;
 
+  delivers: any[] = [];
+
   constructor(private route: ActivatedRoute,
               private router: Router,
               private storageSvc: StorageService,
@@ -31,6 +34,7 @@ export class EmployeeSeekerDeliveredComponent implements OnInit {
               private tabSvc: TabbarService,
               private authSvc: AuthService,
               private userSvc: UserService,
+              private employeeSvc: EmployeeService,
               private jobSvc: JobService) {
     navSvc.set({title: '职位管理'});
     tabSvc.set({show: false});
@@ -39,26 +43,10 @@ export class EmployeeSeekerDeliveredComponent implements OnInit {
   ngOnInit() {
     this.user = this.authSvc.currentUser;
 
-    this.comForm = new FormGroup({
-      key: new FormControl('', [Validators.required]),
-      companyid: new FormControl('', [Validators.required]),
-      page: new FormControl('', [Validators.required])
-    });
-
-    this.comForm.get('key').setValue(this.user.key);
-    this.comForm.get('page').setValue(1);
-    this.userSvc.get(this.user.key).then(res => {
-      if (res.code !== '0000') {// 如果获取接口失败
-        return false;
+    this.employeeSvc.getDelivered(this.user.key).then(res => {
+      if (res.code === '0000') {
+        this.delivers = res.result.list;
       }
-
-      // this.comForm.get('companyid').setValue(res.result.company.companyid);
-    }).then(() => {
-      this.jobSvc.findJobs(this.comForm.value).then(res => {
-        if (res.code === '0000') {
-          this.jobs = res.result.list;
-        }
-      });
     });
   }
 

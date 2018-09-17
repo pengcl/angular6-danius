@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {FormGroup, FormControl, Validators} from '@angular/forms';
 
+import {CONFIG} from '../../../../../../../config/app.config';
+
 import {
   EDUCATIONS_DATA,
   EXPERIENCES_DATA,
@@ -26,6 +28,7 @@ import {unshiftObj} from '../../../../../../../commons/js/utils';
 })
 export class EmployeeFindJobItemComponent implements OnInit {
 
+  config = CONFIG;
   user;
   id;
   job;
@@ -67,6 +70,7 @@ export class EmployeeFindJobItemComponent implements OnInit {
     this.followForm.get('postid').setValue(this.id);
 
     this.jobSvc.getJob(this.user.key, this.id).then(res => this.job = res.result).then(job => {
+      console.log(job);
       this.companySvc.getCompany(this.user.key, job.companyid).then(res => {
         if (res.code === '0000') {
           this.company = res.result.busCompany;
@@ -80,8 +84,7 @@ export class EmployeeFindJobItemComponent implements OnInit {
   }
 
   follow() {
-    this.followSvc.follow(this.followForm.value).then(res => {
-    });
+    this.followSvc.follow(this.followForm.value).then(res => {});
   }
 }
 

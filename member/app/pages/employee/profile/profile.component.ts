@@ -143,7 +143,7 @@ export class EmployeeProfileComponent implements OnInit {
 
   showData(target) {
     this.formControl = target;
-    const defaultSelect = getIndex(this.pickerData[target], 'value', this.profileForm.get(target).value.toString()) || 0;
+    const defaultSelect = this.profileForm.get(target).value ? (getIndex(this.pickerData[target], 'value', this.profileForm.get(target).value.toString()) || 0) : 0;
     this.pickerSvc.show([this.pickerData[target]], '', [defaultSelect], {
       cancel: '取消',
       confirm: '确认'
@@ -154,11 +154,10 @@ export class EmployeeProfileComponent implements OnInit {
   }
 
   showDate(type, target) {
-    const defaultDate = this.profileForm.get(target).value ? this.profileForm.get(target).value : '1998-01';
-    this.pickerSvc.showDateTime(type, '', new Date(defaultDate))
-      .subscribe(res => {
-        this.profileForm.get(target).setValue(res.formatValue);
-      });
+    /*const defaultDate = (this.profileForm.get(target).value ? this.profileForm.get(target).value : '1998-01');*/
+    this.pickerSvc.showDateTime(type).subscribe(res => {
+      this.profileForm.get(target).setValue(res.formatValue);
+    });
   }
 
   showCity() {

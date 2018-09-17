@@ -106,7 +106,7 @@ export class SignInComponent implements OnInit, OnDestroy {
       }
 
       if (res.result.user.usertype === 1) {
-        this.router.navigate(['/employee/home']);
+        this.router.navigate(['/employee/find/job/list']);
       } else {
         this.router.navigate(['/employer/home']);
       }

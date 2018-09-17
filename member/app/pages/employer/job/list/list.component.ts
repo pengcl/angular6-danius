@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 
@@ -22,8 +22,17 @@ export class EmployerJobListComponent implements OnInit {
 
   user;
   jobs;
+  jobs1;
+  jobs2;
+  jobs3;
+  jobs4;
 
   comForm: FormGroup;
+  @ViewChild('comp') private comp: InfiniteLoaderComponent;
+  @ViewChild('comp1') private comp1: InfiniteLoaderComponent;
+  @ViewChild('comp2') private comp2: InfiniteLoaderComponent;
+  @ViewChild('comp3') private comp3: InfiniteLoaderComponent;
+  @ViewChild('comp4') private comp4: InfiniteLoaderComponent;
 
   constructor(private route: ActivatedRoute,
               private router: Router,
@@ -43,6 +52,7 @@ export class EmployerJobListComponent implements OnInit {
     this.comForm = new FormGroup({
       key: new FormControl('', [Validators.required]),
       companyid: new FormControl('', [Validators.required]),
+      status: new FormControl('', [Validators.required]),
       page: new FormControl('', [Validators.required])
     });
 
@@ -55,15 +65,24 @@ export class EmployerJobListComponent implements OnInit {
 
       this.comForm.get('companyid').setValue(res.result.company.companyid);
     }).then(() => {
-      this.jobSvc.findJobs(this.comForm.value).then(res => {
-        if (res.code === '0000') {
-          this.jobs = res.result.list;
-        }
-      });
+      this.getData('');
     });
   }
 
-  onSelect() {
+  getData(status) {
+    if (!this['jobs' + status]) {
+      this.jobSvc.findJobs(this.comForm.value).then(res => {
+        if (res.code === '0000') {
+          this['jobs' + status] = res.result.list;
+          this['comp' + status].restart();
+        }
+      });
+    }
+  }
+
+  onSelect(status) {
+    this.comForm.get('status').setValue(status);
+    this.getData(status);
   }
 
   addNew() {

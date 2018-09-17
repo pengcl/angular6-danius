@@ -19,7 +19,7 @@ export const TAB_CONFIG = {
       text: '消息',
       selected: false,
       badge: {
-        badge: 10,
+        badge: 0,
         dot: false
       }
     },

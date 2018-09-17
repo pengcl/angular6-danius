@@ -63,6 +63,7 @@ export class AuthService {
   logout(): void {
     this.storageSvc.clear();
     this.loginStatus.next(this.isLogged);
+    this.router.navigate(['/auth/signIn']);
   }
 
   get currentUser() {

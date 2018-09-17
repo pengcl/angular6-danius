@@ -1,9 +1,10 @@
 <weui-navbar>
-  <weui-tab heading="全部">
+  <weui-tab heading="全部" (select)="onSelect('')">
     <weui-infiniteloader (loadmore)="onLoadMore($event)" #comp>
-      <div class="weui-panel">
+      <app-no-record *ngIf="jobs?.length < 1"></app-no-record>
+      <div *ngFor="let job of jobs" class="weui-panel">
         <div class="weui-panel__bd">
-          <div *ngFor="let job of jobs" [routerLink]="['/employer/job/item',job.id]" class="weui-media-box weui-media-box_appmsg weui-media-box_access">
+          <div [routerLink]="['/employer/job/item',job.id]" class="weui-media-box weui-media-box_appmsg weui-media-box_access">
             <div class="weui-media-box__bd">
               <h4 class="weui-media-box__title">{{job.postname}} <span class="right" *ngIf="!job.salaryend">面议</span><span *ngIf="job.salaryend" class="right">{{job.salarybegin}}k - {{job.salaryend}}k</span></h4>
               <ul class="weui-media-box__info">
@@ -25,25 +26,113 @@
       </div>
     </weui-infiniteloader>
   </weui-tab>
-  <weui-tab heading="招聘中" (select)="onSelect()">
-    <article class="weui-article">
-      <h1>Panel 2 Title</h1>
-    </article>
+  <weui-tab heading="招聘中" (select)="onSelect(3)">
+    <weui-infiniteloader (loadmore)="onLoadMore($event)" #comp3>
+      <app-no-record *ngIf="jobs3?.length < 1"></app-no-record>
+      <div *ngFor="let job of jobs3" class="weui-panel">
+        <div class="weui-panel__bd">
+          <div [routerLink]="['/employer/job/item',job.id]" class="weui-media-box weui-media-box_appmsg weui-media-box_access">
+            <div class="weui-media-box__bd">
+              <h4 class="weui-media-box__title">{{job.postname}} <span class="right" *ngIf="!job.salaryend">面议</span><span *ngIf="job.salaryend" class="right">{{job.salarybegin}}k - {{job.salaryend}}k</span></h4>
+              <ul class="weui-media-box__info">
+                <li class="weui-media-box__info__meta"><i class="icons icons-attention_fill"></i> <span>浏览({{job.viewcount}})</span></li>
+                <li class="weui-media-box__info__meta"><i class="icons icons-message"></i> <span>评论({{job.communicationcount}})</span></li>
+                <li class="weui-media-box__info__meta"><i class="icons icons-share"></i> <span>分享({{job.sharecount}})</span></li>
+                <li class="weui-media-box__info__meta right">
+                  <!--0-待审核，1-审核失败，2-待开放，3-招聘中-->
+                  <span class="colors red" *ngIf="job.status === 0">待审核</span>
+                  <span class="colors red" *ngIf="job.status === 1">审核失败</span>
+                  <span class="colors orange" *ngIf="job.status === 2">待开放</span>
+                  <span class="colors green" *ngIf="job.status === 3">招聘中</span>
+                </li>
+              </ul>
+            </div>
+            <div class="weui-media-box__ft"></div>
+          </div>
+        </div>
+      </div>
+    </weui-infiniteloader>
   </weui-tab>
-  <weui-tab heading="待开放">
-    <article class="weui-article">
-      <h1>Panel 3 Title</h1>
-    </article>
+  <weui-tab heading="待开放" (select)="onSelect(2)">
+    <weui-infiniteloader (loadmore)="onLoadMore($event)" #comp2>
+      <app-no-record *ngIf="jobs2?.length < 1"></app-no-record>
+      <div *ngFor="let job of jobs2" class="weui-panel">
+        <div class="weui-panel__bd">
+          <div [routerLink]="['/employer/job/item',job.id]" class="weui-media-box weui-media-box_appmsg weui-media-box_access">
+            <div class="weui-media-box__bd">
+              <h4 class="weui-media-box__title">{{job.postname}} <span class="right" *ngIf="!job.salaryend">面议</span><span *ngIf="job.salaryend" class="right">{{job.salarybegin}}k - {{job.salaryend}}k</span></h4>
+              <ul class="weui-media-box__info">
+                <li class="weui-media-box__info__meta"><i class="icons icons-attention_fill"></i> <span>浏览({{job.viewcount}})</span></li>
+                <li class="weui-media-box__info__meta"><i class="icons icons-message"></i> <span>评论({{job.communicationcount}})</span></li>
+                <li class="weui-media-box__info__meta"><i class="icons icons-share"></i> <span>分享({{job.sharecount}})</span></li>
+                <li class="weui-media-box__info__meta right">
+                  <!--0-待审核，1-审核失败，2-待开放，3-招聘中-->
+                  <span class="colors red" *ngIf="job.status === 0">待审核</span>
+                  <span class="colors red" *ngIf="job.status === 1">审核失败</span>
+                  <span class="colors orange" *ngIf="job.status === 2">待开放</span>
+                  <span class="colors green" *ngIf="job.status === 3">招聘中</span>
+                </li>
+              </ul>
+            </div>
+            <div class="weui-media-box__ft"></div>
+          </div>
+        </div>
+      </div>
+    </weui-infiniteloader>
   </weui-tab>
-  <weui-tab heading="已关闭">
-    <article class="weui-article">
-      <h1>Panel 3 Title</h1>
-    </article>
+  <weui-tab heading="已关闭" (select)="onSelect(4)">
+    <weui-infiniteloader (loadmore)="onLoadMore($event)" #comp4>
+      <app-no-record *ngIf="jobs4?.length < 1"></app-no-record>
+      <div *ngFor="let job of jobs4" class="weui-panel">
+        <div class="weui-panel__bd">
+          <div [routerLink]="['/employer/job/item',job.id]" class="weui-media-box weui-media-box_appmsg weui-media-box_access">
+            <div class="weui-media-box__bd">
+              <h4 class="weui-media-box__title">{{job.postname}} <span class="right" *ngIf="!job.salaryend">面议</span><span *ngIf="job.salaryend" class="right">{{job.salarybegin}}k - {{job.salaryend}}k</span></h4>
+              <ul class="weui-media-box__info">
+                <li class="weui-media-box__info__meta"><i class="icons icons-attention_fill"></i> <span>浏览({{job.viewcount}})</span></li>
+                <li class="weui-media-box__info__meta"><i class="icons icons-message"></i> <span>评论({{job.communicationcount}})</span></li>
+                <li class="weui-media-box__info__meta"><i class="icons icons-share"></i> <span>分享({{job.sharecount}})</span></li>
+                <li class="weui-media-box__info__meta right">
+                  <!--0-待审核，1-审核失败，2-待开放，3-招聘中-->
+                  <span class="colors red" *ngIf="job.status === 0">待审核</span>
+                  <span class="colors red" *ngIf="job.status === 1">审核失败</span>
+                  <span class="colors orange" *ngIf="job.status === 2">待开放</span>
+                  <span class="colors green" *ngIf="job.status === 3">招聘中</span>
+                </li>
+              </ul>
+            </div>
+            <div class="weui-media-box__ft"></div>
+          </div>
+        </div>
+      </div>
+    </weui-infiniteloader>
   </weui-tab>
-  <weui-tab heading="审核失败">
-    <article class="weui-article">
-      <h1>Panel 3 Title</h1>
-    </article>
+  <weui-tab heading="审核失败" (select)="onSelect(1)">
+    <weui-infiniteloader (loadmore)="onLoadMore($event)" #comp1>
+      <app-no-record *ngIf="jobs1?.length < 1"></app-no-record>
+      <div *ngFor="let job of jobs1" class="weui-panel">
+        <div class="weui-panel__bd">
+          <div [routerLink]="['/employer/job/item',job.id]" class="weui-media-box weui-media-box_appmsg weui-media-box_access">
+            <div class="weui-media-box__bd">
+              <h4 class="weui-media-box__title">{{job.postname}} <span class="right" *ngIf="!job.salaryend">面议</span><span *ngIf="job.salaryend" class="right">{{job.salarybegin}}k - {{job.salaryend}}k</span></h4>
+              <ul class="weui-media-box__info">
+                <li class="weui-media-box__info__meta"><i class="icons icons-attention_fill"></i> <span>浏览({{job.viewcount}})</span></li>
+                <li class="weui-media-box__info__meta"><i class="icons icons-message"></i> <span>评论({{job.communicationcount}})</span></li>
+                <li class="weui-media-box__info__meta"><i class="icons icons-share"></i> <span>分享({{job.sharecount}})</span></li>
+                <li class="weui-media-box__info__meta right">
+                  <!--0-待审核，1-审核失败，2-待开放，3-招聘中-->
+                  <span class="colors red" *ngIf="job.status === 0">待审核</span>
+                  <span class="colors red" *ngIf="job.status === 1">审核失败</span>
+                  <span class="colors orange" *ngIf="job.status === 2">待开放</span>
+                  <span class="colors green" *ngIf="job.status === 3">招聘中</span>
+                </li>
+              </ul>
+            </div>
+            <div class="weui-media-box__ft"></div>
+          </div>
+        </div>
+      </div>
+    </weui-infiniteloader>
   </weui-tab>
 </weui-navbar>
 

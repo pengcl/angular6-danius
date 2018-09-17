@@ -9,8 +9,7 @@ import {OverlayService} from '../../../../../../modules/overlay';
 import {NavbarService} from '../../../../../../modules/navbar';
 import {TabbarService} from '../../../../../../modules/tabbar';
 import {AuthService} from '../../../../services/auth.service';
-import {UserService} from '../../../../services/user.service';
-import {JobService} from '../../../../services/job.service';
+import {EmployeeService} from '../../../../services/employee.service';
 
 @Component({
   selector: 'app-employee-seeker-evaluate',
@@ -20,6 +19,7 @@ import {JobService} from '../../../../services/job.service';
 export class EmployeeSeekerEvaluateComponent implements OnInit {
 
   user;
+  interview;
   state;
   labels: any[] = [];
   tags: any[] = [];
@@ -34,19 +34,27 @@ export class EmployeeSeekerEvaluateComponent implements OnInit {
               private navSvc: NavbarService,
               private tabSvc: TabbarService,
               private authSvc: AuthService,
-              private userSvc: UserService,
-              private jobSvc: JobService) {
+              private employeeSvc: EmployeeService) {
     navSvc.set({title: '面试'});
     tabSvc.set({show: false});
   }
 
   ngOnInit() {
     this.user = this.authSvc.currentUser;
-    this.overlaySvc.show();
 
     this.evaluateForm = new FormGroup({
       key: new FormControl('', [Validators.required]),
       tags: new FormControl('', [Validators.required]),
+    });
+
+    this.employeeSvc.getInterview(this.user.key, this.route.snapshot.params['id']).then(res => {
+      if (res.code === '0000') {
+        this.interview = res.result;
+        if (this.interview.interviewstate === '2') {
+          this.overlaySvc.show();
+        }
+        console.log(this.interview);
+      }
     });
   }
 

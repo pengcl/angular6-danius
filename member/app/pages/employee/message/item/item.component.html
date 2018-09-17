@@ -21,9 +21,9 @@
   </div>
 </div>
 <div class="content-scrollable" #container>
-  <div *ngIf="job && chart" class="item-details weui-panel weui-panel_access">
+  <div *ngIf="job && chart" [routerLink]="['/employee/find/job/item',job.id]" class="item-details weui-panel weui-panel_access">
     <div class="weui-panel__bd">
-      <a class="weui-media-box weui-media-box_appmsg">
+      <div class="weui-media-box weui-media-box_appmsg">
         <!--<div class="weui-media-box__hd">
           <img class="avatar" src="/assets/images/avatars/3.jpg">
         </div>-->
@@ -32,22 +32,24 @@
           <p class="weui-media-box__desc">{{job.companyname}}<span
             class="right">{{job.addresscity}}{{job.addressarea}}</span></p>
         </div>
-      </a>
+      </div>
       <div class="weui-media-box weui-media-box_appmsg">
         <div class="weui-media-box__bd">
-          <p class="arr weui-media-box__desc"><i class="icons icons-position"></i><span>{{job.experiencetype | label : experiences}}</span><span
-            class="dot">·</span><i
-            class="icons icons-edu"></i><span>{{job.limiteducationtype | label : educations}}</span><span
-            class="dot">·</span><i
-            class="icons icons-soldier"></i><span>{{job.serviceage | label : lengthOfMilitary}}</span></p>
-          <p class="weui-media-box__desc">1.拥有扎实的JavaSE基础，良好的编码习惯；<br>2.熟悉各种开源框架SpringMVC，Spring，Mybatis...</p>
+          <p class="arr weui-media-box__desc"><i class="icons icons-position"></i> <span>{{job.experiencetype | label : experiences}}工作经验</span><span
+            class="dot"> · </span><i
+            class="icons icons-edu"></i> <span>{{job.limiteducationtype | label : educations}}</span><span
+            class="dot"> · </span><i
+            class="icons icons-soldier"></i> <span>{{job.serviceage | label : lengthOfMilitary}}</span></p>
+          <div class="label-container">
+            <span *ngFor="let item of job.skillnames.split(','); let i = index" class="ui-label">{{item}}</span>
+          </div>
         </div>
       </div>
     </div>
     <div class="weui-panel__ft">
       <a href="javascript:void(0);" class="weui-cell weui-cell_access weui-cell_link">
         <div class="weui-cell__bd">
-          <p class="weui-media-box__desc">{{chart.recordtime | repairDate | date : 'MM:dd HH:mm'}} 由您发起沟通</p>
+          <p class="weui-media-box__desc">{{chart.recordtime | repairDate | date : 'MM-dd HH:mm'}} 由您发起沟通</p>
         </div>
       </a>
     </div>

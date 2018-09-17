@@ -23,6 +23,8 @@ export class UsherEmployeeComponent implements OnInit {
   user;
   userInfo;
   formControl = '';
+  loading = false;
+  isSubmit = false;
 
   pickerData = {
     weight: Array(70)
@@ -244,9 +246,19 @@ export class UsherEmployeeComponent implements OnInit {
   }
 
   onSubmit() {
+    if (this.loading) {
+      return false;
+    }
+    this.isSubmit = true;
+    if (this.profileForm.invalid) {
+      return false;
+    }
+    this.loading = true;
     this.dialogSvc.show({content: '登记成功', cancel: '找工作', confirm: '完善资料'}).subscribe(data => {
       if (data.value) {
         this.router.navigate(['/employee/resume/edit']);
+      } else {
+        this.router.navigate(['/employee/find/job/list']);
       }
     });
   }

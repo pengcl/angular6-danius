@@ -2,7 +2,8 @@
   <div class="posts weui-cell">
     <div class="weui-cell__bd">
       <span *ngIf="intents?.length === 0"><span class="name">您现在还没有添加工作意向</span></span>
-      <span (click)="setIntent(item)" *ngFor="let item of intents" class="name" [ngClass]="{'curr':item.id === params.positionid}">
+      <span (click)="setIntent(item)" *ngFor="let item of intents" class="name"
+            [ngClass]="{'curr':item.id === params.positionid}">
         {{item.intentname}}
       </span>
     </div>
@@ -11,11 +12,11 @@
     </div>
   </div>
   <div class="filters weui-cell">
-    <div (click)="showFilter(1)" class="weui-cell__bd" [ngClass]="{'curr' : type === 1}"><span>推荐</span><i
+    <div (click)="showFilter(1)" class="weui-cell__bd" [ngClass]="{'curr' : type === 1}"><span>{{params.isnew ? '最新' : '推荐'}}</span><i
       class="icons icons-arrows-down"></i></div>
-    <div (click)="showPicker(2);" class="weui-cell__bd" [ngClass]="{'curr' : type === 2}"><span>地区</span><i
+    <div (click)="showFilter(2);" class="weui-cell__bd" [ngClass]="{'curr' : type === 2}"><span>{{params.areacode ? getNFC(cities,params.areacode) : '地区'}}</span><i
       class="icons icons-arrows-down"></i></div>
-    <div (click)="showFilter(3)" class="weui-cell__bd" [ngClass]="{'curr' : type === 3}"><span>行业</span><i
+    <div (click)="showFilter(3)" class="weui-cell__bd" [ngClass]="{'curr' : type === 3}"><span>{{params.tradeids ? getNFC(industries,params.tradeids) : '行业'}}</span><i
       class="icons icons-arrows-down"></i></div>
     <div (click)="showFilter(4)" class="weui-cell__bd" [ngClass]="{'curr' : type === 4}"><span>要求</span><i
       class="icons icons-arrows-down"></i></div>
@@ -72,7 +73,8 @@
             <div class="weui-grids">
               <div *ngFor="let education of educations" class="weui-grid">
                 <span (click)="setRequirements('education',education)"
-                      class="ui-label" [ngClass]="{'curr':params.edutype === education.value}">{{education.label}}</span>
+                      class="ui-label"
+                      [ngClass]="{'curr':params.edutype === education.value}">{{education.label}}</span>
               </div>
             </div>
           </div>
@@ -86,7 +88,8 @@
             <div class="weui-grids">
               <div *ngFor="let experience of experiences" class="weui-grid">
                 <span (click)="setRequirements('exptype',experience)"
-                      class="ui-label" [ngClass]="{'curr':params.exptype === experience.value}">{{experience.label}}</span>
+                      class="ui-label"
+                      [ngClass]="{'curr':params.exptype === experience.value}">{{experience.label}}</span>
               </div>
             </div>
           </div>
@@ -116,7 +119,8 @@
 <weui-infiniteloader (loadmore)="onLoadMore($event)" #comp>
   <div *ngFor="let job of jobs" class="weui-panel weui-panel_access">
     <div class="weui-panel__bd">
-      <app-job-item [routerLink]="['/employee/find/job/item',job.id]" [job]="job" class="weui-media-box weui-media-box_appmsg weui-media-box_access"></app-job-item>
+      <app-job-item [routerLink]="['/employee/find/job/item',job.id]" [job]="job"
+                    class="weui-media-box weui-media-box_appmsg weui-media-box_access"></app-job-item>
     </div>
   </div>
   <app-no-record *ngIf="jobs?.length === 0"></app-no-record>

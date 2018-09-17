@@ -3,9 +3,10 @@
     <div class="weui-panel__bd">
       <div class="weui-media-box weui-media-box_appmsg weui-media-box_access">
         <div class="weui-media-box__bd">
-          <h4 class="weui-media-box__title">{{job.postname}} <em class="salary">{{job.salarybegin}}k - {{job.salaryend}}k</em>
+          <h4 class="weui-media-box__title">{{job.postname}} <em class="salary">{{job.salarybegin}}k -
+            {{job.salaryend}}k</em>
             <span class="right actions">
-              <i (click)="follow()" class="icons icons-star_fill"></i>
+              <i (click)="follow()" class="icons icons-star_fill" [ngClass]="{'followed':job.ifFollow}"></i>
               <i class="icons icons-share"></i>
             </span>
           </h4>
@@ -29,10 +30,12 @@
   </div>
   <div class="company weui-panel weui-panel_access">
     <div class="weui-panel__bd">
-      <div class="weui-media-box weui-media-box_appmsg weui-media-box_access">
+      <div [routerLink]="['/employee/find/company/item',company?.id]"
+           class="weui-media-box weui-media-box_appmsg weui-media-box_access">
         <div class="weui-media-box__bd">
           <h4 class="weui-media-box__title">{{job.companyname}}</h4>
-          <p class="weui-media-box__desc">{{company?.financingprogress | label : finances}} · {{company?.staffsize | label : staffs}} · {{company?.tradename}}</p>
+          <p class="weui-media-box__desc">{{company?.financingprogress | label : finances}} · {{company?.staffsize |
+            label : staffs}} · {{company?.tradename}}</p>
           <div class="ui-labels weui-grids">
             <div *ngFor="let item of company?.excellencename.split(',')" class="weui-grid">
               <span class="ui-label">{{item}}</span>
@@ -40,7 +43,8 @@
           </div>
         </div>
         <div class="weui-media-box__hd">
-          <img src="/assets/images/avatars/1.jpg">
+          <img
+            src="{{company?.headerimage ? config.prefix.wApi + company?.headerimage : '/assets/images/avatars/1.jpg'}}">
         </div>
       </div>
     </div>
@@ -109,7 +113,8 @@
           <p class="weui-media-box__address">{{job.companyname}} · {{job.addresscity}} · {{job.addressarea}}</p>
           <p class="arr weui-media-box__desc"><i class="icons icons-position"></i><span>{{job.experiencetype | label : experiences}}</span><span
             class="dot">·</span><i
-            class="icons icons-edu"></i><span>{{job.limiteducationtype | label : educations}}</span><span class="dot">·</span><i
+            class="icons icons-edu"></i><span>{{job.limiteducationtype | label : educations}}</span><span
+            class="dot">·</span><i
             class="icons icons-soldier"></i><span>{{job.serviceage | label : lengthOfMilitary}}</span></p>
           <p class="arr weui-media-box__desc"><i style="font-size: 0.14rem" class="icons icons-tags"></i><span
             *ngFor="let item of job.skillnames.split(','); let i = index"><span class="dot" *ngIf="i !== 0">·</span>{{item}}</span>

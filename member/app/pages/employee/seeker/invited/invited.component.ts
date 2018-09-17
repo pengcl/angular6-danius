@@ -1,16 +1,17 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 
 import {timer as observableTimer, interval as observableInterval, Observable} from 'rxjs';
 
 import {InfiniteLoaderComponent} from 'ngx-weui';
+
+import {CONFIG} from '../../../../../../config/app.config';
 import {StorageService} from '../../../../../../service/storage.service';
 import {NavbarService} from '../../../../../../modules/navbar';
 import {TabbarService} from '../../../../../../modules/tabbar';
 import {AuthService} from '../../../../services/auth.service';
 import {UserService} from '../../../../services/user.service';
-import {JobService} from '../../../../services/job.service';
+import {ChatService} from '../../../../services/chat.service';
 
 @Component({
   selector: 'app-employee-seeker-invited',
@@ -19,10 +20,9 @@ import {JobService} from '../../../../services/job.service';
 })
 export class EmployeeSeekerInvitedComponent implements OnInit {
 
+  config = CONFIG;
   user;
-  jobs;
-
-  comForm: FormGroup;
+  messages;
 
   constructor(private route: ActivatedRoute,
               private router: Router,
@@ -31,7 +31,7 @@ export class EmployeeSeekerInvitedComponent implements OnInit {
               private tabSvc: TabbarService,
               private authSvc: AuthService,
               private userSvc: UserService,
-              private jobSvc: JobService) {
+              private chatSvc: ChatService) {
     navSvc.set({title: '职位管理'});
     tabSvc.set({show: false});
   }
@@ -39,39 +39,15 @@ export class EmployeeSeekerInvitedComponent implements OnInit {
   ngOnInit() {
     this.user = this.authSvc.currentUser;
 
-    this.comForm = new FormGroup({
-      key: new FormControl('', [Validators.required]),
-      companyid: new FormControl('', [Validators.required]),
-      page: new FormControl('', [Validators.required])
-    });
-
-    this.comForm.get('key').setValue(this.user.key);
-    this.comForm.get('page').setValue(1);
-    this.userSvc.get(this.user.key).then(res => {
-      if (res.code !== '0000') {// 如果获取接口失败
-        return false;
+    this.chatSvc.getMessages(this.user.key).then(res => {
+      if (res.code === '0000') {
+        this.messages = res.result.list;
       }
-
-      // this.comForm.get('companyid').setValue(res.result.company.companyid);
-    }).then(() => {
-      this.jobSvc.findJobs(this.comForm.value).then(res => {
-        if (res.code === '0000') {
-          this.jobs = res.result.list;
-        }
-      });
     });
-  }
-
-  onSelect() {
-  }
-
-  addNew() {
-    this.storageSvc.remove('comForm');
-    this.router.navigate(['/employer/job/add']);
   }
 
   onLoadMore(comp: InfiniteLoaderComponent) {
-    observableTimer(1500).subscribe(() => {
+    /*observableTimer(1500).subscribe(() => {
       this.comForm.get('page').setValue(this.comForm.get('page').value + 1);
       this.jobSvc.findJobs(this.comForm.value).then(res => {
         if (res.code === '0000') {
@@ -84,7 +60,7 @@ export class EmployeeSeekerInvitedComponent implements OnInit {
         }
       });
       comp.resolveLoading();
-    });
+    });*/
   }
 
 }

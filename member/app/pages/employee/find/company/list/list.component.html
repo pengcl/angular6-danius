@@ -16,7 +16,7 @@
           <div class="weui-media-box">
             <div class="weui-grids">
               <div *ngFor="let finance of finances" class="weui-grid">
-                <span (click)="setFinance(finance)" class="ui-label" [ngClass]="{'curr':params.isrecommend === 1}">{{finance.label}}</span>
+                <span (click)="setFinance(finance)" class="ui-label" [ngClass]="{'curr':params.financingprogress === finance.value}">{{finance.label}}</span>
               </div>
             </div>
           </div>
@@ -29,7 +29,7 @@
           <div class="weui-media-box">
             <div class="weui-grids">
               <div *ngFor="let scope of scopes" class="weui-grid">
-                <span (click)="setScope(scope)" class="ui-label" [ngClass]="{'curr':params.isrecommend === 1}">{{scope.label}}</span>
+                <span (click)="setScope(scope)" class="ui-label" [ngClass]="{'curr':params.staffsize === scope.value}">{{scope.label}}</span>
               </div>
             </div>
           </div>

@@ -52,7 +52,7 @@ export class JobService {
 
   getJob(key, id): Promise<any> {
 
-    return this.http.get(CONFIG.prefix.wApi + '/interface/call.ht?action=jobDetail&key=' + key + '&id=' + id)
+    return this.http.get(CONFIG.prefix.wApi + '/interface/call.ht?action=jobDetail&key=' + key + '&postId=' + id)
       .toPromise()
       .then(response => this.handleExpire(response))
       .catch(this.handleError);

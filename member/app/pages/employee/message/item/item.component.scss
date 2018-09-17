@@ -42,11 +42,13 @@
   margin: 0.15rem;
   box-shadow: 0 0 0.15rem rgba(0, 0, 0, 0.1);
   border-radius: 0.1rem;
+  display: block;
   &:before, &:after {
     display: none;
   }
-  div.weui-media-box {
+  span.weui-media-box {
     padding-top: 0;
+    display: block;
     &:before {
       display: none;
     }
@@ -101,6 +103,22 @@
   .weui-media-box__hd {
     width: 0.4rem;
     height: 0.4rem;
+  }
+}
+
+.label-container {
+  font-size: 0;
+  .ui-label {
+    margin: 0.1rem 0.1rem 0 0;
+    background: #f5f5f5;
+    color: #999;
+    font-size: 0.12rem;
+    line-height: 1;
+    padding: 0.05rem 0.1rem;
+    border-radius: 0.04rem;
+    &:after {
+      display: none;
+    }
   }
 }
 

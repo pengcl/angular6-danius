@@ -32,6 +32,33 @@ export function getNameFormCode(arr, code) {
   return armyType + service;
 }
 
+export function getNFC(arr, code) {
+  let result = '';
+
+  arr.forEach(item => {
+    if (item.sub) {
+      item.sub.forEach(sub => {
+        if (sub.sub) {
+          sub.sub.forEach(sSub => {
+            if (sSub.code === code) {
+              result = sSub.name;
+            }
+          });
+        } else {
+          if (sub.code === code) {
+            result = sub.name;
+          }
+        }
+      });
+    } else {
+      if (item.code === code) {
+        result = item.name;
+      }
+    }
+  });
+  return result;
+}
+
 export function formData(body: object): FormData {
   const _formData: FormData = new FormData();
   for (const kn in body) {

@@ -7,7 +7,7 @@
         </div>
         <div class="weui-media-box__bd">
           <h4 class="weui-media-box__title">{{company.busCompany.companyname}} <span class="actions"><i
-            (click)="follow()" class="icons icons-star_fill"></i><i class="icons icons-share"></i></span></h4>
+            (click)="follow()" class="icons icons-star_fill" [ngClass]="{'followed' : company.busCompany.ifFollow}"></i><i class="icons icons-share"></i></span></h4>
           <p class="weui-media-box__desc">B轮 · 100-499人 · 新闻</p>
         </div>
       </div>
@@ -115,7 +115,7 @@
         </div>
       </div>
     </weui-tab>
-    <weui-tab heading="热招职位">
+    <weui-tab heading="热招职位 ({{jobs?.length}})">
       <div class="weui-panel weui-panel_access">
         <div class="weui-panel__bd">
           <app-job-item *ngFor="let job of jobs" [routerLink]="['/employee/find/job/item',job.id]" [job]="job"

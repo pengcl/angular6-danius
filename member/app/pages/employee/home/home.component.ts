@@ -34,6 +34,7 @@ export class EmployeeHomeComponent implements OnInit {
     this.userSvc.get(this.user.key).then(res => {
       if (res.code === '0000') {
         this.userInfo = res.result;
+        console.log(this.userInfo);
       }
     });
 

@@ -17,8 +17,12 @@
 weui-navbar {
   padding-bottom: 0.5rem;
   box-sizing: border-box;
+  weui-tab {
+    height: 100% !important;
+  }
 }
 
 weui-infiniteloader {
   padding-bottom: 0;
+  height: 100% !important;
 }

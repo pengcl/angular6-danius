@@ -8,9 +8,7 @@ import {DATA} from '../../../../../../../config/cn';
 import {
   EDUCATIONS_DATA,
   EXPERIENCES_DATA,
-  FINANCE_DATA,
-  LENGTH_OF_MILITARY_DATA,
-  SCOPE_DATA
+  LENGTH_OF_MILITARY_DATA
 } from '../../../../../../../config/data';
 import {PickerService, InfiniteLoaderComponent} from 'ngx-weui';
 import {StorageService} from '../../../../../../../service/storage.service';
@@ -20,7 +18,7 @@ import {AuthService} from '../../../../../services/auth.service';
 import {UserService} from '../../../../../services/user.service';
 import {JobService} from '../../../../../services/job.service';
 
-import {unshiftObj} from '../../../../../../../commons/js/utils';
+import {unshiftObj, getNFC} from '../../../../../../../commons/js/utils';
 
 const SALARIES_DATA = [
   {label: '不限', value: ''},
@@ -62,6 +60,7 @@ function resetData(arr) {
     mainItem['sub'] = subs;
     mainArr.push(mainItem);
   });
+  console.log(mainArr);
   return mainArr;
 }
 
@@ -98,10 +97,12 @@ export class EmployeeFindJobListComponent implements OnInit {
 
   industries;
 
+  cities = DATA;
+
   educations = unshiftObj(EDUCATIONS_DATA, {label: '不限', value: ''});
   experiences = unshiftObj(EXPERIENCES_DATA, {label: '不限', value: ''});
   lengthOfMilitary = unshiftObj(LENGTH_OF_MILITARY_DATA, {label: '不限', value: ''});
-  salaries = unshiftObj(SALARIES_DATA, {name: '面议', code: '0'});
+  salaries = SALARIES_DATA;
 
   params: Params = {
     key: '',
@@ -174,6 +175,11 @@ export class EmployeeFindJobListComponent implements OnInit {
     });
   }
 
+  getNFC(arr, code) {
+    const name = getNFC(arr, code);
+    return name;
+  }
+
   setListType(type) {
     if (type === 'new') {
       this.params.isnew = 1;
@@ -189,19 +195,43 @@ export class EmployeeFindJobListComponent implements OnInit {
   }
 
   showFilter(type) {
-    this.typeShow = true;
-    this.type = type;
-    this.location.pushState('', 'showFilter', this.location.path(), '');
+    if (type !== 2) {
+      if (this.typeShow) {
+        this.typeShow = false;
+        this.location.back();
+        if (this.type !== type) {
+          observableTimer(300).subscribe(() => {
+            this.type = type;
+            this.typeShow = true;
+            this.location.pushState('', 'showFilter', this.location.path(), '');
+          });
+        }
+      } else {
+        this.typeShow = true;
+        this.type = type;
+        this.location.pushState('', 'showFilter', this.location.path(), '');
+      }
+    } else {
+      this.type = type;
+      if (this.typeShow) {
+        this.typeShow = false;
+      }
+      this.pickerSvc.showCity(DATA, this.params.areacode).subscribe(res => {
+        this.params.citycode = res.items[1].code;
+        this.params.areacode = res.items[2].code;
+        this.getData();
+      });
+    }
   }
 
-  showPicker(type) {
+  /*showPicker(type) {
     this.type = type;
     this.pickerSvc.showCity(DATA, this.params.areacode).subscribe(res => {
       this.params.citycode = res.items[1].code;
       this.params.areacode = res.items[2].code;
       this.getData();
     });
-  }
+  }*/
 
   setIndustry(industry) {
     this.params.tradeids = industry ? industry.code : '';
@@ -242,6 +272,17 @@ export class EmployeeFindJobListComponent implements OnInit {
   reset() {
     this.typeShow = false;
     this.type = null;
+    this.params.page = 1;
+    this.params.tradeids = '';
+    this.params.citycode = '';
+    this.params.areacode = '';
+    this.params.edutype = '';
+    this.params.exptype = '';
+    this.params.salarybegin = '';
+    this.params.salaryend = '';
+    this.params.isnew = '';
+    this.params.isrecommend = 1;
+    this.getData();
   }
 
   sure() {

@@ -34,6 +34,27 @@ export class EmployeeService {
       .catch(this.handleError);
   }
 
+  getInterviews(key, state): Promise<any> {
+    return this.http.get(CONFIG.prefix.wApi + '/interface/call.ht?action=userInterviewEvaluateList&key=' + key + '&interviewState=' + state)
+      .toPromise()
+      .then(response => this.handleExpire(response))
+      .catch(this.handleError);
+  }
+
+  getInterview(key, id): Promise<any> {
+    return this.http.get(CONFIG.prefix.wApi + '/interface/call.ht?action=getInterviewEvaluateInfo&key=' + key + '&id=' + id)
+      .toPromise()
+      .then(response => this.handleExpire(response))
+      .catch(this.handleError);
+  }
+
+  getDelivered(key) { // userResumeList
+    return this.http.get(CONFIG.prefix.wApi + '/interface/call.ht?action=userResumeList&key=' + key)
+      .toPromise()
+      .then(response => this.handleExpire(response))
+      .catch(this.handleError);
+  }
+
   follow(key, id, postid): Promise<any> {
     return this.http.get(CONFIG.prefix.wApi + '/interface/call.ht?action=addFollow&key=' + key + '&datatype=2' + '&userid=' + id + '&postid=' + postid)
       .toPromise()

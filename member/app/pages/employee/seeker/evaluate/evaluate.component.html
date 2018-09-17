@@ -3,30 +3,31 @@
     <div class="weui-panel__bd">
       <div class="weui-media-box weui-media-box_appmsg">
         <div class="weui-media-box__bd">
-          <h4 class="weui-media-box__title">泰杰健身中心</h4>
-          <p class="post-name">安保培训教官</p>
-          <p class="colors red weui-media-box__price">10k - 20k</p>
+          <h4 class="weui-media-box__title">{{interview?.cmpanyname}}</h4>
+          <p class="post-name">{{interview?.postName}}</p>
+          <p class="colors red weui-media-box__price">{{interview?.salaryrange.split('-')[0]}}k -
+            {{interview?.salaryrange.split('-')[1]}}k</p>
         </div>
         <div class="weui-media-box__hd">
           <img class="avatar" src="/assets/images/avatars/1.jpg">
-          <p class="name">art3mis</p>
+          <p class="name">{{interview?.managerName}}</p>
         </div>
       </div>
       <div class="weui-media-box weui-media-box_small-appmsg">
         <div class="weui-cells">
           <div class="weui-cell">
             <div class="weui-cell__hd"><i class="icons icons-clock"></i></div>
-            <div class="weui-cell__bd">2018-07-23  10:00</div>
+            <div class="weui-cell__bd">{{interview?.interviewtime}}</div>
           </div>
           <div class="weui-cell">
             <div class="weui-cell__hd"><i class="icons icons-address"></i></div>
-            <div class="weui-cell__bd">广东省广州市黄埔区大塱村开创大道2666号</div>
+            <div class="weui-cell__bd">{{interview?.address}}</div>
           </div>
         </div>
       </div>
       <div class="weui-media-box weui-media-box_appmsg">
         <div class="weui-media-box__bd">
-          <h4 class="weui-media-box__title">面试评价 <span class="right">通过</span></h4>
+          <h4 class="weui-media-box__title">面试评价 <span class="right">{{interview?.interviewstate === '2' ? '已评价' : '待面试结束后可评价'}}</span></h4>
           <div *ngIf="evaluateForm.get('tags').value" class="label-container">
             <span *ngFor="let item of evaluateForm.get('tags').value.split(',')" class="ui-label">{{item}}</span>
           </div>
@@ -37,7 +38,7 @@
 </div>
 <div class="weui-footer weui-footer_fixed-bottom">
   <div class="icons-group weui-flex">
-    <div class="weui-flex__item">
+    <div [routerLink]="['/employee/find/job/item',interview?.postId]" class="weui-flex__item">
       <div class="weui-grid__icon">
         <i class="icons icons-position"></i>
       </div>
@@ -79,7 +80,8 @@
               </div>
               <p class="weui-grid__label">不通过</p>
             </div>
-            <div (click)="setState('undetermined')" [ngClass]="{'curr' : state === 'undetermined'}" class="weui-flex__item">
+            <div (click)="setState('undetermined')" [ngClass]="{'curr' : state === 'undetermined'}"
+                 class="weui-flex__item">
               <div class="weui-grid__icon">
                 <i class="icons icons-undetermined"></i>
               </div>
@@ -95,7 +97,8 @@
         </div>
         <div *ngIf="labels.length > 0" class="weui-media-box">
           <div class="label-container">
-            <span (click)="setLabels(item)" *ngFor="let item of labels" class="ui-label" [ngClass]="{'colors blue bg':evaluateForm.get('tags').value.indexOf(item.label) !== -1}">{{item.label}}</span>
+            <span (click)="setLabels(item)" *ngFor="let item of labels" class="ui-label"
+                  [ngClass]="{'colors blue bg':evaluateForm.get('tags').value.indexOf(item.label) !== -1}">{{item.label}}</span>
           </div>
         </div>
         <div class="weui-media-box weui-media-box_small-appmsg">

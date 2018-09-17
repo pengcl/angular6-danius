@@ -76,6 +76,7 @@ export class EmployeeFindCompanyItemComponent implements OnInit {
     this.comSvc.getCompany(this.user.key, this.id).then(res => {
       if (res.code === '0000') {
         this.company = res.result;
+        console.log(this.company);
       }
     });
 
