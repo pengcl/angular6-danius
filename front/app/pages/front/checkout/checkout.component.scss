@@ -1,0 +1,22 @@
+.prod-panel {
+  .weui-cell_link {
+    text-align: right;
+    color: #999;
+    .price {
+      font-size: 0.17rem;
+      color: #333;
+    }
+  }
+}
+
+.weui-icon-checked {
+  &.checked {
+    color: #3cc51f;
+  }
+}
+.weui-vcode-btn {
+  &[disabled] {
+    opacity: 0.5;
+    color: #999;
+  }
+}

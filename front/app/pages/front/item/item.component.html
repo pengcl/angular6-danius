@@ -1,0 +1,110 @@
+<div *ngIf="prod" class="content-scrollable">
+  <div class="content-inner">
+    <div class="prod-imgs">
+      <swiper *ngIf="prod.imgList.length > 0" [config]="config" (indexChange)="onIndexChange($event)" fxFlex="auto">
+          <span class="item-box swiper-slide" *ngFor="let item of prod.imgList; let i = index">
+            <img src="{{item}}">
+          </span>
+      </swiper>
+    </div>
+    <div class="weui-panel">
+      <div class="weui-panel__bd">
+        <div class="weui-media-box weui-media-box_text">
+          <h4 class="weui-media-box__title">{{prod.productName}}</h4>
+          <p class="weui-media-box__desc">{{prod.shoppingGuide}}</p>
+          <ul class="weui-media-box__info">
+            <li class="price weui-media-box__info__meta"><sub>￥</sub><em>{{prod.salesPrice}}</em><sub>.00</sub></li>
+            <li class="weui-media-box__info__meta">
+              <del>￥{{prod.originalPrice}}.00</del>
+            </li>
+            <li class="weui-media-box__info__meta weui-media-box__info__meta_extra"><span
+              class="label">阿玛尼制造商直供</span><span class="label">生产周期7天</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="weui-cells">
+      <a (click)="showOverlay()" class="weui-cell weui-cell_access" href="javascript:;">
+        <div class="weui-cell__bd">
+          <p>选择规格数量</p>
+        </div>
+        <div class="weui-cell__ft"></div>
+      </a>
+    </div>
+
+    <div class="product-cells weui-cells">
+      <a class="weui-cell weui-cell_access" href="javascript:;">
+        <div class="weui-cell__bd">
+          <p><i class="icons icons-7days"></i><span>7天无理由退换货</span> <i class="icons icons-money"></i><span>48小时快速退款</span>
+          </p>
+        </div>
+        <div class="weui-cell__ft"></div>
+      </a>
+    </div>
+
+    <div class="detail weui-panel">
+      <div class="weui-panel__hd"><span>宝贝详情</span></div>
+      <div class="weui-panel__bd">
+        <div class="weui-media-box">
+          <div class="img-box">
+            <img src="/assets/images/detail/detail-top.jpg?v=123">
+          </div>
+          <div class="detail-html" [innerHTML]="prod.detail"></div>
+          <div class="img-box">
+            <img src="/assets/images/detail/detail-bottom.jpg?v=123">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="btns-group">
+  <a class="contact btn-secondary" href="javascript:;"><i class="icons icons-kefu"></i></a>
+  <a (click)="showOverlay()" class="btn-primary">立即购买</a>
+</div>
+
+
+<app-overlay [autoHeight]="true">
+  <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+    <div class="weui-media-box__hd">
+      <img class="weui-media-box__thumb" src="{{mainImg}}" alt="">
+    </div>
+    <div class="weui-media-box__bd">
+      <h4 class="weui-media-box__title">{{prod?.productName}}</h4>
+      <p class="weui-media-box__desc"><sub>￥</sub><em>{{prod?.salesPrice}}</em><sub>.00</sub>
+        <del>￥{{prod?.originalPrice}}.00</del>
+      </p>
+      <ul class="weui-media-box__info">
+        <li class="weui-media-box__info__meta weui-media-box__info__meta_extra"><span
+          class="label">阿玛尼制造商直供</span><span class="label">生产周期7天</span></li>
+      </ul>
+      <p style="font-size: 0.13rem;margin-top: 0.05rem" class="weui-media-box__desc">请选择：颜色、规格、数量</p>
+    </div>
+    <span (click)="close()" class="close"><i class="icons icons-close"></i></span>
+  </a>
+  <!--<div class="weui-cells__title">请选择：颜色、规格、数量</div>-->
+
+  <div *ngFor="let attr of prod?.attributeList;let i = index">
+    <div class="weui-cells__title">{{attr.name}}</div>
+    <div class="label-container">
+      <span *ngFor="let item of attr.list"
+            (click)="setAttr(attr,item,sku.indexOf(item.id) === -1 && attr.name !== '颜色')" class="label"
+            [ngClass]="{'selected':attrs[i].selected.id === item.id,'disabled' : sku.indexOf(item.id) === -1 && attr.name !== '颜色'}">{{item.value}}</span>
+    </div>
+  </div>
+
+
+  <div class="weui-cells__title">数量</div>
+  <weui-stepper [(ngModel)]="itemForm.totalQuantity" [min]="1" [max]="10"></weui-stepper>
+  <div class="btns-group">
+    <a (click)="go(!(sku?.indexOf(attrs[attrLength - 1].selected.id) === -1 && prod?.attributeList.length > 1))"
+       [ngClass]="{'disabled':sku?.indexOf(attrs[attrLength - 1].selected.id) === -1 && prod?.attributeList.length > 1}"
+       class="btn-primary">
+      <span
+        *ngIf="!(sku?.indexOf(attrs[attrLength - 1].selected.id) === -1 && prod?.attributeList.length > 1)">立即购买</span>
+      <span *ngIf="sku?.indexOf(attrs[attrLength - 1].selected.id) === -1 && prod?.attributeList.length > 1">无货</span>
+    </a>
+  </div>
+</app-overlay>

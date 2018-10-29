@@ -1,0 +1,22 @@
+.weui-article {
+  * {
+    min-width: 100%;
+  }
+  em {
+    color: rgb(255, 169, 0);
+  }
+  h1 {
+    font-size: 0.15rem;
+  }
+  p {
+    font-size: 0.12rem;
+    color: #999;
+    text-align: center;
+    span {
+      display: inline-block;
+      padding: 0.05rem;
+      background: rgb(255, 169, 0);
+      margin: 0.1rem 0;
+    }
+  }
+}

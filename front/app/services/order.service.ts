@@ -9,9 +9,15 @@ export class OrderService {
   constructor(private http: HttpClient) {
   }
 
-  getOrder(no): Promise<any> {
+  getOrders(mobile): Promise<any> {
+    return this.http.get('/api/order/getActivityOrder.ht?recieverMobile=' + mobile)
+      .toPromise()
+      .then(response => response)
+      .catch(this.handleError);
+  }
 
-    return this.http.get(CONFIG.prefix.api + '/order/getSalesOrderDetail.ht?orderNo=' + no)
+  getOrder(no): Promise<any> {
+    return this.http.get('/api/order/getSalesOrderDetail.ht?orderNo=' + no)
       .toPromise()
       .then(response => response)
       .catch(this.handleError);

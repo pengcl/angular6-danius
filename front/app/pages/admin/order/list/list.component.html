@@ -1,0 +1,37 @@
+<div class="content-scrollable">
+  <div *ngIf="orders.length < 1" class="no-record">您目前没有订单</div>
+  <div *ngFor="let order of orders" class="weui-panel weui-panel_access">
+    <div class="weui-panel__hd">订单号：{{order.orderNo}}
+      <em class="right">
+        <span *ngIf="order.orderStatus === 1">备货中</span>
+        <span *ngIf="order.orderStatus === 2">已发货</span>
+        <span *ngIf="order.orderStatus === 3">退货中</span>
+        <span *ngIf="order.orderStatus === 6">已取消</span>
+        <span *ngIf="order.orderStatus === 7">已完成</span>
+      </em>
+    </div>
+    <div class="weui-panel__bd">
+      <a *ngFor="let prod of order.itemList" href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+        <div class="weui-media-box__hd">
+          <img class="weui-media-box__thumb"
+               src="{{prod.productImg}}"
+               alt="">
+        </div>
+        <div class="weui-media-box__bd">
+          <h4 class="weui-media-box__title">{{prod.productName}} <span class="right">x {{prod.buyNum}}</span></h4>
+          <p class="weui-media-box__desc">{{prod.skuValue}}</p>
+        </div>
+      </a>
+    </div>
+    <div class="weui-panel__ft">
+      <a href="javascript:void(0);" class="weui-cell weui-cell_access weui-cell_link">
+        <div class="weui-cell__bd">
+          <p>收件人：{{order.recieverName}} <span>{{order.recieverMobile}}</span></p>
+          <p>地址：{{order.recieverAddress}}</p>
+          <p>留言：{{order.traderemark}}</p>
+        </div>
+        <span class="weui-cell__ft">查看物流</span>
+      </a>
+    </div>
+  </div>
+</div>

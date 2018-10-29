@@ -1,0 +1,9 @@
+.weui-dialog {
+  border-radius: 0.03rem;
+}
+.weui-dialog__bd {
+  font-size: 0.15rem;
+  &:first-child {
+    padding: 2.7em 0.2rem 1.7em;
+  }
+}

@@ -1,0 +1,22 @@
+<div class="types-nav">
+  <swiper *ngIf="types.length > 0" [config]="config" fxFlex="auto">
+          <span class="item-box swiper-slide" *ngFor="let type of types" (click)="setSid(type.id)" [ngClass]="{'selected':type.id == sid}">{{type.name}}</span>
+  </swiper>
+</div>
+<weui-infiniteloader class="index" (loadmore)="onLoadMore($event)" #comp>
+  <div class="items">
+    <div class="weui-grids">
+      <div *ngFor="let item of prods;let i = index" class="weui-grid" [ngClass]="{'lbd':i % 2 === 0}">
+        <div [routerLink]="['/front/item',item.productId]" class="weui-grid__icon">
+          <div class="img-box">
+            <img src="{{item.mainImageUrl}}" alt="">
+          </div>
+        </div>
+        <p class="weui-grid__label">{{item.productName}}</p>
+        <p class="weui-grid__desc">{{item.shoppingGuide}}</p>
+        <p class="weui-grid__labels"><span class="label">{{item.preContract}}</span></p>
+        <p class="weui-grid__price"><em>￥{{item.salesPrice}}</em></p>
+      </div>
+    </div>
+  </div>
+</weui-infiniteloader>

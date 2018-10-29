@@ -1,0 +1,11 @@
+.weui-grids, .weui-grid {
+  margin: 0;
+  padding: 0;
+  &:before, &:after {
+    display: none;
+  }
+}
+.weui-grid__icon {
+  width: 0.28rem;
+  height: 0.28rem;
+}

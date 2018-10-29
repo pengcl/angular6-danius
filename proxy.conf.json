@@ -1,6 +1,6 @@
 {
   "/api": {
-    "target": "http://sell.yfq.cn",
+    "target": "http://192.168.1.193:8880",
     "secure": false,
     "pathRewrite": {
       "^/api/": ""
@@ -8,11 +8,11 @@
     "changeOrigin": true,
     "logLevel": "debug"
   },
-  "/wApi": {
-    "target": "http://192.168.1.193:8899",
+  "/upload": {
+    "target": "http://sys.yfq.cn/upload",
     "secure": false,
     "pathRewrite": {
-      "^/wApi/": ""
+      "^/upload/": ""
     },
     "changeOrigin": true,
     "logLevel": "debug"

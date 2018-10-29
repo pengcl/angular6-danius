@@ -1,0 +1,60 @@
+body {
+  font-size: 0.12rem;
+}
+
+.right {
+  float: right;
+}
+
+.avatar {
+  border-radius: 100%;
+  display: block;
+}
+
+.text-warn {
+  color: #f43530;
+}
+
+.text-success {
+  color: #09BB07;
+}
+
+.text-info {
+  color: #10AEFF;
+}
+
+em {
+  font-style: normal;
+  color: #CC3629;
+}
+
+.content-scrollable {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: auto;
+  height: auto;
+  background: #f8f8f8;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.ng-lazyloaded {
+  animation: fadein .5s;
+}
+@keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.lazyload,
+.lazyloading {
+  opacity: 0;
+}
+.lazyloaded {
+  opacity: 1;
+  transition: opacity 3000ms;
+}

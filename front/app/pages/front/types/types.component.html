@@ -1,0 +1,29 @@
+<div class="content-scrollable">
+  <div class="types-container weui-flex">
+    <div class="type-list weui-flex__item">
+      <div class="weui-cells">
+        <div *ngFor="let type of types" (click)="setType(type)" [ngClass]="{'selected':selectedType.id === type.id}" class="weui-cell">
+          <div class="weui-cell__bd">{{type.name}}</div>
+        </div>
+      </div>
+    </div>
+    <div class="type-prods weui-flex__item">
+      <div *ngIf="selectedType" class="weui-grids">
+        <a *ngFor="let subType of selectedType.childList" [routerLink]="['/front/list',selectedType.id]" [queryParams]="{sid:subType.id}" class="weui-grid">
+          <div class="weui-grid__icon">
+            <img src="/assets/images/types/{{subType.id}}.png" alt="">
+          </div>
+          <p class="weui-grid__label">{{subType.name}}</p>
+        </a>
+      </div>
+    </div>
+  </div>
+  <!--<div *ngFor="let type of types" class="weui-panel weui-panel_access">
+    <div class="weui-panel__hd">{{type.name}}</div>
+    <div class="weui-panel__bd">
+      <a *ngFor="let subType of type.childList" [routerLink]="['/front/list',type.id]" [queryParams]="{sid:subType.id}" class="weui-media-box weui-media-box_text">
+        <p class="weui-media-box__desc">{{subType.name}}</p>
+      </a>
+    </div>
+  </div>-->
+</div>

@@ -2,9 +2,12 @@
   <a *ngFor="let item of config.items;let i = index" routerLink="{{item.pagePath}}"
      class="weui-tabbar__item weui-bar__item_on" [ngClass]="{'weui-bar__item_on' : item.selected}">
     <span style="display: inline-block;position: relative;">
-      <img class="c{{i}}" [ngClass]="{'tada animated' : i === 3 && isChanged}" src="{{item.selected ? item.selectedIconPath : item.iconPath}}"
+      <img *ngIf="item.type !== 'icon'" class="c{{i}}" [ngClass]="{'tada animated' : i === 3 && isChanged}" src="{{item.selected ? item.selectedIconPath : item.iconPath}}"
            alt="{{item.text}}"
            class="weui-tabbar__icon">
+      <span *ngIf="item.type === 'icon'" class="weui-tabbar__icon">
+        <i class="icons {{item.iconPath}}"></i>
+      </span>
       <span class="weui-badge" *ngIf="item.badge.badge" style="position: absolute;top: -2px;right: -13px;">{{item.badge.badge}}</span>
       <span class="weui-badge weui-badge_dot" *ngIf="item.badge.dot"
             style="position: absolute;top: 0;right: -6px;"></span>

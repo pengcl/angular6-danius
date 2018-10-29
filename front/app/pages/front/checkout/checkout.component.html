@@ -1,0 +1,145 @@
+<div *ngIf="prod" class="content-scrollable">
+  <div [formGroup]="addressForm" class="weui-cells weui-cells_form">
+    <div class="weui-cell">
+      <div class="weui-cell__hd"><label for="" class="weui-label">收货人姓名</label></div>
+      <div class="weui-cell__bd">
+        <input formControlName="name" class="weui-input" placeholder="收货人姓名">
+      </div>
+      <div class="weui-cell__ft">
+        <i class="weui-icon-warn"></i>
+      </div>
+    </div>
+    <div class="weui-cell weui-cell_vcode">
+      <div class="weui-cell__hd">
+        <label class="weui-label">联系手机</label>
+      </div>
+      <div class="weui-cell__bd">
+        <input formControlName="mobile" class="weui-input" pattern="[0-9]*" type="tel" placeholder="请输入手机号">
+      </div>
+      <div class="weui-cell__ft">
+        <button (click)="getCode(addressForm.get('mobile').value)" [disabled]="addressForm.get('mobile').invalid" class="weui-vcode-btn">{{activeText}}</button>
+      </div>
+    </div>
+    <div class="weui-cell">
+      <div class="weui-cell__hd"><label for="" class="weui-label">验证码</label></div>
+      <div class="weui-cell__bd">
+        <input class="weui-input" formControlName="code" type="tel" pattern="[0-9]*" placeholder="请输入验证码">
+      </div>
+      <div class="weui-cell__ft">
+        <i class="weui-icon-warn"></i>
+      </div>
+    </div>
+    <div (click)="pickerShow()" class="weui-cell weui-cell_access">
+      <div class="weui-cell__hd"><label for="" class="weui-label">所在地区</label></div>
+      <div class="weui-cell__bd">
+        {{addressForm.get('city').value ? addressForm.get('city').value : '请选择'}}
+      </div>
+      <div class="weui-cell__ft">
+        <i class="weui-icon-warn"></i>
+      </div>
+    </div>
+    <div class="weui-cell">
+      <div class="weui-cell__hd"><label for="" class="weui-label">详细地址</label></div>
+      <div class="weui-cell__bd">
+        <input class="weui-input" formControlName="room" type="text" placeholder="请输入详细地址">
+      </div>
+      <div class="weui-cell__ft">
+        <i class="weui-icon-warn"></i>
+      </div>
+    </div>
+    <div class="weui-cell">
+      <div class="weui-cell__hd"><label for="" class="weui-label">留言备注</label></div>
+      <div class="weui-cell__bd">
+        <input class="weui-input" formControlName="feedback" type="text" placeholder="请输入备注">
+      </div>
+      <div class="weui-cell__ft">
+        <i class="weui-icon-warn"></i>
+      </div>
+    </div>
+  </div>
+
+  <div class="weui-cells weui-cells_checkbox">
+    <label (click)="showInvoice()" class="weui-cell weui-check__label">
+      <div class="weui-cell__hd">
+        <i class="{{invoiceForm.get('need').value ? 'weui-icon-success' : 'weui-icon-circle'}}"></i>
+      </div>
+      <div class="weui-cell__bd">
+        <p>需要开发票</p>
+      </div>
+    </label>
+  </div>
+
+  <div *ngIf="prod" class="prod-panel weui-panel">
+    <div class="weui-panel__bd">
+      <div class="weui-media-box weui-media-box_appmsg">
+        <div class="weui-media-box__hd">
+          <img class="weui-media-box__thumb" src="{{prod.img}}" alt="">
+        </div>
+        <div class="weui-media-box__bd">
+          <h4 class="weui-media-box__title">{{prod.name}}</h4>
+          <p class="weui-media-box__desc">已选择：<span *ngFor="let item of attrs">{{item.selected.value}}，</span><span>数量x{{prod.totalQuantity}}</span>
+          </p>
+          <p>￥{{prod.price}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="weui-panel__ft">
+      <div href="javascript:void(0);" class="weui-cell weui-cell_link">
+        <div class="weui-cell__bd">
+          <p class="price">应付：<em>￥{{prod.price * prod.totalQuantity}}</em></p>
+          <p class="shipping">(包邮，货到付款，支持开包验货)</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="btns-group">
+    <a (click)="submit()" class="btn-primary">
+      <span>立即下单</span>
+    </a>
+  </div>
+</div>
+
+<app-overlay>
+  <div class="weui-cells__title">电子普通发票是税局认可的有效凭证，其法律效力、基本用途及使用规定同纸质发票。</div>
+  <div [formGroup]="invoiceForm" class="weui-cells weui-cells_form">
+    <div class="weui-cell">
+      <div class="weui-cell__hd"><label for="" class="weui-label">发票金额</label></div>
+      <div class="weui-cell__bd">
+        ￥{{prod.price * prod.totalQuantity}}
+      </div>
+      <div class="weui-cell__ft">
+        <i class="weui-icon-warn"></i>
+      </div>
+    </div>
+    <div class="weui-cell weui-cell_switch">
+      <div class="weui-cell__hd"><label for="" class="weui-label">开票类型</label></div>
+      <div class="weui-cell__bd">{{invoiceForm.get('type').value ? '企业' : '个人'}}</div>
+      <div class="weui-cell__ft">
+        <input formControlName="type" class="weui-switch" type="checkbox">
+      </div>
+    </div>
+    <div class="weui-cell">
+      <div class="weui-cell__hd"><label for="" class="weui-label">发票抬头</label></div>
+      <div class="weui-cell__bd">
+        <input class="weui-input" type="text" formControlName="name" placeholder="请填写发票抬头">
+      </div>
+      <div class="weui-cell__ft"></div>
+    </div>
+    <div *ngIf="invoiceForm.get('type').value" class="weui-cell">
+      <div class="weui-cell__hd"><label for="" class="weui-label">税号</label></div>
+      <div class="weui-cell__bd">
+        <input class="weui-input" type="text" formControlName="no" placeholder="请填写18位税号">
+      </div>
+      <div class="weui-cell__ft"></div>
+    </div>
+  </div>
+  <div class="btns-group">
+    <a (click)="cancel()" class="btn-secondary">
+      <span>取消</span>
+    </a>
+    <a (click)="save()" class="btn-primary">
+      <span>保存</span>
+    </a>
+  </div>
+</app-overlay>
