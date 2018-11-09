@@ -1,1 +1,1983 @@
-http://wx.dutyhb.com/wApi/interface/call.ht?action=getCompanyDetail&key=U7g8DTHBP0fDpVoa4yZhEzjDQKySAK6cYJm8vnFbd8RRG0vboq8Hq0EoJE1TPW3AvQxTTrHzitY8vtlW2LuphPk4LabVnGDU&companyid=7e1a663a-2992-4909-8b65-7457812784d5
+{
+  "totalPage": 1,
+  "page": 1,
+  "list": [
+    {
+      "productId": 10000098702300,
+      "productName": "乐潘朵 磨毛面料特软薄杯记忆钢圈光面文胸蕾丝花边内裤套装",
+      "mainImageUrl": "upload/product/20181013/a9cfa629-8f48-4fb5-9d51-88020147d393.png",
+      "originalPrice": 458.00,
+      "salesPrice": 208.00,
+      "productCategoryId": 10000098700385,
+      "productCategoryName": "首页/服装服饰/套装组合",
+      "parentProductCategoryId": null,
+      "parentProductCategoryName": null,
+      "detail": null,
+      "imgList": [
+        "/upload/10000098702300/1810131124235761_mid.jpg",
+        "/upload/10000098702300/1810131124238804_mid.jpg",
+        "/upload/10000098702300/1810131124243374_mid.png",
+        "/upload/10000098702300/1810131124244585_mid.jpg",
+        "/upload/10000098702300/1810131124244063_mid.jpg"
+      ],
+      "productNum": null,
+      "attributeList": [
+        {
+          "id": "10000097851683",
+          "name": "颜色",
+          "list": [
+            {
+              "quantity": 0,
+              "id": "227",
+              "value": "黑色"
+            },
+            {
+              "quantity": 0,
+              "id": "228",
+              "value": "灰色"
+            },
+            {
+              "quantity": 0,
+              "id": "229",
+              "value": "肤色"
+            }
+          ]
+        },
+        {
+          "id": "10000098700373",
+          "name": "套装组合",
+          "list": [
+            {
+              "quantity": 0,
+              "id": "278",
+              "value": "70A+S"
+            },
+            {
+              "quantity": 0,
+              "id": "279",
+              "value": "70B+S"
+            },
+            {
+              "quantity": 0,
+              "id": "280",
+              "value": "70C+S"
+            },
+            {
+              "quantity": 0,
+              "id": "282",
+              "value": "75A+M"
+            },
+            {
+              "quantity": 0,
+              "id": "283",
+              "value": "75B+M"
+            },
+            {
+              "quantity": 0,
+              "id": "284",
+              "value": "75C+M"
+            },
+            {
+              "quantity": 0,
+              "id": "285",
+              "value": "75D+M"
+            },
+            {
+              "quantity": 0,
+              "id": "287",
+              "value": "80A+L"
+            },
+            {
+              "quantity": 0,
+              "id": "288",
+              "value": "80B+L"
+            },
+            {
+              "quantity": 0,
+              "id": "289",
+              "value": "80C+L"
+            },
+            {
+              "quantity": 0,
+              "id": "290",
+              "value": "80D+L"
+            },
+            {
+              "quantity": 0,
+              "id": "292",
+              "value": "85A+XL"
+            },
+            {
+              "quantity": 0,
+              "id": "293",
+              "value": "85B+XL"
+            },
+            {
+              "quantity": 0,
+              "id": "294",
+              "value": "85C+XL"
+            },
+            {
+              "quantity": 0,
+              "id": "295",
+              "value": "85D+XL"
+            }
+          ]
+        }
+      ],
+      "shoppingGuide": "超软的薄模杯、超细内贴布，手感特别的舒适柔软、记忆钢圈，柔软，薄杯，轻盈，无痕。低腰三角内裤，舒适，腰头镂空蕾丝花边，微微小性感",
+      "preContract": "华歌尔制造商直供",
+      "comboparam": "<p><img src=\"/upload/product/20181013/1539401052365082649.jpg\" title=\"1539401052365082649.jpg\" alt=\"尺码对照表-内衣套装.jpg\"/></p>",
+      "filePath": "upload/product/20181013/",
+      "fileName": "a9cfa629-8f48-4fb5-9d51-88020147d393",
+      "extName": ".png",
+      "skuList": []
+    },
+    {
+      "productId": 10000098700986,
+      "productName": "乐潘朵 性感蕾丝小胸聚拢内衣女式套装",
+      "mainImageUrl": "upload/product/20181012/24f52809-ca93-459a-aefa-cd67534ec41f.png",
+      "originalPrice": 438.00,
+      "salesPrice": 218.00,
+      "productCategoryId": 10000098700385,
+      "productCategoryName": "首页/服装服饰/套装组合",
+      "parentProductCategoryId": null,
+      "parentProductCategoryName": null,
+      "detail": null,
+      "imgList": [
+        "/upload/10000098700986/1810121903203877_mid.jpg",
+        "/upload/10000098700986/1810121903205400_mid.jpg",
+        "/upload/10000098700986/1810121903208559_mid.jpg",
+        "/upload/10000098700986/1810121903201628_mid.jpg",
+        "/upload/10000098700986/1810121903207917_mid.jpg"
+      ],
+      "productNum": null,
+      "attributeList": [
+        {
+          "id": "10000097851683",
+          "name": "颜色",
+          "list": [
+            {
+              "quantity": 0,
+              "id": "233",
+              "value": "粉色"
+            }
+          ]
+        },
+        {
+          "id": "10000098700373",
+          "name": "套装组合",
+          "list": [
+            {
+              "quantity": 0,
+              "id": "278",
+              "value": "70A+S"
+            },
+            {
+              "quantity": 0,
+              "id": "279",
+              "value": "70B+S"
+            },
+            {
+              "quantity": 0,
+              "id": "280",
+              "value": "70C+S"
+            },
+            {
+              "quantity": 0,
+              "id": "282",
+              "value": "75A+M"
+            },
+            {
+              "quantity": 0,
+              "id": "283",
+              "value": "75B+M"
+            },
+            {
+              "quantity": 0,
+              "id": "284",
+              "value": "75C+M"
+            },
+            {
+              "quantity": 0,
+              "id": "285",
+              "value": "75D+M"
+            },
+            {
+              "quantity": 0,
+              "id": "287",
+              "value": "80A+L"
+            },
+            {
+              "quantity": 0,
+              "id": "288",
+              "value": "80B+L"
+            },
+            {
+              "quantity": 0,
+              "id": "289",
+              "value": "80C+L"
+            },
+            {
+              "quantity": 0,
+              "id": "290",
+              "value": "80D+L"
+            },
+            {
+              "quantity": 0,
+              "id": "292",
+              "value": "85A+XL"
+            },
+            {
+              "quantity": 0,
+              "id": "293",
+              "value": "85B+XL"
+            },
+            {
+              "quantity": 0,
+              "id": "294",
+              "value": "85C+XL"
+            },
+            {
+              "quantity": 0,
+              "id": "295",
+              "value": "85D+XL"
+            }
+          ]
+        }
+      ],
+      "shoppingGuide": "灵动刺绣花边 高密柔软海绵模杯",
+      "preContract": "华歌尔制造商直供",
+      "comboparam": "<p><img src=\"/upload/product/20181012/1539342192480084937.jpg\" title=\"1539342192480084937.jpg\" alt=\"尺码对照表-内衣套装.jpg\"/></p>",
+      "filePath": "upload/product/20181012/",
+      "fileName": "24f52809-ca93-459a-aefa-cd67534ec41f",
+      "extName": ".png",
+      "skuList": []
+    },
+    {
+      "productId": 10000098700507,
+      "productName": "乐潘朵 珍珠棉蕾丝聚拢文胸蕾丝内裤套装",
+      "mainImageUrl": "upload/product/20181012/e661426b-3aab-4244-ae92-32a07ed63132.jpg",
+      "originalPrice": 556.00,
+      "salesPrice": 228.00,
+      "productCategoryId": 10000098700385,
+      "productCategoryName": "首页/服装服饰/套装组合",
+      "parentProductCategoryId": null,
+      "parentProductCategoryName": null,
+      "detail": null,
+      "imgList": [
+        "/upload/10000098700507/1810121824195927_mid.jpg",
+        "/upload/10000098700507/1810121824199784_mid.png",
+        "/upload/10000098700507/1810121824192839_mid.png",
+        "/upload/10000098700507/1810121824191088_mid.jpg",
+        "/upload/10000098700507/1810121824196549_mid.jpg"
+      ],
+      "productNum": null,
+      "attributeList": [
+        {
+          "id": "10000097851683",
+          "name": "颜色",
+          "list": [
+            {
+              "quantity": 0,
+              "id": "227",
+              "value": "黑色"
+            },
+            {
+              "quantity": 0,
+              "id": "232",
+              "value": "蓝色"
+            },
+            {
+              "quantity": 0,
+              "id": "233",
+              "value": "粉色"
+            },
+            {
+              "quantity": 0,
+              "id": "234",
+              "value": "奶白色"
+            }
+          ]
+        },
+        {
+          "id": "10000098700373",
+          "name": "套装组合",
+          "list": [
+            {
+              "quantity": 0,
+              "id": "279",
+              "value": "70B+S"
+            },
+            {
+              "quantity": 0,
+              "id": "280",
+              "value": "70C+S"
+            },
+            {
+              "quantity": 0,
+              "id": "282",
+              "value": "75A+M"
+            },
+            {
+              "quantity": 0,
+              "id": "283",
+              "value": "75B+M"
+            },
+            {
+              "quantity": 0,
+              "id": "284",
+              "value": "75C+M"
+            },
+            {
+              "quantity": 0,
+              "id": "285",
+              "value": "75D+M"
+            },
+            {
+              "quantity": 0,
+              "id": "287",
+              "value": "80A+L"
+            },
+            {
+              "quantity": 0,
+              "id": "288",
+              "value": "80B+L"
+            },
+            {
+              "quantity": 0,
+              "id": "289",
+              "value": "80C+L"
+            },
+            {
+              "quantity": 0,
+              "id": "290",
+              "value": "80D+L"
+            },
+            {
+              "quantity": 0,
+              "id": "292",
+              "value": "85A+XL"
+            },
+            {
+              "quantity": 0,
+              "id": "293",
+              "value": "85B+XL"
+            },
+            {
+              "quantity": 0,
+              "id": "294",
+              "value": "85C+XL"
+            },
+            {
+              "quantity": 0,
+              "id": "295",
+              "value": "85D+XL"
+            }
+          ]
+        }
+      ],
+      "shoppingGuide": "日本进口 4色套装 手感柔软，提臀无痕。全蕾丝拼接 营造朦胧透肤的效果",
+      "preContract": "华歌尔制造商直供",
+      "comboparam": "<p><img src=\"/upload/product/20181012/1539339850093072116.jpg\" title=\"1539339850093072116.jpg\" alt=\"尺码对照表-内衣套装.jpg\"/></p>",
+      "filePath": "upload/product/20181012/",
+      "fileName": "e661426b-3aab-4244-ae92-32a07ed63132",
+      "extName": ".jpg",
+      "skuList": []
+    },
+    {
+      "productId": 10000097940533,
+      "productName": "乐潘朵 专利提拉片无钢圈蕾丝文胸 67S-L094BP",
+      "mainImageUrl": "upload/product/20181003/j2S7S22ESc27EUxREiRdpUxURcU.png",
+      "originalPrice": 258.00,
+      "salesPrice": 129.00,
+      "productCategoryId": 10000097851693,
+      "productCategoryName": "首页/服装/文胸",
+      "parentProductCategoryId": null,
+      "parentProductCategoryName": null,
+      "detail": null,
+      "imgList": [
+        "/upload/10000097940533/1810031216548843_mid.jpg",
+        "/upload/10000097940533/1810031216546353_mid.jpg",
+        "/upload/10000097940533/1810031216543879_mid.jpg",
+        "/upload/10000097940533/1810031216544036_mid.jpg",
+        "/upload/10000097940533/1810031216541876_mid.jpg"
+      ],
+      "productNum": null,
+      "attributeList": [
+        {
+          "id": "10000097851683",
+          "name": "颜色",
+          "list": [
+            {
+              "quantity": 0,
+              "id": "227",
+              "value": "黑色"
+            },
+            {
+              "quantity": 0,
+              "id": "229",
+              "value": "肤色"
+            },
+            {
+              "quantity": 0,
+              "id": "233",
+              "value": "粉色"
+            }
+          ]
+        },
+        {
+          "id": "10000097851645",
+          "name": "尺码",
+          "list": [
+            {
+              "quantity": 0,
+              "id": "204",
+              "value": "70A"
+            },
+            {
+              "quantity": 0,
+              "id": "205",
+              "value": "70B"
+            },
+            {
+              "quantity": 0,
+              "id": "206",
+              "value": "70C"
+            },
+            {
+              "quantity": 0,
+              "id": "207",
+              "value": "75A"
+            },
+            {
+              "quantity": 0,
+              "id": "208",
+              "value": "75B"
+            },
+            {
+              "quantity": 0,
+              "id": "209",
+              "value": "75C"
+            },
+            {
+              "quantity": 0,
+              "id": "211",
+              "value": "80A"
+            },
+            {
+              "quantity": 0,
+              "id": "212",
+              "value": "80B"
+            },
+            {
+              "quantity": 0,
+              "id": "213",
+              "value": "80C"
+            },
+            {
+              "quantity": 0,
+              "id": "215",
+              "value": "85A"
+            },
+            {
+              "quantity": 0,
+              "id": "216",
+              "value": "85B"
+            },
+            {
+              "quantity": 0,
+              "id": "217",
+              "value": "85C"
+            }
+          ]
+        }
+      ],
+      "shoppingGuide": "光面和蕾丝结合的无钢圈，专利提拉片，高弹棉模杯，全码上薄下厚偏薄杯。聚拢、无痕、舒适、柔软。",
+      "preContract": "华歌尔制造商直供",
+      "comboparam": "<p><img src=\"/upload/product/20181008/agLy82gy8ghO9i8UazSmimpUimx.jpg\" title=\"1538965665061034880.jpg\" alt=\"尺码对照表-文胸.jpg\"/></p>",
+      "filePath": "upload/product/20181003/",
+      "fileName": "j2S7S22ESc27EUxREiRdpUxURcU",
+      "extName": ".png",
+      "skuList": []
+    },
+    {
+      "productId": 10000098603898,
+      "productName": "乐潘朵 磨毛面料特软薄杯无钢圈光面文胸 68S-L128BP",
+      "mainImageUrl": "upload/product/20181015/e9053b47-51f7-4226-b1f6-a59e11f13779.jpg",
+      "originalPrice": 308.00,
+      "salesPrice": 169.00,
+      "productCategoryId": 10000097851693,
+      "productCategoryName": "首页/服装/文胸",
+      "parentProductCategoryId": null,
+      "parentProductCategoryName": null,
+      "detail": null,
+      "imgList": [
+        "/upload/10000098603898/1810121034097159_mid.png",
+        "/upload/10000098603898/1810121034097042_mid.jpg",
+        "/upload/10000098603898/1810121034092437_mid.jpg",
+        "/upload/10000098603898/1810121034104309_mid.jpg",
+        "/upload/10000098603898/1810121034108085_mid.jpg"
+      ],
+      "productNum": null,
+      "attributeList": [
+        {
+          "id": "10000097851683",
+          "name": "颜色",
+          "list": [
+            {
+              "quantity": 0,
+              "id": "227",
+              "value": "黑色"
+            },
+            {
+              "quantity": 0,
+              "id": "229",
+              "value": "肤色"
+            },
+            {
+              "quantity": 0,
+              "id": "239",
+              "value": "藕荷色"
+            }
+          ]
+        },
+        {
+          "id": "10000097851645",
+          "name": "尺码",
+          "list": [
+            {
+              "quantity": 0,
+              "id": "222",
+              "value": "S"
+            },
+            {
+              "quantity": 0,
+              "id": "223",
+              "value": "M"
+            },
+            {
+              "quantity": 0,
+              "id": "224",
+              "value": "L"
+            },
+            {
+              "quantity": 0,
+              "id": "225",
+              "value": "XL"
+            }
+          ]
+        }
+      ],
+      "shoppingGuide": "无钢圈光面，3色，超柔软模杯，薄杯。主打超柔软，轻薄，无痕，美背。",
+      "preContract": "华歌尔制造商直供",
+      "comboparam": "<p><img src=\"/upload/product/20181012/1539312314957034064.jpg\" title=\"1539312314957034064.jpg\" alt=\"尺码对照表-文胸.jpg\"/></p>",
+      "filePath": "upload/product/20181015/",
+      "fileName": "e9053b47-51f7-4226-b1f6-a59e11f13779",
+      "extName": ".jpg",
+      "skuList": []
+    },
+    {
+      "productId": 10000097854920,
+      "productName": "乐潘朵 舒适棉内裤两条礼盒装 167S-L042PP+167S-L043PP",
+      "mainImageUrl": "upload/product/20181011/lfEptcEtfQcwJ4E5YMrJ3EYMbYM.png",
+      "originalPrice": 218.00,
+      "salesPrice": 109.00,
+      "productCategoryId": 10000097851751,
+      "productCategoryName": "首页/服装/内裤",
+      "parentProductCategoryId": null,
+      "parentProductCategoryName": null,
+      "detail": null,
+      "imgList": [
+        "/upload/10000097854920/1810111910167761_mid.jpg",
+        "/upload/10000097854920/1810111910161399_mid.png",
+        "/upload/10000097854920/181011191016858_mid.jpg",
+        "/upload/10000097854920/1810111910168472_mid.jpg",
+        "/upload/10000097854920/1810111910162219_mid.jpg"
+      ],
+      "productNum": null,
+      "attributeList": [
+        {
+          "id": "10000097851662",
+          "name": "尺码",
+          "list": [
+            {
+              "quantity": 0,
+              "id": "218",
+              "value": "S"
+            },
+            {
+              "quantity": 0,
+              "id": "219",
+              "value": "M"
+            },
+            {
+              "quantity": 0,
+              "id": "220",
+              "value": "L"
+            },
+            {
+              "quantity": 0,
+              "id": "221",
+              "value": "XL"
+            }
+          ]
+        },
+        {
+          "id": "10000097851683",
+          "name": "颜色",
+          "list": [
+            {
+              "quantity": 0,
+              "id": "230",
+              "value": "粉色波点印花"
+            }
+          ]
+        }
+      ],
+      "shoppingGuide": "棉氨纶+蕾丝的结合，三角+平角的两条装组合，主打：天然棉的舒适，蕾丝花边的唯美浪漫。",
+      "preContract": "CK制造商直供",
+      "comboparam": "<p><img src=\"/upload/product/20181008/g3C7C337CeRCBtdB47jngjC57t6.jpg\" title=\"1538965914658081602.jpg\" alt=\"尺码对照表-内裤.jpg\"/></p>",
+      "filePath": "upload/product/20181011/",
+      "fileName": "lfEptcEtfQcwJ4E5YMrJ3EYMbYM",
+      "extName": ".png",
+      "skuList": []
+    },
+    {
+      "productId": 10000097855000,
+      "productName": "乐潘朵 全蕾丝平角内裤2色礼盒装 167S-L046PP",
+      "mainImageUrl": "upload/product/20181011/j2SiS2SS2UxxwdSRdpcRmcmcfdR.png",
+      "originalPrice": 278.00,
+      "salesPrice": 139.00,
+      "productCategoryId": 10000097851751,
+      "productCategoryName": "首页/服装/内裤",
+      "parentProductCategoryId": null,
+      "parentProductCategoryName": null,
+      "detail": null,
+      "imgList": [
+        "/upload/10000097855000/1810111911438678_mid.jpg",
+        "/upload/10000097855000/1810111911437196_mid.png",
+        "/upload/10000097855000/1810111911436743_mid.jpg",
+        "/upload/10000097855000/1810111911438321_mid.jpg",
+        "/upload/10000097855000/1810111911434615_mid.jpg"
+      ],
+      "productNum": null,
+      "attributeList": [
+        {
+          "id": "10000097851662",
+          "name": "尺码",
+          "list": [
+            {
+              "quantity": 0,
+              "id": "218",
+              "value": "S"
+            },
+            {
+              "quantity": 0,
+              "id": "219",
+              "value": "M"
+            },
+            {
+              "quantity": 0,
+              "id": "220",
+              "value": "L"
+            },
+            {
+              "quantity": 0,
+              "id": "221",
+              "value": "XL"
+            }
+          ]
+        },
+        {
+          "id": "10000097851683",
+          "name": "颜色",
+          "list": [
+            {
+              "quantity": 0,
+              "id": "231",
+              "value": "粉色+灰色为一盒"
+            }
+          ]
+        }
+      ],
+      "shoppingGuide": "两色套盒。裸粉色拼接浅粉色腰头和脚口蕾丝花边；浅灰色拼接浅粉色腰头和脚口蕾丝花边；涉及到两种不同的蕾丝，且撞色设计。主打全蕾丝拼接的设计，营造朦胧透肤的效果。",
+      "preContract": "CK制造商直供",
+      "comboparam": "<p><img src=\"/upload/product/20181008/lctptccwtcYtYQt5gw4k5wMnc5w.jpg\" title=\"1538965896870028189.jpg\" alt=\"尺码对照表-内裤.jpg\"/></p>",
+      "filePath": "upload/product/20181011/",
+      "fileName": "j2SiS2SS2UxxwdSRdpcRmcmcfdR",
+      "extName": ".png",
+      "skuList": []
+    },
+    {
+      "productId": 10000098702655,
+      "productName": "乐潘朵 无钢圈蕾丝文胸内裤套装",
+      "mainImageUrl": "upload/product/20181013/3aab8f3e-dc92-4559-a24f-d457ee0c7134.png",
+      "originalPrice": 468.00,
+      "salesPrice": 228.00,
+      "productCategoryId": 10000098700385,
+      "productCategoryName": "首页/服装服饰/套装组合",
+      "parentProductCategoryId": null,
+      "parentProductCategoryName": null,
+      "detail": null,
+      "imgList": [
+        "/upload/10000098702655/1810131159417462_mid.png",
+        "/upload/10000098702655/1810131159419163_mid.png",
+        "/upload/10000098702655/1810131159416782_mid.jpg",
+        "/upload/10000098702655/181013115941918_mid.jpg",
+        "/upload/10000098702655/1810131159418964_mid.jpg"
+      ],
+      "productNum": null,
+      "attributeList": [
+        {
+          "id": "10000097851683",
+          "name": "颜色",
+          "list": [
+            {
+              "quantity": 0,
+              "id": "227",
+              "value": "黑色"
+            },
+            {
+              "quantity": 0,
+              "id": "229",
+              "value": "肤色"
+            }
+          ]
+        },
+        {
+          "id": "10000098700373",
+          "name": "套装组合",
+          "list": [
+            {
+              "quantity": 0,
+              "id": "278",
+              "value": "70A+S"
+            },
+            {
+              "quantity": 0,
+              "id": "279",
+              "value": "70B+S"
+            },
+            {
+              "quantity": 0,
+              "id": "280",
+              "value": "70C+S"
+            },
+            {
+              "quantity": 0,
+              "id": "282",
+              "value": "75A+M"
+            },
+            {
+              "quantity": 0,
+              "id": "283",
+              "value": "75B+M"
+            },
+            {
+              "quantity": 0,
+              "id": "284",
+              "value": "75C+M"
+            },
+            {
+              "quantity": 0,
+              "id": "287",
+              "value": "80A+L"
+            },
+            {
+              "quantity": 0,
+              "id": "288",
+              "value": "80B+L"
+            },
+            {
+              "quantity": 0,
+              "id": "289",
+              "value": "80C+L"
+            },
+            {
+              "quantity": 0,
+              "id": "292",
+              "value": "85A+XL"
+            },
+            {
+              "quantity": 0,
+              "id": "293",
+              "value": "85B+XL"
+            },
+            {
+              "quantity": 0,
+              "id": "294",
+              "value": "85C+XL"
+            }
+          ]
+        }
+      ],
+      "shoppingGuide": "超细腻柔软薄杯，无钢圈，轻薄舒适，柔软。中腰平角裤，后幅全蕾丝，性感。",
+      "preContract": "华歌尔制造商直供",
+      "comboparam": "<p><img src=\"/upload/product/20181013/1539402820760007320.jpg\" title=\"1539402820760007320.jpg\" alt=\"尺码对照表-内衣套装.jpg\"/></p>",
+      "filePath": "upload/product/20181013/",
+      "fileName": "3aab8f3e-dc92-4559-a24f-d457ee0c7134",
+      "extName": ".png",
+      "skuList": []
+    },
+    {
+      "productId": 10000097942441,
+      "productName": "乐潘朵 专利提拉片无钢圈蕾丝文胸 217S-L034BP",
+      "mainImageUrl": "upload/product/20181011/geC7C3CdeY46dudB4KfB674u34R.png",
+      "originalPrice": 298.00,
+      "salesPrice": 149.00,
+      "productCategoryId": 10000097851693,
+      "productCategoryName": "首页/服装/文胸",
+      "parentProductCategoryId": null,
+      "parentProductCategoryName": null,
+      "detail": null,
+      "imgList": [
+        "/upload/10000097942441/1810031537358721_mid.jpg",
+        "/upload/10000097942441/1810031537362312_mid.jpg",
+        "/upload/10000097942441/1810031537364532_mid.jpg",
+        "/upload/10000097942441/1810031537368915_mid.jpg",
+        "/upload/10000097942441/1810031537362157_mid.jpg"
+      ],
+      "productNum": null,
+      "attributeList": [
+        {
+          "id": "10000097851683",
+          "name": "颜色",
+          "list": [
+            {
+              "quantity": 0,
+              "id": "227",
+              "value": "黑色"
+            },
+            {
+              "quantity": 0,
+              "id": "229",
+              "value": "肤色"
+            },
+            {
+              "quantity": 0,
+              "id": "233",
+              "value": "粉色"
+            },
+            {
+              "quantity": 0,
+              "id": "234",
+              "value": "奶白色"
+            },
+            {
+              "quantity": 0,
+              "id": "240",
+              "value": "紫色"
+            },
+            {
+              "quantity": 0,
+              "id": "242",
+              "value": "浅蓝色"
+            },
+            {
+              "quantity": 0,
+              "id": "243",
+              "value": "灰蓝色"
+            }
+          ]
+        },
+        {
+          "id": "10000097851645",
+          "name": "尺码",
+          "list": [
+            {
+              "quantity": 0,
+              "id": "204",
+              "value": "70A"
+            },
+            {
+              "quantity": 0,
+              "id": "205",
+              "value": "70B"
+            },
+            {
+              "quantity": 0,
+              "id": "206",
+              "value": "70C"
+            },
+            {
+              "quantity": 0,
+              "id": "207",
+              "value": "75A"
+            },
+            {
+              "quantity": 0,
+              "id": "208",
+              "value": "75B"
+            },
+            {
+              "quantity": 0,
+              "id": "209",
+              "value": "75C"
+            },
+            {
+              "quantity": 0,
+              "id": "210",
+              "value": "75D"
+            },
+            {
+              "quantity": 0,
+              "id": "211",
+              "value": "80A"
+            },
+            {
+              "quantity": 0,
+              "id": "212",
+              "value": "80B"
+            },
+            {
+              "quantity": 0,
+              "id": "213",
+              "value": "80C"
+            },
+            {
+              "quantity": 0,
+              "id": "214",
+              "value": "80D"
+            },
+            {
+              "quantity": 0,
+              "id": "215",
+              "value": "85A"
+            },
+            {
+              "quantity": 0,
+              "id": "216",
+              "value": "85B"
+            },
+            {
+              "quantity": 0,
+              "id": "217",
+              "value": "85C"
+            }
+          ]
+        }
+      ],
+      "shoppingGuide": "蕾丝无钢圈，7色。专利提拉片，分体模杯，下厚上薄偏薄杯，全码带可脱卸插垫。主打舒适，聚拢，柔软。适合所有胸型",
+      "preContract": "华歌尔制造商直供",
+      "comboparam": "<p><img src=\"/upload/product/20181008/agLyLg2y82hU9p8UazSpUU9p2yc.jpg\" title=\"1538965545616017827.jpg\" alt=\"尺码对照表-文胸.jpg\"/></p>",
+      "filePath": "upload/product/20181011/",
+      "fileName": "geC7C3CdeY46dudB4KfB674u34R",
+      "extName": ".png",
+      "skuList": []
+    },
+    {
+      "productId": 10000097852154,
+      "productName": "乐潘朵 AI技术随形裁中腰内裤 三色礼盒装 478S-L063PP",
+      "mainImageUrl": "upload/product/20181011/j2x7xwSSwv4IR2xRdIcf3pI2IS7.png",
+      "originalPrice": 398.00,
+      "salesPrice": 199.00,
+      "productCategoryId": 10000097851751,
+      "productCategoryName": "首页/服装/内裤",
+      "parentProductCategoryId": null,
+      "parentProductCategoryName": null,
+      "detail": null,
+      "imgList": [
+        "/upload/10000097852154/1810111851414916_mid.jpg",
+        "/upload/10000097852154/1810111851411235_mid.png",
+        "/upload/10000097852154/1810111851417308_mid.jpg",
+        "/upload/10000097852154/1810111851418808_mid.jpg",
+        "/upload/10000097852154/1810161635389864285_mid.jpg"
+      ],
+      "productNum": null,
+      "attributeList": [
+        {
+          "id": "10000097851662",
+          "name": "尺码",
+          "list": [
+            {
+              "quantity": 0,
+              "id": "218",
+              "value": "S"
+            },
+            {
+              "quantity": 0,
+              "id": "219",
+              "value": "M"
+            },
+            {
+              "quantity": 0,
+              "id": "220",
+              "value": "L"
+            },
+            {
+              "quantity": 0,
+              "id": "221",
+              "value": "XL"
+            }
+          ]
+        },
+        {
+          "id": "10000097851683",
+          "name": "颜色",
+          "list": [
+            {
+              "quantity": 0,
+              "id": "226",
+              "value": "肤色+裸粉+灰色为一盒"
+            }
+          ]
+        }
+      ],
+      "shoppingGuide": "无车缝线的无痕中腰内裤，3色一个礼盒装。1）手感超细超柔的高弹面料，吸湿透气速干，2）采用AI人工智能的生产工艺；3）日本进口的天然橡胶提炼的、俗称“软黄金”的植物胶；4）裆底为日本进口棉，舒适透气。主打：舒适无痕，弹力包覆，三色百搭可选。",
+      "preContract": "CK制造商直供",
+      "comboparam": "<p><img src=\"/upload/product/20181008/g3Cud3eude4tg6CgRujhneKY6jB.jpg\" title=\"1538966097604055172.jpg\" alt=\"尺码对照表-内裤.jpg\"/></p>",
+      "filePath": "upload/product/20181011/",
+      "fileName": "j2x7xwSSwv4IR2xRdIcf3pI2IS7",
+      "extName": ".png",
+      "skuList": []
+    },
+    {
+      "productId": 10000097942434,
+      "productName": "乐潘朵 高端勾勒线蕾丝无钢圈文胸 167W-L078BP",
+      "mainImageUrl": "upload/product/20181011/fhwsB0BBhgCECvwMCtzMgEFnlnC.png",
+      "originalPrice": 566.00,
+      "salesPrice": 169.00,
+      "productCategoryId": 10000097851693,
+      "productCategoryName": "首页/服装/文胸",
+      "parentProductCategoryId": null,
+      "parentProductCategoryName": null,
+      "detail": null,
+      "imgList": [
+        "/upload/10000097942434/1810031547427644_mid.jpg",
+        "/upload/10000097942434/1810031547429762_mid.jpg",
+        "/upload/10000097942434/1810031547431809_mid.jpg",
+        "/upload/10000097942434/1810031547435367_mid.jpg",
+        "/upload/10000097942434/1810031547437351_mid.jpg"
+      ],
+      "productNum": null,
+      "attributeList": [
+        {
+          "id": "10000097851683",
+          "name": "颜色",
+          "list": [
+            {
+              "quantity": 0,
+              "id": "227",
+              "value": "黑色"
+            },
+            {
+              "quantity": 0,
+              "id": "233",
+              "value": "粉色"
+            }
+          ]
+        },
+        {
+          "id": "10000097851645",
+          "name": "尺码",
+          "list": [
+            {
+              "quantity": 0,
+              "id": "204",
+              "value": "70A"
+            },
+            {
+              "quantity": 0,
+              "id": "205",
+              "value": "70B"
+            },
+            {
+              "quantity": 0,
+              "id": "206",
+              "value": "70C"
+            },
+            {
+              "quantity": 0,
+              "id": "207",
+              "value": "75A"
+            },
+            {
+              "quantity": 0,
+              "id": "208",
+              "value": "75B"
+            },
+            {
+              "quantity": 0,
+              "id": "209",
+              "value": "75C"
+            },
+            {
+              "quantity": 0,
+              "id": "210",
+              "value": "75D"
+            },
+            {
+              "quantity": 0,
+              "id": "211",
+              "value": "80A"
+            },
+            {
+              "quantity": 0,
+              "id": "212",
+              "value": "80B"
+            },
+            {
+              "quantity": 0,
+              "id": "213",
+              "value": "80C"
+            },
+            {
+              "quantity": 0,
+              "id": "214",
+              "value": "80D"
+            },
+            {
+              "quantity": 0,
+              "id": "215",
+              "value": "85A"
+            },
+            {
+              "quantity": 0,
+              "id": "216",
+              "value": "85B"
+            },
+            {
+              "quantity": 0,
+              "id": "217",
+              "value": "85C"
+            }
+          ]
+        }
+      ],
+      "shoppingGuide": "高端勾勒线蕾丝，打造聚拢又舒适的穿着效果。高弹模杯，手感柔软。",
+      "preContract": "华歌尔制造商直供",
+      "comboparam": "<p><img src=\"/upload/product/20181008/lcEptcfwtcbJtnt5gw4k55EQEQg.jpg\" title=\"1538965516669015550.jpg\" alt=\"尺码对照表-文胸.jpg\"/></p>",
+      "filePath": "upload/product/20181011/",
+      "fileName": "fhwsB0BBhgCECvwMCtzMgEFnlnC",
+      "extName": ".png",
+      "skuList": []
+    },
+    {
+      "productId": 10000097855214,
+      "productName": "乐潘朵 无钢圈半片围光面文胸 227SS1-L058BP",
+      "mainImageUrl": "upload/product/20181011/j2SiSwSS2j3dSUxfdpcRiSdj2dp.png",
+      "originalPrice": 298.00,
+      "salesPrice": 149.00,
+      "productCategoryId": 10000097851693,
+      "productCategoryName": "首页/服装/文胸",
+      "parentProductCategoryId": null,
+      "parentProductCategoryName": null,
+      "detail": null,
+      "imgList": [
+        "/upload/10000097855214/1810031111442672_mid.jpg",
+        "/upload/10000097855214/1810031111446820_mid.jpg",
+        "/upload/10000097855214/1810031111453503_mid.jpg",
+        "/upload/10000097855214/1810031111452400_mid.jpg",
+        "/upload/10000097855214/1810031111453998_mid.jpg"
+      ],
+      "productNum": null,
+      "attributeList": [
+        {
+          "id": "10000097851683",
+          "name": "颜色",
+          "list": [
+            {
+              "quantity": 0,
+              "id": "227",
+              "value": "黑色"
+            },
+            {
+              "quantity": 0,
+              "id": "229",
+              "value": "肤色"
+            },
+            {
+              "quantity": 0,
+              "id": "233",
+              "value": "粉色"
+            },
+            {
+              "quantity": 0,
+              "id": "240",
+              "value": "紫色"
+            }
+          ]
+        },
+        {
+          "id": "10000097851645",
+          "name": "尺码",
+          "list": [
+            {
+              "quantity": 0,
+              "id": "204",
+              "value": "70A"
+            },
+            {
+              "quantity": 0,
+              "id": "205",
+              "value": "70B"
+            },
+            {
+              "quantity": 0,
+              "id": "206",
+              "value": "70C"
+            },
+            {
+              "quantity": 0,
+              "id": "207",
+              "value": "75A"
+            },
+            {
+              "quantity": 0,
+              "id": "208",
+              "value": "75B"
+            },
+            {
+              "quantity": 0,
+              "id": "209",
+              "value": "75C"
+            },
+            {
+              "quantity": 0,
+              "id": "210",
+              "value": "75D"
+            },
+            {
+              "quantity": 0,
+              "id": "211",
+              "value": "80A"
+            },
+            {
+              "quantity": 0,
+              "id": "212",
+              "value": "80B"
+            },
+            {
+              "quantity": 0,
+              "id": "213",
+              "value": "80C"
+            },
+            {
+              "quantity": 0,
+              "id": "214",
+              "value": "80D"
+            },
+            {
+              "quantity": 0,
+              "id": "215",
+              "value": "85A"
+            },
+            {
+              "quantity": 0,
+              "id": "216",
+              "value": "85B"
+            },
+            {
+              "quantity": 0,
+              "id": "217",
+              "value": "85C"
+            }
+          ]
+        }
+      ],
+      "shoppingGuide": "无钢圈光面，4色.半片围柔软模杯，小尺码下厚上薄杯，大尺码薄杯。主打聚拢、无痕、柔软。适合所有胸型，特别适合小胸，聚拢效果特别好",
+      "preContract": "华歌尔制造商直供",
+      "comboparam": "<p><img src=\"/upload/product/20181008/lcEptccwEcbpEJtJgw43J3453gr.jpg\" title=\"1538965695157060760.jpg\" alt=\"尺码对照表-文胸.jpg\"/></p>",
+      "filePath": "upload/product/20181011/",
+      "fileName": "j2SiSwSS2j3dSUxfdpcRiSdj2dp",
+      "extName": ".png",
+      "skuList": []
+    },
+    {
+      "productId": 10000097943430,
+      "productName": "乐潘朵 软钢圈蕾丝文胸 168S-L120BP",
+      "mainImageUrl": "upload/product/20181011/jwSiSwSSwUdSSxSREpdRj3USmvR.jpg",
+      "originalPrice": 457.00,
+      "salesPrice": 169.00,
+      "productCategoryId": 10000097851693,
+      "productCategoryName": "首页/服装/文胸",
+      "parentProductCategoryId": null,
+      "parentProductCategoryName": null,
+      "detail": null,
+      "imgList": [
+        "/upload/10000097943430/1810031607119017_mid.jpg",
+        "/upload/10000097943430/1810031607112725_mid.jpg",
+        "/upload/10000097943430/1810031607117406_mid.jpg",
+        "/upload/10000097943430/1810031607114941_mid.jpg",
+        "/upload/10000097943430/1810031607111975_mid.jpg",
+        "/upload/10000097943430/1810031607112638_mid.jpg",
+        "/upload/10000097943430/1810031607117134_mid.jpg",
+        "/upload/10000097943430/1810031607175187_mid.jpg",
+        "/upload/10000097943430/1810031607173056_mid.jpg",
+        "/upload/10000097943430/1810031607174055_mid.jpg",
+        "/upload/10000097943430/1810031607171092_mid.jpg",
+        "/upload/10000097943430/1810031607177045_mid.jpg",
+        "/upload/10000097943430/1810031607176133_mid.jpg",
+        "/upload/10000097943430/1810031607177657_mid.jpg"
+      ],
+      "productNum": null,
+      "attributeList": [
+        {
+          "id": "10000097851683",
+          "name": "颜色",
+          "list": [
+            {
+              "quantity": 0,
+              "id": "229",
+              "value": "肤色"
+            },
+            {
+              "quantity": 0,
+              "id": "241",
+              "value": "亮白色"
+            }
+          ]
+        },
+        {
+          "id": "10000097851645",
+          "name": "尺码",
+          "list": [
+            {
+              "quantity": 0,
+              "id": "204",
+              "value": "70A"
+            },
+            {
+              "quantity": 0,
+              "id": "205",
+              "value": "70B"
+            },
+            {
+              "quantity": 0,
+              "id": "206",
+              "value": "70C"
+            },
+            {
+              "quantity": 0,
+              "id": "207",
+              "value": "75A"
+            },
+            {
+              "quantity": 0,
+              "id": "208",
+              "value": "75B"
+            },
+            {
+              "quantity": 0,
+              "id": "209",
+              "value": "75C"
+            },
+            {
+              "quantity": 0,
+              "id": "210",
+              "value": "75D"
+            },
+            {
+              "quantity": 0,
+              "id": "211",
+              "value": "80A"
+            },
+            {
+              "quantity": 0,
+              "id": "212",
+              "value": "80B"
+            },
+            {
+              "quantity": 0,
+              "id": "213",
+              "value": "80C"
+            },
+            {
+              "quantity": 0,
+              "id": "214",
+              "value": "80D"
+            },
+            {
+              "quantity": 0,
+              "id": "215",
+              "value": "85A"
+            },
+            {
+              "quantity": 0,
+              "id": "216",
+              "value": "85B"
+            },
+            {
+              "quantity": 0,
+              "id": "217",
+              "value": "85C"
+            }
+          ]
+        }
+      ],
+      "shoppingGuide": "软钢圈，比普通钢圈软，穿着舒适更健康，如同无钢圈。肩带、杯沿、上捆、夹弯处，都采用了包边工艺，让文胸的线条看起来更流畅，简约。钢圈、侧比车缝线隐藏在蕾丝布料下，视觉上更简约。    ",
+      "preContract": "华歌尔制造商直供",
+      "comboparam": "<p><img src=\"/upload/product/20181008/lctwtcfptfrhckt5gwMk5hh3rwE.jpg\" title=\"1538965446069023958.jpg\" alt=\"尺码对照表-文胸.jpg\"/></p>",
+      "filePath": "upload/product/20181011/",
+      "fileName": "jwSiSwSSwUdSSxSREpdRj3USmvR",
+      "extName": ".jpg",
+      "skuList": []
+    },
+    {
+      "productId": 10000097943870,
+      "productName": "乐潘朵 蕾丝无钢圈文胸 217S-L047BP",
+      "mainImageUrl": "upload/product/20181011/lcEwtftEfQbwgJt5g4rJQYE53hr.png",
+      "originalPrice": 546.00,
+      "salesPrice": 149.00,
+      "productCategoryId": 10000097851693,
+      "productCategoryName": "首页/服装/文胸",
+      "parentProductCategoryId": null,
+      "parentProductCategoryName": null,
+      "detail": null,
+      "imgList": [
+        "/upload/10000097943870/1810031625009090_mid.jpg",
+        "/upload/10000097943870/1810031625002562_mid.jpg",
+        "/upload/10000097943870/1810031625008343_mid.jpg",
+        "/upload/10000097943870/1810031625002100_mid.jpg",
+        "/upload/10000097943870/1810031625008018_mid.jpg"
+      ],
+      "productNum": null,
+      "attributeList": [
+        {
+          "id": "10000097851683",
+          "name": "颜色",
+          "list": [
+            {
+              "quantity": 0,
+              "id": "233",
+              "value": "粉色"
+            }
+          ]
+        },
+        {
+          "id": "10000097851645",
+          "name": "尺码",
+          "list": [
+            {
+              "quantity": 0,
+              "id": "204",
+              "value": "70A"
+            },
+            {
+              "quantity": 0,
+              "id": "205",
+              "value": "70B"
+            },
+            {
+              "quantity": 0,
+              "id": "206",
+              "value": "70C"
+            },
+            {
+              "quantity": 0,
+              "id": "207",
+              "value": "75A"
+            },
+            {
+              "quantity": 0,
+              "id": "208",
+              "value": "75B"
+            },
+            {
+              "quantity": 0,
+              "id": "209",
+              "value": "75C"
+            },
+            {
+              "quantity": 0,
+              "id": "210",
+              "value": "75D"
+            },
+            {
+              "quantity": 0,
+              "id": "211",
+              "value": "80A"
+            },
+            {
+              "quantity": 0,
+              "id": "212",
+              "value": "80B"
+            },
+            {
+              "quantity": 0,
+              "id": "213",
+              "value": "80C"
+            },
+            {
+              "quantity": 0,
+              "id": "214",
+              "value": "80D"
+            },
+            {
+              "quantity": 0,
+              "id": "215",
+              "value": "85A"
+            },
+            {
+              "quantity": 0,
+              "id": "216",
+              "value": "85B"
+            },
+            {
+              "quantity": 0,
+              "id": "217",
+              "value": "85C"
+            }
+          ]
+        }
+      ],
+      "shoppingGuide": "主打无钢圈，在杯内配置功能性提拉片，代替钢圈对胸部起到支撑力，抵抗地心引力，但是没有钢圈的勒压感，享受舒适与聚拢合二为一的体验。",
+      "preContract": "华歌尔制造商直供",
+      "comboparam": "<p><img src=\"/upload/product/20181008/jwxiSw27wpcm44SRdiIvc224fIx.jpg\" title=\"1538962004351040735.jpg\" alt=\"尺码对照表-文胸.jpg\"/></p>",
+      "filePath": "upload/product/20181011/",
+      "fileName": "lcEwtftEfQbwgJt5g4rJQYE53hr",
+      "extName": ".png",
+      "skuList": []
+    },
+    {
+      "productId": 10000097943912,
+      "productName": "乐潘朵 蕾丝无钢圈文胸 217W-L092BP",
+      "mainImageUrl": "upload/product/20181011/lctptctEcQrnYtE5g4rJQr5Ekpc.png",
+      "originalPrice": 386.00,
+      "salesPrice": 169.00,
+      "productCategoryId": 10000097851693,
+      "productCategoryName": "首页/服装/文胸",
+      "parentProductCategoryId": null,
+      "parentProductCategoryName": null,
+      "detail": null,
+      "imgList": [
+        "/upload/10000097943912/1810031631288423_mid.jpg",
+        "/upload/10000097943912/1810031631284583_mid.jpg",
+        "/upload/10000097943912/1810031631285487_mid.jpg",
+        "/upload/10000097943912/1810031631285482_mid.jpg",
+        "/upload/10000097943912/1810031700207121_mid.jpg"
+      ],
+      "productNum": null,
+      "attributeList": [
+        {
+          "id": "10000097851683",
+          "name": "颜色",
+          "list": [
+            {
+              "quantity": 0,
+              "id": "229",
+              "value": "肤色"
+            },
+            {
+              "quantity": 0,
+              "id": "233",
+              "value": "粉色"
+            }
+          ]
+        },
+        {
+          "id": "10000097851645",
+          "name": "尺码",
+          "list": [
+            {
+              "quantity": 0,
+              "id": "204",
+              "value": "70A"
+            },
+            {
+              "quantity": 0,
+              "id": "205",
+              "value": "70B"
+            },
+            {
+              "quantity": 0,
+              "id": "206",
+              "value": "70C"
+            },
+            {
+              "quantity": 0,
+              "id": "207",
+              "value": "75A"
+            },
+            {
+              "quantity": 0,
+              "id": "208",
+              "value": "75B"
+            },
+            {
+              "quantity": 0,
+              "id": "209",
+              "value": "75C"
+            },
+            {
+              "quantity": 0,
+              "id": "210",
+              "value": "75D"
+            },
+            {
+              "quantity": 0,
+              "id": "211",
+              "value": "80A"
+            },
+            {
+              "quantity": 0,
+              "id": "212",
+              "value": "80B"
+            },
+            {
+              "quantity": 0,
+              "id": "213",
+              "value": "80C"
+            },
+            {
+              "quantity": 0,
+              "id": "214",
+              "value": "80D"
+            },
+            {
+              "quantity": 0,
+              "id": "215",
+              "value": "85A"
+            },
+            {
+              "quantity": 0,
+              "id": "216",
+              "value": "85B"
+            },
+            {
+              "quantity": 0,
+              "id": "217",
+              "value": "85C"
+            }
+          ]
+        }
+      ],
+      "shoppingGuide": "主打无钢圈。杯内配置功能性提拉片，代替钢圈对胸部起到支撑力，抵抗地心引力。没有钢圈的勒压感，享受舒适与聚拢合二为一的体验。",
+      "preContract": "华歌尔制造商直供",
+      "comboparam": "<p><img src=\"/upload/product/20181008/jwSix2wiwpxRwISRd7ImSE2pImI.jpg\" title=\"1538961309473007765.jpg\" alt=\"尺码对照表-文胸.jpg\"/></p>",
+      "filePath": "upload/product/20181011/",
+      "fileName": "lctptctEcQrnYtE5g4rJQr5Ekpc",
+      "extName": ".png",
+      "skuList": []
+    },
+    {
+      "productId": 10000098604065,
+      "productName": "乐潘朵 AI技术随形裁 舒适套头背心式文胸 478S-L164BP",
+      "mainImageUrl": "upload/product/20181012/efb7a10f-2497-46c5-9b82-3baac1fa4f5b.jpg",
+      "originalPrice": 459.00,
+      "salesPrice": 209.00,
+      "productCategoryId": 10000097851693,
+      "productCategoryName": "首页/服装/文胸",
+      "parentProductCategoryId": null,
+      "parentProductCategoryName": null,
+      "detail": null,
+      "imgList": [
+        "/upload/10000098604065/1810121134499701_mid.png",
+        "/upload/10000098604065/1810121134498661_mid.jpg",
+        "/upload/10000098604065/1810121134499487_mid.jpg",
+        "/upload/10000098604065/1810121134491334_mid.jpg",
+        "/upload/10000098604065/1810121134497813_mid.png"
+      ],
+      "productNum": null,
+      "attributeList": [
+        {
+          "id": "10000097851683",
+          "name": "颜色",
+          "list": [
+            {
+              "quantity": 0,
+              "id": "228",
+              "value": "灰色"
+            },
+            {
+              "quantity": 0,
+              "id": "229",
+              "value": "肤色"
+            },
+            {
+              "quantity": 0,
+              "id": "238",
+              "value": "裸粉"
+            }
+          ]
+        },
+        {
+          "id": "10000097851645",
+          "name": "尺码",
+          "list": [
+            {
+              "quantity": 0,
+              "id": "222",
+              "value": "S"
+            },
+            {
+              "quantity": 0,
+              "id": "223",
+              "value": "M"
+            },
+            {
+              "quantity": 0,
+              "id": "224",
+              "value": "L"
+            },
+            {
+              "quantity": 0,
+              "id": "225",
+              "value": "XL"
+            }
+          ]
+        }
+      ],
+      "shoppingGuide": "随形裁文胸，3色。舒适，无痕，轻薄无感。适合所有胸型",
+      "preContract": "华歌尔制造商直供",
+      "comboparam": "<p><img src=\"http://sys.yfq.cn/upload/product/20181012/1539315282318087687.jpg\" title=\"1539315282318087687.jpg\" alt=\"尺码对照表-文胸.jpg\" style=\"white-space: normal;\"/></p>",
+      "filePath": "upload/product/20181012/",
+      "fileName": "efb7a10f-2497-46c5-9b82-3baac1fa4f5b",
+      "extName": ".jpg",
+      "skuList": []
+    },
+    {
+      "productId": 10000098701646,
+      "productName": "乐潘朵 蕾丝无钢圈文胸内裤套装 ",
+      "mainImageUrl": "upload/product/20181013/c3b45c1a-a0c6-4b31-9c26-1e5f6fb9c51a.png",
+      "originalPrice": 446.00,
+      "salesPrice": 218.00,
+      "productCategoryId": 10000098700385,
+      "productCategoryName": "首页/服装服饰/套装组合",
+      "parentProductCategoryId": null,
+      "parentProductCategoryName": null,
+      "detail": null,
+      "imgList": [
+        "/upload/10000098701646/181013095103724_mid.png",
+        "/upload/10000098701646/181013095103292_mid.png",
+        "/upload/10000098701646/1810130951038182_mid.png",
+        "/upload/10000098701646/1810130951037925_mid.png",
+        "/upload/10000098701646/1810130951036040_mid.jpg"
+      ],
+      "productNum": null,
+      "attributeList": [
+        {
+          "id": "10000097851683",
+          "name": "颜色",
+          "list": [
+            {
+              "quantity": 0,
+              "id": "229",
+              "value": "肤色"
+            },
+            {
+              "quantity": 0,
+              "id": "235",
+              "value": "藏青色"
+            }
+          ]
+        },
+        {
+          "id": "10000098700373",
+          "name": "套装组合",
+          "list": [
+            {
+              "quantity": 0,
+              "id": "278",
+              "value": "70A+S"
+            },
+            {
+              "quantity": 0,
+              "id": "279",
+              "value": "70B+S"
+            },
+            {
+              "quantity": 0,
+              "id": "280",
+              "value": "70C+S"
+            },
+            {
+              "quantity": 0,
+              "id": "282",
+              "value": "75A+M"
+            },
+            {
+              "quantity": 0,
+              "id": "283",
+              "value": "75B+M"
+            },
+            {
+              "quantity": 0,
+              "id": "284",
+              "value": "75C+M"
+            },
+            {
+              "quantity": 0,
+              "id": "285",
+              "value": "75D+M"
+            },
+            {
+              "quantity": 0,
+              "id": "287",
+              "value": "80A+L"
+            },
+            {
+              "quantity": 0,
+              "id": "288",
+              "value": "80B+L"
+            },
+            {
+              "quantity": 0,
+              "id": "289",
+              "value": "80C+L"
+            },
+            {
+              "quantity": 0,
+              "id": "290",
+              "value": "80D+L"
+            },
+            {
+              "quantity": 0,
+              "id": "292",
+              "value": "85A+XL"
+            },
+            {
+              "quantity": 0,
+              "id": "293",
+              "value": "85B+XL"
+            },
+            {
+              "quantity": 0,
+              "id": "294",
+              "value": "85C+XL"
+            },
+            {
+              "quantity": 0,
+              "id": "295",
+              "value": "85D+XL"
+            }
+          ]
+        }
+      ],
+      "shoppingGuide": "蕾丝无钢圈，2色。专利提拉片，全码下厚上薄偏薄杯；全蕾丝拼接设计，营造朦胧透肤效果。",
+      "preContract": "华歌尔制造商直供",
+      "comboparam": "<p><img src=\"/upload/product/20181013/1539395439651095258.jpg\" title=\"1539395439651095258.jpg\" alt=\"尺码对照表-内衣套装.jpg\"/></p>",
+      "filePath": "upload/product/20181013/",
+      "fileName": "c3b45c1a-a0c6-4b31-9c26-1e5f6fb9c51a",
+      "extName": ".png",
+      "skuList": []
+    },
+    {
+      "productId": 10000098701896,
+      "productName": "乐潘朵 性感单层蕾丝记忆钢圈文胸蕾丝内裤套装",
+      "mainImageUrl": "upload/product/20181013/8077ead5-a2ed-4ad6-8a3a-e9e02295a86d.png",
+      "originalPrice": 489.00,
+      "salesPrice": 228.00,
+      "productCategoryId": 10000098700385,
+      "productCategoryName": "首页/服装服饰/套装组合",
+      "parentProductCategoryId": null,
+      "parentProductCategoryName": null,
+      "detail": null,
+      "imgList": [
+        "/upload/10000098701896/181013101317455_mid.png",
+        "/upload/10000098701896/1810131013176061_mid.jpg",
+        "/upload/10000098701896/1810131013175268_mid.jpg",
+        "/upload/10000098701896/1810131013178792_mid.jpg",
+        "/upload/10000098701896/1810131013189282_mid.jpg"
+      ],
+      "productNum": null,
+      "attributeList": [
+        {
+          "id": "10000097851683",
+          "name": "颜色",
+          "list": [
+            {
+              "quantity": 0,
+              "id": "227",
+              "value": "黑色"
+            },
+            {
+              "quantity": 0,
+              "id": "234",
+              "value": "奶白色"
+            }
+          ]
+        },
+        {
+          "id": "10000098700373",
+          "name": "套装组合",
+          "list": [
+            {
+              "quantity": 0,
+              "id": "279",
+              "value": "70B+S"
+            },
+            {
+              "quantity": 0,
+              "id": "280",
+              "value": "70C+S"
+            },
+            {
+              "quantity": 0,
+              "id": "281",
+              "value": "70D+S"
+            },
+            {
+              "quantity": 0,
+              "id": "283",
+              "value": "75B+M"
+            },
+            {
+              "quantity": 0,
+              "id": "284",
+              "value": "75C+M"
+            },
+            {
+              "quantity": 0,
+              "id": "285",
+              "value": "75D+M"
+            },
+            {
+              "quantity": 0,
+              "id": "286",
+              "value": "75E+M"
+            },
+            {
+              "quantity": 0,
+              "id": "288",
+              "value": "80B+L"
+            },
+            {
+              "quantity": 0,
+              "id": "289",
+              "value": "80C+L"
+            },
+            {
+              "quantity": 0,
+              "id": "290",
+              "value": "80D+L"
+            },
+            {
+              "quantity": 0,
+              "id": "291",
+              "value": "80E+L"
+            },
+            {
+              "quantity": 0,
+              "id": "293",
+              "value": "85B+XL"
+            },
+            {
+              "quantity": 0,
+              "id": "294",
+              "value": "85C+XL"
+            },
+            {
+              "quantity": 0,
+              "id": "295",
+              "value": "85D+XL"
+            },
+            {
+              "quantity": 0,
+              "id": "296",
+              "value": "85E+XL"
+            }
+          ]
+        }
+      ],
+      "shoppingGuide": "单层蕾丝记忆钢圈文胸，2色，手超柔软。主打记忆钢圈，通透蕾丝，性感，适合大胸型女生。性感无痕内裤，全蕾丝拼接设计，营造朦胧透肤效果。",
+      "preContract": "华歌尔制造商直供",
+      "comboparam": "<p><img src=\"/upload/product/20181013/1539396784923086294.jpg\" title=\"1539396784923086294.jpg\" alt=\"尺码对照表-内衣套装.jpg\"/></p>",
+      "filePath": "upload/product/20181013/",
+      "fileName": "8077ead5-a2ed-4ad6-8a3a-e9e02295a86d",
+      "extName": ".png",
+      "skuList": []
+    }
+  ]
+}

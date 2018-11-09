@@ -1,6 +1,6 @@
 <div class="types-nav">
   <swiper *ngIf="types.length > 0" [config]="config" fxFlex="auto">
-          <span class="item-box swiper-slide" *ngFor="let type of types" (click)="setSid(type.id)" [ngClass]="{'selected':type.id == sid}">{{type.name}}</span>
+          <span class="item-box swiper-slide" *ngFor="let type of types" [userTrack]="'listNav-' + type.id" (click)="setSid(type.id)" [ngClass]="{'selected':type.id == sid}">{{type.name}}</span>
   </swiper>
 </div>
 <weui-infiniteloader class="index" (loadmore)="onLoadMore($event)" #comp>
@@ -15,7 +15,7 @@
         <p class="weui-grid__label">{{item.productName}}</p>
         <p class="weui-grid__desc">{{item.shoppingGuide}}</p>
         <p class="weui-grid__labels"><span class="label">{{item.preContract}}</span></p>
-        <p class="weui-grid__price"><em>￥{{item.salesPrice}}</em></p>
+        <p class="weui-grid__price"><sub>￥</sub><em>{{item.salesPrice}}</em><sub>.00</sub></p>
       </div>
     </div>
   </div>

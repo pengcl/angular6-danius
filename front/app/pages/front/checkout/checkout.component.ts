@@ -4,12 +4,14 @@ import {ActivatedRoute, Router} from '@angular/router';
 
 import {interval as observableInterval, interval as obsInterval} from 'rxjs';
 
-import {PickerService, DialogService} from 'ngx-weui';
+import {PickerService, DialogService, ToastService} from 'ngx-weui';
 import {StorageService} from '../../../../../service/storage.service';
 import {OverlayService} from '../../../../../modules/overlay';
 
+import {LogService} from '../../../services/log.service';
 import {NavbarService} from '../../../../../modules/navbar';
 import {TabbarService} from '../../../../../modules/tabbar';
+import {GhService} from '../../../../../modules/gh/gh';
 import {AuthService} from '../../../services/auth.service';
 import {ProductService} from '../../../services/product.service';
 
@@ -39,8 +41,8 @@ export class FrontCheckoutComponent implements OnInit {
     invoiceType: 0,
     invoiceTitle: '',
     invoicecontent: '',
-    activeTag: '',
-    gh: ''
+    activeTag: 'js_wap',
+    gh: this.ghSvc.get()
   };
 
   prod;
@@ -63,21 +65,23 @@ export class FrontCheckoutComponent implements OnInit {
               private router: Router,
               private storageSvc: StorageService,
               private overlaySvc: OverlayService,
+              private logSvc: LogService,
               private navSvc: NavbarService,
               private tabSvc: TabbarService,
+              private toastSvc: ToastService,
               private dialogSvc: DialogService,
               private picker: PickerService,
               private authSvc: AuthService,
-              private prodSvc: ProductService) {
-    navSvc.set({title: '金山优选-分类列表'});
+              private prodSvc: ProductService,
+              private ghSvc: GhService) {
+    navSvc.set({title: '翼分期优选-分类列表'});
     tabSvc.set({show: false}, 1);
   }
 
   ngOnInit() {
-    this.navSvc.set({title: '金山优选-收货信息'});
+    this.navSvc.set({title: '翼分期优选-收货信息'});
     this.tabSvc.set({show: false}, 1);
     this.prod = JSON.parse(this.storageSvc.get('itemForm'));
-    console.log(this.prod);
 
     this.invoiceForm = new FormGroup({
       need: new FormControl(false, [Validators.required, Validators.requiredTrue]),
@@ -89,10 +93,23 @@ export class FrontCheckoutComponent implements OnInit {
     this.addressForm = new FormGroup({
       name: new FormControl('', [Validators.required]),
       mobile: new FormControl('', [Validators.required, Validators.maxLength(11), Validators.minLength(11)]),
-      code: new FormControl('', [Validators.required]),
+      code: new FormControl('', [Validators.required, Validators.maxLength(4), Validators.minLength(4)]),
       city: new FormControl('', [Validators.required]),
       room: new FormControl('', [Validators.required]),
       feedback: new FormControl('', [])
+    });
+
+    if (this.storageSvc.get('address')) {
+      const address = JSON.parse(this.storageSvc.get('address'));
+      for (const key in address) {
+        if (address[key]) {
+          this.addressForm.get(key).setValue(address[key]);
+        }
+      }
+    }
+
+    this.addressForm.valueChanges.subscribe(address => {
+      this.storageSvc.set('address', JSON.stringify(address));
     });
 
     if (!this.prod) {
@@ -111,6 +128,8 @@ export class FrontCheckoutComponent implements OnInit {
           }
         });
       }
+
+      this.logSvc.log('checkoutLoad', this.prod.productId).then();
     }
   }
 
@@ -121,6 +140,7 @@ export class FrontCheckoutComponent implements OnInit {
     if (!mobile) {
       return false;
     }
+    this.logSvc.log('getCode', this.prod.productId).then();
     this.authSvc.getCode(mobile).then(res => {
       if (res.code === '200') {
         this.activeClass = false;
@@ -148,6 +168,7 @@ export class FrontCheckoutComponent implements OnInit {
   }
 
   pickerShow() {
+    this.logSvc.log('showSelector', this.prod.productId).then();
     this.picker.showCity(DATA).subscribe(res => {
       this.addressForm.get('city').setValue(res.items[0].label + res.items[1].label + res.items[2].label);
     });
@@ -157,6 +178,7 @@ export class FrontCheckoutComponent implements OnInit {
     this.overlaySvc.show();
     this.needInvoice = true;
     this.invoiceForm.get('need').setValue(this.needInvoice);
+    this.logSvc.log('showInvoice', this.prod.productId).then();
   }
 
   cancel() {
@@ -184,12 +206,19 @@ export class FrontCheckoutComponent implements OnInit {
     this.itemForm.invoiceTitle = this.invoiceForm.get('name').value;
     this.itemForm.invoicecontent = this.invoiceForm.get('no').value;
     this.overlaySvc.hide();
+    this.logSvc.log('save', this.prod.productId).then();
+  }
+
+  log(target) {
+    if (this.addressForm.get(target).invalid) {
+      return false;
+    }
+
+    this.logSvc.log('input-' + target, this.prod.productId).then();
   }
 
   submit() {
     this.isSubmit = true;
-
-    console.log(this.addressForm.controls);
 
     if (this.addressForm.invalid || this.loading) {
       return false;
@@ -203,12 +232,16 @@ export class FrontCheckoutComponent implements OnInit {
     this.itemForm.feedback = this.addressForm.get('feedback').value;
 
     this.loading = true;
+    this.toastSvc.loading('提交中', 0);
     this.prodSvc.submit(this.itemForm).then(res => {
+      this.toastSvc.hide();
       if (res.code === '200') {
         this.router.navigate(['/success'], {queryParams: {orderNo: res.orderNo}});
       } else {
         this.addressForm.get('code').setValue('');
       }
     });
+
+    this.logSvc.log('submit', this.prod.productId).then();
   }
 }

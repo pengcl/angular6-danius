@@ -23,6 +23,13 @@ export class OrderService {
       .catch(this.handleError);
   }
 
+  orderOpt(no, type): Promise<any> {
+    return this.http.get('/api/order/orderOperation.ht?orderNo=' + no + '&action=' + type)
+      .toPromise()
+      .then(response => response)
+      .catch(this.handleError);
+  }
+
   private handleError(error: any): Promise<any> {
     console.error('An error occurred', error); // for demo purposes only
     return Promise.reject(error.message || error);

@@ -11,10 +11,12 @@ import {MenuModule} from '../../modules/menu/menu.module';
 import {NavbarModule} from '../../modules/navbar';
 import {TabbarModule} from '../../modules/tabbar';
 import {OverlayModule} from '../../modules/overlay';
+import {GhModule} from '../../modules/gh/gh';
 import {LazyLoadImageModule} from 'ng-lazyload-image';
 
 import {BASE_SERVICES_DECLARATIONS} from '../../service';
 import {SERVICES_DECLARATIONS} from './services';
+import {DIRECTIVES_DECLARATIONS} from './directives';
 import {PAGES_DECLARATIONS} from './pages';
 
 import {AppComponent} from './app.component';
@@ -26,6 +28,7 @@ export function pickerConfig() {
 @NgModule({
   declarations: [
     AppComponent,
+    ...DIRECTIVES_DECLARATIONS,
     ...PAGES_DECLARATIONS
   ],
   imports: [
@@ -41,6 +44,7 @@ export function pickerConfig() {
     MenuModule,
     NavbarModule,
     TabbarModule,
+    GhModule.forRoot(),
     WeUiModule.forRoot(),
     WxModule.forRoot()
   ],

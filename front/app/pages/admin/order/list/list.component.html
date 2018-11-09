@@ -3,11 +3,17 @@
   <div *ngFor="let order of orders" class="weui-panel weui-panel_access">
     <div class="weui-panel__hd">订单号：{{order.orderNo}}
       <em class="right">
+        <span *ngIf="order.orderStatus === 0">待支付</span>
         <span *ngIf="order.orderStatus === 1">备货中</span>
         <span *ngIf="order.orderStatus === 2">已发货</span>
         <span *ngIf="order.orderStatus === 3">退货中</span>
+        <span *ngIf="order.orderStatus === 4">退款中</span>
+        <span *ngIf="order.orderStatus === 5">待确认</span>
         <span *ngIf="order.orderStatus === 6">已取消</span>
         <span *ngIf="order.orderStatus === 7">已完成</span>
+        <span *ngIf="order.orderStatus === 8">已退货</span>
+        <span *ngIf="order.orderStatus === 9">已退款</span>
+        <span *ngIf="order.orderStatus === 10">取消订单申请</span>
       </em>
     </div>
     <div class="weui-panel__bd">
@@ -24,14 +30,22 @@
       </a>
     </div>
     <div class="weui-panel__ft">
-      <a href="javascript:void(0);" class="weui-cell weui-cell_access weui-cell_link">
+      <div class="weui-cell weui-cell_access weui-cell_link">
         <div class="weui-cell__bd">
           <p>收件人：{{order.recieverName}} <span>{{order.recieverMobile}}</span></p>
           <p>地址：{{order.recieverAddress}}</p>
-          <p>留言：{{order.traderemark}}</p>
+          <p>留言：{{order.buyerMemo}}</p>
         </div>
-        <span class="weui-cell__ft">查看物流</span>
-      </a>
+        <span class="weui-cell__ft">
+
+
+                                                                <a (click)="cancel(order.orderNo)"
+                                                                   *ngIf="order.orderStatus === 1 || order.orderStatus === 5"
+                                                                   href="javascript:;">取消订单</a>
+                                                                <a (click)="return(order.orderNo)"
+                                                                   *ngIf="order.orderStatus === 7" href="javascript:;">申请退货</a>
+                                                            </span>
+      </div>
     </div>
   </div>
 </div>

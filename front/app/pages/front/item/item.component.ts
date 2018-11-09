@@ -1,12 +1,16 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
+import {LocationStrategy} from '@angular/common';
+
+import {MaskComponent} from 'ngx-weui';
 
 import {StorageService} from '../../../../../service/storage.service';
-import {OverlayService} from '../../../../../modules/overlay';
+import {OverlayService, OverlayComponent} from '../../../../../modules/overlay';
 
 import {NavbarService} from '../../../../../modules/navbar';
 import {TabbarService} from '../../../../../modules/tabbar';
 
+import {LogService} from '../../../services/log.service';
 import {ProductService} from '../../../services/product.service';
 import {getIndex} from '../../../../../commons/js/utils';
 
@@ -39,21 +43,28 @@ export class FrontItemComponent implements OnInit {
       delay: 5000,
     }
   };
+  mainIndex = 1;
+
+  @ViewChild('ruler') private ruler: MaskComponent;
+  @ViewChild('tips') private tips: OverlayComponent;
+  @ViewChild('overlay') private overlay: OverlayComponent;
+  @ViewChild('service') private service: OverlayComponent;
 
   constructor(private route: ActivatedRoute,
               private router: Router,
+              private location: LocationStrategy,
               private navSvc: NavbarService,
               private tabSvc: TabbarService,
               private storageSvc: StorageService,
               private overlaySvc: OverlayService,
+              private logSvc: LogService,
               private prodSvc: ProductService) {
-    navSvc.set({title: '金山优选-商品详情'});
+    navSvc.set({title: '翼分期优选-商品详情'});
     tabSvc.set({show: false}, 1);
   }
 
   ngOnInit() {
     this.prodSvc.getItem(this.route.snapshot.params['id']).then(res => {
-      console.log(res);
       this.prod = res;
       this.skuList = res.skuList;
 
@@ -82,16 +93,25 @@ export class FrontItemComponent implements OnInit {
       this.itemForm['img'] = this.mainImg;
 
       // this.overlaySvc.show();
-      console.log(this.attrs);
+      this.logSvc.log('itemLoad', this.route.snapshot.params['id']).then();
+    });
+
+    this.location.onPopState(state => {
+      this.overlaySvc.hide();
     });
   }
 
   showOverlay() {
-    this.overlaySvc.show();
+    this.overlay.show();
+  }
+
+  showService() {
+    this.service.show();
+    this.location.pushState('', 'service', this.location.path(), '');
   }
 
   close() {
-    this.overlaySvc.hide();
+    this.overlay.hide();
   }
 
   getSku(cds) {
@@ -107,6 +127,19 @@ export class FrontItemComponent implements OnInit {
   setMainImg(img) {
     this.mainImg = img;
     this.itemForm['img'] = this.mainImg;
+  }
+
+  showTips() {
+    this.tips.show();
+    this.location.pushState('', 'tips', this.location.path(), '');
+  }
+
+  back() {
+    this.location.back();
+  }
+
+  showRuler() {
+    this.ruler.show();
   }
 
   setAttr(attr, item, offSales) {
@@ -126,9 +159,16 @@ export class FrontItemComponent implements OnInit {
       this.itemForm['img'] = this.mainImg;
       this.getSku(attr.id + ':' + item.id);
     }
+
+    this.logSvc.log('setAttr' + attr.id, this.route.snapshot.params['id']).then();
+  }
+
+  stepperChange(e) {
+    this.logSvc.log(e >= this.itemForm.totalQuantity ? 'add' : 'reduce', this.route.snapshot.params['id']).then();
   }
 
   onIndexChange(e) {
+    this.mainIndex = e + 1;
   }
 
   go(isCan) {

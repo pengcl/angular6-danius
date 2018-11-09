@@ -6,7 +6,7 @@
     }
   }
   .swiper-pagination {
-    bottom: 0.08rem;
+    bottom: 0;
     .swiper-pagination-handle {
       margin: 0 !important;
       font-size: 0;
@@ -20,6 +20,7 @@
       border: none !important;
       margin: 0 !important;
       border-radius: 30%;
+      bottom: 0;
       &.swiper-pagination-bullet-active {
         width: 0.12rem;
         background: #F26549;

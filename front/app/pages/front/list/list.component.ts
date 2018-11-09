@@ -4,7 +4,7 @@ import {timer as observableTimer} from 'rxjs';
 import {InfiniteLoaderComponent} from 'ngx-weui';
 import {NavbarService} from '../../../../../modules/navbar';
 import {TabbarService} from '../../../../../modules/tabbar';
-
+import {LogService} from '../../../services/log.service';
 import {ProductService} from '../../../services/product.service';
 
 @Component({
@@ -35,8 +35,9 @@ export class FrontListComponent implements OnInit {
   constructor(private route: ActivatedRoute,
               private navSvc: NavbarService,
               private tabSvc: TabbarService,
+              private logSvc: LogService,
               private prodSvc: ProductService) {
-    navSvc.set({title: '金山优选-商品例表'});
+    navSvc.set({title: '翼分期优选-商品列表'});
     tabSvc.set({show: true}, 1);
   }
 
@@ -48,6 +49,8 @@ export class FrontListComponent implements OnInit {
       this.prods = res.list;
       this.totalPages = res.totalPage;
     });
+
+    this.logSvc.log('listLoad').then();
   }
 
   setSid(sid) {

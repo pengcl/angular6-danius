@@ -4,6 +4,7 @@ import {TabbarService} from '../../../../modules/tabbar';
 import {ActivatedRoute} from '@angular/router';
 import {timer as observableTimer, interval as observableInterval} from 'rxjs';
 import {InfiniteLoaderComponent} from 'ngx-weui';
+import {LogService} from '../../services/log.service';
 import {ProductService} from '../../services/product.service';
 
 @Component({
@@ -16,7 +17,10 @@ export class IndexComponent implements OnInit {
   config = {
     grabCursor: true,
     slidesPerView: 'auto',
-    pagination: false,
+    pagination: {
+      el: '.swiper-pagination',
+      type: 'bullets',
+    },
     autoplay: false
   };
 
@@ -28,6 +32,19 @@ export class IndexComponent implements OnInit {
   prods: any[] = [];
   recommends: any[] = [];
 
+  imgUrls = [
+    {
+      img: '/assets/images/banner/index/1.png',
+      url: '/front/list/10000097480440'
+    }, {
+      img: '/assets/images/banner/index/2.png',
+      url: '/front/list/10000097480426'
+    }, {
+      img: '/assets/images/banner/index/3.png',
+      url: '/front/item/10000098601144'
+    }
+  ];
+
   @ViewChild('comp') private comp: InfiniteLoaderComponent;
   @ViewChild('container') private container: ElementRef;
 
@@ -36,8 +53,9 @@ export class IndexComponent implements OnInit {
   constructor(private route: ActivatedRoute,
               private navSvc: NavbarService,
               private tabSvc: TabbarService,
+              private logSvc: LogService,
               private prodSvc: ProductService) {
-    navSvc.set({title: '金山优选-商品例表'});
+    navSvc.set({title: '翼分期优选'});
     tabSvc.set({show: true}, 0);
   }
 
@@ -47,11 +65,16 @@ export class IndexComponent implements OnInit {
       let count = 0;
       res.childList.forEach(item => {
         const catalog = {};
+        const prods = [];
         this.prodSvc.getList(item.id).then(product => {
           catalog['id'] = item.id;
           catalog['name'] = item.name;
           catalog['sub'] = item.childList;
-          catalog['prods'] = product.list.slice(0, 7);
+          product.list.slice(0, 7).forEach(prod => {
+            prod.img = prod.filePath + prod.fileName + '_small' + prod.extName;
+            prods.push(prod);
+          });
+          catalog['prods'] = prods;
           if (item.id === 10000098490415) {
             catalogs[0] = catalog;
           }
@@ -72,6 +95,8 @@ export class IndexComponent implements OnInit {
     this.prodSvc.getRecommends().then(res => {
       this.recommends = res.list;
     });
+
+    this.logSvc.log('indexLoad').then();
   }
 
   setType(type) {
@@ -79,10 +104,13 @@ export class IndexComponent implements OnInit {
     const containerTop = this.container.nativeElement.scrollTop;
     const targetTop = this.container.nativeElement.querySelector('#panel_' + type).offsetTop;
     const dis = targetTop - containerTop;
-    let _offsetTop = 0;
+    let aniCount = 0;
+    if (this.interval) {
+      this.interval.unsubscribe();
+    }
     this.interval = observableInterval(16.6).subscribe(() => {
-      _offsetTop = _offsetTop + 1;
-      this.container.nativeElement.scrollTop = containerTop + (dis / 20) * _offsetTop - 50;
+      aniCount = aniCount + 1;
+      this.container.nativeElement.scrollTop = containerTop + (dis / 20) * aniCount - 50;
     });
 
     observableTimer(16.6 * 20).subscribe(() => {

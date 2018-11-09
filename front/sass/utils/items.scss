@@ -75,6 +75,13 @@
       }
 
       .weui-grid__price {
+        font-size: 0;
+        sub,em {
+          display: inline-block;
+          font-size: 0.10rem;
+          color: #CC3629;
+          vertical-align: baseline;
+        }
         em {
           font-size: 0.16rem;
         }

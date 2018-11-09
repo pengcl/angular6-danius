@@ -10,6 +10,7 @@
 }
 
 .prod-imgs {
+  position: relative;
   & + .weui-panel {
     margin-top: 0;
   }
@@ -23,11 +24,21 @@
       }
     }
   }
+  .pages {
+    position: absolute;
+    bottom: 0.15rem;
+    right: 0.15rem;
+    z-index: 99;
+    color: #999;
+    font-size: 0.14rem;
+  }
 }
 
 .product-cells {
+  .weui-cell__hd {
+    align-self: start;
+  }
   .weui-cell__bd {
-    font-size: 0;
     i, span {
       display: inline-block;
       vertical-align: middle;
@@ -51,6 +62,7 @@
   del {
     display: inline-block;
     vertical-align: baseline;
+    font-size: 0.13rem;
   }
   .label {
     background: #dd6c4c;
@@ -65,22 +77,28 @@
     }
   }
   &.price {
-    sub {
-      bottom: 0;
-      position: relative;
-      color: #CC3629;
+    font-size: 0;
+    margin-right: 0.1rem;
+    sub,em {
       display: inline-block;
-      vertical-align: bottom;
+      vertical-align: baseline;
+    }
+    sub {
+      color: #CC3629;
       font-size: 0.1rem;
     }
     em {
       font-size: 0.15rem;
-      display: inline-block;
     }
   }
 
   &.weui-media-box__info__meta_extra {
     padding-right: 0;
+    padding-left: 0;
+    border-left: 0;
+    span {
+      vertical-align: text-bottom;
+    }
   }
 }
 
@@ -129,10 +147,19 @@
 
 .btn-secondary {
   &.contact {
-    width: 0.48rem;
     flex: unset;
+    font-size: 0;
+    i,span {
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 0.1rem;
+    }
     i {
       font-size: 0.26rem;
+    }
+    span {
+      font-size: 0.14rem;
+      line-height: 0.26rem;
     }
   }
 }
@@ -189,6 +216,9 @@ app-overlay {
         border: 1px solid #d0b990;
         color: #d0b990;
       }
+      &.disabled {
+        opacity: 0.5;
+      }
     }
   }
 
@@ -218,6 +248,18 @@ weui-stepper {
       opacity: 1;
       em {
         color: #999;
+      }
+    }
+  }
+}
+
+weui-mask {
+  ::ng-deep {
+    .img-box {
+      margin: 0 0.15rem;
+      img {
+        display: block;
+        width: 100%;
       }
     }
   }

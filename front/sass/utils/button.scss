@@ -177,6 +177,11 @@ $color-negative: #ff5b29;
   &[disabled] {
     opacity: .5;
   }
+  &.disabled {
+    opacity: .5;
+    background: #999;
+    color: #fff;
+  }
 }
 
 .btns-group {

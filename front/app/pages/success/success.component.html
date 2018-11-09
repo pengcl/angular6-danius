@@ -14,7 +14,7 @@
         </div>
         <div class="weui-form-preview__item">
           <label class="weui-form-preview__label">商品名称</label>
-          <span class="weui-form-preview__value">{{order?.buyermemo}}</span>
+          <span class="weui-form-preview__value">{{order?.buyermemo}}<br><span style="color: #4CA6FF" *ngIf="items">{{items[0].specificationvalues}} 数量x{{items[0].quantity}}</span></span>
         </div>
         <div class="weui-form-preview__item">
           <label class="weui-form-preview__label">合计</label>
@@ -29,6 +29,14 @@
         <a routerLink="/index" class="weui-btn weui-btn_primary">继续买好货</a>
         <a routerLink="/admin/order/list" class="weui-btn weui-btn_default">查看订单</a>
       </p>
+    </div>
+    <div style="position: static" class="weui-msg__extra-area">
+      <div class="weui-footer">
+        <p class="weui-footer__links">
+          客服电话：<a href="tel:020-85599918" class="weui-footer__link">020-85599918</a>
+        </p>
+        <p class="weui-footer__text">Copyright © 2008-2018 e.yfq.cn</p>
+      </div>
     </div>
   </div>
 </div>

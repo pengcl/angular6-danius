@@ -1,35 +1,39 @@
 <div *ngIf="prod" class="content-scrollable">
   <div [formGroup]="addressForm" class="weui-cells weui-cells_form">
-    <div class="weui-cell">
+    <div class="weui-cell" [ngClass]="{'weui-cell_warn':addressForm.get('name').invalid && isSubmit}">
       <div class="weui-cell__hd"><label for="" class="weui-label">收货人姓名</label></div>
       <div class="weui-cell__bd">
-        <input formControlName="name" class="weui-input" placeholder="收货人姓名">
+        <input formControlName="name" (blur)="log('name')" class="weui-input" placeholder="收货人姓名">
       </div>
       <div class="weui-cell__ft">
         <i class="weui-icon-warn"></i>
       </div>
     </div>
-    <div class="weui-cell weui-cell_vcode">
+    <div class="weui-cell weui-cell_vcode" [ngClass]="{'weui-cell_warn':addressForm.get('mobile').invalid && isSubmit}">
       <div class="weui-cell__hd">
         <label class="weui-label">联系手机</label>
       </div>
       <div class="weui-cell__bd">
-        <input formControlName="mobile" class="weui-input" pattern="[0-9]*" type="tel" placeholder="请输入手机号">
+        <input formControlName="mobile" (blur)="log('mobile')" class="weui-input" pattern="[0-9]*" type="tel"
+               placeholder="请输入手机号">
       </div>
       <div class="weui-cell__ft">
-        <button (click)="getCode(addressForm.get('mobile').value)" [disabled]="addressForm.get('mobile').invalid" class="weui-vcode-btn">{{activeText}}</button>
+        <button (click)="getCode(addressForm.get('mobile').value)" [disabled]="addressForm.get('mobile').invalid"
+                class="weui-vcode-btn">{{activeText}}
+        </button>
       </div>
     </div>
-    <div class="weui-cell">
+    <div class="weui-cell" [ngClass]="{'weui-cell_warn':addressForm.get('code').invalid && isSubmit}">
       <div class="weui-cell__hd"><label for="" class="weui-label">验证码</label></div>
       <div class="weui-cell__bd">
-        <input class="weui-input" formControlName="code" type="tel" pattern="[0-9]*" placeholder="请输入验证码">
+        <input class="weui-input" formControlName="code" (blur)="log('code')" type="tel" pattern="[0-9]*"
+               placeholder="请输入验证码">
       </div>
       <div class="weui-cell__ft">
         <i class="weui-icon-warn"></i>
       </div>
     </div>
-    <div (click)="pickerShow()" class="weui-cell weui-cell_access">
+    <div (click)="pickerShow()" class="weui-cell weui-cell_access" [ngClass]="{'weui-cell_warn':addressForm.get('city').invalid && isSubmit}">
       <div class="weui-cell__hd"><label for="" class="weui-label">所在地区</label></div>
       <div class="weui-cell__bd">
         {{addressForm.get('city').value ? addressForm.get('city').value : '请选择'}}
@@ -38,19 +42,19 @@
         <i class="weui-icon-warn"></i>
       </div>
     </div>
-    <div class="weui-cell">
+    <div class="weui-cell" [ngClass]="{'weui-cell_warn':addressForm.get('room').invalid && isSubmit}">
       <div class="weui-cell__hd"><label for="" class="weui-label">详细地址</label></div>
       <div class="weui-cell__bd">
-        <input class="weui-input" formControlName="room" type="text" placeholder="请输入详细地址">
+        <input class="weui-input" formControlName="room" (blur)="log('room')" type="text" placeholder="请输入详细地址">
       </div>
       <div class="weui-cell__ft">
         <i class="weui-icon-warn"></i>
       </div>
     </div>
-    <div class="weui-cell">
+    <div class="weui-cell" [ngClass]="{'weui-cell_warn':addressForm.get('feedback').invalid && isSubmit}">
       <div class="weui-cell__hd"><label for="" class="weui-label">留言备注</label></div>
       <div class="weui-cell__bd">
-        <input class="weui-input" formControlName="feedback" type="text" placeholder="请输入备注">
+        <input class="weui-input" formControlName="feedback" (blur)="log('feedback')" type="text" placeholder="请输入备注">
       </div>
       <div class="weui-cell__ft">
         <i class="weui-icon-warn"></i>
@@ -92,12 +96,12 @@
       </div>
     </div>
   </div>
+</div>
 
-  <div class="btns-group">
-    <a (click)="submit()" class="btn-primary">
-      <span>立即下单</span>
-    </a>
-  </div>
+<div class="btns-group">
+  <a (click)="submit()" class="btn-primary">
+    <span>立即下单</span>
+  </a>
 </div>
 
 <app-overlay>

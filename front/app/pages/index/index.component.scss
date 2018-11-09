@@ -7,13 +7,31 @@
   }
 }
 
-.banner {
+.weui-panel__ad {
   .img-box {
+    margin: 0.05rem 0.05rem 0 0.05rem;
     img {
       display: block;
       width: 100%;
     }
   }
+}
+
+.banner {
+  & + .weui-panel {
+    margin-top: 0;
+  }
+  ::ng-deep {
+    .swiper-slide {
+      background: #fff;
+      img {
+        display: block;
+        width: 100%;
+        margin: 0 auto;
+      }
+    }
+  }
+
 }
 
 .weui-panel {
@@ -50,7 +68,7 @@
     flex: unset;
     text-align: center;
     padding: 0.05rem;
-    i,span {
+    i, span {
       display: inline-block;
       vertical-align: middle;
     }
@@ -118,13 +136,12 @@
   &:before {
 
   }
-  .weui-grid__box {
+  .item-box {
     margin: 0.05rem;
     background: #fff;
     border-radius: 0.05rem;
-    padding: 0.1rem;
+    padding: 0.05rem;
     box-shadow: 0 0 0.1rem rgba(0, 0, 0, 0.1);
-    min-height: 2.5rem;
     box-sizing: border-box;
   }
   .weui-grid__icon {
@@ -136,8 +153,7 @@
     position: relative;
     .img-box {
       img {
-        width: 1.25rem;
-        height: 1.25rem;
+        width: 100%;
         margin: 0 auto;
       }
     }
@@ -153,11 +169,11 @@
     }
   }
   .weui-grid__label {
-    font-size: 0.14rem;
+    font-size: 0.12rem;
     color: #000;
     font-weight: bold;
     line-height: 1;
-    margin-top: 0.1rem;
+    margin-top: 0.05rem;
     text-align: left;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -167,17 +183,17 @@
     margin: 0.05rem 0;
     .label {
       display: inline-block;
-      padding: 0.05rem 0.1rem;
+      padding: 0.05rem;
       background: #d0b990;
       color: #fff;
       line-height: 1;
-      font-size: 0.12rem;
+      font-size: 0.10rem;
     }
   }
 
   .weui-grid__desc {
-    margin-top: 0.05rem;
-    font-size: 0.12rem;
+    margin-top: 0.02rem;
+    font-size: 0.10rem;
     color: #808080;
     line-height: 0.16rem;
     overflow: hidden;
@@ -186,6 +202,13 @@
   }
 
   .weui-grid__price {
+    font-size: 0;
+    sub, em {
+      display: inline-block;
+      font-size: 0.10rem;
+      color: #CC3629;
+      vertical-align: baseline;
+    }
     em {
       font-size: 0.16rem;
     }
@@ -252,11 +275,19 @@
     text-align: right;
     color: #999;
   }
-
+  ::ng-deep .swiper-container {
+    .swiper-wrapper {
+      padding-bottom: 0.3rem;
+      & > .swiper-pagination {
+        bottom: 0 !important;
+      }
+    }
+  }
 }
 
 .items {
   .weui-grids {
+    margin-top: 0;
     &:before {
       display: none;
     }

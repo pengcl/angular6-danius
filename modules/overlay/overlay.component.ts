@@ -20,8 +20,12 @@ export class OverlayComponent implements OnInit, OnChanges {
   ngOnInit() {
   }
 
+  show() {
+    this.state = true;
+  }
+
   hide() {
-    this.overlaySvc.hide();
+    this.state = false;
   }
 
   ngOnChanges() {

@@ -16,13 +16,14 @@ export class SuccessComponent implements OnInit {
 
   order;
   product;
+  items;
 
   constructor(private route: ActivatedRoute,
               private location: LocationStrategy,
               private navSvc: NavbarService,
               private tabSvc: TabbarService,
               private orderSvc: OrderService) {
-    navSvc.set({title: '金山优选-下单成功'});
+    navSvc.set({title: '翼分期优选-下单成功'});
     tabSvc.set({show: false}, 1);
   }
 
@@ -30,6 +31,8 @@ export class SuccessComponent implements OnInit {
     this.orderSvc.getOrder(this.route.snapshot.queryParams['orderNo']).then(res => {
       this.order = res.salesOrder;
       this.product = res.product;
+      this.items = res.items;
+      console.log(res);
     });
   }
 

@@ -17,7 +17,7 @@ export class FrontTypesComponent implements OnInit {
   constructor(private navSvc: NavbarService,
               private tabSvc: TabbarService,
               private prodSvc: ProductService) {
-    navSvc.set({title: '金山优选-分类列表'});
+    navSvc.set({title: '翼分期优选-分类列表'});
     tabSvc.set({show: true}, 1);
   }
 

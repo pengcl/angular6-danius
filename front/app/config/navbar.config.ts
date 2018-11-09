@@ -1,4 +1,4 @@
 export const NAV_CONFIG = {
   show: false,
-  title: '金山优选'
+  title: '翼分期优选'
 };

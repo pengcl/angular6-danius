@@ -1,12 +1,14 @@
 import {Component, OnInit} from '@angular/core';
-import {filter} from 'rxjs/internal/operators';
-import {Router} from '@angular/router';
+import {filter, switchMap} from 'rxjs/internal/operators';
+import {Router, ActivatedRoute, ParamMap} from '@angular/router';
 import {NavigationStart} from '@angular/router';
+import {StorageService} from '../../service/storage.service';
 import {NAV_CONFIG} from '../../front/app/config/navbar.config';
 import {TAB_CONFIG} from './pages/pages.config';
 import {MENU_CONFIG} from '../../front/app/config/menu.config';
 import {MenuService} from '../../modules/menu/menu.service';
 import {TabbarService} from '../../modules/tabbar';
+import {GhService} from '../../modules/gh/gh';
 
 @Component({
   selector: 'app-root',
@@ -19,9 +21,14 @@ export class AppComponent implements OnInit {
   menuConfig = MENU_CONFIG;
   menuShow = false;
 
+  gh = '';
+
   constructor(private router: Router,
+              private route: ActivatedRoute,
+              private storageSvc: StorageService,
               private menuSvc: MenuService,
-              private tabSvc: TabbarService) {
+              private tabSvc: TabbarService,
+              private ghSvc: GhService) {
     menuSvc.get().subscribe(res => {
       this.menuShow = res.show;
     });
@@ -35,6 +42,14 @@ export class AppComponent implements OnInit {
       .subscribe((event: NavigationStart) => {
         this.menuSvc.set({show: false});
       });
+    this.route.queryParamMap.subscribe((queryParams: ParamMap) => {
+      if (queryParams['params'].gh) {
+        this.gh = queryParams['params'].gh;
+      } else if (this.storageSvc.get('gh')) {
+        this.gh = this.storageSvc.get('gh');
+      }
+      this.ghSvc.set(this.gh);
+    });
   }
 
   ngOnInit() {
