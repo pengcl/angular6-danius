@@ -1,4 +1,7 @@
 import {Component, ViewEncapsulation} from '@angular/core';
+import {AuthService} from '../../services/auth.service';
+import {StorageService} from '../../../../service/storage.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-admin',
@@ -9,6 +12,11 @@ import {Component, ViewEncapsulation} from '@angular/core';
 
 export class AdminComponent {
 
-  constructor() {
+  constructor(private authSvc: AuthService,
+              private storageSvc: StorageService,
+              private router: Router) {
+    if (typeof authSvc.currentUser !== 'string') {
+      router.navigate(['/auth/signIn']);
+    }
   }
 }

@@ -17,6 +17,7 @@ import {LazyLoadImageModule} from 'ng-lazyload-image';
 import {BASE_SERVICES_DECLARATIONS} from '../../service';
 import {SERVICES_DECLARATIONS} from './services';
 import {DIRECTIVES_DECLARATIONS} from './directives';
+import {COMPONENTS_DECLARATIONS} from './components';
 import {PAGES_DECLARATIONS} from './pages';
 
 import {AppComponent} from './app.component';
@@ -28,6 +29,7 @@ export function pickerConfig() {
 @NgModule({
   declarations: [
     AppComponent,
+    ...COMPONENTS_DECLARATIONS,
     ...DIRECTIVES_DECLARATIONS,
     ...PAGES_DECLARATIONS
   ],

@@ -1,0 +1,76 @@
+.weui-icon-circle {
+  font-size: 0.23rem;
+}
+
+.weui-media-box__desc {
+  font-size: 0;
+  span, sub, em {
+    display: inline-block;
+    vertical-align: baseline;
+  }
+  sub {
+    font-size: 0.12rem;
+    color: #CC3629;
+  }
+  em {
+    line-height: 0.4rem;
+    font-size: 0.16rem;
+  }
+  span {
+    font-size: 0.16rem;
+    line-height: 0.4rem;
+  }
+}
+
+.cart-bottom {
+  position: absolute;
+  bottom: 0.5rem;
+  width: 100%;
+  font-size: 0;
+  background: #fff;
+  .weui-flex__item {
+    padding: 0 0.15rem;
+    span {
+      line-height: 0.5rem;
+      font-size: 0.16rem;
+    }
+  }
+  .check {
+    flex: 25%;
+    span {
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 0.5rem;
+      &.weui-icon-circle, &.weui-icon-success {
+        font-size: 0.23rem;
+      }
+    }
+  }
+  .total {
+    flex: 45%;
+    text-align: right;
+    span, sub, em {
+      display: inline-block;
+      vertical-align: baseline;
+    }
+    sub {
+      font-size: 0.12rem;
+      color: #CC3629;
+    }
+    em {
+      line-height: 0.5rem;
+      font-size: 0.16rem;
+    }
+  }
+  .button {
+    flex: 30%;
+    background: #CC3629;
+    color: #fff;
+    text-align: center;
+    &.disabled {
+      opacity: .5;
+      background: #999;
+      color: #fff;
+    }
+  }
+}

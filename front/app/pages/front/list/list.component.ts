@@ -6,6 +6,9 @@ import {NavbarService} from '../../../../../modules/navbar';
 import {TabbarService} from '../../../../../modules/tabbar';
 import {LogService} from '../../../services/log.service';
 import {ProductService} from '../../../services/product.service';
+import {PageService} from '../../../services/page.service';
+import {CONFIG} from '../../../app.config';
+import {WxService} from '../../../../../modules/wx';
 
 @Component({
   selector: 'app-front-list',
@@ -30,15 +33,20 @@ export class FrontListComponent implements OnInit {
   types: any[] = [];
   prods: any[] = [];
 
+  pageType;
+
   @ViewChild('comp') private comp: InfiniteLoaderComponent;
 
   constructor(private route: ActivatedRoute,
               private navSvc: NavbarService,
               private tabSvc: TabbarService,
               private logSvc: LogService,
-              private prodSvc: ProductService) {
-    navSvc.set({title: '翼分期优选-商品列表'});
+              private prodSvc: ProductService,
+              private pageSvc: PageService,
+              private wxSvc: WxService) {
+    navSvc.set({title: '商品列表'});
     tabSvc.set({show: true}, 1);
+    this.pageType = pageSvc.config;
   }
 
   ngOnInit() {
@@ -48,6 +56,17 @@ export class FrontListComponent implements OnInit {
     this.prodSvc.getList(this.sid ? this.sid : this.id).then(res => {
       this.prods = res.list;
       this.totalPages = res.totalPage;
+      this.wxSvc.config({
+        title: '翼分期 - ' + (res.list[0].productCategoryName).split('/')[2],
+        desc: '大牌制造商直供，剔除品牌溢价；货到付款，全场包邮，购物无忧！',
+        link: window.location.href,
+        imgUrl: CONFIG.webHost + '/assets/images/share-' + this.pageType.type + '.png',
+      }).then(() => {
+        // 其它操作，可以确保注册成功以后才有效
+        console.log('注册成功');
+      }).catch((err: string) => {
+        console.log(`注册失败，原因：${err}`);
+      });
     });
 
     this.logSvc.log('listLoad').then();

@@ -6,7 +6,7 @@
            alt="{{item.text}}"
            class="weui-tabbar__icon">
       <span *ngIf="item.type === 'icon'" class="weui-tabbar__icon">
-        <i class="icons {{item.iconPath}}"></i>
+        <i class="icons {{item.selected ? item.selectedIconPath : item.iconPath}}"></i>
       </span>
       <span class="weui-badge" *ngIf="item.badge.badge" style="position: absolute;top: -2px;right: -13px;">{{item.badge.badge}}</span>
       <span class="weui-badge weui-badge_dot" *ngIf="item.badge.dot"

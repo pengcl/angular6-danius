@@ -14,6 +14,7 @@ import {TabbarService} from '../../../../../modules/tabbar';
 import {GhService} from '../../../../../modules/gh/gh';
 import {AuthService} from '../../../services/auth.service';
 import {ProductService} from '../../../services/product.service';
+import {PageService} from '../../../services/page.service';
 
 import {DATA} from '../../../../../config/cn';
 
@@ -61,6 +62,8 @@ export class FrontCheckoutComponent implements OnInit {
   second = 59;
   timePromise;
 
+  pageType;
+
   constructor(private route: ActivatedRoute,
               private router: Router,
               private storageSvc: StorageService,
@@ -73,13 +76,14 @@ export class FrontCheckoutComponent implements OnInit {
               private picker: PickerService,
               private authSvc: AuthService,
               private prodSvc: ProductService,
-              private ghSvc: GhService) {
-    navSvc.set({title: '翼分期优选-分类列表'});
+              private ghSvc: GhService,
+              private pageSvc: PageService) {
+    this.pageType = pageSvc.config;
+    navSvc.set({title: '分类列表'});
     tabSvc.set({show: false}, 1);
   }
 
   ngOnInit() {
-    this.navSvc.set({title: '翼分期优选-收货信息'});
     this.tabSvc.set({show: false}, 1);
     this.prod = JSON.parse(this.storageSvc.get('itemForm'));
 

@@ -4,7 +4,7 @@
   width: 100%;
   z-index: 9999;
   top: 0;
-  &:after {
+  /*&:after {
     content: " ";
     position: absolute;
     left: 0;
@@ -16,7 +16,7 @@
     color: #c0bfc4;
     transform: scaleY(.5);
     transform-origin:0 100%
-  }
+  }*/
   .swiper-wrapper {
     .swiper-slide {
       width: auto !important;

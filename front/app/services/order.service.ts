@@ -9,8 +9,8 @@ export class OrderService {
   constructor(private http: HttpClient) {
   }
 
-  getOrders(mobile): Promise<any> {
-    return this.http.get('/api/order/getActivityOrder.ht?recieverMobile=' + mobile)
+  getOrders(mobile, orderStatus?): Promise<any> {
+    return this.http.get('/api/order/getActivityOrder.ht?recieverMobile=' + mobile + '&orderStatus=' + (orderStatus ? orderStatus : ''))
       .toPromise()
       .then(response => response)
       .catch(this.handleError);

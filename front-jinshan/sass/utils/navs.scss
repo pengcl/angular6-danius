@@ -1,0 +1,45 @@
+.types-nav {
+  background: #fff;
+  position: absolute;
+  width: 100%;
+  z-index: 9999;
+  top: 0;
+  &:after {
+    content: " ";
+    position: absolute;
+    left: 0;
+    top: auto;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    border-bottom: 1px solid #d9d9d9;
+    color: #c0bfc4;
+    transform: scaleY(.5);
+    transform-origin:0 100%
+  }
+  .swiper-wrapper {
+    .swiper-slide {
+      width: auto !important;
+      font-size: 0.14rem;
+      margin: 0;
+      padding: 0.18rem 0.2rem 0.12rem;
+      line-height: 0.2rem;
+      color: #666;
+      position: relative;
+      transition: font-size 0.5s;
+      /*&:after {
+        content: '';
+        position: absolute;
+        right: 0;
+        top: 0.05rem;
+        width: 1px;
+        bottom: 0.05rem;
+        border-right: 1px solid #D8D8D8;
+      }*/
+      &.selected {
+        color: #d0b990;
+        font-size: 0.18rem;
+      }
+    }
+  }
+}

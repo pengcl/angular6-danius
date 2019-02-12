@@ -1,41 +1,51 @@
-<div class="types-nav">
-  <swiper *ngIf="types.length > 0" [config]="config" fxFlex="auto">
-    <span [userTrack]="'nav-home'" class="item-box swiper-slide" [ngClass]="{'selected':type === 'home'}" (click)="setType('home')">首页</span>
-    <span [userTrack]="'nav-' + item.id" class="item-box swiper-slide" *ngFor="let item of types" [ngClass]="{'selected':type === item.id}" (click)="setType(item.id)">{{item.name}}</span>
-    <span [userTrack]="'nav-about'" class="item-box swiper-slide" [ngClass]="{'selected':type === 'about'}" (click)="setType('about')">关于我们</span>
-  </swiper>
-</div>
 <div class="content-scrollable" #container>
-  <div id="panel_home" class="banner">
-    <swiper [config]="config" fxFlex="auto">
-          <a [routerLink]="item.url" class="item-box swiper-slide" *ngFor="let item of imgUrls; let i = index">
-            <img src="{{item.img}}">
-          </a>
-    </swiper>
-    <!--<div class="img-box">
-      <img src="/assets/images/banner/index/1.png">
-    </div>-->
-  </div>
-  <div class="promise">
-    <div class="weui-flex">
-      <div class="days weui-flex__item">
-        <i class="icons icons-7days"></i><span>7天无忧退</span>
+  <div class="bool">
+    <div class="top_logo">
+      <div class="img-box">
+        <img src="/assets/images/logo-{{pageType.type}}.png">
       </div>
-      <div class="shipping weui-flex__item">
-        <i class="icons icons-return"></i><span>全平台包邮货到付款</span>
-      </div>
-      <div class="brands weui-flex__item">
-        <i class="icons icons-good"></i><span>大牌制造商直供</span>
+    </div>
+    <div class="types-nav">
+      <swiper *ngIf="types.length > 0" [config]="config" fxFlex="auto">
+        <span [userTrack]="'nav-home'" class="item-box swiper-slide" [ngClass]="{'selected':type === 'home'}"
+              (click)="setType('home')">首页</span>
+        <span [userTrack]="'nav-' + item.id" class="item-box swiper-slide" *ngFor="let item of types"
+              [ngClass]="{'selected':type === item.id}" (click)="setType(item.id)">{{item.name}}</span>
+        <span [userTrack]="'nav-about'" class="item-box swiper-slide" [ngClass]="{'selected':type === 'about'}"
+              (click)="setType('about')">关于我们</span>
+      </swiper>
+    </div>
+    <div id="panel_home" class="banner">
+      <swiper [config]="config" fxFlex="auto">
+        <a [routerLink]="item.url" class="item-box swiper-slide" *ngFor="let item of imgUrls; let i = index">
+          <img src="{{item.img}}">
+        </a>
+      </swiper>
+      <!--<div class="img-box">
+        <img src="/assets/images/banner/index/1.png">
+      </div>-->
+    </div>
+    <div class="promise">
+      <div class="weui-flex">
+        <div class="days weui-flex__item">
+          <i class="icons icons-7days"></i><span>7天无忧退</span>
+        </div>
+        <div class="shipping weui-flex__item">
+          <i class="icons icons-return"></i><span>全平台包邮货到付款</span>
+        </div>
+        <div class="brands weui-flex__item">
+          <i class="icons icons-good"></i><span>大牌制造商直供</span>
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="weui-panel">
+  <div class="pickup weui-panel">
     <div class="weui-panel__hd"><span>精选好货</span></div>
     <div class="weui-panel__bd">
       <div class="weui-media-box">
         <div class="recommends-items">
-          <swiper *ngIf="types.length > 0" [config]="config" fxFlex="auto">
+          <swiper *ngIf="types.length > 0" [config]="sConfig" fxFlex="auto">
             <div style="width: 33%" *ngFor="let item of recommends;let i = index" class="weui-grid__box swiper-slide">
               <div class="item-box">
                 <div [routerLink]="['/front/item',item.productId]" class="weui-grid__icon">
@@ -70,7 +80,7 @@
               <div class="weui-grid__box">
                 <div [routerLink]="['/front/item',item.productId]" class="weui-grid__icon">
                   <div class="img-box">
-                    <img [lazyLoad]="item.img" [offset]="'100'" [scrollTarget]="container" alt="">
+                    <img [lazyLoad]="item.img" [offset]="'0'" [scrollTarget]="container" alt="">
                   </div>
                 </div>
                 <p class="weui-grid__label">{{item.productName}}</p>
@@ -97,10 +107,10 @@
 
   <div *ngIf="types" id="panel_about" class="about-us">
     <div class="about-title">
-      关于翼分期优选
+      关于{{pageType?.name}}
     </div>
     <div class="about-content">
-      <p>翼分期优选秉承一贯的严谨态度，对商品的供应商、源材料、工艺都严格把关，通过先验货，后付款的方式，为您的生活甄选最具性价比的高品质的商品，您可以放心选购。</p>
+      <p>{{pageType?.name}}秉承一贯的严谨态度，对商品的供应商、源材料、工艺都严格把关，通过先验货，后付款的方式，为您的生活甄选最具性价比的高品质的商品，您可以放心选购。</p>
     </div>
   </div>
 </div>

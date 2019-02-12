@@ -1,10 +1,41 @@
-.no-record {
-  position: absolute;
-  width: 100%;
-  text-align: center;
-  font-size: 0.14rem;
-  height: 0.2rem;
-  line-height: 0.2rem;
-  top: 50%;
-  margin-top: -0.1rem;
+.weui-tab {
+  .weui-navbar {
+    background: #fff;
+    &:after {
+      display: none;
+    }
+    .weui-navbar__item {
+      font-size: 0.15rem;
+      padding: 0.13rem 0;
+      &:after {
+        left: 25%;
+        width: 3em;
+        top: auto;
+        bottom: 0;
+        height: 1px;
+        display: none;
+        transform-origin: 0 50%;
+        transform: scaleX(0);
+        transform: scaleY(0.5);
+        border-right: 0;
+        border-bottom: 0.03rem solid #D13F36;
+      }
+      &.weui-bar__item_on {
+        background: #fff;
+        color: #D13F36;
+        &:after {
+          display: block;
+          width: 50%;
+          left: 25%;
+        }
+      }
+    }
+  }
+  .weui-tab__panel {
+    padding-bottom: 0.5rem;
+  }
+}
+
+.weui-panel {
+  margin-top: 0.1rem;
 }

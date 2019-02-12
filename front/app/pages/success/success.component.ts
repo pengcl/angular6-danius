@@ -23,7 +23,7 @@ export class SuccessComponent implements OnInit {
               private navSvc: NavbarService,
               private tabSvc: TabbarService,
               private orderSvc: OrderService) {
-    navSvc.set({title: '翼分期优选-下单成功'});
+    navSvc.set({title: '下单成功'});
     tabSvc.set({show: false}, 1);
   }
 
@@ -32,7 +32,6 @@ export class SuccessComponent implements OnInit {
       this.order = res.salesOrder;
       this.product = res.product;
       this.items = res.items;
-      console.log(res);
     });
   }
 

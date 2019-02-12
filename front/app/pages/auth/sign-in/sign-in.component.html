@@ -1,6 +1,6 @@
 <div class="content-scrollable">
   <div class="userinfo">
-    <img class="userinfo-avatar" style="width: 1.5rem;height: auto" src="/assets/images/logo.png" background-size="cover"/>
+    <img class="userinfo-avatar" style="width: 1.5rem;height: auto" src="/assets/images/logo-{{pageType.type}}.png" background-size="cover"/>
     <div class="userinfo-nickname">订单查询</div>
   </div>
   <form novalidate [formGroup]="loginForm" (ngSubmit)="onSubmit()">

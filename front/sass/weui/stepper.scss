@@ -4,7 +4,7 @@ weui-stepper {
     line-height: 0.15rem;
     text-align: center;
     width: 0.25rem;
-    border: 0.01rem solid #666;
+    border: 0.01rem solid #d8d8d8;
     box-sizing: border-box;
     em {
       font-size: 0.14rem;
@@ -25,8 +25,9 @@ weui-stepper {
     color: #333;
     line-height: 0.25rem;
     display: block;
-    border: 1px solid #e7e7e7;
-    border-radius: 0.04rem;
+    border: 1px solid #d8d8d8;
+    border-left: none;
+    border-right: none;
     box-sizing: border-box;
     &[disabled] {
       opacity: 1;
@@ -39,7 +40,10 @@ weui-stepper {
   }
   .disabled,
   input[disabled] {
-    opacity: .3;
+    em {
+      color: #999;
+    }
+    //opacity: .3;
   }
 
   &.square {

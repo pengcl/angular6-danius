@@ -57,8 +57,34 @@
   }
 }
 
+.weui-media-box__title.price {
+  font-size: 0;
+  margin-right: 0.1rem;
+  sub, em {
+    display: inline-block;
+    vertical-align: baseline;
+  }
+  sub {
+    color: #CC3629;
+    font-size: 0.1rem;
+  }
+  em {
+    font-size: 0.18rem;
+  }
+  del {
+    font-size: 0.1rem;
+    margin-left: 0.15rem;
+    color: #999;
+  }
+}
+
+.weui-media-box__info {
+  margin-top: 0;
+  padding-bottom: 0;
+}
+
 .weui-media-box__info__meta {
-  line-height: 0.2rem;
+  /*line-height: 0.2rem;*/
   del {
     display: inline-block;
     vertical-align: baseline;
@@ -79,7 +105,7 @@
   &.price {
     font-size: 0;
     margin-right: 0.1rem;
-    sub,em {
+    sub, em {
       display: inline-block;
       vertical-align: baseline;
     }
@@ -145,11 +171,53 @@
   }
 }
 
+.btns-group {
+  background: #fff;
+  .weui-tabbar__item {
+    padding: 0.08rem 0 0.03rem;
+    background: #f8f8f8;
+    flex: 0.5;
+    position: relative;
+    &:before {
+      content: " ";
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      height: 1px;
+      border-top: 1px solid #e5e5e5;
+      color: #e5e5e5;
+      -webkit-transform-origin: 0 0;
+      transform-origin: 0 0;
+      -webkit-transform: scaleY(0.5);
+      transform: scaleY(0.5);
+      z-index: 2;
+    }
+    .weui-tabbar__icon {
+      width: 0.21rem;
+      height: 0.21rem;
+      i {
+        font-size: 0.21rem;
+      }
+    }
+    &.weui-bar__item_on {
+      .weui-tabbar__icon {
+        & > i {
+          color: #C6302B;
+        }
+      }
+      .weui-tabbar__label {
+        color: #C6302B;
+      }
+    }
+  }
+}
+
 .btn-secondary {
   &.contact {
     flex: unset;
     font-size: 0;
-    i,span {
+    i, span {
       display: inline-block;
       vertical-align: middle;
       margin-right: 0.1rem;
@@ -168,8 +236,20 @@ app-overlay {
   ::ng-deep {
     .overlay {
       background: #fff;
+      // max-height: 70% !important;
       .minus {
         margin-left: 0.15rem;
+      }
+    }
+  }
+  &#checkout {
+    ::ng-deep {
+      .overlay {
+        top: 30%;
+        height: 70%;
+        .content-scrollable {
+          background: #fff;
+        }
       }
     }
   }

@@ -5,7 +5,7 @@ export const TAB_CONFIG = {
       type: 'icon',
       pagePath: '/index',
       iconPath: 'icons-home',
-      selectedIconPath: '/assets/images/icons/tabBar/job_on.png',
+      selectedIconPath: 'icons-home_fill',
       text: '首页',
       selected: false,
       badge: {
@@ -17,7 +17,7 @@ export const TAB_CONFIG = {
       type: 'icon',
       pagePath: '/front/types',
       iconPath: 'icons-list',
-      selectedIconPath: '/assets/images/icons/tabBar/company_on.png',
+      selectedIconPath: 'icons-list_fill',
       text: '分类',
       selected: false,
       badge: {
@@ -27,9 +27,21 @@ export const TAB_CONFIG = {
     },
     {
       type: 'icon',
+      pagePath: '/admin/cart/list',
+      iconPath: 'icons-cart',
+      selectedIconPath: 'icons-cart_fill',
+      text: '购物车',
+      selected: false,
+      badge: {
+        badge: 0,
+        dot: false
+      }
+    },
+    {
+      type: 'icon',
       pagePath: '/admin/order/list',
-      iconPath: 'icons-goods_hot',
-      selectedIconPath: '/assets/images/icons/tabBar/message_on.png',
+      iconPath: 'icons-person',
+      selectedIconPath: 'icons-person_fill',
       text: '订单',
       selected: false,
       badge: {

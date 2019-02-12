@@ -1,42 +1,61 @@
 <div class="content-scrollable">
-  <div *ngIf="orders.length < 1" class="no-record">您目前没有订单</div>
-  <div *ngFor="let order of orders" class="weui-panel weui-panel_access">
-    <div class="weui-panel__hd">订单号：{{order.orderNo}}
-      <em class="right">
-        <span *ngIf="order.orderStatus === 0">待支付</span>
-        <span *ngIf="order.orderStatus === 1">备货中</span>
-        <span *ngIf="order.orderStatus === 2">已发货</span>
-        <span *ngIf="order.orderStatus === 3">退货中</span>
-        <span *ngIf="order.orderStatus === 4">退款中</span>
-        <span *ngIf="order.orderStatus === 5">待确认</span>
-        <span *ngIf="order.orderStatus === 6">已取消</span>
-        <span *ngIf="order.orderStatus === 7">已完成</span>
-        <span *ngIf="order.orderStatus === 8">已退货</span>
-        <span *ngIf="order.orderStatus === 9">已退款</span>
-        <span *ngIf="order.orderStatus === 10">取消订单申请</span>
-      </em>
+
+  <div class="weui-tab">
+    <div class="weui-navbar">
+      <div (click)="getOrders('')" class="weui-navbar__item" [ngClass]="{'weui-bar__item_on':orderType === ''}">
+        全部
+      </div>
+      <div (click)="getOrders('0')" class="weui-navbar__item" [ngClass]="{'weui-bar__item_on':orderType === '0'}">
+        待付款
+      </div>
+      <div (click)="getOrders('2')" class="weui-navbar__item" [ngClass]="{'weui-bar__item_on':orderType === '2'}">
+        待收货
+      </div>
+      <div (click)="getOrders('7')" class="weui-navbar__item" [ngClass]="{'weui-bar__item_on':orderType === '7'}">
+        待评价
+      </div>
     </div>
-    <div class="weui-panel__bd">
-      <a *ngFor="let prod of order.itemList" href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
-        <div class="weui-media-box__hd">
-          <img class="weui-media-box__thumb"
-               src="{{prod.productImg}}"
-               alt="">
+    <div class="weui-tab__panel">
+      <app-msg *ngIf="orders?.length === 0" (event)="onConfirm($event)"
+               [msg]='{title:"",desc:"购物车空空的，快去感受下这里的购物乐趣吧~~",confirm:"去逛逛",icon:"/assets/images/icons/empty-cart.png"}'></app-msg>
+      <div *ngFor="let order of orders" class="weui-panel weui-panel_access">
+        <div class="weui-panel__hd">订单号：{{order.orderNo}}
+          <em class="right">
+            <span *ngIf="order.orderStatus === 0">待支付</span>
+            <span *ngIf="order.orderStatus === 1">备货中</span>
+            <span *ngIf="order.orderStatus === 2">已发货</span>
+            <span *ngIf="order.orderStatus === 3">退货中</span>
+            <span *ngIf="order.orderStatus === 4">退款中</span>
+            <span *ngIf="order.orderStatus === 5">待确认</span>
+            <span *ngIf="order.orderStatus === 6">已取消</span>
+            <span *ngIf="order.orderStatus === 7">已完成</span>
+            <span *ngIf="order.orderStatus === 8">已退货</span>
+            <span *ngIf="order.orderStatus === 9">已退款</span>
+            <span *ngIf="order.orderStatus === 10">取消订单申请</span>
+          </em>
         </div>
-        <div class="weui-media-box__bd">
-          <h4 class="weui-media-box__title">{{prod.productName}} <span class="right">x {{prod.buyNum}}</span></h4>
-          <p class="weui-media-box__desc">{{prod.skuValue}}</p>
+        <div class="weui-panel__bd">
+          <a *ngFor="let prod of order.itemList" href="javascript:void(0);"
+             class="weui-media-box weui-media-box_appmsg">
+            <div class="weui-media-box__hd">
+              <img class="weui-media-box__thumb"
+                   src="{{prod.productImg}}"
+                   alt="">
+            </div>
+            <div class="weui-media-box__bd">
+              <h4 class="weui-media-box__title">{{prod.productName}} <span class="right">x {{prod.buyNum}}</span></h4>
+              <p class="weui-media-box__desc">{{prod.skuValue}}</p>
+            </div>
+          </a>
         </div>
-      </a>
-    </div>
-    <div class="weui-panel__ft">
-      <div class="weui-cell weui-cell_access weui-cell_link">
-        <div class="weui-cell__bd">
-          <p>收件人：{{order.recieverName}} <span>{{order.recieverMobile}}</span></p>
-          <p>地址：{{order.recieverAddress}}</p>
-          <p>留言：{{order.buyerMemo}}</p>
-        </div>
-        <span class="weui-cell__ft">
+        <div class="weui-panel__ft">
+          <div class="weui-cell weui-cell_access weui-cell_link">
+            <div class="weui-cell__bd">
+              <p>收件人：{{order.recieverName}} <span>{{order.recieverMobile}}</span></p>
+              <p>地址：{{order.recieverAddress}}</p>
+              <p>留言：{{order.buyerMemo}}</p>
+            </div>
+            <span class="weui-cell__ft">
 
 
                                                                 <a (click)="cancel(order.orderNo)"
@@ -45,6 +64,8 @@
                                                                 <a (click)="return(order.orderNo)"
                                                                    *ngIf="order.orderStatus === 7" href="javascript:;">申请退货</a>
                                                             </span>
+          </div>
+        </div>
       </div>
     </div>
   </div>

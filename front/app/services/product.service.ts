@@ -22,26 +22,34 @@ export class ProductService {
       .toPromise()
       .then(response => {
         const attrs = [];
-        const orderIndexs = [];
+        const items = [];
         response['attributeList'].forEach(item => {
+          items.push('');
           if (item.name === '颜色') {
             attrs.unshift(item);
           } else {
             attrs.push(item);
           }
         });
-        response['attributeList'] = attrs;
-        attrs.forEach(item => {
-          orderIndexs.push(item.id);
-        });
 
-        response['skuList'].forEach((item, index) => {
+        response['attributeList'] = attrs;
+
+        response['skuList'].forEach((item, i) => {
           const str = item.specificationproperties.split(';');
-          if (str[0].split(':')[0] === attrs[0].id) {
-            response['skuList'][index].specificationproperties = str[0] + ';' + str[1];
-          } else {
-            response['skuList'][index].specificationproperties = str[1] + ';' + str[0];
-          }
+          attrs.forEach((attr, index) => {
+            str.forEach(cds => {
+              if (attr.id === cds.split(':')[0]) {
+                items[index] = cds;
+              }
+            });
+          });
+          items.forEach((it, index) => {
+            if (index === 0) {
+              response['skuList'][i].specificationproperties = it;
+            } else {
+              response['skuList'][i].specificationproperties = response['skuList'][i].specificationproperties + ';' + it;
+            }
+          });
         });
 
         return response;

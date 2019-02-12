@@ -1,6 +1,6 @@
 {
   "/api": {
-    "target": "http://192.168.1.193:8880",
+    "target": "http://sell.yfq.cn",
     "secure": false,
     "pathRewrite": {
       "^/api/": ""

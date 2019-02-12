@@ -113,11 +113,14 @@ $color-negative: #ff5b29;
   }
 
   &[class*="tertiary"] {
-    background: $color-raw;
-    color: $color-primary;
+    background: $color-orange;
+    color: $color-empty;
 
     &:hover {
-      background-color: $color-raw;
+      background-color: darken($color-orange, 5%);
+    }
+    &:active {
+      box-shadow: rgba(0, 0, 0, .3) 0 1px 3px 0 inset;
     }
   }
 

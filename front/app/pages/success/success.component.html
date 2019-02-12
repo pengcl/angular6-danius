@@ -12,13 +12,13 @@
           <label class="weui-form-preview__label">订单号</label>
           <span class="weui-form-preview__value">{{order?.orderno}}</span>
         </div>
-        <div class="weui-form-preview__item">
-          <label class="weui-form-preview__label">商品名称</label>
-          <span class="weui-form-preview__value">{{order?.buyermemo}}<br><span style="color: #4CA6FF" *ngIf="items">{{items[0].specificationvalues}} 数量x{{items[0].quantity}}</span></span>
+        <div *ngFor="let item of items" class="weui-form-preview__item">
+          <label class="weui-form-preview__label"><img src="{{item.mediaurl}}"></label>
+          <span class="weui-form-preview__value"><p>{{item.productname}}</p><span style="color: #4CA6FF">{{item.specificationvalues}} 数量x{{item.quantity}} ￥{{item.price}}</span></span>
         </div>
         <div class="weui-form-preview__item">
           <label class="weui-form-preview__label">合计</label>
-          <span class="weui-form-preview__value">¥{{order?.salesPrice}}</span>
+          <span class="weui-form-preview__value"><em>¥{{order?.salesPrice}}</em></span>
         </div>
       </div>
     </div>

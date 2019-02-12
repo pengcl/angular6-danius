@@ -67,7 +67,7 @@ export class WxService extends BaseService {
         }
 
         this.http
-          .get(CONFIG.prefix.wApi + '/interface/call.html?action=getJsSdkAuth&url=' + encodeURIComponent(window.location.href))
+          .get('/api/productinf/getWxParameter.ht?shareUrl=' + encodeURIComponent(window.location.href))
           .pipe(
             catchError((error: Response | any) => {
               reject('无法获取签名数据');
@@ -75,12 +75,9 @@ export class WxService extends BaseService {
             }),
           )
           .subscribe((ret: any) => {
-            if (ret.code !== '0000') {
-              reject('jsapi 获取失败');
-              return;
-            }
-            ret.result.jsApiList = this.jsApiList;
-            wx.config(ret.result);
+            const config = JSON.parse(ret)[0];
+            config.jsApiList = this.jsApiList;
+            wx.config(config);
 
             wx.ready(() => {
               this._onMenuShareTimeline()

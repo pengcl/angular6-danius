@@ -8,6 +8,7 @@ import {TabbarService} from '../../../../../../modules/tabbar';
 import {AuthService} from '../../../../services/auth.service';
 import {OrderService} from '../../../../services/order.service';
 import {getIndex} from '../../../../../../commons/js/utils';
+import {PageService} from '../../../../services/page.service';
 
 @Component({
   selector: 'app-admin-order-list',
@@ -16,25 +17,34 @@ import {getIndex} from '../../../../../../commons/js/utils';
 })
 export class AdminOrderListComponent implements OnInit {
   user;
-  orders: any[] = [];
+  orders;
+  pageType;
+  orderType = '';
 
   constructor(private router: Router,
               private dialogSvc: DialogService,
               private navSvc: NavbarService,
               private tabSvc: TabbarService,
               private authSvc: AuthService,
-              private orderSvc: OrderService) {
-    navSvc.set({title: '翼分期优选-订单查询'});
-    tabSvc.set({show: true}, 2);
+              private orderSvc: OrderService,
+              private pageSvc: PageService) {
+
+    this.pageType = pageSvc.config;
+    navSvc.set({title: this.pageType.name + '-订单查询'});
+    tabSvc.set({show: true}, 3);
   }
 
   ngOnInit() {
-    this.user = this.authSvc.currentUser;
+    this.user = this.authSvc.getKey();
 
-    this.orderSvc.getOrders(this.user.key).then(res => {
+    this.getOrders('');
+  }
+
+  getOrders(orderType) {
+    this.orderType = orderType;
+    this.orderSvc.getOrders(this.user, orderType).then(res => {
       if (res.code === '200') {
         this.orders = res.result;
-        console.log(this.orders);
       } else if (res.code === '201') {
         this.authSvc.logout();
       }
@@ -67,5 +77,11 @@ export class AdminOrderListComponent implements OnInit {
         });
       }
     });
+  }
+
+  onConfirm(e) {
+    if (e === 'confirm') {
+      this.router.navigate(['/index']);
+    }
   }
 }

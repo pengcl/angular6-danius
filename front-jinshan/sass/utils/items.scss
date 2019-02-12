@@ -1,0 +1,153 @@
+.items {
+  .weui-grids {
+    &:before {
+      display: block;
+      z-index: 1;
+    }
+    .weui-grid {
+      width: 50%;
+      padding: 0.1rem;
+      background: #fff;
+      &:after {
+        display: block;
+      }
+      &.lbd {
+        &:before {
+          display: block;
+        }
+      }
+      .weui-grid__icon {
+        width: auto;
+        height: auto;
+        background: #fff;
+        border-radius: 4px;
+        overflow: hidden;
+        position: relative;
+        .img-box {
+          img {
+            width: 1.25rem;
+            height: 1.25rem;
+            margin: 0 auto;
+          }
+        }
+        .icon-heart {
+          font-size: 0.17rem;
+          color: #DCDCDC;
+          position: absolute;
+          right: 0.1rem;
+          top: 0.1rem;
+          &.collected {
+            color: #F43530;
+          }
+        }
+      }
+      .weui-grid__label {
+        font-size: 0.14rem;
+        color: #000;
+        font-weight: bold;
+        line-height: 1;
+        margin-top: 0.1rem;
+        text-align: left;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .weui-grid__labels {
+        margin: 0.05rem 0;
+        .label {
+          display: inline-block;
+          padding: 0.05rem 0.1rem;
+          background: #d0b990;
+          color: #fff;
+          line-height: 1;
+          font-size: 0.12rem;
+        }
+      }
+
+      .weui-grid__desc {
+        margin-top: 0.05rem;
+        font-size: 0.12rem;
+        color: #808080;
+        line-height: 0.16rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .weui-grid__price {
+        font-size: 0;
+        sub,em {
+          display: inline-block;
+          font-size: 0.10rem;
+          color: #CC3629;
+          vertical-align: baseline;
+        }
+        em {
+          font-size: 0.16rem;
+        }
+      }
+
+      weui-progress {
+        margin-top: 0.1rem;
+        display: block;
+        & + .weui-flex {
+          margin-top: 0.05rem;
+        }
+      }
+      .weui-flex {
+        margin-top: 0.1rem;
+        font-size: 0.12rem;
+        line-height: 1;
+        &.action {
+          margin-top: 0.15rem;
+          .buy {
+            color: #F26549;
+            font-size: 0.14rem;
+            line-height: 1;
+            padding: 0.08rem 0;
+            text-align: center;
+            border-radius: 0.04rem;
+            border: 1px solid #F26549;
+          }
+          .cart {
+            width: 0.3rem;
+            height: 0.3rem;
+            display: block;
+            margin: 0 0.05rem 0 0.1rem;
+            flex: unset;
+            align-self: center;
+            box-sizing: border-box;
+            border-radius: 50%;
+            border: 1px solid #F26549;
+            i {
+              display: block;
+              font-size: 0.2rem;
+              margin: 0.04rem;
+              color: #F26549;
+              font-weight: bold;
+            }
+          }
+        }
+      }
+      .price {
+        text-align: left;
+        color: #F26549;
+      }
+      .store {
+        text-align: right;
+        color: #999;
+      }
+      .nowcount {
+        color: #999;
+      }
+      .count {
+        text-align: center;
+        color: #999;
+      }
+      .pluscount {
+        text-align: right;
+        color: #999;
+      }
+    }
+  }
+}

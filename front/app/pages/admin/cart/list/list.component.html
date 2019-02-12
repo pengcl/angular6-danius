@@ -1,0 +1,39 @@
+<div class="content-scrollable">
+
+  <app-msg *ngIf="carts?.length === 0" (event)="onConfirm($event)"
+           [msg]='{title:"",desc:"购物车空空的，快去感受下这里的购物乐趣吧~~",confirm:"去逛逛",icon:"/assets/images/icons/empty-cart.png"}'></app-msg>
+
+  <div *ngIf="carts?.length > 0" class="weui-panel">
+    <div class="weui-panel__hd"><span (click)="selectedAll()" class="{{isSelectedAll ? 'weui-icon-success' : 'weui-icon-circle'}}"></span> {{pageType.name}} <span class="right">全国免邮费</span></div>
+    <div class="weui-panel__bd">
+      <div *ngFor="let cart of carts" class="weui-media-box weui-media-box_appmsg">
+        <div (click)="cart.selected = !cart.selected;updateCount()" style="width: auto" class="weui-media-box__hd">
+          <span class="{{cart.selected ? 'weui-icon-success' : 'weui-icon-circle'}}"></span>
+        </div>
+        <div class="weui-media-box__hd">
+          <img class="weui-media-box__thumb" src="{{cart.productImg}}">
+        </div>
+        <div class="weui-media-box__bd">
+          <h4 class="weui-media-box__title">{{cart.productName}}</h4>
+          <p class="weui-media-box__desc"><sub>￥</sub><em>{{cart.productPrice}}</em>
+            <span class="right" style="margin-top: 0.1rem"><weui-stepper [(ngModel)]="cart.quantity" (change)="onChange($event,cart)" [min]="1"
+                                [max]="10"></weui-stepper></span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="carts?.length > 0" class="cart-bottom">
+  <div class="weui-flex">
+    <div class="check weui-flex__item">
+      <span (click)="selectedAll()" class="{{isSelectedAll ? 'weui-icon-success' : 'weui-icon-circle'}}"></span><span>全选</span>
+    </div>
+    <div class="total weui-flex__item">
+      <span>合计：</span><sub>￥</sub><em>{{totalPrice}}</em>
+    </div>
+    <div (click)="go(totalPrice > 0)" class="button weui-flex__item {{totalPrice === 0 ? 'disabled' : ''}}">
+      <span>去支付</span>
+    </div>
+  </div>
+</div>

@@ -6,6 +6,9 @@ import {timer as observableTimer, interval as observableInterval} from 'rxjs';
 import {InfiniteLoaderComponent} from 'ngx-weui';
 import {LogService} from '../../services/log.service';
 import {ProductService} from '../../services/product.service';
+import {PageService} from '../../services/page.service';
+import {WxService} from '../../../../modules/wx';
+import {CONFIG} from '../../app.config';
 
 @Component({
   selector: 'app-index',
@@ -22,6 +25,17 @@ export class IndexComponent implements OnInit {
       type: 'bullets',
     },
     autoplay: false
+  };
+
+  sConfig = {
+    grabCursor: true,
+    slidesPerView: 'auto',
+    pagination: {
+      el: '.swiper-pagination',
+      type: 'bullets',
+    },
+    autoplay: false,
+    slidesPerGroup: 3
   };
 
   page = 1;
@@ -49,13 +63,17 @@ export class IndexComponent implements OnInit {
   @ViewChild('container') private container: ElementRef;
 
   interval = null;
+  pageType;
 
   constructor(private route: ActivatedRoute,
               private navSvc: NavbarService,
               private tabSvc: TabbarService,
               private logSvc: LogService,
-              private prodSvc: ProductService) {
-    navSvc.set({title: '翼分期优选'});
+              private prodSvc: ProductService,
+              private pageSvc: PageService,
+              private wxSvc: WxService) {
+    this.pageType = pageSvc.config;
+    navSvc.set({title: this.pageType.name});
     tabSvc.set({show: true}, 0);
   }
 
@@ -94,6 +112,18 @@ export class IndexComponent implements OnInit {
 
     this.prodSvc.getRecommends().then(res => {
       this.recommends = res.list;
+    });
+
+    this.wxSvc.config({
+      title: this.pageType.name + ' - 优质制造商直供商城',
+      desc: '大牌制造商直供，剔除品牌溢价；货到付款，全场包邮，购物无忧！',
+      link: CONFIG.webHost + '/index',
+      imgUrl: CONFIG.webHost + '/assets/images/share-' + this.pageType.type + '.png',
+    }).then(() => {
+      // 其它操作，可以确保注册成功以后才有效
+      console.log('注册成功');
+    }).catch((err: string) => {
+      console.log(`注册失败，原因：${err}`);
     });
 
     this.logSvc.log('indexLoad').then();

@@ -1,5 +1,5 @@
 .content-scrollable {
-  padding-top: 0.5rem;
+  /*padding-top: 1rem;*/
   &:after {
     display: block;
     content: '';
@@ -18,16 +18,20 @@
 }
 
 .banner {
+  margin: 0 0.2rem -0.1rem;
+  border-radius: 0.1rem;
+  overflow: hidden;
+  box-shadow: 0 2px 12px 0 rgba(209, 63, 54, 1);
   & + .weui-panel {
     margin-top: 0;
   }
   ::ng-deep {
     .swiper-slide {
-      background: #fff;
       img {
         display: block;
         width: 100%;
         margin: 0 auto;
+        border-radius: 0.1rem;
       }
     }
   }
@@ -59,11 +63,9 @@
 }
 
 .promise {
-  margin: 0.1rem;
-  border-radius: 0.05rem;
-  box-shadow: 0 0 0.1rem rgba(0, 0, 0, 0.1);
   background: #fff;
-  padding: 0.05rem;
+  padding: 0.2rem 0.05rem 0.1rem;
+  background: linear-gradient(to bottom, #E17F5E 20%, #FFFFFF 60%);
   .weui-flex__item {
     flex: unset;
     text-align: center;
@@ -75,7 +77,7 @@
     i {
       font-size: 0.2rem;
       margin-right: 0.05rem;
-      color: #d0b990;
+      color: #C23A3B;
     }
     span {
       line-height: 0.2rem;
@@ -305,5 +307,38 @@
   .about-content {
     font-size: 0.12rem;
     margin-top: 0.05rem;
+  }
+}
+
+.bool {
+  background: linear-gradient(to bottom, #E6A88A, #C26344);
+}
+
+.top_logo {
+  height: 0.5rem;
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 0;
+  z-index: 999;
+  text-align: center;
+  overflow: hidden;
+  position: static !important;
+  .img-box {
+    display: inline-block;
+    height: 0.3rem;
+    margin-top: 0.1rem;
+  }
+  img {
+    height: 0.3rem;
+    display: block;
+  }
+}
+.types-nav {
+  top: 0.5rem;
+  position: static !important;
+  background: none;
+  .swiper-slide {
+    color: #fff !important;
   }
 }

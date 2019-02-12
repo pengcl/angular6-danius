@@ -1,0 +1,93 @@
+.colors {
+  &.red {
+    color: #db2828 !important;
+    &.bg {
+      background: #db2828 !important;
+      color: #fff !important;
+    }
+  }
+  &.orange {
+    color: #f2711c !important;
+    &.bg {
+      background: #f2711c !important;
+      color: #fff !important;
+    }
+  }
+  &.yellow {
+    color: #fbbd08 !important;
+    &.bg {
+      background: #fbbd08 !important;
+      color: #fff !important;
+    }
+  }
+  &.olive {
+    color: #b5cc18 !important;
+    &.bg {
+      background: #b5cc18 !important;
+      color: #fff !important;
+    }
+  }
+  &.green {
+    color: #21ba45 !important;
+    &.bg {
+      background: #21ba45 !important;
+      color: #fff !important;
+    }
+  }
+  &.teal {
+    color: #00b5ad !important;
+    &.bg {
+      background: #00b5ad !important;
+      color: #fff !important;
+    }
+  }
+  &.blue {
+    color: #2185d0 !important;
+    &.bg {
+      background: #2185d0 !important;
+      color: #fff !important;
+    }
+  }
+  &.violet {
+    color: #6435c9 !important;
+    &.bg {
+      background: #6435c9 !important;
+      color: #fff !important;
+    }
+  }
+  &.purple {
+    color: #a333c8 !important;
+    &.bg {
+      background: #a333c8 !important;
+      color: #fff !important;
+    }
+  }
+  &.pink {
+    color: #e03997 !important;
+    &.bg {
+      background: #e03997 !important;
+      color: #fff !important;
+    }
+  }
+  &.brown {
+    color: #a5673f !important;
+    &.bg {
+      background: #a5673f !important;
+      color: #fff !important;
+    }
+  }
+  &.grey {
+    color: #767676 !important;
+    &.bg {
+      background: #767676 !important;
+      color: #fff !important;
+    }
+  }
+  &.black {
+    color: #1b1c1d !important;
+    &.bg {
+      background: #1b1c1d !important;
+      color: #fff !important;
+    }
+  }
+}

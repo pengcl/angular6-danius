@@ -1,0 +1,42 @@
+<div class="content-scrollable">
+  <div class="weui-msg">
+    <div class="weui-msg__icon-area"><i class="weui-icon-success weui-icon_msg"></i></div>
+    <div class="weui-msg__text-area">
+      <h2 class="weui-msg__title">下单成功</h2>
+      <p class="weui-msg__desc">商家正在备货中，48小时内发货，请耐心等待。收到商品请先验货，满意再付款。</p>
+    </div>
+
+    <div class="weui-form-preview">
+      <div class="weui-form-preview__bd">
+        <div class="weui-form-preview__item">
+          <label class="weui-form-preview__label">订单号</label>
+          <span class="weui-form-preview__value">{{order?.orderno}}</span>
+        </div>
+        <div class="weui-form-preview__item">
+          <label class="weui-form-preview__label">商品名称</label>
+          <span class="weui-form-preview__value">{{order?.buyermemo}}<br><span style="color: #4CA6FF" *ngIf="items">{{items[0].specificationvalues}} 数量x{{items[0].quantity}}</span></span>
+        </div>
+        <div class="weui-form-preview__item">
+          <label class="weui-form-preview__label">合计</label>
+          <span class="weui-form-preview__value">¥{{order?.salesPrice}}</span>
+        </div>
+      </div>
+    </div>
+    <div class="weui-cells__tips">全国包邮，货到付款，请保持手机信号畅通。</div>
+
+    <div class="weui-msg__opr-area">
+      <p class="weui-btn-area">
+        <a routerLink="/index" class="weui-btn weui-btn_primary">继续买好货</a>
+        <a routerLink="/admin/order/list" class="weui-btn weui-btn_default">查看订单</a>
+      </p>
+    </div>
+    <div style="position: static" class="weui-msg__extra-area">
+      <div class="weui-footer">
+        <p class="weui-footer__links">
+          客服电话：<a href="tel:020-85599918" class="weui-footer__link">020-85599918</a>
+        </p>
+        <p class="weui-footer__text">Copyright © 2008-2018 e.yfq.cn</p>
+      </div>
+    </div>
+  </div>
+</div>

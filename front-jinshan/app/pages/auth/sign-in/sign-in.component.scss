@@ -1,0 +1,64 @@
+.content-scrollable {
+  background: #fff;
+}
+
+.weui-cells {
+  font-size: 0.15rem;
+  overflow: visible;
+  &:before, &:after {
+    display: none;
+  }
+  margin: 0 0.2rem;
+  .weui-cell {
+    box-sizing: border-box;
+    padding: 0;
+    line-height: 0.44rem;
+    margin-bottom: 0.15rem;
+    border: 1px solid #E6E6E6;
+    border-radius: 0.22rem;
+    &:before, &:after {
+      display: none;
+    }
+    .weui-label {
+      width: 4em;
+      box-sizing: content-box;
+      white-space: nowrap;
+      text-align: center;
+      color: #666;
+      padding: 0 0.15rem;
+    }
+    .weui-cell__bd {
+      padding-left: 0.15rem;
+      border-left: 1px solid #E6E6E6;
+    }
+    .weui-cell__ft {
+      padding-right: 0.15rem;
+      font-size: 0.12rem;
+      color: #CCAA66;
+    }
+
+    input::placeholder {
+      color: #ccc;
+    }
+  }
+}
+
+.weui-btn_primary {
+  background: linear-gradient(90deg, #E0BB7C 0%, #B38247 100%);
+  box-shadow: 0 7px 14px 0 rgba(204,170,102,0.30);
+  border-radius: 44px;
+  color: #fff;
+  font-size: 0.17rem;
+  line-height: 1;
+  padding: 0.135rem 0;
+  text-align: center;
+  margin: 0.35rem 0.2rem;
+  &.weui-btn_disabled {
+    background: #CCCCCC;
+    box-shadow: 0 7px 14px 0 rgba(153,153,153,0.30);
+  }
+}
+
+.weui-cell__hd {
+  align-self: center;
+}
