@@ -84,10 +84,15 @@ export class FrontItemComponent implements OnInit {
 
   ngOnInit() {
     this.prodSvc.getItem(this.route.snapshot.params['id']).then(res => {
+      const imgList = [];
+      res.imgList.forEach(img => {
+        const _img = img.replace('_mid', '_big');
+        imgList.push(_img);
+      });
+      res.imgList = imgList;
       this.prod = res;
       this.price = res.salesPrice;
       this.skuList = res.skuList;
-
       const attrs = [];
 
       res.attributeList.forEach(item => {
@@ -137,8 +142,9 @@ export class FrontItemComponent implements OnInit {
 
 
     const id = this.route.snapshot.params['id'];
-    this.tempAdr = '广州大牛信息科技有限公司<br>广州市天河区马场路28号富力公园 B1栋 3502<br>客服电话：020-85599918';
-    if (id === '10000100430356') {
+    this.tempAdr = '';
+    /*广州大牛信息科技有限公司<br>广州市天河区马场路28号富力公园 B1栋 3502<br>客服电话：020-85599918*/
+    /*if (id === '10000100430356') {
       this.tempAdr = '菏泽市福美佳服饰有限公司<br>山东省菏泽市牡丹区长城路与人民路交汇处和谐广场一楼116号';
     }
     if (id === '10000099850572') {
@@ -146,7 +152,7 @@ export class FrontItemComponent implements OnInit {
     }
     if (id === '10000099850704') {
       this.tempAdr = '菏泽东达商贸有限公司<br>菏泽市牡丹区古邑商城三号楼';
-    }
+    }*/
   }
 
   showOverlay() {
@@ -185,7 +191,7 @@ export class FrontItemComponent implements OnInit {
   }
 
   getPrice() {
-    /*const index = this.attrs.length - 1;
+    const index = this.attrs.length - 1;
     const cds = this.attrs[index].id + ':' + this.attrs[index].selected.id;
     let price = this.price;
 
@@ -200,12 +206,11 @@ export class FrontItemComponent implements OnInit {
 
     items.forEach(item => {
       if (item.specificationproperties.indexOf(cds) !== -1 && item.quantity !== -1) {
-        price = item.salepricediff;
+        price = item.salepricediff ? item.salepricediff : this.price;
       }
     });
 
-    return price;*/
-    return this.price;
+    return price;
   }
 
   setMainImg(img) {
@@ -245,6 +250,7 @@ export class FrontItemComponent implements OnInit {
     }
 
     this.price = this.getPrice();
+    this.itemForm['price'] = this.price;
 
     this.logSvc.log('setAttr' + attr.id, this.route.snapshot.params['id']).then();
   }

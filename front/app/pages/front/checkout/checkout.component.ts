@@ -238,6 +238,7 @@ export class FrontCheckoutComponent implements OnInit {
     this.loading = true;
     this.toastSvc.loading('提交中', 0);
     this.prodSvc.submit(this.itemForm).then(res => {
+      this.loading = false;
       this.toastSvc.hide();
       if (res.code === '200') {
         this.router.navigate(['/success'], {queryParams: {orderNo: res.orderNo}});

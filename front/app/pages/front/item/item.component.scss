@@ -32,6 +32,12 @@
     color: #999;
     font-size: 0.14rem;
   }
+  .logo{
+    position: absolute;
+    top: 0.1rem;
+    left: 0.15rem;
+    z-index: 1;
+  }
 }
 
 .product-cells {
@@ -55,6 +61,11 @@
       color: #999;
     }
   }
+}
+
+.weui-media-box__title {
+  text-overflow: unset;
+  white-space: unset;
 }
 
 .weui-media-box__title.price {

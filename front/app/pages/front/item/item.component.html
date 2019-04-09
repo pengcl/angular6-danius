@@ -7,6 +7,7 @@
           </span>
       </swiper>
       <!--<span class="pages">{{mainIndex}}/{{prod.imgList.length}}</span>-->
+      <img *ngIf="prod.productId===10000100431596" class="logo" style="width: 0.6rem" src="/assets/images/quitelife.png">
     </div>
     <div class="weui-panel">
       <div class="weui-panel__bd">
@@ -18,11 +19,16 @@
           <h4 class="price weui-media-box__title"><sub>￥</sub><em>{{price}}</em><sub>.00</sub>
             <!--<del>￥{{prod.originalPrice}}.00</del>-->
           </h4>
-          <ul class="weui-media-box__info">
+          <!--<ul class="weui-media-box__info">
+            <li class="weui-media-box__info__meta weui-media-box__info__meta_extra">
+              <span><img style="width: 0.6rem" src="/assets/images/1.jpg"></span>
+            </li>
+          </ul>-->
+          <!--<ul class="weui-media-box__info">
             <li class="weui-media-box__info__meta weui-media-box__info__meta_extra"><span
               class="label" *ngIf="prod?.preContract">{{prod?.preContract}}</span>
-              <!--<span class="label">生产周期7天</span>--></li>
-          </ul>
+              &lt;!&ndash;<span class="label">生产周期7天</span>&ndash;&gt;</li>
+          </ul>-->
         </div>
       </div>
     </div>
@@ -81,7 +87,7 @@
 </div>
 
 <div class="btns-group">
-  <a href="tel:020-85599918" class="weui-tabbar__item">
+  <a href="tel:15360660588" class="weui-tabbar__item">
     <span style="display: inline-block;position: relative;">
       <span class="weui-tabbar__icon">
         <i class="icons icons-call"></i>
@@ -89,18 +95,18 @@
     </span>
     <p class="weui-tabbar__label">客服</p>
   </a>
-  <a routerLink="/admin/cart/list" class="weui-tabbar__item">
+  <!--<a routerLink="/admin/cart/list" class="weui-tabbar__item">
     <span style="display: inline-block;position: relative;">
       <span class="weui-tabbar__icon">
         <i class="icons icons-cart"></i>
       </span>
     </span>
     <p class="weui-tabbar__label">购物车</p>
-  </a>
-  <a *ngIf="attrs"
+  </a>-->
+  <!--<a *ngIf="attrs"
      (click)="addCart(getQuantity(attrs.length - 1,attrs[attrs.length - 1].id + ':' + attrs[attrs.length - 1].selected.id))"
      [ngClass]="{'disabled':!getQuantity(attrs.length - 1,attrs[attrs.length - 1].id + ':' + attrs[attrs.length - 1].selected.id)}"
-     class="btn-tertiary">加入购物车</a>
+     class="btn-tertiary">加入购物车</a>-->
   <a (click)="showOverlay()" class="btn-primary">立即购买</a>
 </div>
 
@@ -116,11 +122,16 @@
         <p class="weui-media-box__desc"><sub>￥</sub><em>{{price}}</em><sub>.00</sub>
           <!--<del>￥{{prod?.originalPrice}}.00</del>-->
         </p>
-        <ul class="weui-media-box__info">
-          <li class="weui-media-box__info__meta weui-media-box__info__meta_extra"><span
-            class="label" *ngIf="prod?.preContract">{{prod?.preContract}}</span><!--<span class="label">生产周期7天</span>-->
+        <!--<ul class="weui-media-box__info">
+          <li class="weui-media-box__info__meta weui-media-box__info__meta_extra">
+            <span><img style="width: 0.6rem" src="/assets/images/1.jpg"></span>
           </li>
-        </ul>
+        </ul>-->
+        <!--<ul class="weui-media-box__info">
+          <li class="weui-media-box__info__meta weui-media-box__info__meta_extra"><span
+            class="label" *ngIf="prod?.preContract">{{prod?.preContract}}</span>&lt;!&ndash;<span class="label">生产周期7天</span>&ndash;&gt;
+          </li>
+        </ul>-->
         <p style="font-size: 0.13rem;margin-top: 0.05rem" class="weui-media-box__desc">已选择：<span
           style="margin-right: 0.1rem" *ngFor="let attr of attrs">{{attr.name}} {{attr.selected.value}}</span><span>数量x{{itemForm.totalQuantity}}</span>
         </p>
@@ -218,7 +229,7 @@
       </section>
       <section>
         <h3>客服的联系方式是什么？</h3>
-        <p>{{pageType?.name}}客服电话：020-85599918</p>
+        <p>{{pageType?.name}}客服电话：15360660588</p>
       </section>
       <section>
         <h3>商品发货后，退换货与拒签收取费用吗？</h3>
